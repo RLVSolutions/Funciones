@@ -3,5 +3,6 @@ window.LF_CONFIG = {
   API_TOKEN: 'e6ef02276f5e465cb4a7e472',
   WHATSAPP: '+56959050070',
   EMPRESA: 'RD Musico',
+  INICIALES: 'RD',
   LOGO: 'logo.png'
 };
