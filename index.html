@@ -369,6 +369,13 @@ body.bloq{overflow:hidden}
 .pill.Pendiente{background:var(--mark-soft);color:var(--mark)}
 .pill.Observado{background:var(--err-soft);color:var(--err)}
 .pill.Revisado{background:var(--ok-soft);color:var(--ok)}
+.pill.En-curso{background:#e8eefb;color:#2c5bb8}
+.quien{display:grid;gap:10px;margin-top:4px}
+.quien button{display:flex;gap:12px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:12px 14px;font:inherit;cursor:pointer;color:var(--txt)}
+.quien button:hover{border-color:var(--acc);background:var(--acc-soft)}
+.quien b{display:block;font-family:var(--disp)}
+.quien small{color:var(--muted)}
+.quien i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--acc-soft);color:var(--acc);font-style:normal;flex:none}
 @media (max-width:760px){.tabla thead{display:none}.tabla,.tabla tbody,.tabla tr,.tabla td{display:block;width:100%}.tabla tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:6px 0}.tabla td{border:0;padding:4px 14px;display:flex;justify-content:space-between;gap:12px}.tabla td::before{content:attr(data-l);color:var(--muted);font-size:.78rem}.tabla .n{text-align:right}}
 .detgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-bottom:16px}
 @media (min-width:1000px){.detgrid{grid-template-columns:minmax(0,2fr) minmax(280px,1fr)}}
@@ -579,9 +586,9 @@ body>*:not(#print){display:none!important}
 <div class="topder"><span id="cx" class="cx" role="status"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 10a6 6 0 0 0-11.6-1.8A4.5 4.5 0 0 0 6.5 19H18a4.5 4.5 0 0 0 0-9z"/></svg><b id="cxTxt">Conectando…</b></span><button type="button" id="recargar" class="icob" aria-label="Recargar" title="Recargar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></button></div>
 </div></div>
 <nav class="navrow" id="tabs" aria-label="Secciones" hidden><div class="navin">
-<button type="button" id="tabIngreso" data-tab="ingreso" aria-selected="true">Ingreso</button>
+<button type="button" id="tabDash" data-tab="dash" aria-selected="true">Dashboard</button><button type="button" id="tabIngreso" data-tab="ingreso" aria-selected="false">Ingreso</button>
 <span class="navsep" aria-hidden="true"></span>
-<button type="button" id="tabDash" data-tab="dash" aria-selected="false">Dashboard</button><button type="button" data-acc="instructivo">Instructivo</button><button type="button" data-acc="calendario">Calendario</button><button type="button" data-acc="modificar">Modificar mi registro</button><button type="button" data-acc="blanco">Formulario en blanco</button><button type="button" id="tabDatos" data-tab="datos" aria-selected="false" class="navdatos"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Datos</button>
+<button type="button" data-acc="instructivo">Instructivo</button><button type="button" data-acc="calendario">Calendario</button><button type="button" data-acc="modificar">Modificar mi registro</button><button type="button" data-acc="blanco">Formulario en blanco</button><button type="button" id="tabDatos" data-tab="datos" aria-selected="false" class="navdatos"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Datos</button>
 </div></nav>
 </header>
 
@@ -941,7 +948,7 @@ function irTab(t, sinScroll) {
     vistaDash();
   }
   $('wsp').hidden = t === 'datos';
-  try { history.replaceState(null, '', t === 'dash' ? '#dashboard' : t === 'datos' ? '#datos' : location.pathname + location.search); } catch (e) {}
+  try { history.replaceState(null, '', location.pathname + location.search + (t === 'ingreso' ? '#ingreso' : t === 'datos' ? '#datos' : '')); } catch (e) {}
   if (!sinScroll) window.scrollTo(0, 0);
 }
 
@@ -998,7 +1005,7 @@ function iniciar() {
   $('fSuc').innerHTML = '<option value="">Todas las sucursales</option>' + CFG.sucursales.map(s => '<option>' + esc(s) + '</option>').join('');
   $('fEstado').innerHTML = '<option value="">Todos los estados</option>' + CFG.estados.map(s => '<option>' + esc(s) + '</option>').join('');
   $('pSuc').innerHTML = $('fSuc').innerHTML;
-  $('pEstado').innerHTML = $('fEstado').innerHTML;
+  $('pEstado').innerHTML = $('fEstado').innerHTML + '<option>En curso</option>';
   $('detEstado').innerHTML = CFG.estados.map(s => '<option>' + esc(s) + '</option>').join('');
   SESION = ss('lf_sesion');
   $('tabs').hidden = false;
@@ -1011,7 +1018,7 @@ function iniciar() {
   toggleOtro();
   renderFunciones();
   modoUI();
-  irTab(location.hash === '#dashboard' ? 'dash' : location.hash === '#datos' ? 'datos' : 'ingreso', true);
+  irTab(location.hash === '#ingreso' ? 'ingreso' : location.hash === '#datos' ? 'datos' : 'dash', true);
   if (rutValido($('rut').value)) verificarRut();
 }
 
@@ -1555,6 +1562,7 @@ async function verificarRut() {
     est.hidden = true;
     est.innerHTML = '';
     prellenar(j.nomina);
+    BASE = firma();
     modoUI();
     programarGuardado();
     setTimeout(() => {
@@ -1635,9 +1643,15 @@ function abrirBuscador(id, msg) {
   setTimeout(() => (id ? $('bClave') : $('bId')).focus({ preventScroll: true }), 300);
 }
 
+function firma() {
+  const d = datos();
+  return JSON.stringify([d.nombre, d.sucursal, d.unidad, d.cargos, d.jefatura, d.telefono, d.correo, d.comentarios, d.funciones.filter(f => f.funcion || f.descripcion)]);
+}
+
 async function guardarAvance() {
   if (MANUAL) return;
   if (!libre()) { pedirRut(); toast('Primero ingrese y verifique su RUT.', true); return; }
+  if (!EDIT && BASE && firma() === BASE) { toast('Aún no hay cambios: complete o corrija sus datos, o registre una función, y luego guarde.', true); return; }
   const v = id => limpio($(id).value);
   const malos = [];
   if (v('nombre').length < 5) { marcar($('nombre'), 'Para guardar el avance ingrese su nombre completo.'); malos.push($('nombre')); }
@@ -1989,6 +2003,7 @@ function formatear(r) {
 const BOT_SIN = { contrasena: 'clave', password: 'clave', pass: 'clave', codigo: 'clave', pin: 'clave', avance: 'borrador', pausa: 'borrador', retomar: 'continuar', seguir: 'continuar', reanudar: 'continuar', terminar: 'continuar', editar: 'modificar', corregir: 'modificar', cambiar: 'modificar', actualizar: 'modificar', jefe: 'jefatura', jefa: 'jefatura', supervisor: 'jefatura', encargado: 'jefatura', superior: 'jefatura', puesto: 'cargo', rol: 'cargo', labor: 'funcion', actividad: 'tarea', movil: 'celular', telefono: 'celular', notebook: 'computador', pc: 'computador', impreso: 'papel', imprimir: 'papel', mano: 'papel', pdf: 'papel', falla: 'error', problema: 'error', funciona: 'error', cantidad: 'cuantas', cuanto: 'cuantas', perdi: 'olvide', recuerdo: 'olvide', acuerdo: 'olvide', acordaba: 'olvide', extravie: 'olvide', borrar: 'eliminar', quitar: 'eliminar', sacar: 'eliminar', clasificacion: 'tipo', categoria: 'tipo', ejemplo: 'describir', redaccion: 'redactar', guardo: 'guardar', guarde: 'guardar', envie: 'enviado', mande: 'enviado', mandado: 'enviado', edito: 'modificar', corrijo: 'modificar', cambio: 'modificar', borro: 'eliminar', elimino: 'eliminar', redacto: 'redactar', redacta: 'redactar', escribo: 'redactar', anoto: 'anotar', apunto: 'anotar', pongo: 'elegir', escojo: 'elegir', selecciono: 'elegir', medio: 'medias', guardado: 'borrador', fase: 'etapa', paso: 'etapa', cronograma: 'calendario', fechas: 'calendario', retroalimentacion: 'feedback', devolucion: 'feedback', vence: 'plazo', vencimiento: 'plazo', limite: 'plazo', conversacion: 'dialogo', reunion: 'dialogo', entrevista: 'dialogo', enviar: 'enviar' };
 const BOT_STOP = ['que', 'de', 'la', 'el', 'en', 'mi', 'me', 'es', 'un', 'una', 'los', 'las', 'con', 'por', 'para', 'como', 'cual', 'debo', 'hay', 'lo', 'ya', 'se', 'y', 'o', 'a', 'al', 'del', 'su', 'tu', 'hago', 'tengo', 'puedo', 'esta', 'este', 'donde', 'cuando', 'si', 'no', 'mis', 'tus', 'le', 'les', 'pero', 'hola', 'quiero', 'necesito', 'saber', 'favor', 'porfa', 'ayuda', 'mas', 'muy', 'algo', 'hacer', 'tiene', 'ser', 'eso', 'esto', 'desde', 'llenar', 'llenarlo', 'hacerlo', 'usar', 'usarlo', 'sobre', 'dame', 'dime', 'decir', 'poner', 'puede', 'sale', 'debe', 'tengo', 'tener', 'cosa', 'cosas', 'ver', 'mirar', 'revisar'];
 let botUlt = null;
+let BASE = '';
 let VERIF = '';
 let ULT = '';
 let botModo = '';
@@ -2515,9 +2530,10 @@ async function cargarPanel() {
   $('pSub').textContent = 'Cargando…';
   const j = await api('resumen', {});
   if (!j.ok) { $('pSub').textContent = j.mensaje || 'No fue posible cargar el resumen.'; return; }
-  PUB = j.personas || [];
-  $('pSub').textContent = 'Avance del levantamiento · ' + PUB.length + (PUB.length === 1 ? ' persona' : ' personas') + ' con registro vigente · ' + (j.envios || 0) + ((j.envios || 0) === 1 ? ' envío' : ' envíos') + ' · actualizado ' + hoy();
-  renderKpis(PUB, j.borradores || 0);
+  const vig = j.personas || [];
+  PUB = vig.concat(j.enCurso || []);
+  $('pSub').textContent = 'Avance del levantamiento · ' + vig.length + (vig.length === 1 ? ' registro enviado' : ' registros enviados') + ' · ' + (j.enCurso || []).length + ' en curso · actualizado ' + hoy();
+  renderKpis(vig, (j.enCurso || []).length);
   renderPub();
   if (!$('subCal').hidden) renderEtapasAdmin();
 }
@@ -2533,16 +2549,80 @@ function renderPub() {
   const l = filtradaPub();
   const lk = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-label="Protegido"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
   $('pCuenta').textContent = l.length + ' de ' + PUB.length;
-  $('pBody').innerHTML = l.length ? l.map(p => '<tr tabindex="0" data-i="' + p.i + '"><td data-l="Nombre" class="nom">' + esc(p.nombre) + '</td><td data-l="Sucursal">' + esc(p.sucursal) + '</td><td data-l="Unidad">' + esc(p.unidad || '') + '</td><td data-l="Cargo(s)">' + esc(p.cargos.join(', ')) + '</td><td data-l="Funciones" class="n">' + p.nFunciones + '</td><td data-l="Actualizado">' + esc(p.fecha) + (p.version > 1 ? ' <span class="chip">v' + p.version + '</span>' : '') + '</td><td data-l="Estado"><span class="pill ' + esc(p.estado) + '">' + esc(p.estado) + '</span></td><td class="lk">' + lk + '</td></tr>').join('') : '<tr><td colspan="8" class="vacio" style="cursor:default">' + (PUB.length ? 'No hay resultados con estos filtros.' : 'Aún no hay registros enviados.') + '</td></tr>';
+  $('pBody').innerHTML = l.length ? l.map(p => '<tr tabindex="0" data-i="' + p.i + '"><td data-l="Nombre" class="nom">' + esc(p.nombre) + '</td><td data-l="Sucursal">' + esc(p.sucursal) + '</td><td data-l="Unidad">' + esc(p.unidad || '') + '</td><td data-l="Cargo(s)">' + esc(p.cargos.join(', ')) + '</td><td data-l="Funciones" class="n">' + p.nFunciones + '</td><td data-l="Actualizado">' + esc(p.fecha) + (p.version > 1 ? ' <span class="chip">v' + p.version + '</span>' : '') + '</td><td data-l="Estado"><span class="pill ' + esc(p.estado.replace(/\s+/g, '-')) + '">' + esc(p.estado) + '</span></td><td class="lk">' + lk + '</td></tr>').join('') : '<tr><td colspan="8" class="vacio" style="cursor:default">' + (PUB.length ? 'No hay resultados con estos filtros.' : 'Aún no hay registros enviados.') + '</td></tr>';
 }
 
 function detallePub(i) {
   const p = PUB[i];
   if (!p) return;
-  dialogo('Detalle protegido', '<div class="lockbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><p><b>' + esc(p.nombre) + '</b><br>El detalle de este registro solo puede verlo el <b>administrador</b> o el <b>titular</b>.</p></div><p class="sub">Si es el titular, ingrese con su ID y su clave. Si es el administrador, ingrese a Datos con su código de acceso.</p>', [
-    { txt: 'Soy el titular', cls: 'sec', fn: () => { cerrarModal('dlg'); irTab('ingreso'); abrirBuscador(); } },
-    { txt: SESION ? 'Abrir en Datos' : 'Soy el administrador', cls: 'pri', fn: () => { cerrarModal('dlg'); if (SESION && ajustes().dashNombres !== false) { $('fTexto').value = p.nombre; } irTab('datos'); } }
-  ]);
+  dialogo('Detalle protegido', '<div class="lockbox"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><p><b>' + esc(p.nombre) + '</b><br>Este registro solo puede verlo el <b>titular</b> o el <b>administrador</b>. Indique quién es para continuar.</p></div><div class="quien"><button type="button" id="qTit"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></i><span><b>Soy el titular</b><small>Ingreso con la clave que recibí al guardar mi registro</small></span></button><button type="button" id="qAdm"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></i><span><b>Soy el administrador</b><small>Ingreso con el código de acceso</small></span></button></div>', [{ txt: 'Cancelar' }]);
+  $('qTit').onclick = () => pedirClaveTitular(p);
+  $('qAdm').onclick = () => (SESION ? detalleAdmin(p) : pedirCodigoAdmin(p));
+}
+
+function formClave(id, label, tipo, ayuda) {
+  return '<form id="fq" novalidate><div class="campo"><label for="' + id + '">' + label + '</label><div class="conclave"><input id="' + id + '" type="password" class="' + (tipo === 'clave' ? 'mono' : '') + '" maxlength="' + (tipo === 'clave' ? 8 : 40) + '" autocomplete="' + (tipo === 'clave' ? 'off' : 'current-password') + '" autocapitalize="' + (tipo === 'clave' ? 'characters' : 'off') + '" spellcheck="false"><button type="button" class="verclave" id="qVer">Mostrar</button></div>' + (ayuda ? '<small class="ayuda">' + ayuda + '</small>' : '') + '<small class="err" id="qErr"></small></div></form>';
+}
+
+function activarForm(fn) {
+  const inp = $('fq').querySelector('input');
+  $('qVer').onclick = () => { inp.type = inp.type === 'password' ? 'text' : 'password'; $('qVer').textContent = inp.type === 'password' ? 'Mostrar' : 'Ocultar'; };
+  $('fq').onsubmit = ev => { ev.preventDefault(); fn(); };
+  setTimeout(() => inp.focus(), 50);
+}
+
+function pedirClaveTitular(p) {
+  if (p.clave === false) {
+    dialogo('Detalle protegido', '<p>Este registro aún no tiene clave asignada. Solicite una al administrador para poder verlo.</p>', [{ txt: 'Cerrar', cls: 'pri' }]);
+    return;
+  }
+  const ir = async b => {
+    const c = limpio($('qClave').value).toUpperCase();
+    $('qErr').textContent = '';
+    if (c.length !== 8) { $('qErr').textContent = 'La clave tiene 8 caracteres.'; return; }
+    if (b) b.disabled = true;
+    const j = await api('abrir', { ref: p.ref, clave: c });
+    if (b) b.disabled = false;
+    if (!j.ok) { $('qErr').textContent = j.mensaje; return; }
+    verRegistroTitular(j.registro, c);
+  };
+  dialogo('Acceso del titular', '<p class="sub" style="margin:0 0 12px">Registro de <b>' + esc(p.nombre) + '</b>. Ingrese la clave de 8 caracteres que recibió al guardar su registro por primera vez.</p>' + formClave('qClave', 'Clave', 'clave', '¿No la tiene? Solicite una nueva al administrador.'), [{ txt: 'Cancelar' }, { txt: 'Ver mi registro', cls: 'pri', fn: ir }]);
+  activarForm(() => ir(null));
+}
+
+function verRegistroTitular(r, clave) {
+  const d = Object.assign({ cargos: [], funciones: [] }, r);
+  dialogo(r.borrador ? 'Su registro en curso' : 'Su registro', '<p class="sub" style="margin:0 0 12px">' + (r.borrador ? 'Avance guardado' + (r.fechaBorrador ? ' el ' + esc(r.fechaBorrador) : '') + '. Aún no ha sido enviado.' : 'Versión ' + esc(r.version) + (r.fecha ? ' · ' + esc(r.fecha) : '')) + '</p>' + resumenHtml(d), [{ txt: 'Cerrar' }, { txt: r.borrador ? 'Continuar mi registro' : 'Modificar mi registro', cls: 'pri', fn: () => { cerrarModal('dlg'); irTab('ingreso'); cargarRegistro(r, clave); } }]);
+  $('dlg').querySelector('.caja').classList.add('grande');
+}
+
+function pedirCodigoAdmin(p) {
+  const ir = async b => {
+    const c = limpio($('qCod').value);
+    $('qErr').textContent = '';
+    if (!c) return;
+    if (b) b.disabled = true;
+    const j = await api('login', { codigo: c });
+    if (b) b.disabled = false;
+    if (!j.ok) { $('qErr').textContent = j.mensaje; return; }
+    if (j.cambiar) { cerrarModal('dlg'); irTab('datos'); toast('Primer ingreso: cree su código personal en Datos.'); $('lCodigo').value = c; $('fLogin').requestSubmit(); return; }
+    SESION = j.sesion;
+    ss('lf_sesion', SESION);
+    detalleAdmin(p);
+  };
+  dialogo('Acceso del administrador', formClave('qCod', 'Código de acceso', 'codigo', ''), [{ txt: 'Cancelar' }, { txt: 'Ingresar', cls: 'pri', fn: ir }]);
+  activarForm(() => ir(null));
+}
+
+async function detalleAdmin(p) {
+  cerrarModal('dlg');
+  if (p.estado === 'En curso') {
+    irTab('datos');
+    toast('Este registro está en curso: el titular aún no lo envía.', true);
+    return;
+  }
+  irTab('datos');
+  abrirDetalle(null, p.ref);
 }
 
 ['pTexto', 'pSuc', 'pEstado'].forEach(id => $(id).addEventListener('input', renderPub));
@@ -2586,7 +2666,7 @@ function renderKpis(L, borr) {
   const n = L.length;
   const fn = L.reduce((s, p) => s + p.nFunciones, 0);
   const e = s => L.filter(p => p.estado === s).length;
-  $('kpis').innerHTML = [['Personas', n, ''], ['Funciones declaradas', fn, ''], ['Borradores sin enviar', borr, ''], ['Pendientes', e('Pendiente'), 'pend'], ['Observados', e('Observado'), ''], ['Revisados', e('Revisado'), 'listo']]
+  $('kpis').innerHTML = [['Personas', n, ''], ['Funciones declaradas', fn, ''], ['En curso (sin enviar)', borr, ''], ['Pendientes', e('Pendiente'), 'pend'], ['Observados', e('Observado'), ''], ['Revisados', e('Revisado'), 'listo']]
     .map(k => '<div class="kpi ' + k[2] + '"><span>' + k[0] + '</span><b>' + k[1] + '</b></div>').join('');
   const suc = {};
   const car = {};
@@ -2618,9 +2698,9 @@ function renderTabla() {
 $('tBody').addEventListener('click', ev => { const tr = ev.target.closest('tr[data-id]'); if (tr) abrirDetalle(tr.dataset.id); });
 $('tBody').addEventListener('keydown', ev => { if (ev.key === 'Enter') { const tr = ev.target.closest('tr[data-id]'); if (tr) abrirDetalle(tr.dataset.id); } });
 
-async function abrirDetalle(id) {
+async function abrirDetalle(id, ref) {
   toast('Abriendo registro…');
-  const j = await api('detalle', { sesion: SESION, id: id });
+  const j = await api('detalle', ref ? { sesion: SESION, ref: ref } : { sesion: SESION, id: id });
   $('toast').hidden = true;
   if (!j.ok) {
     if (j.sesion !== false) toast(j.mensaje, true);
@@ -2744,6 +2824,7 @@ $('salirManual').addEventListener('click', () => {
 });
 
 function dialogo(titulo, html, botones) {
+  $('dlg').querySelector('.caja').classList.remove('grande');
   $('dlgTit').textContent = titulo;
   $('dlgCuerpo').innerHTML = html;
   const acc = $('dlgAcc');
@@ -3080,7 +3161,7 @@ function apiDeCodigo(v) {
 }
 
 function enlace(base) {
-  return (base || urlForm()).replace(/#.*$/, '') + (API_URL ? '#api=' + codigoApi(API_URL) : '');
+  return (base || urlForm()).replace(/#.*$/, '') + (API_URL ? '#api=' + codigoApi(API_URL) + '&ir=ingreso' : '#ingreso');
 }
 
 function estadoCx(e) {
@@ -3446,7 +3527,7 @@ function aplicarInfoRut() {
     try { v = decodeURIComponent(m[1]); } catch (e) { v = ''; }
     const u = apiDeCodigo(v);
     if (u) guardarApi(u);
-    try { history.replaceState(null, '', location.pathname + location.search + (/dashboard/.test(location.hash) ? '#dashboard' : /datos/.test(location.hash) ? '#datos' : '')); } catch (e) {}
+    try { history.replaceState(null, '', location.pathname + location.search + (/ir=ingreso|#ingreso/.test(location.hash) ? '#ingreso' : /datos/.test(location.hash) ? '#datos' : '')); } catch (e) {}
   }
   API_URL = leerApi();
   cargar();
