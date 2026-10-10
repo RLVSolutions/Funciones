@@ -39,21 +39,35 @@ h1,h2,h3,.app,.btn,.tabs button,.kpi b,.eyebrow,.credbox b{font-family:var(--dis
 .wsp-btn:focus-visible,.wsp-globo:focus-visible,.wsp-op:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 @media (min-width:1100px){.wsp-globo{display:none}}
 .wsp-globo{background:#fff;color:var(--txt);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font:inherit;font-size:.88rem;font-weight:600;box-shadow:var(--sh);cursor:pointer}
-.wsp-panel{width:min(360px,calc(100vw - 28px));background:#efeae2;border-radius:14px;overflow:hidden;box-shadow:0 12px 34px rgba(0,0,0,.25);display:flex;flex-direction:column;max-height:min(580px,72vh)}
+.wsp-panel{width:min(380px,calc(100vw - 28px));background:#efeae2;border-radius:14px;overflow:hidden;box-shadow:0 12px 34px rgba(0,0,0,.25);display:flex;flex-direction:column;height:min(600px,74vh)}
 .wsp-head{background:#075e54;color:#fff;display:flex;gap:10px;align-items:center;padding:12px 14px}
 .wsp-av{width:38px;height:38px;border-radius:50%;background:var(--acc);display:grid;place-items:center;font:700 .82rem var(--disp);flex:none}
 .wsp-head b{display:block;font-size:.95rem}
 .wsp-head span{font-size:.75rem;opacity:.85}
 .wsp-x{margin-left:auto;background:none;border:0;color:#fff;font-size:1.5rem;cursor:pointer;line-height:1;padding:0 4px}
-.wsp-body{padding:14px;overflow:auto;display:grid;gap:8px}
-.burbuja{background:#fff;border-radius:0 10px 10px 10px;padding:9px 12px;font-size:.9rem;max-width:92%;box-shadow:0 1px 1px rgba(0,0,0,.08);color:#1f2c34}
+.wsp-body{padding:12px;overflow:auto;display:flex;flex-direction:column;gap:6px;flex:1;min-height:280px;background:#efeae2}
+.msj{max-width:86%;padding:8px 11px;border-radius:10px;font-size:.88rem;line-height:1.45;box-shadow:0 1px 1px rgba(0,0,0,.08);color:#1f2c34;word-break:break-word}
+.msj.bot{background:#fff;align-self:flex-start;border-top-left-radius:2px}
+.msj.yo{background:#d9fdd3;align-self:flex-end;border-top-right-radius:2px}
+.bot-ops{display:flex;flex-direction:column;gap:6px;margin:2px 0 6px}
+.bot-ops.usado{opacity:.5;pointer-events:none}
+.bot-op{width:100%;text-align:left;background:#fff;border:1px solid #cfd8d4;border-radius:10px;padding:9px 12px;font:inherit;font-size:.87rem;cursor:pointer;color:#075e54;font-weight:600}
+.bot-op:hover{border-color:var(--wsp);background:#f6fff9}
+.bot-op:focus-visible{outline:3px solid var(--acc);outline-offset:1px}
+.bot-op.verde{background:var(--wsp);border-color:var(--wsp);color:#06351a}
+.tipeo{display:inline-flex;gap:4px;padding:4px 2px}
+.tipeo i{width:7px;height:7px;border-radius:50%;background:#9aa7ad;animation:tip 1s infinite}
+.tipeo i:nth-child(2){animation-delay:.15s}
+.tipeo i:nth-child(3){animation-delay:.3s}
+@keyframes tip{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.wsp-input{display:flex;gap:8px;padding:8px;background:#f0f2f5;border-top:1px solid #dcd6cc}
+.wsp-input input{border-radius:999px;font-size:.92rem;padding:9px 14px;background:#fff}
+.wsp-input button{width:40px;height:40px;flex:none;border-radius:50%;background:#00a884;border:0;color:#fff;display:grid;place-items:center;cursor:pointer}
+.wsp-r{font-size:1.15rem;margin-left:auto}
+.wsp-r+.wsp-x{margin-left:0}
 .wsp-op{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:#fff;border:1px solid #d8d2c8;border-radius:10px;padding:10px 12px;font:inherit;font-size:.9rem;cursor:pointer;color:#1f2c34}
 .wsp-op b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#dcf8c6;color:#075e54;font-size:.8rem;flex:none}
 .wsp-op:hover{border-color:var(--wsp)}
-.wsp-dir{display:grid;gap:8px}
-.wsp-dir textarea{min-height:84px;font-size:.92rem}
-.wsp-dir .err{margin:0}
-.wsp-nota{font-size:.75rem;color:#5d6b72;text-align:center;margin:2px 0 0}
 .shell{width:100%;max-width:1400px;margin:0 auto;padding-inline:clamp(16px,2.6vw,40px)}
 .top{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
 .topin{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap;padding-block:8px}
@@ -171,6 +185,18 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc-h);b
 .barra .in{max-width:1400px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between}
 .barra span{color:var(--muted);font-size:.85rem}
 .barra .bts{display:flex;gap:8px}
+.resto{display:contents}
+.resto[inert] .campo,.resto[inert] .ayuda{opacity:.42}
+section[inert]{opacity:.5}
+.rutacc{display:flex;align-items:center;gap:16px;padding-top:26px;flex-wrap:wrap}
+@media (max-width:699px){.rutacc{padding-top:0}}
+.aviso.ok{background:var(--ok-soft);color:var(--ok);font-weight:600;margin-bottom:12px;justify-content:flex-start}
+.retomar{border:1px solid var(--acc);background:var(--acc-soft);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.retomar p{margin:0 0 10px}
+.retomar .tit{font-weight:700;color:var(--acc);font-family:var(--disp);font-size:1.02rem}
+.retfila{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.retfila .conclave{flex:1 1 220px;max-width:340px}
+.retomar .err{margin-top:8px}
 @media (max-width:480px){.barra span{display:none}.barra .bts{flex:1}.barra .bts .btn{flex:1;padding-inline:10px}}
 @media (min-width:1100px){.barra{display:none}}
 .centro{min-height:70vh;display:grid;place-items:center;padding:24px 16px;text-align:center}
@@ -343,7 +369,7 @@ body>*:not(#print){display:none!important}
 </style>
 </head>
 <body>
-<div class="franja" id="franja" hidden><div class="shell franin"><button type="button" class="franja-wsp" data-acc="wsp" hidden>¿Dudas? Escríbenos por WhatsApp</button></div></div>
+<div class="franja" id="franja" hidden><div class="shell franin"><button type="button" class="franja-wsp" data-acc="wsp" hidden>¿Dudas? Pregúntale al asistente</button></div></div>
 <header class="top">
 <div class="shell topin">
 <div class="marca"><img id="logo" alt="" hidden><div><p id="empresa" class="emp" hidden></p><p class="app">Levantamiento de Funciones</p></div></div>
@@ -357,7 +383,7 @@ body>*:not(#print){display:none!important}
 
 <main id="vIngreso" class="shell" hidden>
 <div class="hero"><h1 id="tituloIngreso">Registro de funciones por cargo</h1><p class="sub" id="subIngreso">Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.</p></div>
-<div class="movil-acc"><button type="button" class="btn sec" data-acc="modificar">Modificar mi registro</button><button type="button" class="btn sec" data-acc="blanco">Formulario en blanco (PDF)</button><button type="button" class="btn btn-wsp" data-acc="wsp" hidden>Ayuda por WhatsApp</button></div>
+<div class="movil-acc"><button type="button" class="btn sec" data-acc="modificar">Modificar mi registro</button><button type="button" class="btn sec" data-acc="blanco">Formulario en blanco (PDF)</button><button type="button" class="btn btn-wsp" data-acc="wsp" hidden>Asistente de ayuda</button></div>
 
 <section id="buscador" class="tarjeta" hidden style="margin-bottom:18px">
 <h2>Modificar mi registro</h2>
@@ -387,19 +413,24 @@ body>*:not(#print){display:none!important}
 
 <section class="tarjeta">
 <h2><span class="num">1</span>Datos personales</h2>
+<p class="sub" id="rutGuia" style="margin:-8px 0 14px">Comience ingresando su RUT. Si ya tiene un registro o un avance guardado, podrá retomarlo con su clave.</p>
 <div class="g12">
-<div class="campo c6"><label for="nombre">Nombre completo *</label><input id="nombre" maxlength="120" autocomplete="name" placeholder="Nombres y apellidos"><small class="err"></small></div>
-<div class="campo c3"><label for="rut">RUT *</label><input id="rut" maxlength="12" autocapitalize="characters" autocomplete="off" placeholder="12.345.678-9"><small class="err"></small></div>
-<div class="campo c3"><label for="sucursal">Sucursal *</label><select id="sucursal"></select><small class="err"></small></div>
+<div class="campo c4"><label for="rut">RUT *</label><input id="rut" maxlength="12" autocapitalize="characters" autocomplete="off" placeholder="12.345.678-9"><small class="err"></small></div>
+<div class="campo c4 rutacc"><button type="button" id="rutBtn" class="btn pri">Verificar RUT</button><button type="button" id="rutCambiar" class="enlace" hidden>Cambiar RUT</button></div>
+<div class="c12" id="rutEstado" aria-live="polite" hidden></div>
+<div id="restoDatos" class="resto">
+<div class="campo c8"><label for="nombre">Nombre completo *</label><input id="nombre" maxlength="120" autocomplete="name" placeholder="Nombres y apellidos"><small class="err"></small></div>
+<div class="campo c4"><label for="sucursal">Sucursal *</label><select id="sucursal"></select><small class="err"></small></div>
 <div class="campo c6"><label for="jefatura">Jefatura o dependencia directa *</label><input id="jefatura" maxlength="120" autocomplete="off" placeholder="Nombre o cargo de su jefe directo"><small class="err"></small></div>
 <div class="campo c3"><label for="telefono">Teléfono</label><input id="telefono" type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="+56 9 1234 5678"><small class="err"></small></div>
 <div class="campo c3"><label for="correo">Correo electrónico</label><input id="correo" type="email" inputmode="email" maxlength="120" autocomplete="email" placeholder="nombre@correo.cl"><small class="err"></small></div>
 <small class="ayuda c12" style="margin:-6px 0 12px">Indique al menos un teléfono o un correo para mantener sus datos actualizados.</small>
 <div class="campo c12" id="campoCargos"><span class="lbl">Cargo contractual * <small>— el que figura en su contrato. Puede marcar más de uno.</small></span><div id="cargos" class="chips" role="group" aria-label="Cargo contractual"></div><div id="campoOtro" class="otro" hidden><input id="cargoOtro" maxlength="100" autocomplete="off" placeholder="Especifique el otro cargo" aria-label="Especifique el otro cargo"></div><small class="err"></small></div>
 </div>
+</div>
 </section>
 
-<section class="tarjeta">
+<section class="tarjeta" id="secFunciones">
 <h2><span class="num">2</span>Funciones que realiza</h2>
 <p class="sub" style="margin:-8px 0 14px">Registre todas las funciones que realiza habitualmente, estén o no descritas en su contrato. Una función por bloque. Al menos una debe ser <b id="nomPrincipal">Principal</b>.</p>
 <details class="leyenda leyMovil"><summary>¿Qué significa cada tipo? ¿Función o tarea?</summary><div class="leyCont"></div><div class="ftarea ftCont"></div></details>
@@ -409,7 +440,7 @@ body>*:not(#print){display:none!important}
 <p id="errFunciones" class="errBloque" role="alert" tabindex="-1" style="text-align:center"></p>
 </section>
 
-<section class="tarjeta">
+<section class="tarjeta" id="secComentarios">
 <h2><span class="num">3</span>Comentarios y confirmación</h2>
 <div class="campo"><label for="comentarios">Comentarios generales</label><textarea id="comentarios" maxlength="2000" rows="4" placeholder="Observaciones sobre su cargo, carga de trabajo, funciones compartidas, sugerencias, etc."></textarea></div>
 <div class="campo"><label class="chk"><input type="checkbox" id="consentimiento"><span>Declaro que la información entregada es fidedigna y autorizo su uso exclusivo para fines de gestión interna de la empresa: levantamiento de funciones y elaboración de descriptores de cargo.</span></label><small class="err"></small></div>
@@ -425,7 +456,7 @@ body>*:not(#print){display:none!important}
 <button type="button" class="btn sec ancho" data-acc="borrador" style="margin-top:8px">Guardar avance</button>
 <p class="mini">Guarde su avance para continuar después con su ID y clave. Antes de enviar verá un resumen para confirmar.</p>
 </div>
-<div class="tarjeta"><h3>Otras opciones</h3><div class="opciones"><button type="button" class="btn sec" data-acc="modificar">Modificar mi registro</button><button type="button" class="btn sec" data-acc="blanco">Formulario en blanco (PDF)</button><button type="button" class="btn btn-wsp" data-acc="wsp" hidden>Ayuda por WhatsApp</button></div></div>
+<div class="tarjeta"><h3>Otras opciones</h3><div class="opciones"><button type="button" class="btn sec" data-acc="modificar">Modificar mi registro</button><button type="button" class="btn sec" data-acc="blanco">Formulario en blanco (PDF)</button><button type="button" class="btn btn-wsp" data-acc="wsp" hidden>Asistente de ayuda</button></div></div>
 <div class="tarjeta ftarea"><h3>¿Función o tarea?</h3><div class="ftCont"></div></div>
 <details class="tarjeta leyenda" open><summary>Tipos de función</summary><div class="leyCont"></div></details>
 </aside>
@@ -520,14 +551,10 @@ body>*:not(#print){display:none!important}
 </div>
 
 <div id="wsp" class="wsp" hidden>
-<div id="wspPanel" class="wsp-panel" role="dialog" aria-label="Ayuda por WhatsApp" hidden>
-<div class="wsp-head"><div class="wsp-av" id="wspAv">RD</div><div><b id="wspNom">Asistente de levantamiento</b><span>Respondemos por WhatsApp</span></div><button type="button" id="wspX" class="wsp-x" aria-label="Cerrar">×</button></div>
-<div class="wsp-body">
-<div class="burbuja">¡Hola! 👋 ¿En qué te podemos ayudar con el levantamiento de funciones? Elige una opción:</div>
-<div id="wspOps" class="opciones" style="margin:0"></div>
-<div id="wspDir" class="wsp-dir" hidden><div class="burbuja">Escribe tu pregunta y te responderemos por WhatsApp.</div><textarea id="wspTxt" maxlength="700" placeholder="Escribe tu pregunta aquí" aria-label="Tu pregunta"></textarea><small id="wspErr" class="err"></small><div style="display:flex;gap:8px"><button type="button" id="wspVolver" class="btn sec" style="flex:1">Volver</button><button type="button" id="wspEnviar" class="btn btn-wsp" style="flex:1">Enviar por WhatsApp</button></div></div>
-<p class="wsp-nota">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
-</div>
+<div id="wspPanel" class="wsp-panel" role="dialog" aria-label="Asistente de ayuda" hidden>
+<div class="wsp-head"><div class="wsp-av" id="wspAv">RD</div><div><b id="wspNom">Asistente de levantamiento</b><span>Respuestas al instante</span></div><button type="button" id="wspReset" class="wsp-x wsp-r" aria-label="Volver al inicio" title="Volver al inicio">↺</button><button type="button" id="wspX" class="wsp-x" aria-label="Cerrar">×</button></div>
+<div class="wsp-body" id="wspChat" aria-live="polite"></div>
+<form class="wsp-input" id="wspForm" autocomplete="off"><input id="wspIn" maxlength="300" placeholder="Escribe tu pregunta…" aria-label="Escribe tu pregunta"><button type="submit" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 20.5 21 12 3 3.5l.01 6.6L15 12 3.01 13.9z"/></svg></button></form>
 </div>
 <button type="button" id="wspGlobo" class="wsp-globo">¡Hola! ¿En qué te ayudamos?</button>
 <button type="button" id="wspBtn" class="wsp-btn" aria-label="Ayuda por WhatsApp" aria-expanded="false"><svg width="30" height="30" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.3.6 4.5 1.8 6.4L3 29l7.2-1.9c1.8 1 3.8 1.5 5.8 1.5 7 0 12.7-5.6 12.7-12.6S23 3 16 3Zm0 23.2c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.3 1.1 1.2-4.2-.3-.4a10.4 10.4 0 0 1-1.6-5.5C5.3 9.8 10.1 5.1 16 5.1s10.7 4.7 10.7 10.5S21.9 26.2 16 26.2Zm5.9-7.8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.7c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3c.2.2 2.2 3.4 5.4 4.8 2 .8 2.8.9 3.8.8.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.3Z"/></svg></button>
@@ -541,13 +568,6 @@ let API_URL = '';
 let API_TOKEN = '';
 let WSP = '';
 let CONF_ERR = '';
-const WSP_OPS = [
-  ['Dudas con el formulario', 'Hola, tengo una duda sobre cómo completar el formulario de levantamiento de funciones.'],
-  ['Dudas con las funciones', 'Hola, tengo una duda sobre cómo describir o clasificar mis funciones (principal, responsabilidad, apoyo o esporádica).'],
-  ['Dudas con tu cargo', 'Hola, tengo una duda sobre mi cargo contractual o sobre mi jefatura directa.'],
-  ['Recomendaciones', 'Hola, quiero hacer una recomendación o sugerencia sobre el levantamiento de funciones o sobre mi cargo.'],
-  ['Hacer una pregunta directa', '']
-];
 const OTRO = '__otro__';
 const RE_MAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const CAMPOS = ['transcritoPor', 'folio', 'nombre', 'rut', 'sucursal', 'jefatura', 'telefono', 'correo', 'cargoOtro', 'comentarios'];
@@ -562,6 +582,8 @@ let SESION = null;
 let LISTA = [];
 let BORR = 0;
 let INICIAL = null;
+let RUTOK = '';
+let tRut = null;
 let DET = null;
 let sucio = false;
 let ULTIMO = null;
@@ -639,8 +661,8 @@ function irTab(t, sinScroll) {
     mostrar(['vDash']);
     vistaDash();
   }
-  $('wsp').hidden = !WSP || t === 'dash';
-  $('franja').hidden = !WSP;
+  $('wsp').hidden = t === 'dash';
+  $('franja').hidden = false;
   try { history.replaceState(null, '', t === 'dash' ? '#dashboard' : location.pathname + location.search); } catch (e) {}
   if (!sinScroll) window.scrollTo(0, 0);
 }
@@ -719,6 +741,7 @@ function iniciar() {
   renderFunciones();
   modoUI();
   irTab(location.hash === '#dashboard' ? 'dash' : 'ingreso', true);
+  if (rutValido($('rut').value)) verificarRut();
 }
 
 function llenar(sel, lista) {
@@ -918,6 +941,7 @@ function avance() {
   const datos = v('nombre').length >= 5 && rutValido(v('rut')) && !!v('sucursal') && v('jefatura').length >= 2 && (!!tel || !!mail) && (!tel || !!telNormal(tel)) && (!mail || RE_MAIL.test(mail)) && (!MANUAL || v('transcritoPor').length >= 3);
   const completas = funciones.filter(f => f.tipo && limpio(f.funcion).length >= 3 && limpio(f.descripcion).length >= 5).length;
   const items = [
+    ['RUT verificado', libre()],
     ['Datos personales', datos],
     ['Cargo contractual', getCargos().length > 0],
     ['Funciones completas (' + completas + '/' + funciones.length + ')', completas === funciones.length],
@@ -1001,6 +1025,7 @@ function resumenHtml(d) {
 
 $('form').addEventListener('submit', ev => {
   ev.preventDefault();
+  if (!libre()) { pedirRut(); return; }
   if (!validar()) return;
   $('modalTit').textContent = EDIT ? 'Revise los cambios antes de guardar' : 'Revise su información';
   $('confirmar').textContent = EDIT ? 'Guardar cambios' : 'Confirmar y enviar';
@@ -1168,6 +1193,7 @@ function limpiarFormulario() {
   document.querySelectorAll('#form .err').forEach(e => { e.textContent = ''; });
   $('errFunciones').textContent = '';
   $('bannerBorrador').hidden = true;
+  reiniciarPuerta();
   reiniciarFunciones();
   toggleOtro();
   renderFunciones();
@@ -1190,10 +1216,135 @@ function modoUI() {
   if (EDIT) $('edTxt').innerHTML = EDIT.borrador ? 'Borrador <b class="mono">' + esc(EDIT.id) + '</b>' + (EDIT.fecha ? ' guardado el ' + esc(EDIT.fecha) : '') + '. Puede guardar avances cuando quiera y enviar al terminar.' : 'Modificando el registro <b class="mono">' + esc(EDIT.id) + '</b> · versión ' + esc(EDIT.version) + '. Su ID y su clave se mantienen al guardar.';
   $('tituloIngreso').textContent = MANUAL ? 'Transcribir formulario en papel' : EDIT ? (EDIT.borrador ? 'Continuar mi registro' : 'Modificar mi registro') : 'Registro de funciones por cargo';
   $('subIngreso').textContent = MANUAL ? 'Digite la información tal como aparece en el formulario firmado.' : EDIT ? 'Actualice la información que necesite y guarde los cambios.' : 'Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.';
-  if (!MANUAL && !EDIT) $('buscador').hidden = $('buscador').hidden;
-  else $('buscador').hidden = true;
+  if (MANUAL || EDIT) $('buscador').hidden = true;
+  $('rutBtn').hidden = MANUAL || !!EDIT || !!RUTOK;
+  $('rutCambiar').hidden = MANUAL || !!EDIT || !RUTOK;
+  $('rutGuia').hidden = MANUAL || !!EDIT;
+  if (MANUAL || EDIT) $('rutEstado').hidden = true;
+  if (!EDIT) $('rut').readOnly = !MANUAL && !!RUTOK;
+  bloqueo();
   avance();
 }
+
+function libre() {
+  return MANUAL || !!EDIT || !!RUTOK;
+}
+
+function bloqueo() {
+  const l = libre();
+  ['restoDatos', 'secFunciones', 'secComentarios'].forEach(id => { $(id).inert = !l; });
+}
+
+function reiniciarPuerta() {
+  RUTOK = '';
+  clearTimeout(tRut);
+  $('rutEstado').hidden = true;
+  $('rutEstado').innerHTML = '';
+}
+
+function pedirRut() {
+  const v = limpio($('rut').value);
+  marcar($('rut'), rutValido(v) ? 'Presione "Verificar RUT" para continuar.' : 'Comience ingresando un RUT válido.');
+  $('rut').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => (rutValido(v) ? $('rutBtn') : $('rut')).focus({ preventScroll: true }), 350);
+}
+
+async function verificarRut() {
+  if (MANUAL || EDIT || RUTOK) return;
+  clearTimeout(tRut);
+  const v = limpio($('rut').value);
+  quitarError($('rut'));
+  if (!rutValido(v)) {
+    marcar($('rut'), 'RUT inválido. Revise el dígito verificador.');
+    return;
+  }
+  const rut = rutFormato(v);
+  const est = $('rutEstado');
+  est.hidden = false;
+  est.innerHTML = '<p class="mini" style="margin:0 0 12px">Verificando RUT…</p>';
+  $('rutBtn').disabled = true;
+  const j = await api('estado', { rut: rut });
+  $('rutBtn').disabled = false;
+  if (rutFormato($('rut').value) !== rut) return;
+  if (!j.ok) {
+    est.innerHTML = '<p class="errBloque" style="margin:0 0 12px">' + esc(j.mensaje) + '</p>';
+    return;
+  }
+  if (j.estado === 'nuevo') {
+    RUTOK = rut;
+    est.innerHTML = '<div class="aviso ok">RUT verificado. No tiene registros previos: complete el formulario.</div>';
+    modoUI();
+    programarGuardado();
+    if (!limpio($('nombre').value)) setTimeout(() => $('nombre').focus(), 50);
+    return;
+  }
+  mostrarRetomar(j, rut);
+}
+
+function mostrarRetomar(j, rut) {
+  const est = $('rutEstado');
+  let cred = null;
+  try { cred = JSON.parse(localStorage.getItem('lf_cred') || 'null'); } catch (e) { cred = null; }
+  const recordada = cred && cred.id === j.id && cred.clave;
+  const tit = j.estado === 'borrador' ? 'Tiene un registro sin finalizar' : 'Ya tiene un registro enviado';
+  const txt = j.estado === 'borrador' ? 'Su avance fue guardado el ' + esc(j.fecha) + '. Ingrese su clave para retomarlo donde lo dejó.' : 'Versión ' + esc(j.version) + ', enviada el ' + esc(j.fecha) + '. Ingrese su clave para revisarlo o modificarlo.';
+  if (!j.clave) {
+    est.innerHTML = '<div class="retomar"><p class="tit">' + tit + '</p><p>Este registro aún no tiene clave asignada. Solicite a su jefatura que le genere una para poder continuar.</p><p class="mini" style="margin:0">No es posible crear un nuevo registro con este RUT.</p></div>';
+    return;
+  }
+  est.innerHTML = '<div class="retomar"><p class="tit">' + tit + '</p><p>' + txt + '</p>' +
+    '<input type="text" name="username" autocomplete="username" value="' + esc(j.id) + '" hidden>' +
+    '<div class="retfila"><div class="conclave"><input id="rClave" name="password" type="password" class="mono" maxlength="8" autocomplete="current-password" autocapitalize="characters" spellcheck="false" placeholder="Clave de 8 caracteres" aria-label="Clave"><button type="button" class="verclave" id="rVer">Mostrar</button></div><button type="button" id="rBtn" class="btn pri">' + (j.estado === 'borrador' ? 'Retomar registro' : 'Abrir mi registro') + '</button></div>' +
+    (recordada ? '<p style="margin:10px 0 0"><button type="button" class="enlace" id="rUsar">Usar la clave recordada en este navegador</button></p>' : '') +
+    '<small class="err" id="rErr"></small>' +
+    '<p class="mini" style="margin:10px 0 0">¿No tiene su clave? Solicite una nueva a su jefatura. No es posible crear un nuevo registro con este RUT.</p></div>';
+  $('rVer').onclick = () => { const i = $('rClave'); i.type = i.type === 'password' ? 'text' : 'password'; $('rVer').textContent = i.type === 'password' ? 'Mostrar' : 'Ocultar'; };
+  $('rClave').onkeydown = ev => { if (ev.key === 'Enter') { ev.preventDefault(); retomar(j.id); } };
+  $('rBtn').onclick = () => retomar(j.id);
+  if (recordada) $('rUsar').onclick = () => { $('rClave').value = cred.clave; retomar(j.id); };
+  setTimeout(() => $('rClave').focus(), 50);
+}
+
+async function retomar(id) {
+  const clave = limpio($('rClave').value).toUpperCase();
+  $('rErr').textContent = '';
+  if (clave.length !== 8) { $('rErr').textContent = 'La clave tiene 8 caracteres.'; return; }
+  $('rBtn').disabled = true;
+  const j = await api('buscar', { id: id, clave: clave });
+  if (!$('rBtn')) return;
+  $('rBtn').disabled = false;
+  if (!j.ok) { $('rErr').textContent = j.mensaje; return; }
+  cargarRegistro(j.registro, clave);
+}
+
+function cargarRegistro(r, clave) {
+  borrarBorrador();
+  EDIT = { id: r.id, clave: clave, version: r.version, borrador: !!r.borrador, fecha: r.fechaBorrador || '', nombre: r.nombre };
+  RUTOK = '';
+  rellenar(r);
+  $('bClave').value = '';
+  $('buscador').hidden = true;
+  $('rutEstado').hidden = true;
+  $('rutEstado').innerHTML = '';
+  modoUI();
+  window.scrollTo(0, 0);
+  toast(EDIT.borrador ? 'Borrador cargado. Continúe donde lo dejó.' : 'Registro cargado. Recuerde aceptar la declaración antes de guardar.');
+}
+
+$('rutBtn').addEventListener('click', verificarRut);
+$('rut').addEventListener('keydown', ev => { if (ev.key === 'Enter') { ev.preventDefault(); verificarRut(); } });
+$('rut').addEventListener('input', () => {
+  if (MANUAL || EDIT || RUTOK) return;
+  $('rutEstado').hidden = true;
+  clearTimeout(tRut);
+  if (rutValido($('rut').value) && rutLimpio($('rut').value).length >= 8) tRut = setTimeout(verificarRut, 700);
+});
+$('rutCambiar').addEventListener('click', () => {
+  reiniciarPuerta();
+  modoUI();
+  $('rut').focus();
+  $('rut').select();
+});
 
 function abrirBuscador(id, msg) {
   $('buscador').hidden = false;
@@ -1205,6 +1356,7 @@ function abrirBuscador(id, msg) {
 
 async function guardarAvance() {
   if (MANUAL) return;
+  if (!libre()) { pedirRut(); toast('Primero ingrese y verifique su RUT.', true); return; }
   const v = id => limpio($(id).value);
   const malos = [];
   if (v('nombre').length < 5) { marcar($('nombre'), 'Para guardar el avance ingrese su nombre completo.'); malos.push($('nombre')); }
@@ -1307,25 +1459,53 @@ document.addEventListener('click', ev => {
   else if (a === 'borrador') guardarAvance();
 });
 
+const BOT = [
+  { t: 'Dudas con el formulario', q: [
+    { t: '¿Cómo guardo mi avance?', k: 'guardar avance borrador continuar despues luego tarde terminar pausa', r: 'Presiona <b>Guardar avance</b>, bajo "Revisar y enviar". Solo necesitas haber escrito tu nombre y tu RUT.<br><br>La primera vez recibirás un <b>ID</b> y una <b>clave</b>: anótalos, descárgalos o guárdalos en el navegador. Con ellos continúas cuando quieras, desde cualquier dispositivo.', acc: [['borrador', 'Guardar avance ahora']] },
+    { t: '¿Cómo modifico lo que ya envié?', k: 'modificar cambiar corregir editar actualizar enviado envie', r: 'Usa <b>Modificar mi registro</b> e ingresa tu ID y tu clave. Se cargará tu información; corrige lo necesario y guarda. Tu ID y tu clave se mantienen.', acc: [['modificar', 'Ir a Modificar mi registro']] },
+    { t: '¿Qué es mi ID de registro?', k: 'id registro usuario identificador numero', r: 'Tu ID es tu <b>RUT sin puntos, sin guion y sin dígito verificador</b>.<br><br>Ejemplo: para el RUT 12.345.678-9, tu ID es <b>12345678</b>.' },
+    { t: 'Olvidé mi clave', k: 'olvide clave perdi contrasena password recuperar recuerdo', r: 'Por seguridad la clave no se puede recuperar. Pide a tu jefatura una <b>nueva clave</b>; la anterior dejará de funcionar.<br><br>Si la guardaste en este navegador, aparece en <b>Modificar mi registro</b> con la opción "Usar".' },
+    { t: 'Prefiero completarlo en papel', k: 'papel imprimir mano manual pdf blanco impreso escrito', r: 'Descarga el <b>Formulario en blanco (PDF)</b>, complétalo con letra clara, fírmalo junto a tu jefatura y entrégalo. Luego se transcribe al sistema y recibirás tu ID y tu clave.', acc: [['blanco', 'Descargar formulario en blanco']] },
+    { t: 'Me aparece un error al enviar', k: 'error falla envia problema conexion funciona rojo', r: 'Revisa los campos marcados en rojo: el formulario indica qué falta en cada uno.<br><br>Si el error es de conexión, tus datos quedan guardados en este dispositivo; intenta de nuevo en unos minutos.' }
+  ] },
+  { t: 'Dudas con las funciones', q: [
+    { t: '¿Qué diferencia hay entre función y tarea?', k: 'diferencia funcion tarea', r: '<b>Función:</b> responsabilidad permanente del cargo, orientada a un resultado. Responde a "¿para qué existe mi puesto?". Ej.: Gestionar la cobranza a clientes.<br><br><b>Tarea:</b> acción concreta con la que cumples una función. Responde a "¿qué hago para lograrlo?". Ej.: Llamar a clientes con facturas vencidas.<br><br>Registra cada función en un bloque y detalla sus tareas en la descripción.' },
+    { t: '¿Qué tipo de función elijo?', k: 'tipo principal apoyo responsabilidad esporadica clasificar elegir categoria', r: () => (CFG ? CFG.tipos.map(t => '<b>' + esc(t.nombre) + ':</b> ' + esc(t.def)).join('<br>') : '') + '<br><br>Elige el tipo que mejor represente el peso de esa función en tu cargo. Debes tener al menos una de tipo <b>' + esc(CFG ? tipoPrincipal() : 'Principal') + '</b>.' },
+    { t: '¿Cuántas funciones debo registrar?', k: 'cuantas cantidad numero minimo maximo', r: 'Registra todas las funciones que realizas habitualmente. En la mayoría de los cargos bastan entre <b>5 y 15</b>.<br><br>El mínimo es una de tipo Principal y el máximo es ' + 40 + '.' },
+    { t: '¿Cómo describo una función?', k: 'describir descripcion redactar escribir ejemplo especificacion detallar', r: 'Comienza el nombre con un verbo y di qué haces. En la descripción detalla las tareas, las herramientas o sistemas y el resultado.<br><br><b>Función:</b> Gestionar la cobranza a clientes.<br><b>Descripción:</b> Llamo a clientes con facturas vencidas, acuerdo fechas de pago y las registro en el sistema para reducir la morosidad.' },
+    { t: 'Hago funciones que no están en mi contrato', k: 'contrato aparece extra adicional otras fuera', r: 'Regístralas igual. El objetivo es reflejar lo que realmente haces, estén o no descritas en tu contrato.' }
+  ] },
+  { t: 'Dudas con tu cargo', q: [
+    { t: '¿Cuál es mi cargo contractual?', k: 'cargo contractual cual puesto nombre contrato', r: 'Es el cargo que figura en tu contrato de trabajo o en su último anexo. Si no lo tienes a mano, consúltalo con tu jefatura.' },
+    { t: 'Tengo más de un cargo', k: 'mas varios dos multiples cargos', r: 'Marca todos los cargos que correspondan; puedes elegir más de uno.' },
+    { t: 'Mi cargo no aparece en la lista', k: 'aparece lista otro falta encuentro', r: 'Marca <b>Otro (especificar)</b> y escribe el nombre de tu cargo tal como figura en tu contrato.' },
+    { t: '¿Quién es mi jefatura directa?', k: 'jefe jefatura dependencia supervisor reporto encargado', r: 'Es la persona a quien reportas en tu trabajo diario y que organiza tus tareas. Escribe su nombre o su cargo.' }
+  ] },
+  { t: 'Recomendaciones', q: [
+    { t: 'Consejos para completar el formulario', k: 'consejo recomendacion tips sugerencia completar ayuda', r: '• Piensa en una semana y en un mes típicos de trabajo.<br>• Registra primero tus funciones principales.<br>• Escribe con tus palabras: no hay respuestas correctas o incorrectas.<br>• Guarda tu avance si necesitas consultar algo y sigue después.' },
+    { t: 'Quiero proponer mejoras a mi cargo', k: 'mejora proponer sugerir cambio mejorar', r: 'Escríbelas en <b>Comentarios generales</b>, al final del formulario. Si prefieres conversarlo, háblanos por WhatsApp.' },
+    { t: '¿Para qué se usa esta información?', k: 'para que uso objetivo proposito datos sirve finalidad', r: 'Para elaborar los descriptores de cargo de la empresa, es decir, describir con precisión qué hace cada cargo. Tus datos se usan solo para gestión interna.' }
+  ] }
+];
+let botUlt = null;
+let botPend = '';
+
 function iniciarWsp(emp) {
-  const hay = !!WSP;
-  document.querySelectorAll('[data-acc="wsp"]').forEach(b => { b.hidden = !hay; });
-  if (!hay) return;
+  document.querySelectorAll('[data-acc="wsp"]').forEach(b => { b.hidden = false; });
   if (emp) {
-    $('wspNom').textContent = emp;
+    $('wspNom').textContent = 'Asistente ' + emp;
     $('wspAv').textContent = emp.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ ]/g, '').split(/\s+/).filter(Boolean).slice(0, 2).map(x => x[0]).join('').toUpperCase() || 'RD';
   }
-  $('wspOps').innerHTML = WSP_OPS.map((o, i) => '<button type="button" class="wsp-op" data-op="' + i + '"><b>' + (i + 1) + '</b>' + esc(o[0]) + '</button>').join('');
   if (ss('lf_wsp')) $('wspGlobo').hidden = true;
 }
 
 function abrirWsp() {
   $('wspPanel').hidden = false;
   $('wspGlobo').hidden = true;
-  $('wspDir').hidden = true;
-  $('wspOps').hidden = false;
   $('wspBtn').setAttribute('aria-expanded', 'true');
   ss('lf_wsp', '1');
+  if (!$('wspChat').children.length) botInicio();
+  setTimeout(() => { if (window.matchMedia('(min-width:700px)').matches) $('wspIn').focus(); }, 60);
 }
 
 function cerrarWsp() {
@@ -1333,7 +1513,120 @@ function cerrarWsp() {
   $('wspBtn').setAttribute('aria-expanded', 'false');
 }
 
+function norm(s) {
+  return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9ñ ]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function msj(html, quien) {
+  const d = document.createElement('div');
+  d.className = 'msj ' + (quien || 'bot');
+  d.innerHTML = html;
+  $('wspChat').appendChild(d);
+  $('wspChat').scrollTop = $('wspChat').scrollHeight;
+  return d;
+}
+
+function botDice(html, ops) {
+  $('wspChat').querySelectorAll('.bot-ops').forEach(x => x.classList.add('usado'));
+  const t = msj('<span class="tipeo"><i></i><i></i><i></i></span>', 'bot');
+  const espera = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 550;
+  setTimeout(() => {
+    t.innerHTML = html;
+    if (ops && ops.length) {
+      const c = document.createElement('div');
+      c.className = 'bot-ops';
+      c.innerHTML = ops.map(o => '<button type="button" class="bot-op' + (o[2] ? ' ' + o[2] : '') + '" data-bot="' + esc(o[1]) + '">' + esc(o[0]) + '</button>').join('');
+      $('wspChat').appendChild(c);
+    }
+    $('wspChat').scrollTop = $('wspChat').scrollHeight;
+  }, espera);
+}
+
+function opsMenu() {
+  return BOT.map((c, i) => [(i + 1) + '. ' + c.t, 'cat:' + i]).concat([[(BOT.length + 1) + '. Hacer una pregunta directa', 'directa']]);
+}
+
+function opsFin() {
+  const o = [['Sí, me sirvió', 'si'], ['Otra consulta', 'otra']];
+  if (WSP) o.push(['Hablar con una persona', 'persona', 'verde']);
+  return o;
+}
+
+function botInicio() {
+  $('wspChat').innerHTML = '';
+  botUlt = null;
+  botDice('¡Hola! 👋 Soy el asistente del levantamiento de funciones. Elige un tema o escribe tu pregunta abajo.', opsMenu());
+}
+
+function botRespuesta(ci, qi) {
+  const q = BOT[ci].q[qi];
+  botUlt = { ci: ci, qi: qi };
+  const r = typeof q.r === 'function' ? q.r() : q.r;
+  const acc = (q.acc || []).map(a => ['→ ' + a[1], 'acc:' + a[0]]);
+  botDice(r, acc.concat(opsFin()));
+}
+
+function botAccion(a) {
+  if (a.indexOf('cat:') === 0) {
+    const ci = Number(a.slice(4));
+    msj(esc(BOT[ci].t), 'yo');
+    botUlt = { ci: ci };
+    botDice('Elige tu consulta:', BOT[ci].q.map((q, i) => [q.t, 'q:' + ci + ':' + i]).concat([['↩ Volver al menú', 'menu']]));
+  } else if (a.indexOf('q:') === 0) {
+    const p = a.split(':');
+    msj(esc(BOT[+p[1]].q[+p[2]].t), 'yo');
+    botRespuesta(+p[1], +p[2]);
+  } else if (a === 'menu') {
+    botDice('¿En qué más te ayudo?', opsMenu());
+  } else if (a === 'si') {
+    msj('Sí, me sirvió', 'yo');
+    botDice('¡Qué bueno! Si necesitas algo más, elige un tema o escríbeme.', opsMenu());
+  } else if (a === 'otra') {
+    msj('Otra consulta', 'yo');
+    if (botUlt && BOT[botUlt.ci]) botDice('Elige tu consulta:', BOT[botUlt.ci].q.map((q, i) => [q.t, 'q:' + botUlt.ci + ':' + i]).concat([['↩ Volver al menú', 'menu']]));
+    else botDice('¿En qué más te ayudo?', opsMenu());
+  } else if (a === 'persona') {
+    msj('Hablar con una persona', 'yo');
+    const q = botUlt && botUlt.qi != null ? BOT[botUlt.ci].q[botUlt.qi] : null;
+    enviarWsp('Hola, tengo una consulta sobre el levantamiento de funciones' + (q ? ' (' + BOT[botUlt.ci].t + ': ' + q.t + ')' : '') + '. La respuesta del asistente no resolvió mi duda.');
+  } else if (a === 'directa') {
+    msj('Hacer una pregunta directa', 'yo');
+    botDice('Escribe tu pregunta abajo. Si tengo una respuesta te la muestro al tiro; si no, te ofrezco enviarla por WhatsApp.');
+    setTimeout(() => $('wspIn').focus(), 600);
+  } else if (a === 'enviar') {
+    msj('Enviar por WhatsApp', 'yo');
+    enviarWsp('Hola, tengo una consulta sobre el levantamiento de funciones: ' + botPend);
+  } else if (a.indexOf('acc:') === 0) {
+    const acc = a.slice(4);
+    cerrarWsp();
+    if (acc === 'modificar') { if ($('buscador').hidden) abrirBuscador(); else $('buscador').scrollIntoView({ behavior: 'smooth' }); }
+    else if (acc === 'blanco') imprimirBlanco();
+    else if (acc === 'borrador') guardarAvance();
+  }
+}
+
+function botBuscar(texto) {
+  const STOP = ['que', 'de', 'la', 'el', 'en', 'mi', 'me', 'es', 'un', 'una', 'los', 'las', 'con', 'por', 'para', 'como', 'cual', 'debo', 'hay', 'lo', 'ya', 'se', 'y', 'o', 'a', 'al', 'del', 'su', 'tu', 'hago', 'tengo', 'puedo', 'esta', 'este', 'donde', 'cuando'];
+  const tok = norm(texto).split(' ').filter(w => w && STOP.indexOf(w) < 0);
+  const utiles = tok.filter(w => w.length >= 3).length;
+  let mejor = null;
+  let max = 0;
+  BOT.forEach((c, ci) => c.q.forEach((q, qi) => {
+    const claves = Array.from(new Set((q.k + ' ' + norm(q.t)).split(' ').filter(w => w.length >= 2 && STOP.indexOf(w) < 0)));
+    let p = 0;
+    claves.forEach(w => {
+      if (tok.some(x => (w.length >= 4 ? x.indexOf(w) === 0 : x === w))) p += 1;
+    });
+    if (p > max) { max = p; mejor = [ci, qi]; }
+  }));
+  return max >= 2 || (max === 1 && utiles <= 2) ? mejor : null;
+}
+
 function enviarWsp(texto) {
+  if (!WSP) {
+    botDice('Por ahora no hay un número de WhatsApp configurado. Consulta directamente con tu jefatura.', [['↩ Volver al menú', 'menu']]);
+    return;
+  }
   const n = limpio($('nombre').value);
   const s = $('sucursal').value;
   const firma = (n || s) ? '\n\n' + [n ? 'Nombre: ' + n : '', s ? 'Sucursal: ' + s : ''].filter(Boolean).join('\n') : '';
@@ -1344,28 +1637,37 @@ function enviarWsp(texto) {
   document.body.appendChild(a);
   a.click();
   a.remove();
-  cerrarWsp();
+  botDice('Te abrí WhatsApp con tu consulta lista para enviar. Te responderemos por ahí.', [['↩ Volver al menú', 'menu']]);
 }
 
 $('wspBtn').addEventListener('click', () => ($('wspPanel').hidden ? abrirWsp() : cerrarWsp()));
 $('wspGlobo').addEventListener('click', abrirWsp);
 $('wspX').addEventListener('click', cerrarWsp);
-$('wspOps').addEventListener('click', ev => {
-  const b = ev.target.closest('[data-op]');
-  if (!b) return;
-  const o = WSP_OPS[Number(b.dataset.op)];
-  if (o[1]) { enviarWsp(o[1]); return; }
-  $('wspOps').hidden = true;
-  $('wspDir').hidden = false;
-  $('wspErr').textContent = '';
-  setTimeout(() => $('wspTxt').focus(), 30);
+$('wspReset').addEventListener('click', botInicio);
+$('wspChat').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-bot]');
+  if (b && !b.closest('.usado')) botAccion(b.dataset.bot);
 });
-$('wspVolver').addEventListener('click', () => { $('wspDir').hidden = true; $('wspOps').hidden = false; });
-$('wspEnviar').addEventListener('click', () => {
-  const t = limpio($('wspTxt').value);
-  if (t.length < 5) { $('wspErr').textContent = 'Escriba su pregunta antes de enviar.'; return; }
-  enviarWsp('Hola, tengo una consulta sobre el levantamiento de funciones: ' + t);
-  $('wspTxt').value = '';
+$('wspForm').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const t = limpio($('wspIn').value);
+  if (!t) return;
+  $('wspIn').value = '';
+  msj(esc(t), 'yo');
+  if (t.length < 4) {
+    botDice('Cuéntame un poco más de tu duda, o elige un tema:', opsMenu());
+    return;
+  }
+  const m = botBuscar(t);
+  if (m) {
+    botRespuesta(m[0], m[1]);
+    return;
+  }
+  botPend = t;
+  botUlt = null;
+  const ops = [['↩ Ver temas', 'menu']];
+  if (WSP) ops.unshift(['Enviar mi pregunta por WhatsApp', 'enviar', 'verde']);
+  botDice('No tengo una respuesta automática para eso.' + (WSP ? ' ¿La enviamos por WhatsApp a una persona del equipo?' : ''), ops);
 });
 $('bCerrar').addEventListener('click', () => { $('buscador').hidden = true; $('bErr').textContent = ''; });
 
@@ -1388,14 +1690,7 @@ $('fBuscar').addEventListener('submit', async ev => {
     $('bErr').textContent = j.mensaje;
     return;
   }
-  guardarBorrador();
-  EDIT = { id: j.registro.id, clave: clave, version: j.registro.version, borrador: !!j.registro.borrador, fecha: j.registro.fechaBorrador || '', nombre: j.registro.nombre };
-  rellenar(j.registro);
-  $('bClave').value = '';
-  $('buscador').hidden = true;
-  modoUI();
-  window.scrollTo(0, 0);
-  toast(EDIT.borrador ? 'Borrador cargado. Continúe donde lo dejó.' : 'Registro cargado. Recuerde aceptar la declaración antes de guardar.');
+  cargarRegistro(j.registro, clave);
 });
 
 function rellenar(r) {
