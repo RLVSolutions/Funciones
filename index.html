@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1f3a5f">
+<title>Levantamiento de Funciones</title>
+<style>
+:root{--bg:#f3f5f8;--card:#ffffff;--txt:#1d2733;--muted:#5b6775;--line:#d5dce4;--acc:#1f3a5f;--acc-h:#2d5a8c;--on-acc:#ffffff;--acc-soft:#e8eef5;--err:#b3261e;--err-soft:#fdecea;--ok:#1b7a3d;--ok-soft:#e6f4ea;--warn:#7a5200;--warn-soft:#fff4e0;--focus:0 0 0 3px rgba(45,90,140,.28);--sh:0 1px 2px rgba(16,24,40,.05),0 2px 6px rgba(16,24,40,.06);--r:12px}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141a;--card:#171e26;--txt:#e6ebf1;--muted:#9aa6b2;--line:#2b3542;--acc:#8fb3d9;--acc-h:#b0cbe8;--on-acc:#0f141a;--acc-soft:#1c2a3a;--err:#f2b8b5;--err-soft:#3a1d1b;--ok:#8fd19e;--ok-soft:#173222;--warn:#f0c674;--warn-soft:#33270f;--focus:0 0 0 3px rgba(143,179,217,.35);--sh:none}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.contenedor{max-width:760px;margin:0 auto;padding:16px 16px 120px}
+.cabecera{display:flex;gap:14px;align-items:center;padding:8px 0 18px}
+.cabecera img{height:52px;width:auto;max-width:120px;object-fit:contain;border-radius:8px}
+.empresa{margin:0;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h1{margin:2px 0 4px;font-size:1.45rem;line-height:1.25;color:var(--acc)}
+.sub{margin:0;color:var(--muted);font-size:.95rem}
+.aviso{border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:.92rem;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.aviso.manual{background:var(--warn-soft);color:var(--warn);font-weight:600}
+.aviso.borrador{background:var(--acc-soft);color:var(--txt)}
+.tarjeta{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 16px;margin-bottom:16px;box-shadow:var(--sh)}
+h2{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:1.1rem}
+.num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--acc);color:var(--on-acc);font-size:.85rem;flex:none}
+.grid2{display:grid;grid-template-columns:1fr;gap:0 14px}
+@media (min-width:600px){.grid2{grid-template-columns:1fr 1fr}.contenedor{padding-top:28px}}
+.campo{margin-bottom:14px;min-width:0}
+.campo>label{display:block;font-weight:600;font-size:.92rem;margin-bottom:5px}
+input,select,textarea{width:100%;font:inherit;font-size:16px;color:var(--txt);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;transition:border-color .15s,box-shadow .15s}
+textarea{resize:vertical;min-height:88px}
+select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 12px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:34px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc-h);box-shadow:var(--focus)}
+.ayuda{display:block;color:var(--muted);font-size:.82rem;margin-top:4px}
+.err{display:block;color:var(--err);font-size:.82rem;margin-top:4px;min-height:0}
+.err:empty{display:none}
+.invalido input,.invalido select,.invalido textarea{border-color:var(--err);background:var(--err-soft)}
+.pie{display:flex;justify-content:space-between;gap:10px}
+.contador{color:var(--muted);font-size:.78rem;margin-top:4px;margin-left:auto;flex:none}
+.leyenda{background:var(--acc-soft);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:.88rem}
+.leyenda summary{cursor:pointer;font-weight:600;color:var(--acc)}
+.leyenda ul{margin:8px 0 4px;padding-left:18px}
+.leyenda li{margin-bottom:4px}
+.funcion{border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:12px 12px 2px;margin-bottom:12px;background:var(--card)}
+.fcab{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.fnum{font-weight:700;color:var(--acc);font-size:.95rem}
+.quitar{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:5px 10px;font:inherit;font-size:.82rem;cursor:pointer}
+.quitar:hover{color:var(--err);border-color:var(--err)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:600;border-radius:10px;padding:12px 18px;cursor:pointer;border:1px solid transparent;min-height:46px}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.btn:focus-visible,.quitar:focus-visible{outline:none;box-shadow:var(--focus)}
+.primario{background:var(--acc);color:var(--on-acc)}
+.primario:hover:not(:disabled){background:var(--acc-h)}
+.secundario{background:var(--card);color:var(--acc);border-color:var(--acc)}
+.agregar{width:100%;background:var(--card);color:var(--acc);border:1.5px dashed var(--acc)}
+.agregar:hover{background:var(--acc-soft)}
+.contadorF{margin:10px 0 0;color:var(--muted);font-size:.85rem;text-align:center}
+.errBloque{color:var(--err);font-weight:600;font-size:.9rem;margin:8px 0 0;text-align:center}
+.errBloque:empty{display:none}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;cursor:pointer}
+.chk input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--acc)}
+.invalido .chk{color:var(--err)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.barra{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom));z-index:5}
+.barra .in{max-width:760px;margin:0 auto;display:flex;gap:12px;align-items:center}
+.barra .btn{flex:1}
+.barra .nota{display:none;color:var(--muted);font-size:.85rem}
+@media (min-width:600px){.barra .btn{flex:none;margin-left:auto}.barra .nota{display:block}}
+.centro{min-height:100vh;display:grid;place-items:center;padding:24px 16px;text-align:center}
+.centro .tarjeta{max-width:440px;width:100%;padding:28px 22px}
+.spinner{width:42px;height:42px;border-radius:50%;border:4px solid var(--acc-soft);border-top-color:var(--acc);animation:gira .9s linear infinite;margin:0 auto 14px}
+@keyframes gira{to{transform:rotate(360deg)}}
+.icono{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto 12px}
+.icono.ok{background:var(--ok-soft);color:var(--ok)}
+.icono.mal{background:var(--err-soft);color:var(--err)}
+.idbox{background:var(--acc-soft);border-radius:10px;padding:12px;margin:16px 0;font-size:.85rem;color:var(--muted)}
+.idbox b{display:block;font-size:1.25rem;color:var(--acc);letter-spacing:.04em;margin-top:2px}
+.modal{position:fixed;inset:0;background:rgba(10,15,22,.55);display:flex;align-items:flex-end;justify-content:center;z-index:10}
+.caja{background:var(--card);width:100%;max-width:680px;max-height:92vh;display:flex;flex-direction:column;border-radius:16px 16px 0 0}
+@media (min-width:600px){.modal{align-items:center;padding:24px}.caja{border-radius:16px}}
+.caja .cab{padding:18px 18px 8px;border-bottom:1px solid var(--line)}
+.caja .cab h2{margin:0}
+.caja .cuerpo{overflow:auto;padding:14px 18px;-webkit-overflow-scrolling:touch}
+.caja .acciones{display:flex;gap:10px;padding:12px 18px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.caja .acciones .btn{flex:1}
+.rlista{margin:0;display:grid;gap:6px}
+.rfila{display:grid;grid-template-columns:130px 1fr;gap:10px;font-size:.92rem}
+.rfila dt{color:var(--muted)}
+.rfila dd{margin:0;font-weight:600;word-break:break-word}
+.caja h3{font-size:1rem;margin:18px 0 8px;color:var(--acc)}
+.rfun{margin:0;padding-left:22px}
+.rfun li{margin-bottom:12px;font-size:.92rem}
+.rfun p,.rcom{margin:4px 0 0;white-space:pre-wrap;color:var(--muted);word-break:break-word}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.chip{font-size:.75rem;background:var(--acc-soft);color:var(--acc);padding:2px 9px;border-radius:999px;font-weight:600}
+.errEnvio{background:var(--err-soft);color:var(--err);border-radius:10px;padding:10px 12px;font-size:.9rem;white-space:pre-line;margin-top:12px}
+body.bloq{overflow:hidden}
+.enlace{background:none;border:0;color:inherit;font:inherit;font-weight:600;text-decoration:underline;cursor:pointer;padding:0}
+</style>
+</head>
+<body>
+<section id="carga" class="centro"><div><div class="spinner" aria-hidden="true"></div><p class="sub">Cargando formulario…</p></div></section>
+
+<section id="falla" class="centro" hidden><div class="tarjeta"><div class="icono mal" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg></div><h1>No disponible</h1><p id="fallaMsg" class="sub"></p><button type="button" id="reintentar" class="btn primario" style="margin-top:16px">Reintentar</button></div></section>
+
+<section id="exito" class="centro" hidden><div class="tarjeta"><div class="icono ok" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h1>Levantamiento enviado</h1><p class="sub">Su información fue registrada correctamente. Gracias por su colaboración.</p><div class="idbox">N° de registro<b id="exitoId"></b></div><p id="exitoVersion" class="ayuda" hidden></p><button type="button" id="nuevo" class="btn secundario" style="width:100%">Registrar otro levantamiento</button></div></section>
+
+<main id="app" hidden>
+<div class="contenedor">
+<header class="cabecera">
+<img id="logo" alt="" hidden>
+<div><p id="empresa" class="empresa" hidden></p><h1>Levantamiento de Funciones por Cargo</h1><p class="sub">Registre las funciones que realiza en su cargo. Los campos con * son obligatorios.</p></div>
+</header>
+
+<div id="bannerManual" class="aviso manual" hidden>Modo transcripción de formulario en papel</div>
+<div id="bannerBorrador" class="aviso borrador" hidden><span>Se recuperó un borrador guardado en este dispositivo.</span><button type="button" id="descartar" class="enlace">Descartar y empezar de nuevo</button></div>
+
+<form id="form" novalidate autocomplete="on">
+<section id="secManual" class="tarjeta" hidden>
+<h2><span class="num">0</span>Datos de transcripción</h2>
+<div class="grid2">
+<div class="campo"><label for="transcritoPor">Transcrito por *</label><input id="transcritoPor" maxlength="80" autocomplete="off" placeholder="Nombre de quien digita"><small class="err"></small></div>
+<div class="campo"><label for="folio">Folio del formulario</label><input id="folio" maxlength="30" autocomplete="off" placeholder="Ej.: 0125"><small class="err"></small></div>
+</div>
+</section>
+
+<section class="tarjeta">
+<h2><span class="num">1</span>Datos personales</h2>
+<div class="campo"><label for="nombre">Nombre completo *</label><input id="nombre" maxlength="120" autocomplete="name" placeholder="Nombres y apellidos"><small class="err"></small></div>
+<div class="grid2">
+<div class="campo"><label for="rut">RUT *</label><input id="rut" maxlength="12" inputmode="text" autocapitalize="characters" autocomplete="off" placeholder="12.345.678-9"><small class="err"></small></div>
+<div class="campo"><label for="sucursal">Sucursal *</label><select id="sucursal"></select><small class="err"></small></div>
+</div>
+<div class="grid2">
+<div class="campo"><label for="cargoSel">Cargo contractual *</label><select id="cargoSel"></select><small class="ayuda">El cargo que figura en su contrato de trabajo.</small><small class="err"></small></div>
+<div class="campo"><label for="jefatura">Jefatura o dependencia directa *</label><input id="jefatura" maxlength="120" autocomplete="off" placeholder="Nombre o cargo de su jefe directo"><small class="err"></small></div>
+</div>
+<div id="campoOtro" class="campo" hidden><label for="cargoOtro">Especifique su cargo contractual *</label><input id="cargoOtro" maxlength="100" autocomplete="off"><small class="err"></small></div>
+<div class="grid2">
+<div class="campo"><label for="telefono">Teléfono</label><input id="telefono" type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="+56 9 1234 5678"><small class="err"></small></div>
+<div class="campo"><label for="correo">Correo electrónico</label><input id="correo" type="email" inputmode="email" maxlength="120" autocomplete="email" placeholder="nombre@correo.cl"><small class="err"></small></div>
+</div>
+<small class="ayuda" style="margin-top:-6px">Indique al menos un teléfono o un correo para mantener sus datos actualizados.</small>
+</section>
+
+<section class="tarjeta">
+<h2><span class="num">2</span>Funciones que realiza</h2>
+<p class="sub" style="margin:-6px 0 12px;font-size:.9rem">Registre todas las funciones que realiza habitualmente, estén o no descritas en su contrato. Una función por bloque. Al menos una debe ser <b id="nomPrincipal">Principal</b>.</p>
+<details class="leyenda"><summary>¿Qué significa cada tipo y frecuencia?</summary><ul id="leyendaTipos"></ul><ul id="leyendaFrec"></ul></details>
+<div id="funciones" aria-live="polite"></div>
+<button type="button" id="agregar" class="btn agregar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar función</button>
+<p id="contadorF" class="contadorF"></p>
+<p id="errFunciones" class="errBloque" role="alert" tabindex="-1"></p>
+</section>
+
+<section class="tarjeta">
+<h2><span class="num">3</span>Comentarios y confirmación</h2>
+<div class="campo"><label for="comentarios">Comentarios generales</label><textarea id="comentarios" maxlength="2000" rows="4" placeholder="Observaciones sobre su cargo, carga de trabajo, funciones compartidas, sugerencias, etc."></textarea></div>
+<div class="campo"><label class="chk"><input type="checkbox" id="consentimiento"><span>Declaro que la información entregada es fidedigna y autorizo su uso exclusivo para fines de gestión interna de la empresa: levantamiento de funciones y elaboración de descriptores de cargo.</span></label><small class="err"></small></div>
+</section>
+
+<div class="hp" aria-hidden="true"><label>Sitio web<input id="website" tabindex="-1" autocomplete="off"></label></div>
+
+<div class="barra"><div class="in"><span class="nota">Revise sus datos antes de enviar.</span><button type="submit" class="btn primario">Revisar y enviar</button></div></div>
+</form>
+</div>
+</main>
+
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTit" hidden>
+<div class="caja">
+<div class="cab"><h2 id="modalTit">Revise su información</h2></div>
+<div class="cuerpo"><div id="resumen"></div><div id="errEnvio" class="errEnvio" role="alert" hidden></div></div>
+<div class="acciones"><button type="button" id="corregir" class="btn secundario">Corregir</button><button type="button" id="confirmar" class="btn primario">Confirmar y enviar</button></div>
+</div>
+</div>
+
+<script>
+const API_URL = 'https://script.google.com/macros/s/AKfycbzdyig-r-PoPUTOiA2LAMSj0tpXThfyuCIH8U0R4dLLoYxmwKtR90Tgd-xleFOZNfA9/exec';
+const API_TOKEN = 'e6ef02276f5e465cb4a7e472';
+const MODO = new URLSearchParams(location.search).get('modo') === 'manual' ? 'manual' : 'web';
+const CLAVE = 'lf_borrador_' + MODO;
+const CAMPOS = ['transcritoPor', 'folio', 'nombre', 'rut', 'sucursal', 'cargoSel', 'cargoOtro', 'jefatura', 'telefono', 'correo', 'comentarios'];
+const OTRO = '__otro__';
+const RE_MAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+let CFG = null;
+let funciones = [];
+let enviando = false;
+let tGuardar = null;
+let uid = 0;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const limpio = s => String(s == null ? '' : s).trim();
+
+function vista(v) {
+  ['carga', 'falla', 'app', 'exito'].forEach(x => { $(x).hidden = x !== v; });
+  window.scrollTo(0, 0);
+}
+
+function falla(msg) {
+  $('fallaMsg').textContent = msg;
+  vista('falla');
+}
+
+async function fetchT(url, op, ms) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), ms);
+  try {
+    return await fetch(url, Object.assign({}, op, { signal: ctrl.signal, redirect: 'follow' }));
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+async function cargar() {
+  vista('carga');
+  if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(API_URL)) {
+    falla('El formulario aún no está configurado: falta la dirección del servicio.');
+    return;
+  }
+  try {
+    const r = await fetchT(API_URL + '?action=config', {}, 25000);
+    const j = await r.json();
+    if (!j || !j.ok || !Array.isArray(j.tipos) || !j.tipos.length) throw new Error('config');
+    CFG = j;
+    iniciar();
+  } catch (e) {
+    falla('No fue posible cargar el formulario. Revise su conexión e intente nuevamente.');
+  }
+}
+
+function tipoPrincipal() {
+  const n = CFG.tipos.map(t => t.nombre);
+  return n.indexOf('Principal') >= 0 ? 'Principal' : n[0];
+}
+
+function maxF() {
+  return CFG.maxFunciones || 40;
+}
+
+function iniciar() {
+  const emp = limpio(CFG.empresa);
+  $('empresa').textContent = emp;
+  $('empresa').hidden = !emp;
+  if (emp) document.title = 'Levantamiento de Funciones · ' + emp;
+  if (CFG.logo) {
+    $('logo').onerror = () => { $('logo').hidden = true; };
+    $('logo').src = CFG.logo;
+    $('logo').alt = emp;
+    $('logo').hidden = false;
+  }
+  llenar($('sucursal'), CFG.sucursales, false);
+  llenar($('cargoSel'), CFG.cargos, true);
+  $('nomPrincipal').textContent = tipoPrincipal();
+  $('leyendaTipos').innerHTML = CFG.tipos.map(t => '<li><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</li>').join('');
+  $('leyendaFrec').innerHTML = CFG.frecuencias.map(t => '<li><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</li>').join('');
+  const manual = MODO === 'manual';
+  $('secManual').hidden = !manual;
+  $('bannerManual').hidden = !manual;
+  if (!restaurar()) reiniciarFunciones();
+  toggleOtro();
+  renderFunciones();
+  vista('app');
+}
+
+function llenar(sel, lista, otro) {
+  sel.innerHTML = '<option value="">Seleccione…</option>' + lista.map(x => '<option value="' + esc(x) + '">' + esc(x) + '</option>').join('') + (otro ? '<option value="' + OTRO + '">Otro (especificar)</option>' : '');
+}
+
+function nueva(tipo) {
+  return { uid: ++uid, tipo: tipo || '', funcion: '', descripcion: '', frecuencia: '' };
+}
+
+function reiniciarFunciones() {
+  funciones = [nueva(tipoPrincipal())];
+}
+
+function defTipo(n) {
+  const t = CFG.tipos.find(x => x.nombre === n);
+  return t ? t.def : '';
+}
+
+function opciones(lista, sel) {
+  return '<option value="">Seleccione…</option>' + lista.map(x => '<option value="' + esc(x.nombre) + '"' + (x.nombre === sel ? ' selected' : '') + '>' + esc(x.nombre) + '</option>').join('');
+}
+
+function renderFunciones() {
+  $('funciones').innerHTML = funciones.map((f, i) => `
+<article class="funcion" data-uid="${f.uid}">
+<div class="fcab"><span class="fnum">Función N° ${i + 1}</span><button type="button" class="quitar" data-accion="quitar" aria-label="Eliminar función ${i + 1}">Eliminar</button></div>
+<div class="grid2">
+<div class="campo"><label for="t${f.uid}">Tipo de función *</label><select id="t${f.uid}" data-k="tipo">${opciones(CFG.tipos, f.tipo)}</select><small class="ayuda def">${esc(defTipo(f.tipo))}</small><small class="err"></small></div>
+<div class="campo"><label for="q${f.uid}">Frecuencia *</label><select id="q${f.uid}" data-k="frecuencia">${opciones(CFG.frecuencias, f.frecuencia)}</select><small class="err"></small></div>
+</div>
+<div class="campo"><label for="f${f.uid}">Función *</label><input id="f${f.uid}" data-k="funcion" maxlength="200" autocomplete="off" placeholder="Ej.: Atención y venta a clientes en sala" value="${esc(f.funcion)}"><small class="err"></small></div>
+<div class="campo"><label for="d${f.uid}">Descripción / Especificación *</label><textarea id="d${f.uid}" data-k="descripcion" maxlength="1500" rows="3" placeholder="En qué consiste, cómo la realiza, con qué herramientas o sistemas y qué resultado entrega.">${esc(f.descripcion)}</textarea><div class="pie"><small class="err"></small><small class="contador">${f.descripcion.length}/1500</small></div></div>
+</article>`).join('');
+  contadorF();
+}
+
+function contadorF() {
+  const pr = tipoPrincipal();
+  const n = funciones.length;
+  const p = funciones.filter(f => f.tipo === pr).length;
+  $('contadorF').textContent = n + (n === 1 ? ' función' : ' funciones') + ' · ' + p + ' ' + pr.toLowerCase() + (p === 1 ? '' : 'es') + ' · máximo ' + maxF();
+  $('agregar').disabled = n >= maxF();
+}
+
+function quitarError(el) {
+  const c = el && el.closest ? el.closest('.campo') : null;
+  if (!c) return;
+  c.classList.remove('invalido');
+  const e = c.querySelector('.err');
+  if (e) e.textContent = '';
+}
+
+function onFuncion(ev) {
+  const k = ev.target.dataset.k;
+  if (!k) return;
+  const art = ev.target.closest('.funcion');
+  const f = funciones.find(x => String(x.uid) === art.dataset.uid);
+  if (!f) return;
+  f[k] = ev.target.value;
+  if (k === 'tipo') {
+    art.querySelector('.def').textContent = defTipo(f.tipo);
+    $('errFunciones').textContent = '';
+  }
+  if (k === 'descripcion') art.querySelector('.contador').textContent = f.descripcion.length + '/1500';
+  quitarError(ev.target);
+  contadorF();
+  programarGuardado();
+}
+
+$('funciones').addEventListener('input', onFuncion);
+$('funciones').addEventListener('change', onFuncion);
+
+$('funciones').addEventListener('click', ev => {
+  const btn = ev.target.closest('[data-accion="quitar"]');
+  if (!btn) return;
+  const art = btn.closest('.funcion');
+  const i = funciones.findIndex(x => String(x.uid) === art.dataset.uid);
+  const f = funciones[i];
+  if ((limpio(f.funcion) || limpio(f.descripcion)) && !confirm('¿Eliminar la función N° ' + (i + 1) + '?')) return;
+  if (funciones.length === 1) funciones = [nueva(tipoPrincipal())];
+  else funciones.splice(i, 1);
+  renderFunciones();
+  programarGuardado();
+});
+
+$('agregar').addEventListener('click', () => {
+  if (funciones.length >= maxF()) return;
+  funciones.push(nueva());
+  renderFunciones();
+  programarGuardado();
+  const ult = $('funciones').lastElementChild;
+  ult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => ult.querySelector('select').focus({ preventScroll: true }), 350);
+});
+
+function rutLimpio(v) {
+  return String(v || '').replace(/[^0-9kK]/g, '').toUpperCase();
+}
+
+function rutValido(v) {
+  const s = rutLimpio(v);
+  if (s.length < 7 || s.length > 9) return false;
+  const c = s.slice(0, -1);
+  const dv = s.slice(-1);
+  if (!/^\d+$/.test(c)) return false;
+  let suma = 0;
+  let m = 2;
+  for (let i = c.length - 1; i >= 0; i--) {
+    suma += Number(c[i]) * m;
+    m = m === 7 ? 2 : m + 1;
+  }
+  const r = 11 - (suma % 11);
+  return dv === (r === 11 ? '0' : r === 10 ? 'K' : String(r));
+}
+
+function rutFormato(v) {
+  const s = rutLimpio(v).slice(0, 9);
+  if (s.length < 2) return s;
+  return s.slice(0, -1).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + s.slice(-1);
+}
+
+function telNormal(v) {
+  let s = String(v || '').replace(/\D/g, '');
+  if (s.length === 11 && s.indexOf('56') === 0) s = s.slice(2);
+  if (!/^[2-9]\d{8}$/.test(s)) return '';
+  return s[0] === '9' ? '+56 9 ' + s.slice(1, 5) + ' ' + s.slice(5) : '+56 ' + s.slice(0, 2) + ' ' + s.slice(2, 5) + ' ' + s.slice(5);
+}
+
+function marcar(el, msg) {
+  const c = el.closest('.campo');
+  c.classList.add('invalido');
+  c.querySelector('.err').textContent = msg;
+}
+
+$('rut').addEventListener('input', () => { $('rut').value = rutFormato($('rut').value); });
+$('rut').addEventListener('blur', () => {
+  const v = limpio($('rut').value);
+  if (v && !rutValido(v)) marcar($('rut'), 'RUT inválido. Revise el dígito verificador.');
+});
+$('telefono').addEventListener('blur', () => {
+  const t = telNormal($('telefono').value);
+  if (t) $('telefono').value = t;
+});
+$('cargoSel').addEventListener('change', toggleOtro);
+
+function toggleOtro() {
+  const otro = $('cargoSel').value === OTRO;
+  $('campoOtro').hidden = !otro;
+}
+
+function onCampo(ev) {
+  if (ev.target.closest('#funciones') || ev.target.id === 'website') return;
+  quitarError(ev.target);
+  if (ev.target.id === 'telefono' || ev.target.id === 'correo') {
+    quitarError($('telefono'));
+    quitarError($('correo'));
+  }
+  programarGuardado();
+}
+
+$('form').addEventListener('input', onCampo);
+$('form').addEventListener('change', onCampo);
+
+function validar() {
+  document.querySelectorAll('.campo.invalido').forEach(c => c.classList.remove('invalido'));
+  document.querySelectorAll('.err').forEach(e => { e.textContent = ''; });
+  $('errFunciones').textContent = '';
+  const malos = [];
+  const mal = (el, msg) => { marcar(el, msg); malos.push(el); };
+  const v = id => limpio($(id).value);
+  if (MODO === 'manual' && v('transcritoPor').length < 3) mal($('transcritoPor'), 'Indique quién transcribe el formulario.');
+  if (v('nombre').length < 5) mal($('nombre'), 'Ingrese nombres y apellidos.');
+  if (!rutValido(v('rut'))) mal($('rut'), 'RUT inválido. Revise el dígito verificador.');
+  if (!v('sucursal')) mal($('sucursal'), 'Seleccione una sucursal.');
+  if (!v('cargoSel')) mal($('cargoSel'), 'Seleccione su cargo contractual.');
+  else if (v('cargoSel') === OTRO && v('cargoOtro').length < 2) mal($('cargoOtro'), 'Indique su cargo contractual.');
+  if (v('jefatura').length < 2) mal($('jefatura'), 'Indique su jefatura o dependencia directa.');
+  const tel = v('telefono');
+  const mail = v('correo');
+  if (tel && !telNormal(tel)) mal($('telefono'), 'Teléfono inválido. Ej.: +56 9 1234 5678');
+  if (mail && !RE_MAIL.test(mail)) mal($('correo'), 'Correo inválido.');
+  if (!tel && !mail) mal($('telefono'), 'Indique al menos un teléfono o un correo.');
+  funciones.forEach(f => {
+    const art = $('funciones').querySelector('[data-uid="' + f.uid + '"]');
+    const q = k => art.querySelector('[data-k="' + k + '"]');
+    if (!f.tipo) mal(q('tipo'), 'Seleccione el tipo.');
+    if (!f.frecuencia) mal(q('frecuencia'), 'Seleccione la frecuencia.');
+    if (limpio(f.funcion).length < 3) mal(q('funcion'), 'Indique la función.');
+    if (limpio(f.descripcion).length < 5) mal(q('descripcion'), 'Agregue la descripción o especificación.');
+  });
+  const pr = tipoPrincipal();
+  if (!funciones.some(f => f.tipo === pr)) {
+    $('errFunciones').textContent = 'Debe registrar al menos una función de tipo ' + pr + '.';
+    malos.push($('errFunciones'));
+  }
+  if (!$('consentimiento').checked) mal($('consentimiento'), 'Debe aceptar para poder enviar.');
+  if (malos.length) {
+    const m = malos[0];
+    m.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => m.focus({ preventScroll: true }), 350);
+  }
+  return !malos.length;
+}
+
+function datos() {
+  const v = id => limpio($(id).value);
+  return {
+    token: API_TOKEN,
+    modo: MODO,
+    transcritoPor: MODO === 'manual' ? v('transcritoPor') : '',
+    folio: MODO === 'manual' ? v('folio') : '',
+    nombre: v('nombre').replace(/\s+/g, ' '),
+    rut: rutFormato(v('rut')),
+    sucursal: v('sucursal'),
+    cargo: v('cargoSel') === OTRO ? v('cargoOtro') : v('cargoSel'),
+    jefatura: v('jefatura'),
+    telefono: v('telefono') ? telNormal(v('telefono')) : '',
+    correo: v('correo').toLowerCase(),
+    comentarios: v('comentarios'),
+    consentimiento: $('consentimiento').checked,
+    website: $('website').value,
+    funciones: funciones.map(f => ({ tipo: f.tipo, funcion: limpio(f.funcion), descripcion: limpio(f.descripcion), frecuencia: f.frecuencia }))
+  };
+}
+
+function resumenHtml(d) {
+  const fila = (k, val) => val ? '<div class="rfila"><dt>' + esc(k) + '</dt><dd>' + esc(val) + '</dd></div>' : '';
+  return '<dl class="rlista">' +
+    (MODO === 'manual' ? fila('Transcrito por', d.transcritoPor) + fila('Folio', d.folio) : '') +
+    fila('Nombre', d.nombre) + fila('RUT', d.rut) + fila('Sucursal', d.sucursal) + fila('Cargo contractual', d.cargo) +
+    fila('Jefatura', d.jefatura) + fila('Teléfono', d.telefono) + fila('Correo', d.correo) + '</dl>' +
+    '<h3>Funciones (' + d.funciones.length + ')</h3><ol class="rfun">' +
+    d.funciones.map(f => '<li><b>' + esc(f.funcion) + '</b><div class="chips"><span class="chip">' + esc(f.tipo) + '</span><span class="chip">' + esc(f.frecuencia) + '</span></div><p>' + esc(f.descripcion) + '</p></li>').join('') +
+    '</ol>' + (d.comentarios ? '<h3>Comentarios</h3><p class="rcom">' + esc(d.comentarios) + '</p>' : '');
+}
+
+$('form').addEventListener('submit', ev => {
+  ev.preventDefault();
+  if (!validar()) return;
+  $('resumen').innerHTML = resumenHtml(datos());
+  $('errEnvio').hidden = true;
+  $('modal').hidden = false;
+  document.body.classList.add('bloq');
+  $('modal').querySelector('.cuerpo').scrollTop = 0;
+  $('confirmar').focus();
+});
+
+function cerrarModal() {
+  if (enviando) return;
+  $('modal').hidden = true;
+  document.body.classList.remove('bloq');
+}
+
+$('corregir').addEventListener('click', cerrarModal);
+$('modal').addEventListener('click', ev => { if (ev.target === $('modal')) cerrarModal(); });
+document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && !$('modal').hidden) cerrarModal(); });
+
+$('confirmar').addEventListener('click', async () => {
+  if (enviando) return;
+  enviando = true;
+  const btn = $('confirmar');
+  btn.disabled = true;
+  $('corregir').disabled = true;
+  btn.textContent = 'Enviando…';
+  $('errEnvio').hidden = true;
+  try {
+    const r = await fetchT(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(datos()) }, 45000);
+    const j = await r.json();
+    if (!j || !j.ok) {
+      const e = new Error((j && j.mensaje) || 'No fue posible registrar el levantamiento.');
+      e.servidor = true;
+      throw e;
+    }
+    borrarBorrador();
+    $('exitoId').textContent = j.id;
+    $('exitoVersion').hidden = !(j.version > 1);
+    $('exitoVersion').textContent = j.version > 1 ? 'Se actualizó su registro anterior. Esta es la versión ' + j.version + '.' : '';
+    enviando = false;
+    cerrarModal();
+    vista('exito');
+  } catch (e) {
+    $('errEnvio').textContent = e.servidor ? e.message : 'No se pudo conectar con el servicio. Revise su conexión e intente nuevamente. Sus datos siguen guardados en este dispositivo.';
+    $('errEnvio').hidden = false;
+    $('errEnvio').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } finally {
+    enviando = false;
+    btn.disabled = false;
+    $('corregir').disabled = false;
+    btn.textContent = 'Confirmar y enviar';
+  }
+});
+
+function programarGuardado() {
+  clearTimeout(tGuardar);
+  tGuardar = setTimeout(guardarBorrador, 400);
+}
+
+function guardarBorrador() {
+  try {
+    const c = {};
+    CAMPOS.forEach(id => { c[id] = $(id).value; });
+    c.consentimiento = $('consentimiento').checked;
+    localStorage.setItem(CLAVE, JSON.stringify({ c: c, f: funciones.map(f => ({ tipo: f.tipo, funcion: f.funcion, descripcion: f.descripcion, frecuencia: f.frecuencia })) }));
+  } catch (e) {}
+}
+
+function borrarBorrador() {
+  clearTimeout(tGuardar);
+  try { localStorage.removeItem(CLAVE); } catch (e) {}
+}
+
+function restaurar() {
+  let b = null;
+  try { b = JSON.parse(localStorage.getItem(CLAVE) || 'null'); } catch (e) { b = null; }
+  if (!b || !b.c) return false;
+  const conDatos = CAMPOS.some(id => limpio(b.c[id])) || (b.f || []).some(f => limpio(f.funcion) || limpio(f.descripcion));
+  if (!conDatos) return false;
+  CAMPOS.forEach(id => {
+    const el = $(id);
+    const val = b.c[id] || '';
+    if (el.tagName === 'SELECT') {
+      if (Array.from(el.options).some(o => o.value === val)) el.value = val;
+    } else el.value = val;
+  });
+  if (b.c.cargoSel && b.c.cargoSel !== OTRO && $('cargoSel').value !== b.c.cargoSel) {
+    $('cargoSel').value = OTRO;
+    $('cargoOtro').value = b.c.cargoSel;
+  }
+  $('consentimiento').checked = !!b.c.consentimiento;
+  const tn = CFG.tipos.map(t => t.nombre);
+  const fn = CFG.frecuencias.map(t => t.nombre);
+  funciones = (b.f || []).slice(0, maxF()).map(f => Object.assign(nueva(), {
+    tipo: tn.indexOf(f.tipo) >= 0 ? f.tipo : '',
+    frecuencia: fn.indexOf(f.frecuencia) >= 0 ? f.frecuencia : '',
+    funcion: f.funcion || '',
+    descripcion: f.descripcion || ''
+  }));
+  if (!funciones.length) reiniciarFunciones();
+  $('bannerBorrador').hidden = false;
+  return true;
+}
+
+function limpiarFormulario() {
+  const transcriptor = $('transcritoPor').value;
+  $('form').reset();
+  if (MODO === 'manual') $('transcritoPor').value = transcriptor;
+  document.querySelectorAll('.campo.invalido').forEach(c => c.classList.remove('invalido'));
+  document.querySelectorAll('.err').forEach(e => { e.textContent = ''; });
+  $('errFunciones').textContent = '';
+  $('bannerBorrador').hidden = true;
+  reiniciarFunciones();
+  toggleOtro();
+  renderFunciones();
+}
+
+$('descartar').addEventListener('click', () => {
+  if (!confirm('¿Descartar el borrador y empezar de nuevo?')) return;
+  borrarBorrador();
+  limpiarFormulario();
+  window.scrollTo(0, 0);
+});
+
+$('nuevo').addEventListener('click', () => {
+  limpiarFormulario();
+  vista('app');
+  setTimeout(() => (MODO === 'manual' ? $('folio') : $('nombre')).focus(), 50);
+});
+
+$('reintentar').addEventListener('click', cargar);
+
+cargar();
+</script>
+</body>
+</html>
