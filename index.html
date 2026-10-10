@@ -225,12 +225,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc-h);b
 .cal-ley{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:.75rem;color:var(--muted)}
 .cal-ley i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
 .cal-ley i.lim{background:var(--card);box-shadow:inset 0 -3px 0 var(--err);border:1px solid var(--line)}
-@media (min-width:1100px){.layout>.lateral{grid-column:2;grid-row:1 / span 2}.layout>.faq{grid-column:1;grid-row:2}}
-.faq h3{margin:18px 0 8px;color:var(--acc);font-size:.95rem}
-.faqq{border:1px solid var(--line);border-radius:8px;margin-bottom:6px;background:var(--card)}
-.faqq summary{cursor:pointer;padding:10px 14px;font-weight:600;font-size:.92rem}
-.faqq[open] summary{color:var(--acc)}
-.faqq div{padding:0 14px 12px;color:var(--muted);font-size:.9rem;max-width:80ch}
 .subtabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:16px;overflow-x:auto}
 .subtabs button{font:inherit;font-family:var(--disp);font-weight:600;border:0;background:none;color:var(--muted);padding:10px 14px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
 .subtabs button[aria-selected="true"]{color:var(--acc);border-bottom-color:var(--acc)}
@@ -549,8 +543,6 @@ body>*:not(#print){display:none!important}
 <div class="hp" aria-hidden="true"><label>Sitio web<input id="website" tabindex="-1" autocomplete="off"></label></div>
 </form>
 
-<section class="tarjeta faq" id="faq"><h2>Preguntas frecuentes</h2><p class="sub" style="margin:-8px 0 4px">Si no encuentras tu respuesta, usa el asistente o habla directo con una persona.</p><div id="faqCont"></div></section>
-
 <aside class="lateral">
 <div class="tarjeta proc"><h3>Calendario del proceso</h3><div class="procCont"></div></div>
 <div class="tarjeta">
@@ -606,7 +598,7 @@ body>*:not(#print){display:none!important}
 <div><h1>Dashboard</h1><p class="sub" id="dSub"></p></div>
 <div class="dacc"><button type="button" id="dManual" class="btn pri">Transcribir formulario en papel</button><button type="button" id="dRefrescar" class="btn sec">Actualizar</button><button type="button" id="dCodigo" class="btn sec">Cambiar código</button><button type="button" id="dSalir" class="btn txt">Cerrar sesión</button></div>
 </div>
-<nav class="subtabs" role="tablist" aria-label="Secciones del Dashboard"><button type="button" role="tab" data-sub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-sub="cal" aria-selected="false">Calendario del proceso</button><button type="button" role="tab" data-sub="faq" aria-selected="false">Asistente y preguntas</button></nav>
+<nav class="subtabs" role="tablist" aria-label="Secciones del Dashboard"><button type="button" role="tab" data-sub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-sub="cal" aria-selected="false">Calendario del proceso</button><button type="button" role="tab" data-sub="faq" aria-selected="false">Entrenar asistente</button></nav>
 <div id="subReg">
 <div class="kpis" id="kpis"></div>
 <div class="graficos" id="graficos"></div>
@@ -617,9 +609,9 @@ body>*:not(#print){display:none!important}
 </div>
 <section id="subCal" class="tarjeta" hidden><h2 style="margin-bottom:4px">Calendario del proceso</h2><p class="sub" id="dCalRes" style="margin:0 0 6px"></p><div class="calgrid"><form id="fEtapas" novalidate></form><div><div id="dCalPrev"></div></div></div></section>
 <section id="subFaq" hidden>
-<div class="aBarra tarjeta"><div><h2 style="margin:0">Asistente y preguntas frecuentes</h2><p class="sub" id="aOrigen" style="margin:2px 0 0"></p></div><div class="dacc" style="align-items:center"><span id="aEstado" class="mini" style="margin:0"></span><button type="button" id="aRestaurar" class="btn txt">Restaurar predeterminadas</button><button type="button" id="aGuardar" class="btn pri">Guardar cambios</button></div></div>
+<div class="aBarra tarjeta"><div><h2 style="margin:0">Entrenamiento del asistente</h2><p class="sub" id="aOrigen" style="margin:2px 0 0"></p></div><div class="dacc" style="align-items:center"><span id="aEstado" class="mini" style="margin:0"></span><button type="button" id="aRestaurar" class="btn txt">Restaurar predeterminadas</button><button type="button" id="aGuardar" class="btn pri">Guardar cambios</button></div></div>
 <div class="faqadm">
-<aside class="tarjeta"><h3>Temas</h3><ul class="atemas" id="aTemas"></ul><button type="button" id="aTemaNuevo" class="btn sec ancho">+ Nuevo tema</button><p class="mini">El orden de los temas es el del menú del asistente y de las preguntas frecuentes.</p></aside>
+<aside class="tarjeta"><h3>Temas</h3><ul class="atemas" id="aTemas"></ul><button type="button" id="aTemaNuevo" class="btn sec ancho">+ Nuevo tema</button><p class="mini">El orden de los temas es el orden del menú del asistente.</p></aside>
 <section class="tarjeta">
 <p id="aVacio" class="vacio" hidden>No hay temas. Cree uno con "+ Nuevo tema".</p>
 <div id="aTemaBox">
@@ -865,7 +857,6 @@ function iniciar() {
   iniciarWsp(emp);
   renderProceso();
   cargarFaq();
-  renderFaq();
   if (!restaurar()) reiniciarFunciones();
   toggleOtro();
   renderFunciones();
@@ -1718,10 +1709,6 @@ document.addEventListener('click', ev => {
   c.outerHTML = calHTML(y, m, et);
 });
 
-function renderFaq() {
-  $('faqCont').innerHTML = BOT.map(c => '<h3>' + esc(c.t) + '</h3>' + c.q.map(q => '<details class="faqq"><summary>' + esc(q.t) + '</summary><div>' + formatear(q.r) + '</div></details>').join('')).join('');
-}
-
 function etapasForm() {
   return [0, 1, 2].map(i => ({ nombre: limpio($('eN' + i).value), desc: limpio($('eD' + i).value), inicio: $('eI' + i).value, fin: $('eF' + i).value }));
 }
@@ -1756,7 +1743,6 @@ $('fEtapas').addEventListener('submit', async ev => {
   if (!j.ok) { if (j.sesion !== false) $('eErr').textContent = j.mensaje; return; }
   CFG.etapas = j.etapas;
   renderProceso();
-  renderFaq();
   renderEtapasAdmin();
   toast('Calendario del proceso guardado.');
 });
@@ -1843,7 +1829,7 @@ function iniciarWsp(emp) {
   if (emp) {
     $('wspNom').textContent = 'Asistente ' + emp;
     const pal = emp.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ ]/g, '').split(/\s+/).filter(Boolean);
-    $('wspAv').textContent = ((pal[0] && pal[0].length <= 3 ? pal[0] : pal.slice(0, 2).map(x => x[0]).join('')) || 'RD').toUpperCase();
+    $('wspAv').textContent = (limpio(CONF.INICIALES) || (pal[0] && pal[0].length <= 3 ? pal[0] : pal.slice(0, 2).map(x => x[0]).join('')) || 'RD').toUpperCase().slice(0, 3);
   }
   if (ss('lf_wsp')) $('wspGlobo').hidden = true;
 }
@@ -2821,7 +2807,6 @@ $('aGuardar').addEventListener('click', async () => {
   if (!j.ok) { if (j.sesion !== false) toast(j.mensaje, true); return; }
   CFG.faq = FAQ_ED.map(t => ({ t: t.t, q: t.q.filter(q => q.activa !== false).map(q => ({ t: q.t, k: q.k, r: q.r, acc: q.acc })) })).filter(t => t.q.length);
   cargarFaq();
-  renderFaq();
   FAQ_SUCIO = false;
   $('aEstado').textContent = 'Guardado · ' + j.total + ' preguntas';
   $('aOrigen').textContent = 'Preguntas cargadas desde la hoja "Preguntas".';
@@ -2863,4 +2848,3 @@ window.addEventListener('error', ev => {
 </script>
 </body>
 </html>
-
