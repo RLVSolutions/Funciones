@@ -231,6 +231,51 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc-h);b
 .faqq summary{cursor:pointer;padding:10px 14px;font-weight:600;font-size:.92rem}
 .faqq[open] summary{color:var(--acc)}
 .faqq div{padding:0 14px 12px;color:var(--muted);font-size:.9rem;max-width:80ch}
+.subtabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:16px;overflow-x:auto}
+.subtabs button{font:inherit;font-family:var(--disp);font-weight:600;border:0;background:none;color:var(--muted);padding:10px 14px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+.subtabs button[aria-selected="true"]{color:var(--acc);border-bottom-color:var(--acc)}
+.subtabs button:focus-visible{outline:none;box-shadow:var(--focus)}
+.aBarra{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;position:sticky;top:76px;z-index:5}
+.faqadm{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+@media (min-width:1000px){.faqadm{grid-template-columns:230px minmax(0,1fr)}.faqadm .acol{grid-column:1 / -1}}
+@media (min-width:1300px){.faqadm{grid-template-columns:230px minmax(0,1fr) 320px}.faqadm .acol{grid-column:auto}}
+.acol{display:grid;gap:16px;align-content:start}
+.atemas{list-style:none;margin:8px 0 12px;padding:0;display:grid;gap:4px}
+.atema{width:100%;display:flex;justify-content:space-between;gap:8px;align-items:center;text-align:left;border:1px solid transparent;background:none;border-radius:8px;padding:8px 10px;font:inherit;font-size:.9rem;cursor:pointer;color:var(--txt)}
+.atema:hover{background:var(--acc-soft)}
+.atema.sel{background:var(--acc-soft);border-color:var(--acc);color:var(--acc);font-weight:600}
+.atema small{background:var(--line2);border-radius:999px;padding:0 8px;font-size:.75rem;color:var(--muted);flex:none}
+.atcab{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.atcab input{flex:1 1 220px;width:auto;font-family:var(--disp);font-weight:600;font-size:1.05rem}
+.ap-b{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 10px;font:inherit;font-size:.82rem;cursor:pointer;color:var(--txt);white-space:nowrap}
+.ap-b:disabled{opacity:.4;cursor:default}
+.ap-b.del:hover{color:var(--err);border-color:var(--err)}
+.apreg{border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px;background:var(--card)}
+.apreg.inactiva{opacity:.6;background:var(--bg)}
+.apreg.falta{border-color:var(--err);box-shadow:0 0 0 2px var(--err-soft)}
+.apcab{display:flex;gap:8px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+.apcab b{display:grid;place-items:center;min-width:26px;height:26px;border-radius:7px;background:var(--acc);color:#fff;font-size:.8rem}
+.apcab .ap-t{flex:1 1 240px;width:auto;font-weight:600}
+.ap-on{display:flex;gap:6px;align-items:center;font-size:.85rem;color:var(--muted)}
+.ap-on input{width:16px;height:16px;accent-color:var(--acc)}
+.ap-l{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin:6px 0 4px}
+.ayudafmt{background:var(--acc-soft);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:.84rem}
+.ayudafmt summary{cursor:pointer;font-weight:600;color:var(--acc)}
+.ayudafmt p{margin:6px 0}
+.ayudafmt code{font-family:var(--mono);background:var(--card);padding:0 4px;border-radius:4px;font-size:.8rem}
+#aProbar{display:flex;gap:8px;margin:10px 0 4px}
+.pr{margin:8px 0;font-size:.9rem;padding:8px 10px;border-radius:8px}
+.pr.ok{background:var(--ok-soft);color:var(--ok)}
+.pr.med{background:var(--mark-soft);color:#7a4d06}
+.pr.mal{background:var(--err-soft);color:var(--err)}
+#aProbarRes ul{margin:0 0 8px;padding-left:18px;font-size:.88rem}
+.entrenar{display:grid;gap:6px;margin-top:8px}
+.entrenar select{font-size:.85rem}
+.entrenar .btn{min-height:34px;padding:6px 12px;font-size:.85rem;justify-self:start}
+.acons{border-top:1px solid var(--line2);padding:10px 0}
+.acons p{margin:0 0 4px;font-size:.9rem}
+.acons small{display:block;color:var(--muted);font-size:.75rem;font-weight:400}
+.acons-acc{display:flex;gap:14px;margin-top:6px;font-size:.84rem;color:var(--acc)}
 .calsum{cursor:pointer;font-weight:700;font-family:var(--disp);color:var(--acc);font-size:1.02rem}
 #dCalRes{font-weight:400;color:var(--muted);font-family:system-ui,sans-serif;font-size:.86rem;margin-left:8px}
 .calgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:14px}
@@ -561,12 +606,34 @@ body>*:not(#print){display:none!important}
 <div><h1>Dashboard</h1><p class="sub" id="dSub"></p></div>
 <div class="dacc"><button type="button" id="dManual" class="btn pri">Transcribir formulario en papel</button><button type="button" id="dRefrescar" class="btn sec">Actualizar</button><button type="button" id="dCodigo" class="btn sec">Cambiar código</button><button type="button" id="dSalir" class="btn txt">Cerrar sesión</button></div>
 </div>
+<nav class="subtabs" role="tablist" aria-label="Secciones del Dashboard"><button type="button" role="tab" data-sub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-sub="cal" aria-selected="false">Calendario del proceso</button><button type="button" role="tab" data-sub="faq" aria-selected="false">Asistente y preguntas</button></nav>
+<div id="subReg">
 <div class="kpis" id="kpis"></div>
-<details class="tarjeta" id="dCal" style="margin-bottom:16px"><summary class="calsum">Calendario del proceso<span id="dCalRes"></span></summary><div class="calgrid"><form id="fEtapas" novalidate></form><div><div id="dCalPrev"></div></div></div></details>
 <div class="graficos" id="graficos"></div>
 <section class="tarjeta">
 <div class="filtros"><input id="fTexto" type="search" placeholder="Buscar por nombre, RUT, ID o cargo" aria-label="Buscar"><select id="fSuc" aria-label="Filtrar por sucursal"></select><select id="fEstado" aria-label="Filtrar por estado"></select><span class="cuenta" id="fCuenta"></span></div>
 <div class="tablaw"><table class="tabla"><thead><tr><th>Nombre</th><th>ID</th><th>Sucursal</th><th>Cargo(s)</th><th class="n">Funciones</th><th class="n">Precisiones</th><th>Actualizado</th><th>Estado</th></tr></thead><tbody id="tBody"></tbody></table></div>
+</section>
+</div>
+<section id="subCal" class="tarjeta" hidden><h2 style="margin-bottom:4px">Calendario del proceso</h2><p class="sub" id="dCalRes" style="margin:0 0 6px"></p><div class="calgrid"><form id="fEtapas" novalidate></form><div><div id="dCalPrev"></div></div></div></section>
+<section id="subFaq" hidden>
+<div class="aBarra tarjeta"><div><h2 style="margin:0">Asistente y preguntas frecuentes</h2><p class="sub" id="aOrigen" style="margin:2px 0 0"></p></div><div class="dacc" style="align-items:center"><span id="aEstado" class="mini" style="margin:0"></span><button type="button" id="aRestaurar" class="btn txt">Restaurar predeterminadas</button><button type="button" id="aGuardar" class="btn pri">Guardar cambios</button></div></div>
+<div class="faqadm">
+<aside class="tarjeta"><h3>Temas</h3><ul class="atemas" id="aTemas"></ul><button type="button" id="aTemaNuevo" class="btn sec ancho">+ Nuevo tema</button><p class="mini">El orden de los temas es el del menú del asistente y de las preguntas frecuentes.</p></aside>
+<section class="tarjeta">
+<p id="aVacio" class="vacio" hidden>No hay temas. Cree uno con "+ Nuevo tema".</p>
+<div id="aTemaBox">
+<div class="atcab"><input id="aTemaNom" maxlength="60" aria-label="Nombre del tema"><button type="button" id="aTemaUp" class="ap-b" aria-label="Subir tema">↑</button><button type="button" id="aTemaDown" class="ap-b" aria-label="Bajar tema">↓</button><button type="button" id="aTemaDel" class="ap-b del">Eliminar tema</button></div>
+<details class="ayudafmt"><summary>Formato de las respuestas y variables</summary><p><code>**texto**</code> se muestra en negrita. Cada salto de línea se respeta.</p><p>Variables que se reemplazan por los datos reales: <code>{plazo}</code> fecha de término de la etapa 1 · <code>{dias}</code> días que quedan · <code>{etapas}</code> lista de etapas con fechas · <code>{etapa1}</code> <code>{etapa2}</code> <code>{etapa3}</code> nombre y fechas de cada etapa · <code>{tipos}</code> definiciones de los tipos de función · <code>{principal}</code> nombre del tipo principal.</p><p>Palabras clave: escriba las palabras que usaría alguien al hacer esta pregunta, incluidos sinónimos. También se agregan solas al entrenar.</p></details>
+<div id="aPregs"></div>
+<button type="button" id="aPregNueva" class="btn agregar">+ Agregar pregunta</button>
+</div>
+</section>
+<aside class="acol">
+<div class="tarjeta"><h3>Probar el asistente</h3><p class="mini" style="margin:4px 0 0">Escriba una pregunta como la haría un colaborador y vea qué respondería con los cambios actuales.</p><form id="aProbar" novalidate><input id="aProbarTxt" maxlength="300" placeholder="Ej.: no me acuerdo de mi contraseña" aria-label="Pregunta de prueba"><button type="submit" class="btn pri">Probar</button></form><div id="aProbarRes"></div></div>
+<div class="tarjeta"><h3>Consultas sin respuesta <span id="aConsCuenta"></span></h3><p class="mini" style="margin:4px 0 0">Preguntas reales que el asistente no supo responder. Asócielas a una pregunta para entrenarlo, o cree una nueva.</p><div id="aConsultas"></div></div>
+</aside>
+</div>
 </section>
 </section>
 
@@ -797,6 +864,7 @@ function iniciar() {
   $('tabs').hidden = false;
   iniciarWsp(emp);
   renderProceso();
+  cargarFaq();
   renderFaq();
   if (!restaurar()) reiniciarFunciones();
   toggleOtro();
@@ -1646,12 +1714,12 @@ document.addEventListener('click', ev => {
   let m = +c.dataset.m + Number(b.dataset.cal);
   if (m < 0) { m = 11; y -= 1; }
   if (m > 11) { m = 0; y += 1; }
-  const et = c.closest('#dCal') ? etapasForm() : etapas();
+  const et = c.closest('#subCal') ? etapasForm() : etapas();
   c.outerHTML = calHTML(y, m, et);
 });
 
 function renderFaq() {
-  $('faqCont').innerHTML = BOT.map(c => '<h3>' + esc(c.t) + '</h3>' + c.q.map(q => '<details class="faqq"><summary>' + esc(q.t) + '</summary><div>' + (typeof q.r === 'function' ? q.r() : q.r) + '</div></details>').join('')).join('');
+  $('faqCont').innerHTML = BOT.map(c => '<h3>' + esc(c.t) + '</h3>' + c.q.map(q => '<details class="faqq"><summary>' + esc(q.t) + '</summary><div>' + formatear(q.r) + '</div></details>').join('')).join('');
 }
 
 function etapasForm() {
@@ -1664,7 +1732,7 @@ function renderEtapasAdmin() {
   $('fEtapas').innerHTML = et.map((e, i) => '<fieldset class="etapa e' + (i + 1) + '"><legend>Etapa ' + (i + 1) + '</legend><div class="campo"><label for="eN' + i + '">Nombre</label><input id="eN' + i + '" maxlength="60" value="' + esc(e.nombre) + '"></div><div class="campo"><label for="eD' + i + '">Descripción para los colaboradores</label><textarea id="eD' + i + '" rows="2" maxlength="300">' + esc(e.desc) + '</textarea></div><div class="g2"><div class="campo"><label for="eI' + i + '">Inicio</label><input type="date" id="eI' + i + '" value="' + esc(e.inicio) + '"></div><div class="campo"><label for="eF' + i + '">Término' + (i === 0 ? ' (plazo de entrega)' : '') + '</label><input type="date" id="eF' + i + '" value="' + esc(e.fin) + '"></div></div></fieldset>').join('') + '<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><button type="submit" class="btn pri" id="eBtn">Guardar calendario</button><span class="mini" style="margin:0">Los colaboradores verán los cambios al recargar la página.</span></div><p class="errBloque" id="eErr"></p>';
   previewEtapas();
   const act = et.findIndex(e => estadoEtapa(e) === 'actual');
-  $('dCalRes').textContent = act >= 0 ? '· Etapa en curso: ' + et[act].nombre + (act === 0 && textoPlazo() ? ' · ' + textoPlazo().toLowerCase() : '') : (et.some(e => e.inicio || e.fin) ? '' : '· Fechas por definir');
+  $('dCalRes').textContent = act >= 0 ? 'Etapa en curso: ' + et[act].nombre + (act === 0 && textoPlazo() ? ' · ' + textoPlazo().toLowerCase() : '') : (et.some(e => e.inicio || e.fin) ? '' : 'Fechas por definir');
 }
 
 function previewEtapas() {
@@ -1693,52 +1761,78 @@ $('fEtapas').addEventListener('submit', async ev => {
   toast('Calendario del proceso guardado.');
 });
 
-const BOT = [
+const FAQ_DEF = [
   { t: 'El proceso y plazos', q: [
-    { t: '¿Cuáles son las etapas del proceso?', k: 'etapa proceso calendario cronograma', r: () => 'El levantamiento tiene tres etapas:<br><br>' + etapas().map((e, i) => '<b>' + (i + 1) + '. ' + esc(e.nombre) + '</b> (' + esc(rangoTxt(e)) + ')' + (e.desc ? ': ' + esc(e.desc) : '')).join('<br>'), acc: [['calendario', 'Ver calendario']] },
-    { t: '¿Hasta cuándo tengo plazo?', k: 'plazo fecha limite hasta cuando', r: () => { const e = etapas()[0]; return e && e.fin ? 'Tienes plazo hasta el <b>' + esc(fTxt(e.fin, true)) + '</b> para entregar tu información. ' + esc(textoPlazo()) + '.<br><br>Si no alcanzas a terminar de una vez, guarda tu avance y continúa después.' : 'El plazo aún no está definido; se informará en esta página. Te recomendamos completarlo cuanto antes y guardar tu avance si no alcanzas a terminar.'; }, acc: [['calendario', 'Ver calendario']] },
-    { t: '¿Qué pasa después de enviar mi información?', k: 'despues enviar pasa luego siguiente', r: () => { const e = etapas(); return 'Tu registro pasa a la etapa de <b>' + esc(e[1] ? e[1].nombre : 'diálogo') + '</b>: tu jefatura lo revisa y puede conversar contigo para precisar tus funciones. Después viene <b>' + esc(e[2] ? e[2].nombre : 'feedback y actualización') + '</b>, donde recibirás observaciones y podrás actualizar tu registro.'; } },
-    { t: '¿En qué consiste la etapa de diálogo?', k: 'dialogo revision jefatura', r: () => { const e = etapas()[1]; return (e && e.desc ? esc(e.desc) + '<br><br>' : '') + 'Es una conversación para aclarar y precisar lo que declaraste. No es una evaluación de desempeño.' + (e ? '<br><br><b>Fechas:</b> ' + esc(rangoTxt(e)) + '.' : ''); } },
-    { t: '¿En qué consiste la etapa de feedback?', k: 'feedback observacion actualizacion actualizar resultado', r: () => { const e = etapas()[2]; return (e && e.desc ? esc(e.desc) + '<br><br>' : '') + 'Recibirás las precisiones de la revisión y podrás actualizar tu registro con tu RUT y tu clave.' + (e ? '<br><br><b>Fechas:</b> ' + esc(rangoTxt(e)) + '.' : ''); } },
-    { t: '¿Puedo modificar mi registro después del plazo?', k: 'modificar despues vencido tarde atrasado', r: 'Durante la etapa de <b>feedback y actualización</b> podrás actualizar tu registro con tu RUT y tu clave. Si el plazo de entrega venció y aún no envías tu información, consulta con tu jefatura.' }
+    { t: '¿Cuáles son las etapas del proceso?', k: 'etapa proceso calendario cronograma', acc: 'calendario', r: 'El levantamiento tiene tres etapas:\n\n{etapas}' },
+    { t: '¿Hasta cuándo tengo plazo?', k: 'plazo fecha limite hasta cuando', acc: 'calendario', r: 'Tienes plazo hasta el {plazo} para entregar tu información. {dias}\n\nSi no alcanzas a terminar de una vez, guarda tu avance y continúa después.' },
+    { t: '¿Qué pasa después de enviar mi información?', k: 'despues enviar pasa luego siguiente', acc: '', r: 'Tu registro pasa a la etapa de {etapa2}: tu jefatura lo revisa y puede conversar contigo para precisar tus funciones.\n\nDespués viene {etapa3}, donde recibirás observaciones y podrás actualizar tu registro.' },
+    { t: '¿En qué consiste la etapa de diálogo?', k: 'dialogo revision jefatura', acc: '', r: 'Es una conversación para aclarar y precisar lo que declaraste. No es una evaluación de desempeño.\n\nFechas: {etapa2}.' },
+    { t: '¿En qué consiste la etapa de feedback?', k: 'feedback observacion actualizacion actualizar resultado', acc: '', r: 'Recibirás las precisiones de la revisión y podrás actualizar tu registro con tu RUT y tu clave.\n\nFechas: {etapa3}.' },
+    { t: '¿Puedo modificar mi registro después del plazo?', k: 'modificar despues vencido tarde atrasado', acc: '', r: 'Durante la etapa de **feedback y actualización** podrás actualizar tu registro con tu RUT y tu clave. Si el plazo de entrega venció y aún no envías tu información, consulta con tu jefatura.' }
   ] },
   { t: 'Dudas con el formulario', q: [
-    { t: '¿Cómo guardo mi avance?', k: 'guardar borrador continuar despues tarde terminar', r: 'Presiona <b>Guardar avance</b>, bajo "Revisar y enviar". Solo necesitas haber verificado tu RUT y escrito tu nombre.<br><br>La primera vez recibirás un <b>ID</b> y una <b>clave</b>: anótalos, descárgalos o guárdalos en el navegador.', acc: [['borrador', 'Guardar avance ahora']] },
-    { t: '¿Cómo retomo un registro que dejé a medias?', k: 'continuar borrador medias incompleto inconcluso pendiente', r: 'Escribe tu <b>RUT</b> al comienzo del formulario. Si tienes un avance guardado, aparecerá el aviso "Tiene un registro sin finalizar": ingresa tu clave y presiona <b>Retomar registro</b>.' },
-    { t: '¿Cómo modifico lo que ya envié?', k: 'modificar enviado', r: 'Escribe tu <b>RUT</b> al comienzo del formulario y luego tu clave, o usa <b>Modificar mi registro</b> con tu ID y tu clave. Corrige lo necesario y guarda: tu ID y tu clave se mantienen.', acc: [['modificar', 'Ir a Modificar mi registro']] },
-    { t: 'Me dice que ya tengo un registro', k: 'existe registro bloqueado crear nuevo aparece sin finalizar', r: 'Cada persona tiene un solo registro. Si el sistema detecta tu RUT, debes <b>retomarlo o modificarlo con tu clave</b>; no se puede crear uno nuevo. Si no tienes la clave, pídele una nueva a tu jefatura.' },
-    { t: '¿Qué es mi ID de registro?', k: 'id identificador usuario numero', r: 'Tu ID es tu <b>RUT sin puntos, sin guion y sin dígito verificador</b>.<br><br>Ejemplo: para el RUT 12.345.678-9, tu ID es <b>12345678</b>.' },
-    { t: 'Olvidé mi clave', k: 'olvide clave recuperar', r: 'Por seguridad la clave no se puede recuperar. Pídele a tu jefatura una <b>nueva clave</b>; la anterior dejará de funcionar.<br><br>Si la guardaste en este navegador, el formulario te ofrecerá "Usar la clave recordada".' },
-    { t: '¿Dónde guardo mi clave?', k: 'guardar clave anotar descargar recordar navegador', r: 'Al recibirla tienes tres opciones: <b>Descargar credenciales</b> (un archivo de texto), <b>Recordar en este navegador</b> o <b>Guardar en contraseñas del navegador</b>. Usa las dos últimas solo en un dispositivo personal.' },
-    { t: 'Prefiero completarlo en papel', k: 'papel imprimir manual blanco', r: 'Descarga el <b>Formulario en blanco (PDF)</b>, complétalo con letra clara, fírmalo junto a tu jefatura y entrégalo. Luego se transcribe al sistema y recibirás tu ID y tu clave.', acc: [['blanco', 'Descargar formulario en blanco']] },
-    { t: '¿Puedo usarlo en el celular?', k: 'celular tablet computador dispositivo', r: 'Sí. Funciona en celular, tablet y computador. Puedes empezar en uno y terminar en otro con tu RUT y tu clave.' },
-    { t: 'Me aparece un error al enviar', k: 'error enviar rojo', r: 'Revisa los campos marcados en rojo: cada uno indica qué falta.<br><br>Si el error es de conexión, tus datos quedan guardados en este dispositivo; intenta de nuevo en unos minutos.' }
+    { t: '¿Cómo guardo mi avance?', k: 'guardar borrador continuar despues tarde terminar', acc: 'borrador', r: 'Presiona **Guardar avance**, bajo "Revisar y enviar". Solo necesitas haber verificado tu RUT y escrito tu nombre.\n\nLa primera vez recibirás un **ID** y una **clave**: anótalos, descárgalos o guárdalos en el navegador.' },
+    { t: '¿Cómo retomo un registro que dejé a medias?', k: 'continuar borrador medias incompleto inconcluso pendiente', acc: '', r: 'Escribe tu **RUT** al comienzo del formulario. Si tienes un avance guardado, aparecerá el aviso "Tiene un registro sin finalizar": ingresa tu clave y presiona **Retomar registro**.' },
+    { t: '¿Cómo modifico lo que ya envié?', k: 'modificar enviado', acc: 'modificar', r: 'Escribe tu **RUT** al comienzo del formulario y luego tu clave, o usa **Modificar mi registro** con tu ID y tu clave. Corrige lo necesario y guarda: tu ID y tu clave se mantienen.' },
+    { t: 'Me dice que ya tengo un registro', k: 'existe registro bloqueado crear nuevo aparece sin finalizar', acc: '', r: 'Cada persona tiene un solo registro. Si el sistema detecta tu RUT, debes **retomarlo o modificarlo con tu clave**; no se puede crear uno nuevo. Si no tienes la clave, pídele una nueva a tu jefatura.' },
+    { t: '¿Qué es mi ID de registro?', k: 'id identificador usuario numero', acc: '', r: 'Tu ID es tu **RUT sin puntos, sin guion y sin dígito verificador**.\n\nEjemplo: para el RUT 12.345.678-9, tu ID es **12345678**.' },
+    { t: 'Olvidé mi clave', k: 'olvide clave recuperar', acc: '', r: 'Por seguridad la clave no se puede recuperar. Pídele a tu jefatura una **nueva clave**; la anterior dejará de funcionar.\n\nSi la guardaste en este navegador, el formulario te ofrecerá "Usar la clave recordada".' },
+    { t: '¿Dónde guardo mi clave?', k: 'guardar clave anotar descargar recordar navegador', acc: '', r: 'Al recibirla tienes tres opciones: **Descargar credenciales** (un archivo de texto), **Recordar en este navegador** o **Guardar en contraseñas del navegador**. Usa las dos últimas solo en un dispositivo personal.' },
+    { t: 'Prefiero completarlo en papel', k: 'papel imprimir manual blanco', acc: 'blanco', r: 'Descarga el **Formulario en blanco (PDF)**, complétalo con letra clara, fírmalo junto a tu jefatura y entrégalo. Luego se transcribe al sistema y recibirás tu ID y tu clave.' },
+    { t: '¿Puedo usarlo en el celular?', k: 'celular tablet computador dispositivo', acc: '', r: 'Sí. Funciona en celular, tablet y computador. Puedes empezar en uno y terminar en otro con tu RUT y tu clave.' },
+    { t: 'Me aparece un error al enviar', k: 'error enviar rojo', acc: '', r: 'Revisa los campos marcados en rojo: cada uno indica qué falta.\n\nSi el error es de conexión, tus datos quedan guardados en este dispositivo; intenta de nuevo en unos minutos.' }
   ] },
   { t: 'Dudas con las funciones', q: [
-    { t: '¿Qué diferencia hay entre función y tarea?', k: 'diferencia funcion tarea', r: '<b>Función:</b> responsabilidad permanente del cargo, orientada a un resultado. Responde a "¿para qué existe mi puesto?". Ej.: Gestionar la cobranza a clientes.<br><br><b>Tarea:</b> acción concreta con la que cumples una función. Responde a "¿qué hago para lograrlo?". Ej.: Llamar a clientes con facturas vencidas.<br><br>Registra cada función en un bloque y detalla sus tareas en la descripción.' },
-    { t: '¿Qué tipo de función elijo?', k: 'tipo principal apoyo responsabilidad esporadica clasificar elegir', r: () => (CFG ? CFG.tipos.map(t => '<b>' + esc(t.nombre) + ':</b> ' + esc(t.def)).join('<br>') : '') + '<br><br>Elige el tipo que mejor represente el peso de esa función en tu cargo. Debes tener al menos una de tipo <b>' + esc(CFG ? tipoPrincipal() : 'Principal') + '</b>.' },
-    { t: '¿Cuántas funciones debo registrar?', k: 'cuantas minimo maximo', r: 'Registra todas las funciones que realizas habitualmente. En la mayoría de los cargos bastan entre <b>5 y 15</b>. El mínimo es una de tipo Principal y el máximo es 40.' },
-    { t: '¿Cómo describo una función?', k: 'describir redactar escribir ejemplo especificacion detallar', r: 'Comienza el nombre con un verbo y di qué haces. En la descripción detalla las tareas, las herramientas o sistemas y el resultado.<br><br><b>Función:</b> Gestionar la cobranza a clientes.<br><b>Descripción:</b> Llamo a clientes con facturas vencidas, acuerdo fechas de pago y las registro en el sistema para reducir la morosidad.' },
-    { t: 'Hago funciones que no están en mi contrato', k: 'contrato extra adicional fuera', r: 'Regístralas igual. El objetivo es reflejar lo que realmente haces, estén o no descritas en tu contrato.' },
-    { t: 'Comparto funciones con otros compañeros', k: 'comparto compartida companero equipo otros', r: 'Regístralas igual. En la descripción indica que la compartes y con qué cargo o área.' },
-    { t: '¿Puedo marcar una función con dos tipos?', k: 'repetir dos misma duplicar marcar', r: 'Registra cada función una sola vez, con el tipo que mejor la represente. Si tiene varias partes, puedes separarlas en funciones distintas.' },
-    { t: '¿Cómo elimino o reordeno una función?', k: 'eliminar borrar quitar ordenar reordenar numero', r: 'Usa el botón <b>Eliminar</b> del bloque. Los números se reordenan solos. Para agregar otra, usa <b>Agregar función</b>.' }
+    { t: '¿Qué diferencia hay entre función y tarea?', k: 'diferencia funcion tarea', acc: '', r: '**Función:** responsabilidad permanente del cargo, orientada a un resultado. Responde a "¿para qué existe mi puesto?". Ej.: Gestionar la cobranza a clientes.\n\n**Tarea:** acción concreta con la que cumples una función. Responde a "¿qué hago para lograrlo?". Ej.: Llamar a clientes con facturas vencidas.\n\nRegistra cada función en un bloque y detalla sus tareas en la descripción.' },
+    { t: '¿Qué tipo de función elijo?', k: 'tipo principal apoyo responsabilidad esporadica clasificar elegir', acc: '', r: '{tipos}\n\nElige el tipo que mejor represente el peso de esa función en tu cargo. Debes tener al menos una de tipo **{principal}**.' },
+    { t: '¿Cuántas funciones debo registrar?', k: 'cuantas minimo maximo', acc: '', r: 'Registra todas las funciones que realizas habitualmente. En la mayoría de los cargos bastan entre **5 y 15**. El mínimo es una de tipo {principal} y el máximo es 40.' },
+    { t: '¿Cómo describo una función?', k: 'describir redactar escribir ejemplo especificacion detallar', acc: '', r: 'Comienza el nombre con un verbo y di qué haces. En la descripción detalla las tareas, las herramientas o sistemas y el resultado.\n\n**Función:** Gestionar la cobranza a clientes.\n**Descripción:** Llamo a clientes con facturas vencidas, acuerdo fechas de pago y las registro en el sistema para reducir la morosidad.' },
+    { t: 'Hago funciones que no están en mi contrato', k: 'contrato extra adicional fuera', acc: '', r: 'Regístralas igual. El objetivo es reflejar lo que realmente haces, estén o no descritas en tu contrato.' },
+    { t: 'Comparto funciones con otros compañeros', k: 'comparto compartida companero equipo otros', acc: '', r: 'Regístralas igual. En la descripción indica que la compartes y con qué cargo o área.' },
+    { t: '¿Puedo marcar una función con dos tipos?', k: 'repetir dos misma duplicar marcar', acc: '', r: 'Registra cada función una sola vez, con el tipo que mejor la represente. Si tiene varias partes, puedes separarlas en funciones distintas.' },
+    { t: '¿Cómo elimino o reordeno una función?', k: 'eliminar borrar quitar ordenar reordenar numero', acc: '', r: 'Usa el botón **Eliminar** del bloque. Los números se reordenan solos. Para agregar otra, usa **Agregar función**.' }
   ] },
   { t: 'Dudas con tu cargo', q: [
-    { t: '¿Cuál es mi cargo contractual?', k: 'cargo contractual cual contrato', r: 'Es el cargo que figura en tu contrato de trabajo o en su último anexo. Si no lo tienes a mano, consúltalo con tu jefatura.' },
-    { t: 'Tengo más de un cargo', k: 'varios dos multiples', r: 'Marca todos los cargos que correspondan; puedes elegir más de uno.' },
-    { t: 'Mi cargo no aparece en la lista', k: 'aparece lista otro falta encuentro', r: 'Marca <b>Otro (especificar)</b> y escribe el nombre de tu cargo tal como figura en tu contrato.' },
-    { t: 'Lo que hago no coincide con mi cargo', k: 'coincide distinto diferente real', r: 'Marca el cargo de tu contrato y describe en las funciones lo que realmente haces. Si quieres, coméntalo en <b>Comentarios generales</b>.' },
-    { t: '¿Quién es mi jefatura directa?', k: 'jefatura dependencia reporto', r: 'Es la persona a quien reportas en tu trabajo diario y que organiza tus tareas. Escribe su nombre o su cargo.' }
+    { t: '¿Cuál es mi cargo contractual?', k: 'cargo contractual cual contrato', acc: '', r: 'Es el cargo que figura en tu contrato de trabajo o en su último anexo. Si no lo tienes a mano, consúltalo con tu jefatura.' },
+    { t: 'Tengo más de un cargo', k: 'varios dos multiples', acc: '', r: 'Marca todos los cargos que correspondan; puedes elegir más de uno.' },
+    { t: 'Mi cargo no aparece en la lista', k: 'aparece lista otro falta encuentro', acc: '', r: 'Marca **Otro (especificar)** y escribe el nombre de tu cargo tal como figura en tu contrato.' },
+    { t: 'Lo que hago no coincide con mi cargo', k: 'coincide distinto diferente real', acc: '', r: 'Marca el cargo de tu contrato y describe en las funciones lo que realmente haces. Si quieres, coméntalo en **Comentarios generales**.' },
+    { t: '¿Quién es mi jefatura directa?', k: 'jefatura dependencia reporto', acc: '', r: 'Es la persona a quien reportas en tu trabajo diario y que organiza tus tareas. Escribe su nombre o su cargo.' }
   ] },
   { t: 'Recomendaciones', q: [
-    { t: 'Consejos para completar el formulario', k: 'consejo recomendacion tips sugerencia completar', r: '• Piensa en una semana y en un mes típicos de trabajo.<br>• Registra primero tus funciones principales.<br>• Escribe con tus palabras: no hay respuestas correctas o incorrectas.<br>• Guarda tu avance si necesitas consultar algo y sigue después.' },
-    { t: 'Quiero proponer mejoras a mi cargo', k: 'mejora proponer sugerir', r: 'Escríbelas en <b>Comentarios generales</b>, al final del formulario. Si prefieres conversarlo, elige "Hablar directo con una persona" en el menú.' },
-    { t: '¿Para qué se usa esta información?', k: 'objetivo proposito sirve finalidad uso', r: 'Para elaborar los descriptores de cargo de la empresa, es decir, describir con precisión qué hace cada cargo.' },
-    { t: '¿Quién ve mis datos?', k: 'privacidad datos confidencial ver quien acceso', r: 'Solo el equipo administrador del levantamiento. La información se usa exclusivamente para gestión interna.' }
+    { t: 'Consejos para completar el formulario', k: 'consejo recomendacion tips sugerencia completar', acc: '', r: '• Piensa en una semana y en un mes típicos de trabajo.\n• Registra primero tus funciones principales.\n• Escribe con tus palabras: no hay respuestas correctas o incorrectas.\n• Guarda tu avance si necesitas consultar algo y sigue después.' },
+    { t: 'Quiero proponer mejoras a mi cargo', k: 'mejora proponer sugerir', acc: '', r: 'Escríbelas en **Comentarios generales**, al final del formulario. Si prefieres conversarlo, elige "Hablar directo con una persona" en el menú.' },
+    { t: '¿Para qué se usa esta información?', k: 'objetivo proposito sirve finalidad uso', acc: '', r: 'Para elaborar los descriptores de cargo de la empresa, es decir, describir con precisión qué hace cada cargo.' },
+    { t: '¿Quién ve mis datos?', k: 'privacidad datos confidencial ver quien acceso', acc: '', r: 'Solo el equipo administrador del levantamiento. La información se usa exclusivamente para gestión interna.' }
   ] }
 ];
-const BOT_SIN = { contrasena: 'clave', password: 'clave', pass: 'clave', codigo: 'clave', pin: 'clave', avance: 'borrador', pausa: 'borrador', retomar: 'continuar', seguir: 'continuar', reanudar: 'continuar', terminar: 'continuar', editar: 'modificar', corregir: 'modificar', cambiar: 'modificar', actualizar: 'modificar', jefe: 'jefatura', jefa: 'jefatura', supervisor: 'jefatura', encargado: 'jefatura', superior: 'jefatura', puesto: 'cargo', rol: 'cargo', labor: 'funcion', actividad: 'tarea', movil: 'celular', telefono: 'celular', notebook: 'computador', pc: 'computador', impreso: 'papel', imprimir: 'papel', mano: 'papel', pdf: 'papel', falla: 'error', problema: 'error', funciona: 'error', cantidad: 'cuantas', cuanto: 'cuantas', perdi: 'olvide', recuerdo: 'olvide', extravie: 'olvide', borrar: 'eliminar', quitar: 'eliminar', sacar: 'eliminar', clasificacion: 'tipo', categoria: 'tipo', ejemplo: 'describir', redaccion: 'redactar', guardo: 'guardar', guarde: 'guardar', envie: 'enviado', mande: 'enviado', mandado: 'enviado', edito: 'modificar', corrijo: 'modificar', cambio: 'modificar', borro: 'eliminar', elimino: 'eliminar', redacto: 'redactar', redacta: 'redactar', escribo: 'redactar', anoto: 'anotar', apunto: 'anotar', pongo: 'elegir', escojo: 'elegir', selecciono: 'elegir', medio: 'medias', guardado: 'borrador', fase: 'etapa', paso: 'etapa', cronograma: 'calendario', fechas: 'calendario', retroalimentacion: 'feedback', devolucion: 'feedback', vence: 'plazo', vencimiento: 'plazo', limite: 'plazo', conversacion: 'dialogo', reunion: 'dialogo', entrevista: 'dialogo', enviar: 'enviar' };
+const ACC_LBL = { borrador: 'Guardar avance ahora', modificar: 'Ir a Modificar mi registro', blanco: 'Descargar formulario en blanco', calendario: 'Ver calendario' };
+let BOT = FAQ_DEF;
+
+function clonar(x) {
+  return JSON.parse(JSON.stringify(x));
+}
+
+function cargarFaq() {
+  BOT = (CFG && Array.isArray(CFG.faq) && CFG.faq.length) ? CFG.faq : FAQ_DEF;
+  BOT_IDX.length = 0;
+}
+
+const VARS = {
+  plazo: () => { const e = etapas()[0]; return e && e.fin ? '<b>' + esc(fTxt(e.fin, true)) + '</b>' : 'la fecha que se informará próximamente'; },
+  dias: () => { const t = textoPlazo(); return t ? esc(t) + '.' : ''; },
+  etapas: () => etapas().map((e, i) => '<b>' + (i + 1) + '. ' + esc(e.nombre) + '</b> (' + esc(rangoTxt(e)) + ')' + (e.desc ? ': ' + esc(e.desc) : '')).join('<br>'),
+  etapa1: () => { const e = etapas()[0]; return e ? '<b>' + esc(e.nombre) + '</b> (' + esc(rangoTxt(e)) + ')' : ''; },
+  etapa2: () => { const e = etapas()[1]; return e ? '<b>' + esc(e.nombre) + '</b> (' + esc(rangoTxt(e)) + ')' : ''; },
+  etapa3: () => { const e = etapas()[2]; return e ? '<b>' + esc(e.nombre) + '</b> (' + esc(rangoTxt(e)) + ')' : ''; },
+  tipos: () => (CFG ? CFG.tipos.map(t => '<b>' + esc(t.nombre) + ':</b> ' + esc(t.def)).join('<br>') : ''),
+  principal: () => esc(CFG ? tipoPrincipal() : 'Principal')
+};
+
+function formatear(r) {
+  return esc(r).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>').replace(/\{(plazo|dias|etapas|etapa1|etapa2|etapa3|tipos|principal)\}/g, (m, v) => VARS[v]());
+}
+const BOT_SIN = { contrasena: 'clave', password: 'clave', pass: 'clave', codigo: 'clave', pin: 'clave', avance: 'borrador', pausa: 'borrador', retomar: 'continuar', seguir: 'continuar', reanudar: 'continuar', terminar: 'continuar', editar: 'modificar', corregir: 'modificar', cambiar: 'modificar', actualizar: 'modificar', jefe: 'jefatura', jefa: 'jefatura', supervisor: 'jefatura', encargado: 'jefatura', superior: 'jefatura', puesto: 'cargo', rol: 'cargo', labor: 'funcion', actividad: 'tarea', movil: 'celular', telefono: 'celular', notebook: 'computador', pc: 'computador', impreso: 'papel', imprimir: 'papel', mano: 'papel', pdf: 'papel', falla: 'error', problema: 'error', funciona: 'error', cantidad: 'cuantas', cuanto: 'cuantas', perdi: 'olvide', recuerdo: 'olvide', acuerdo: 'olvide', acordaba: 'olvide', extravie: 'olvide', borrar: 'eliminar', quitar: 'eliminar', sacar: 'eliminar', clasificacion: 'tipo', categoria: 'tipo', ejemplo: 'describir', redaccion: 'redactar', guardo: 'guardar', guarde: 'guardar', envie: 'enviado', mande: 'enviado', mandado: 'enviado', edito: 'modificar', corrijo: 'modificar', cambio: 'modificar', borro: 'eliminar', elimino: 'eliminar', redacto: 'redactar', redacta: 'redactar', escribo: 'redactar', anoto: 'anotar', apunto: 'anotar', pongo: 'elegir', escojo: 'elegir', selecciono: 'elegir', medio: 'medias', guardado: 'borrador', fase: 'etapa', paso: 'etapa', cronograma: 'calendario', fechas: 'calendario', retroalimentacion: 'feedback', devolucion: 'feedback', vence: 'plazo', vencimiento: 'plazo', limite: 'plazo', conversacion: 'dialogo', reunion: 'dialogo', entrevista: 'dialogo', enviar: 'enviar' };
 const BOT_STOP = ['que', 'de', 'la', 'el', 'en', 'mi', 'me', 'es', 'un', 'una', 'los', 'las', 'con', 'por', 'para', 'como', 'cual', 'debo', 'hay', 'lo', 'ya', 'se', 'y', 'o', 'a', 'al', 'del', 'su', 'tu', 'hago', 'tengo', 'puedo', 'esta', 'este', 'donde', 'cuando', 'si', 'no', 'mis', 'tus', 'le', 'les', 'pero', 'hola', 'quiero', 'necesito', 'saber', 'favor', 'porfa', 'ayuda', 'mas', 'muy', 'algo', 'hacer', 'tiene', 'ser', 'eso', 'esto', 'desde', 'llenar', 'llenarlo', 'hacerlo', 'usar', 'usarlo', 'sobre', 'dame', 'dime', 'decir', 'poner', 'puede', 'sale', 'debe', 'tengo', 'tener', 'cosa', 'cosas', 'ver', 'mirar', 'revisar'];
 let botUlt = null;
 let botModo = '';
@@ -1748,7 +1842,8 @@ function iniciarWsp(emp) {
   document.querySelectorAll('[data-acc="wsp"]').forEach(b => { b.hidden = false; });
   if (emp) {
     $('wspNom').textContent = 'Asistente ' + emp;
-    $('wspAv').textContent = emp.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ ]/g, '').split(/\s+/).filter(Boolean).slice(0, 2).map(x => x[0]).join('').toUpperCase() || 'RD';
+    const pal = emp.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ ]/g, '').split(/\s+/).filter(Boolean);
+    $('wspAv').textContent = ((pal[0] && pal[0].length <= 3 ? pal[0] : pal.slice(0, 2).map(x => x[0]).join('')) || 'RD').toUpperCase();
   }
   if (ss('lf_wsp')) $('wspGlobo').hidden = true;
 }
@@ -1880,8 +1975,8 @@ function botRespuesta(ci, qi) {
   botUlt = { ci: ci, qi: qi };
   botTema = ci;
   botModo = '';
-  const r = typeof q.r === 'function' ? q.r() : q.r;
-  const acc = (q.acc || []).map(a => ['→ ' + a[1], 'acc:' + a[0]]);
+  const r = formatear(q.r);
+  const acc = q.acc && ACC_LBL[q.acc] ? [['→ ' + ACC_LBL[q.acc], 'acc:' + q.acc]] : [];
   botDice(r, acc.concat([['👍 Sí, me sirvió', 'si'], ['No me sirvió', 'no'], ['Otra pregunta de este tema', 'otra'], OP_MENU]));
 }
 
@@ -1964,6 +2059,7 @@ function botTexto(t) {
     botDice('Creo que te refieres a alguna de estas preguntas:', sug.concat([OP_MENU, OP_HUMANO]));
     return;
   }
+  api('consulta', { texto: t });
   botDice('No encontré una respuesta para eso. Prueba escribirlo con otras palabras, revisa los temas o habla directo con una persona.', [OP_MENU, OP_HUMANO]);
 }
 
@@ -2447,7 +2543,300 @@ function dialogo(titulo, html, botones) {
   abrirModal('dlg');
 }
 
-window.addEventListener('beforeunload', ev => { if (sucio) { ev.preventDefault(); ev.returnValue = ''; } });
+window.addEventListener('beforeunload', ev => { if (sucio || FAQ_SUCIO) { ev.preventDefault(); ev.returnValue = ''; } });
+let FAQ_ED = null;
+let FAQ_SEL = 0;
+let FAQ_SUCIO = false;
+let CONSULTAS = [];
+
+function irSub(sub) {
+  document.querySelectorAll('.subtabs button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.sub === sub)));
+  $('subReg').hidden = sub !== 'reg';
+  $('subCal').hidden = sub !== 'cal';
+  $('subFaq').hidden = sub !== 'faq';
+  if (sub === 'cal') renderEtapasAdmin();
+  if (sub === 'faq') abrirFaqAdmin();
+}
+
+document.querySelectorAll('.subtabs button').forEach(b => b.addEventListener('click', () => {
+  if (b.dataset.sub !== 'faq' && FAQ_SUCIO && !$('subFaq').hidden && !confirm('Tiene cambios sin guardar en las preguntas. ¿Salir de todos modos?')) return;
+  irSub(b.dataset.sub);
+}));
+
+function abrirFaqAdmin() {
+  if (!FAQ_ED) {
+    FAQ_ED = clonar(BOT).map(t => ({ t: t.t, q: t.q.map(q => ({ t: q.t, k: q.k || '', r: q.r, acc: q.acc || '', activa: q.activa !== false })) }));
+    FAQ_SEL = 0;
+    FAQ_SUCIO = false;
+  }
+  $('aOrigen').textContent = (CFG.faq && CFG.faq.length) ? 'Preguntas cargadas desde la hoja "Preguntas".' : 'Se muestran las preguntas predeterminadas. Al guardar quedarán en la hoja "Preguntas" y podrá editarlas.';
+  renderTemasAdm();
+  renderPregsAdm();
+  cargarConsultas();
+}
+
+function marcarSucio() {
+  FAQ_SUCIO = true;
+  $('aEstado').textContent = 'Cambios sin guardar';
+}
+
+function renderTemasAdm() {
+  $('aTemas').innerHTML = FAQ_ED.map((t, i) => '<li><button type="button" class="atema' + (i === FAQ_SEL ? ' sel' : '') + '" data-tema="' + i + '"><span>' + esc(t.t || 'Tema sin nombre') + '</span><small>' + t.q.length + '</small></button></li>').join('');
+}
+
+function accOpts(sel) {
+  return [['', 'Sin botón'], ['borrador', 'Guardar avance'], ['modificar', 'Modificar mi registro'], ['blanco', 'Formulario en blanco'], ['calendario', 'Ver calendario']].map(o => '<option value="' + o[0] + '"' + (o[0] === sel ? ' selected' : '') + '>' + o[1] + '</option>').join('');
+}
+
+function renderPregsAdm() {
+  const t = FAQ_ED[FAQ_SEL];
+  if (!t) {
+    $('aTemaBox').hidden = true;
+    $('aVacio').hidden = false;
+    return;
+  }
+  $('aTemaBox').hidden = false;
+  $('aVacio').hidden = true;
+  $('aTemaNom').value = t.t;
+  $('aPregs').innerHTML = t.q.length ? t.q.map((q, i) => '<article class="apreg' + (q.activa ? '' : ' inactiva') + '" data-i="' + i + '">' +
+    '<div class="apcab"><b>' + (i + 1) + '</b><input class="ap-t" data-f="t" maxlength="200" value="' + esc(q.t) + '" aria-label="Pregunta ' + (i + 1) + '" placeholder="Pregunta tal como la haría un colaborador">' +
+    '<label class="ap-on"><input type="checkbox" data-f="activa"' + (q.activa ? ' checked' : '') + '> Activa</label>' +
+    '<button type="button" class="ap-b" data-mv="-1" aria-label="Subir"' + (i === 0 ? ' disabled' : '') + '>↑</button><button type="button" class="ap-b" data-mv="1" aria-label="Bajar"' + (i === t.q.length - 1 ? ' disabled' : '') + '>↓</button><button type="button" class="ap-b del" data-del aria-label="Eliminar pregunta">Eliminar</button></div>' +
+    '<label class="ap-l">Respuesta</label><textarea data-f="r" rows="4" maxlength="2000" placeholder="Respuesta del asistente">' + esc(q.r) + '</textarea>' +
+    '<div class="g2"><div><label class="ap-l">Palabras clave</label><input data-f="k" maxlength="400" value="' + esc(q.k) + '" placeholder="Palabras que usaría alguien al preguntar"></div><div><label class="ap-l">Botón de acción</label><select data-f="acc">' + accOpts(q.acc) + '</select></div></div>' +
+    '</article>').join('') : '<p class="vacio">Este tema aún no tiene preguntas.</p>';
+  $('aTemaUp').disabled = FAQ_SEL === 0;
+  $('aTemaDown').disabled = FAQ_SEL === FAQ_ED.length - 1;
+}
+
+$('aTemas').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-tema]');
+  if (!b) return;
+  FAQ_SEL = Number(b.dataset.tema);
+  renderTemasAdm();
+  renderPregsAdm();
+});
+
+$('aTemaNuevo').addEventListener('click', () => {
+  FAQ_ED.push({ t: 'Nuevo tema', q: [] });
+  FAQ_SEL = FAQ_ED.length - 1;
+  marcarSucio();
+  renderTemasAdm();
+  renderPregsAdm();
+  $('aTemaNom').select();
+});
+
+$('aTemaNom').addEventListener('input', () => {
+  FAQ_ED[FAQ_SEL].t = $('aTemaNom').value;
+  marcarSucio();
+  const s = $('aTemas').querySelector('.sel span');
+  if (s) s.textContent = $('aTemaNom').value || 'Tema sin nombre';
+});
+
+function moverTema(d) {
+  const j = FAQ_SEL + d;
+  if (j < 0 || j >= FAQ_ED.length) return;
+  const x = FAQ_ED.splice(FAQ_SEL, 1)[0];
+  FAQ_ED.splice(j, 0, x);
+  FAQ_SEL = j;
+  marcarSucio();
+  renderTemasAdm();
+  renderPregsAdm();
+}
+
+$('aTemaUp').addEventListener('click', () => moverTema(-1));
+$('aTemaDown').addEventListener('click', () => moverTema(1));
+$('aTemaDel').addEventListener('click', () => {
+  const t = FAQ_ED[FAQ_SEL];
+  if (!confirm('¿Eliminar el tema "' + t.t + '"' + (t.q.length ? ' y sus ' + t.q.length + ' preguntas' : '') + '?')) return;
+  FAQ_ED.splice(FAQ_SEL, 1);
+  FAQ_SEL = Math.max(0, FAQ_SEL - 1);
+  marcarSucio();
+  renderTemasAdm();
+  renderPregsAdm();
+});
+
+$('aPregNueva').addEventListener('click', () => {
+  FAQ_ED[FAQ_SEL].q.push({ t: '', k: '', r: '', acc: '', activa: true });
+  marcarSucio();
+  renderTemasAdm();
+  renderPregsAdm();
+  const l = $('aPregs').lastElementChild;
+  l.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => l.querySelector('.ap-t').focus({ preventScroll: true }), 300);
+});
+
+$('aPregs').addEventListener('input', ev => {
+  const f = ev.target.dataset.f;
+  if (!f) return;
+  const i = Number(ev.target.closest('.apreg').dataset.i);
+  const q = FAQ_ED[FAQ_SEL].q[i];
+  q[f] = f === 'activa' ? ev.target.checked : ev.target.value;
+  if (f === 'activa') ev.target.closest('.apreg').classList.toggle('inactiva', !q.activa);
+  marcarSucio();
+});
+
+$('aPregs').addEventListener('click', ev => {
+  const art = ev.target.closest('.apreg');
+  if (!art) return;
+  const i = Number(art.dataset.i);
+  const qs = FAQ_ED[FAQ_SEL].q;
+  if (ev.target.closest('[data-del]')) {
+    if (!confirm('¿Eliminar esta pregunta?')) return;
+    qs.splice(i, 1);
+  } else if (ev.target.closest('[data-mv]')) {
+    const j = i + Number(ev.target.closest('[data-mv]').dataset.mv);
+    if (j < 0 || j >= qs.length) return;
+    qs.splice(j, 0, qs.splice(i, 1)[0]);
+  } else return;
+  marcarSucio();
+  renderTemasAdm();
+  renderPregsAdm();
+});
+
+function conFaq(faq, fn) {
+  const prev = BOT;
+  BOT = faq.map(t => ({ t: t.t, q: t.q.filter(q => q.activa !== false && q.t && q.r) }));
+  BOT_IDX.length = 0;
+  const tema = botTema;
+  botTema = -1;
+  try { return fn(); } finally { BOT = prev; BOT_IDX.length = 0; botTema = tema; }
+}
+
+function probar(texto) {
+  return conFaq(FAQ_ED, () => {
+    const it = intencion(texto);
+    if (it) return { tipo: 'intencion', it: it };
+    const r = botBuscar(texto);
+    const a = r[0];
+    const b = r[1];
+    if (a && ((a.p >= 3 && a.c >= 0.34 && (!b || a.p - b.p >= 1.5 || a.p >= 5.5)) || (a.p >= 2 && a.c >= 0.5 && (!b || a.p - b.p >= 0.5)))) return { tipo: 'resp', l: [a].map(x => ({ t: BOT[x.ci].q[x.qi].t, p: x.p })) };
+    if (a && a.c >= 0.34) return { tipo: 'sug', l: r.slice(0, 3).map(x => ({ t: BOT[x.ci].q[x.qi].t, p: x.p })) };
+    return { tipo: 'nada' };
+  });
+}
+
+function selPreguntas() {
+  return FAQ_ED.map((t, ti) => '<optgroup label="' + esc(t.t) + '">' + t.q.map((q, qi) => '<option value="' + ti + ':' + qi + '">' + esc(q.t || '(sin texto)') + '</option>').join('') + '</optgroup>').join('');
+}
+
+function entrenar(texto, ref) {
+  const p = ref.split(':');
+  const q = FAQ_ED[+p[0]].q[+p[1]];
+  const actuales = new Set(tokens(q.k + ' ' + q.t));
+  const nuevas = norm(texto).split(' ').filter(w => w.length >= 3 && BOT_STOP.indexOf(w) < 0 && !actuales.has(raiz(w)));
+  if (nuevas.length) q.k = (q.k + ' ' + nuevas.join(' ')).trim();
+  marcarSucio();
+  if (+p[0] === FAQ_SEL) renderPregsAdm();
+  return nuevas;
+}
+
+function htmlEntrenar(texto, id) {
+  return '<div class="entrenar"><label class="ap-l" for="' + id + '">Asociar esta frase a la pregunta:</label><select id="' + id + '">' + selPreguntas() + '</select><button type="button" class="btn sec" data-entrenar="' + id + '" data-txt="' + esc(texto) + '">Asociar</button></div>';
+}
+
+$('aProbar').addEventListener('submit', ev => {
+  ev.preventDefault();
+  const t = limpio($('aProbarTxt').value);
+  if (!t) return;
+  const r = probar(t);
+  const IT = { humano: 'Ofrecería hablar con una persona.', menu: 'Mostraría el menú.', gracias: 'Respondería al agradecimiento.', chao: 'Se despediría.', hola: 'Saludaría y mostraría el menú.' };
+  let h = '';
+  if (r.tipo === 'intencion') h = '<p class="pr ok">' + IT[r.it] + '</p>';
+  else if (r.tipo === 'resp') h = '<p class="pr ok">Respondería: <b>' + esc(r.l[0].t) + '</b></p>';
+  else if (r.tipo === 'sug') h = '<p class="pr med">No está seguro. Sugeriría:</p><ul>' + r.l.map(x => '<li>' + esc(x.t) + '</li>').join('') + '</ul>';
+  else h = '<p class="pr mal">No encontraría respuesta y ofrecería hablar con una persona.</p>';
+  if (r.tipo !== 'intencion') h += htmlEntrenar(t, 'aProbarSel');
+  $('aProbarRes').innerHTML = h;
+});
+
+document.addEventListener('click', async ev => {
+  const b = ev.target.closest('[data-entrenar]');
+  if (!b) return;
+  const sel = $(b.dataset.entrenar);
+  const nuevas = entrenar(b.dataset.txt, sel.value);
+  const fila = b.dataset.fila;
+  toast(nuevas.length ? 'Se agregaron las palabras clave: ' + nuevas.join(', ') + '. Recuerde guardar.' : 'La pregunta ya reconoce esa frase. Recuerde guardar.');
+  if (fila) {
+    await api('consultaEstado', { sesion: SESION, fila: fila, estado: 'Resuelta' });
+    cargarConsultas();
+  } else $('aProbar').requestSubmit();
+});
+
+async function cargarConsultas() {
+  $('aConsultas').innerHTML = '<p class="vacio">Cargando…</p>';
+  const j = await api('consultas', { sesion: SESION });
+  if (!j.ok) { $('aConsultas').innerHTML = '<p class="vacio">' + esc(j.mensaje || '') + '</p>'; return; }
+  CONSULTAS = j.consultas || [];
+  $('aConsCuenta').textContent = CONSULTAS.length ? '(' + CONSULTAS.length + ')' : '';
+  $('aConsultas').innerHTML = CONSULTAS.length ? CONSULTAS.map((c, i) => '<div class="acons"><p><b>' + esc(c.texto) + '</b><small>' + esc(c.fecha) + '</small></p>' +
+    '<div class="entrenar"><select id="aCs' + i + '" aria-label="Pregunta a asociar">' + selPreguntas() + '</select><button type="button" class="btn sec" data-entrenar="aCs' + i + '" data-txt="' + esc(c.texto) + '" data-fila="' + c.fila + '">Asociar</button></div>' +
+    '<div class="acons-acc"><button type="button" class="enlace" data-crear="' + i + '">Crear pregunta nueva</button><button type="button" class="enlace" data-descartar="' + c.fila + '">Descartar</button></div></div>').join('') : '<p class="vacio">No hay consultas pendientes. Aquí aparecerán las preguntas que el asistente no supo responder.</p>';
+}
+
+$('aConsultas').addEventListener('click', async ev => {
+  const d = ev.target.closest('[data-descartar]');
+  const c = ev.target.closest('[data-crear]');
+  if (d) {
+    await api('consultaEstado', { sesion: SESION, fila: d.dataset.descartar, estado: 'Descartada' });
+    cargarConsultas();
+  } else if (c) {
+    const x = CONSULTAS[Number(c.dataset.crear)];
+    if (!FAQ_ED.length) { FAQ_ED.push({ t: 'Nuevo tema', q: [] }); FAQ_SEL = 0; }
+    FAQ_ED[FAQ_SEL].q.push({ t: x.texto.charAt(0).toUpperCase() + x.texto.slice(1), k: '', r: '', acc: '', activa: true });
+    marcarSucio();
+    renderTemasAdm();
+    renderPregsAdm();
+    await api('consultaEstado', { sesion: SESION, fila: x.fila, estado: 'Resuelta' });
+    cargarConsultas();
+    const l = $('aPregs').lastElementChild;
+    l.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => l.querySelector('textarea').focus({ preventScroll: true }), 300);
+    toast('Pregunta creada en el tema "' + FAQ_ED[FAQ_SEL].t + '". Escriba la respuesta y guarde.');
+  }
+});
+
+$('aGuardar').addEventListener('click', async () => {
+  for (let i = 0; i < FAQ_ED.length; i++) {
+    const t = FAQ_ED[i];
+    if (!limpio(t.t)) { FAQ_SEL = i; renderTemasAdm(); renderPregsAdm(); toast('Hay un tema sin nombre.', true); return; }
+    for (let j = 0; j < t.q.length; j++) {
+      if (!limpio(t.q[j].t) || !limpio(t.q[j].r)) {
+        FAQ_SEL = i;
+        renderTemasAdm();
+        renderPregsAdm();
+        const a = $('aPregs').children[j];
+        if (a) { a.classList.add('falta'); a.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        toast('Tema "' + t.t + '", pregunta ' + (j + 1) + ': falta la pregunta o la respuesta.', true);
+        return;
+      }
+    }
+  }
+  const b = $('aGuardar');
+  b.disabled = true;
+  b.textContent = 'Guardando…';
+  const j = await api('faq', { sesion: SESION, faq: FAQ_ED });
+  b.disabled = false;
+  b.textContent = 'Guardar cambios';
+  if (!j.ok) { if (j.sesion !== false) toast(j.mensaje, true); return; }
+  CFG.faq = FAQ_ED.map(t => ({ t: t.t, q: t.q.filter(q => q.activa !== false).map(q => ({ t: q.t, k: q.k, r: q.r, acc: q.acc })) })).filter(t => t.q.length);
+  cargarFaq();
+  renderFaq();
+  FAQ_SUCIO = false;
+  $('aEstado').textContent = 'Guardado · ' + j.total + ' preguntas';
+  $('aOrigen').textContent = 'Preguntas cargadas desde la hoja "Preguntas".';
+  toast('Preguntas del asistente guardadas.');
+});
+
+$('aRestaurar').addEventListener('click', () => {
+  if (!confirm('¿Reemplazar todas las preguntas por las predeterminadas? Los cambios no se guardan hasta presionar "Guardar cambios".')) return;
+  FAQ_ED = clonar(FAQ_DEF).map(t => ({ t: t.t, q: t.q.map(q => Object.assign(q, { activa: true })) }));
+  FAQ_SEL = 0;
+  marcarSucio();
+  renderTemasAdm();
+  renderPregsAdm();
+});
+
 $('reintentar').addEventListener('click', () => location.reload());
 
 window.addEventListener('error', ev => {
@@ -2474,3 +2863,4 @@ window.addEventListener('error', ev => {
 </script>
 </body>
 </html>
+
