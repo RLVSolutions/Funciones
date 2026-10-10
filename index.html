@@ -7,152 +7,354 @@
 <meta name="theme-color" content="#1f3a5f">
 <title>Levantamiento de Funciones</title>
 <style>
-:root{--bg:#f3f5f8;--card:#ffffff;--txt:#1d2733;--muted:#5b6775;--line:#d5dce4;--acc:#1f3a5f;--acc-h:#2d5a8c;--on-acc:#ffffff;--acc-soft:#e8eef5;--err:#b3261e;--err-soft:#fdecea;--ok:#1b7a3d;--ok-soft:#e6f4ea;--warn:#7a5200;--warn-soft:#fff4e0;--focus:0 0 0 3px rgba(45,90,140,.28);--sh:0 1px 2px rgba(16,24,40,.05),0 2px 6px rgba(16,24,40,.06);--r:12px}
-@media (prefers-color-scheme:dark){:root{--bg:#0f141a;--card:#171e26;--txt:#e6ebf1;--muted:#9aa6b2;--line:#2b3542;--acc:#8fb3d9;--acc-h:#b0cbe8;--on-acc:#0f141a;--acc-soft:#1c2a3a;--err:#f2b8b5;--err-soft:#3a1d1b;--ok:#8fd19e;--ok-soft:#173222;--warn:#f0c674;--warn-soft:#33270f;--focus:0 0 0 3px rgba(143,179,217,.35);--sh:none}}
+:root{--bg:#f2f4f7;--card:#ffffff;--txt:#18212d;--muted:#5a6676;--line:#d6dde5;--line2:#e7ecf1;--acc:#1f3a5f;--acc-h:#2b5487;--on-acc:#ffffff;--acc-soft:#e7eef6;--mark:#b8740b;--mark-soft:#fdf3e2;--err:#b3261e;--err-soft:#fdecea;--ok:#1b7a3d;--ok-soft:#e5f3e9;--warn:#7a5200;--warn-soft:#fff3dc;--focus:0 0 0 3px rgba(43,84,135,.28);--sh:0 1px 2px rgba(16,24,40,.05),0 2px 8px rgba(16,24,40,.05);--r:12px;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#0e131a;--card:#161d26;--txt:#e5ebf2;--muted:#9aa7b6;--line:#2a3542;--line2:#212a35;--acc:#8fb3d9;--acc-h:#b0cbe8;--on-acc:#0e131a;--acc-soft:#1b2939;--mark:#f0b54d;--mark-soft:#33270f;--err:#f2b8b5;--err-soft:#3a1d1b;--ok:#8fd19e;--ok-soft:#163021;--warn:#f0c674;--warn-soft:#33270f;--focus:0 0 0 3px rgba(143,179,217,.35);--sh:none;color-scheme:dark}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-.contenedor{max-width:760px;margin:0 auto;padding:16px 16px 120px}
-.cabecera{display:flex;gap:14px;align-items:center;padding:8px 0 18px}
-.cabecera img{height:52px;width:auto;max-width:120px;object-fit:contain;border-radius:8px}
-.empresa{margin:0;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-h1{margin:2px 0 4px;font-size:1.45rem;line-height:1.25;color:var(--acc)}
-.sub{margin:0;color:var(--muted);font-size:.95rem}
-.aviso{border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:.92rem;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.aviso.manual{background:var(--warn-soft);color:var(--warn);font-weight:600}
-.aviso.borrador{background:var(--acc-soft);color:var(--txt)}
-.tarjeta{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 16px;margin-bottom:16px;box-shadow:var(--sh)}
-h2{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:1.1rem}
-.num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--acc);color:var(--on-acc);font-size:.85rem;flex:none}
-.grid2{display:grid;grid-template-columns:1fr;gap:0 14px}
-@media (min-width:600px){.grid2{grid-template-columns:1fr 1fr}.contenedor{padding-top:28px}}
-.campo{margin-bottom:14px;min-width:0}
-.campo>label{display:block;font-weight:600;font-size:.92rem;margin-bottom:5px}
-input,select,textarea{width:100%;font:inherit;font-size:16px;color:var(--txt);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 12px;transition:border-color .15s,box-shadow .15s}
-textarea{resize:vertical;min-height:88px}
+body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.mono{font-family:var(--mono)}
+.shell{width:100%;max-width:1400px;margin:0 auto;padding-inline:clamp(16px,2.6vw,40px)}
+.top{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
+.topin{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap;padding-block:8px}
+.marca{display:flex;align-items:center;gap:12px;min-width:0}
+.marca img{height:40px;width:auto;max-width:110px;object-fit:contain}
+.emp{margin:0;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.app{margin:0;font-weight:700;font-size:1.05rem;color:var(--acc);line-height:1.2}
+.tabs{display:flex;gap:4px;background:var(--bg);padding:4px;border-radius:10px;border:1px solid var(--line)}
+.tabs button{font:inherit;font-weight:600;border:0;background:none;color:var(--muted);padding:8px 18px;border-radius:7px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--card);color:var(--acc);box-shadow:var(--sh)}
+.tabs button:focus-visible{outline:none;box-shadow:var(--focus)}
+@media (max-width:560px){.tabs{width:100%}.tabs button{flex:1}}
+main.shell,section.shell{padding-block:22px 120px}
+h1{margin:0;font-size:clamp(1.3rem,2.2vw,1.65rem);line-height:1.2;color:var(--txt);text-wrap:balance}
+h2{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:1.06rem}
+h3{margin:0 0 6px;font-size:.98rem}
+.sub{margin:4px 0 0;color:var(--muted);font-size:.93rem}
+.num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--acc);color:var(--on-acc);font-size:.8rem;flex:none}
+.tarjeta{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--sh);min-width:0}
+.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.intro-acc{display:flex;gap:10px;flex-wrap:wrap}
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start}
+@media (min-width:1100px){.layout{grid-template-columns:minmax(0,1fr) 300px}}
+.principal{display:grid;gap:18px;min-width:0}
+.lateral{display:none}
+@media (min-width:1100px){.lateral{display:grid;gap:16px;position:sticky;top:88px}}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px 16px}
+.c3,.c4,.c6,.c8,.c12{grid-column:span 12}
+@media (min-width:700px){.c3{grid-column:span 6}.c4{grid-column:span 6}.c6{grid-column:span 12}.c8{grid-column:span 12}}
+@media (min-width:1000px){.c3{grid-column:span 3}.c4{grid-column:span 4}.c6{grid-column:span 6}.c8{grid-column:span 8}}
+.campo{margin-bottom:12px;min-width:0}
+.campo>label,.lbl{display:block;font-weight:600;font-size:.88rem;margin-bottom:5px}
+.lbl small{font-weight:400;color:var(--muted)}
+input,select,textarea{width:100%;font:inherit;font-size:16px;color:var(--txt);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:9px 12px;transition:border-color .15s,box-shadow .15s}
+@media (min-width:1000px){input,select,textarea{font-size:15px}}
+input[readonly]{background:var(--bg);color:var(--muted)}
+textarea{resize:vertical;min-height:84px}
 select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 12px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:34px}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc-h);box-shadow:var(--focus)}
-.ayuda{display:block;color:var(--muted);font-size:.82rem;margin-top:4px}
-.err{display:block;color:var(--err);font-size:.82rem;margin-top:4px;min-height:0}
+.ayuda{display:block;color:var(--muted);font-size:.8rem;margin-top:4px}
+.err{display:block;color:var(--err);font-size:.8rem;margin-top:4px}
 .err:empty{display:none}
 .invalido input,.invalido select,.invalido textarea{border-color:var(--err);background:var(--err-soft)}
+.invalido .chips label{border-color:var(--err)}
 .pie{display:flex;justify-content:space-between;gap:10px}
-.contador{color:var(--muted);font-size:.78rem;margin-top:4px;margin-left:auto;flex:none}
-.leyenda{background:var(--acc-soft);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:.88rem}
-.leyenda summary{cursor:pointer;font-weight:600;color:var(--acc)}
-.leyenda ul{margin:8px 0 4px;padding-left:18px}
-.leyenda li{margin-bottom:4px}
-.funcion{border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:12px 12px 2px;margin-bottom:12px;background:var(--card)}
-.fcab{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.fnum{font-weight:700;color:var(--acc);font-size:.95rem}
-.quitar{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:5px 10px;font:inherit;font-size:.82rem;cursor:pointer}
-.quitar:hover{color:var(--err);border-color:var(--err)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:600;border-radius:10px;padding:12px 18px;cursor:pointer;border:1px solid transparent;min-height:46px}
+.contador{color:var(--muted);font-size:.75rem;margin-top:4px;margin-left:auto;flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 10px;cursor:pointer;font-size:.9rem;background:var(--card);user-select:none}
+.chips input{width:16px;height:16px;margin:0;accent-color:var(--acc)}
+.chips label:has(input:checked){border-color:var(--acc);background:var(--acc-soft);color:var(--acc);font-weight:600}
+.chips label:focus-within{box-shadow:var(--focus)}
+.otro{margin-top:10px;max-width:520px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:600;border-radius:9px;padding:10px 16px;cursor:pointer;border:1px solid transparent;min-height:42px;text-decoration:none;white-space:nowrap}
 .btn:disabled{opacity:.6;cursor:not-allowed}
-.btn:focus-visible,.quitar:focus-visible{outline:none;box-shadow:var(--focus)}
-.primario{background:var(--acc);color:var(--on-acc)}
-.primario:hover:not(:disabled){background:var(--acc-h)}
-.secundario{background:var(--card);color:var(--acc);border-color:var(--acc)}
+.btn:focus-visible{outline:none;box-shadow:var(--focus)}
+.pri{background:var(--acc);color:var(--on-acc)}
+.pri:hover:not(:disabled){background:var(--acc-h)}
+.sec{background:var(--card);color:var(--acc);border-color:var(--line)}
+.sec:hover:not(:disabled){border-color:var(--acc)}
+.txt{background:none;color:var(--muted);padding-inline:8px}
+.txt:hover{color:var(--acc)}
+.ancho{width:100%}
+.aviso{border-radius:10px;padding:11px 14px;font-size:.92rem;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.aviso.manual{background:var(--warn-soft);color:var(--warn);font-weight:600}
+.aviso.edicion{background:var(--acc-soft);color:var(--txt);border:1px solid var(--acc)}
+.aviso.borrador{background:var(--acc-soft)}
+.aviso.alerta{background:var(--mark-soft);color:var(--txt);border-left:4px solid var(--mark);border-radius:0 10px 10px 0;justify-content:flex-start}
+.enlace{background:none;border:0;color:inherit;font:inherit;font-weight:600;text-decoration:underline;cursor:pointer;padding:0}
+.funcion{display:grid;gap:4px 18px;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"num acc" "meta meta" "texto texto";border:1px solid var(--line);border-radius:10px;padding:14px 14px 2px;margin-bottom:12px;background:var(--card)}
+.fnum{grid-area:num;display:flex;align-items:center;gap:8px}
+.fnum b{display:grid;place-items:center;min-width:34px;height:34px;padding:0 6px;border-radius:9px;background:var(--acc);color:var(--on-acc);font-size:.95rem}
+.fnum span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.facc{grid-area:acc;justify-self:end}
+.fmeta{grid-area:meta;display:grid;grid-template-columns:1fr 1fr;gap:0 12px;min-width:0}
+.ftexto{grid-area:texto;min-width:0}
+.quitar{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:5px 10px;font:inherit;font-size:.8rem;cursor:pointer}
+.quitar:hover{color:var(--err);border-color:var(--err)}
+.quitar:focus-visible{outline:none;box-shadow:var(--focus)}
+@media (min-width:900px){.funcion{grid-template-columns:52px 230px minmax(0,1fr);grid-template-areas:"num meta texto" "acc meta texto";padding:16px 16px 4px}.fnum{flex-direction:column;align-items:center;align-self:start}.fnum span{display:none}.facc{justify-self:center;align-self:start}.fmeta{grid-template-columns:1fr}.quitar{padding:4px 7px;font-size:.72rem}}
 .agregar{width:100%;background:var(--card);color:var(--acc);border:1.5px dashed var(--acc)}
 .agregar:hover{background:var(--acc-soft)}
 .contadorF{margin:10px 0 0;color:var(--muted);font-size:.85rem;text-align:center}
-.errBloque{color:var(--err);font-weight:600;font-size:.9rem;margin:8px 0 0;text-align:center}
+.errBloque{color:var(--err);font-weight:600;font-size:.88rem;margin:8px 0 0}
 .errBloque:empty{display:none}
 .chk{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;cursor:pointer}
 .chk input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--acc)}
 .invalido .chk{color:var(--err)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.barra{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom));z-index:5}
-.barra .in{max-width:760px;margin:0 auto;display:flex;gap:12px;align-items:center}
-.barra .btn{flex:1}
-.barra .nota{display:none;color:var(--muted);font-size:.85rem}
-@media (min-width:600px){.barra .btn{flex:none;margin-left:auto}.barra .nota{display:block}}
-.centro{min-height:100vh;display:grid;place-items:center;padding:24px 16px;text-align:center}
-.centro .tarjeta{max-width:440px;width:100%;padding:28px 22px}
+.avance{list-style:none;margin:10px 0 16px;padding:0;display:grid;gap:8px;font-size:.9rem}
+.avance li{display:flex;gap:10px;align-items:center;color:var(--muted)}
+.avance li::before{content:"";width:18px;height:18px;border-radius:50%;border:2px solid var(--line);flex:none}
+.avance li.ok{color:var(--txt)}
+.avance li.ok::before{border-color:var(--ok);background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat}
+.mini{font-size:.8rem;color:var(--muted);margin:10px 0 0}
+.leyenda summary{cursor:pointer;font-weight:700;color:var(--acc);font-size:.92rem}
+.leyenda dl{margin:10px 0 0;display:grid;gap:8px;font-size:.84rem}
+.leyenda dt{font-weight:700}
+.leyenda dd{margin:0;color:var(--muted)}
+.leyenda h4{margin:14px 0 0;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.leyMovil{display:block}
+@media (min-width:1100px){.leyMovil{display:none}}
+.leyMovil{background:var(--acc-soft);border-radius:10px;padding:10px 14px;margin-bottom:14px}
+.leyMovil dl{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.barra{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));z-index:15}
+.barra .in{max-width:1400px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.barra span{color:var(--muted);font-size:.85rem}
+@media (min-width:1100px){.barra{display:none}}
+.centro{min-height:70vh;display:grid;place-items:center;padding:24px 16px;text-align:center}
 .spinner{width:42px;height:42px;border-radius:50%;border:4px solid var(--acc-soft);border-top-color:var(--acc);animation:gira .9s linear infinite;margin:0 auto 14px}
 @keyframes gira{to{transform:rotate(360deg)}}
-.icono{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto 12px}
+@media (prefers-reduced-motion:reduce){.spinner{animation-duration:3s}*{scroll-behavior:auto!important}}
+.icono{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;margin:0 auto 12px}
 .icono.ok{background:var(--ok-soft);color:var(--ok)}
 .icono.mal{background:var(--err-soft);color:var(--err)}
-.idbox{background:var(--acc-soft);border-radius:10px;padding:12px;margin:16px 0;font-size:.85rem;color:var(--muted)}
-.idbox b{display:block;font-size:1.25rem;color:var(--acc);letter-spacing:.04em;margin-top:2px}
-.modal{position:fixed;inset:0;background:rgba(10,15,22,.55);display:flex;align-items:flex-end;justify-content:center;z-index:10}
-.caja{background:var(--card);width:100%;max-width:680px;max-height:92vh;display:flex;flex-direction:column;border-radius:16px 16px 0 0}
-@media (min-width:600px){.modal{align-items:center;padding:24px}.caja{border-radius:16px}}
-.caja .cab{padding:18px 18px 8px;border-bottom:1px solid var(--line)}
+.exito{max-width:760px;margin:12px auto 0;text-align:center;padding:30px clamp(18px,4vw,40px)}
+.cred{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:22px 0 14px}
+.credbox{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--bg);display:grid;gap:6px;justify-items:center}
+.credbox span{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.credbox b{font-family:var(--mono);font-size:1.7rem;letter-spacing:.12em;color:var(--acc)}
+.copiar{font:inherit;font-size:.78rem;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:6px;padding:3px 10px;cursor:pointer}
+.acciones-fila{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.modal{position:fixed;inset:0;background:rgba(10,15,22,.55);display:flex;align-items:flex-end;justify-content:center;z-index:40}
+.caja{background:var(--card);width:100%;max-width:820px;max-height:92vh;display:flex;flex-direction:column;border-radius:16px 16px 0 0}
+.caja.chica{max-width:460px}
+@media (min-width:640px){.modal{align-items:center;padding:24px}.caja{border-radius:16px}}
+.caja .cab{padding:18px 20px 10px;border-bottom:1px solid var(--line)}
 .caja .cab h2{margin:0}
-.caja .cuerpo{overflow:auto;padding:14px 18px;-webkit-overflow-scrolling:touch}
-.caja .acciones{display:flex;gap:10px;padding:12px 18px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
-.caja .acciones .btn{flex:1}
-.rlista{margin:0;display:grid;gap:6px}
-.rfila{display:grid;grid-template-columns:130px 1fr;gap:10px;font-size:.92rem}
+.caja .cuerpo{overflow:auto;padding:16px 20px;-webkit-overflow-scrolling:touch}
+.caja .acc{display:flex;gap:10px;padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);justify-content:flex-end;flex-wrap:wrap}
+@media (max-width:639px){.caja .acc .btn{flex:1}}
+.rlista{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px 20px}
+.rfila{display:grid;grid-template-columns:120px minmax(0,1fr);gap:10px;font-size:.9rem}
 .rfila dt{color:var(--muted)}
 .rfila dd{margin:0;font-weight:600;word-break:break-word}
-.caja h3{font-size:1rem;margin:18px 0 8px;color:var(--acc)}
+.caja h3{font-size:.98rem;margin:18px 0 8px;color:var(--acc)}
 .rfun{margin:0;padding-left:22px}
-.rfun li{margin-bottom:12px;font-size:.92rem}
+.rfun li{margin-bottom:12px;font-size:.9rem}
 .rfun p,.rcom{margin:4px 0 0;white-space:pre-wrap;color:var(--muted);word-break:break-word}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
-.chip{font-size:.75rem;background:var(--acc-soft);color:var(--acc);padding:2px 9px;border-radius:999px;font-weight:600}
+.chip{display:inline-block;font-size:.72rem;background:var(--acc-soft);color:var(--acc);padding:2px 9px;border-radius:999px;font-weight:700;white-space:nowrap}
+.chipsI{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
 .errEnvio{background:var(--err-soft);color:var(--err);border-radius:10px;padding:10px 12px;font-size:.9rem;white-space:pre-line;margin-top:12px}
 body.bloq{overflow:hidden}
-.enlace{background:none;border:0;color:inherit;font:inherit;font-weight:600;text-decoration:underline;cursor:pointer;padding:0}
+.login{max-width:440px;margin:6vh auto 0}
+.dhead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.dacc{display:flex;gap:8px;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.kpi span{display:block;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.kpi b{display:block;font-size:1.9rem;line-height:1.15;font-variant-numeric:tabular-nums;margin-top:4px}
+.kpi.pend b{color:var(--mark)}
+.kpi.listo b{color:var(--ok)}
+.graficos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:16px}
+.barras{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.barras li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font-size:.85rem}
+.barras .bl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.barras .bv{font-variant-numeric:tabular-nums;font-weight:700}
+.barras .bt{grid-column:1/-1;height:7px;border-radius:4px;background:var(--line2);overflow:hidden}
+.barras .bt i{display:block;height:100%;background:var(--acc);border-radius:4px}
+.vacio{color:var(--muted);font-size:.88rem}
+.filtros{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.filtros input{flex:1 1 260px;width:auto}
+.filtros select{flex:0 1 200px;width:auto}
+.filtros .cuenta{color:var(--muted);font-size:.85rem;margin-left:auto}
+.tablaw{overflow-x:auto}
+.tabla{width:100%;border-collapse:collapse;font-size:.9rem}
+.tabla th{text-align:left;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tabla td{padding:11px 12px;border-bottom:1px solid var(--line2);vertical-align:top}
+.tabla tbody tr{cursor:pointer}
+.tabla tbody tr:hover td{background:var(--acc-soft)}
+.tabla tbody tr:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.tabla .n{text-align:right;font-variant-numeric:tabular-nums}
+.tabla .nom{font-weight:600}
+.pill{display:inline-block;font-size:.74rem;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.pill.Pendiente{background:var(--mark-soft);color:var(--mark)}
+.pill.Observado{background:var(--err-soft);color:var(--err)}
+.pill.Revisado{background:var(--ok-soft);color:var(--ok)}
+@media (max-width:760px){.tabla thead{display:none}.tabla,.tabla tbody,.tabla tr,.tabla td{display:block;width:100%}.tabla tr{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:6px 0}.tabla td{border:0;padding:4px 14px;display:flex;justify-content:space-between;gap:12px}.tabla td::before{content:attr(data-l);color:var(--muted);font-size:.78rem}.tabla .n{text-align:right}}
+.detgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-bottom:16px}
+@media (min-width:1000px){.detgrid{grid-template-columns:minmax(0,2fr) minmax(280px,1fr)}}
+.ddat{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 20px}
+.ddat dt{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ddat dd{margin:2px 0 0;word-break:break-word}
+.hist{list-style:none;margin:8px 0 0;padding:0;font-size:.85rem;display:grid;gap:4px;color:var(--muted)}
+.hist b{color:var(--txt)}
+.leyRev{display:flex;gap:16px;flex-wrap:wrap;font-size:.82rem;color:var(--muted);margin:-6px 0 14px}
+.leyRev span{display:inline-flex;align-items:center;gap:8px}
+.leyRev i{width:14px;height:14px;border-radius:3px;display:inline-block}
+.leyRev .d{border:1px solid var(--line);border-left:4px solid var(--acc);background:var(--card)}
+.leyRev .p{border-left:4px solid var(--mark);background:var(--mark-soft)}
+.rev{display:grid;grid-template-columns:minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:12px}
+@media (min-width:900px){.rev{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.decl{padding:14px 16px;border-left:4px solid var(--acc);background:var(--card);min-width:0}
+.prec{padding:14px 16px;border-left:4px solid var(--mark);background:var(--mark-soft);min-width:0}
+.etq{display:block;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;font-weight:800;color:var(--muted);margin-bottom:6px}
+.prec .etq{color:var(--mark)}
+.decl p{margin:6px 0 0;white-space:pre-wrap;color:var(--txt);word-break:break-word}
+.decl h3{margin:0}
+.prec textarea{background:var(--card);min-height:96px}
+.detcom{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media (min-width:900px){.detcom{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--txt);color:var(--card);padding:10px 16px;border-radius:10px;font-size:.9rem;z-index:60;max-width:calc(100% - 32px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.toast.mal{background:var(--err);color:#fff}
+@media (min-width:1100px){.toast{bottom:28px}}
+#print{display:none}
+@media print{
+@page{size:letter;margin:14mm 14mm 16mm;@bottom-right{content:"Página " counter(page) " de " counter(pages);font-family:Arial,sans-serif;font-size:8pt;color:#6b7480}}
+html,body{background:#fff!important;color:#000!important}
+body>*:not(#print){display:none!important}
+#print{display:block!important}
+}
+.pdoc{font:9.5pt/1.42 "Segoe UI",Roboto,Arial,sans-serif;color:#1a2230;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pdoc .ph{display:flex;justify-content:space-between;align-items:flex-end;gap:16pt;border-bottom:2.5pt solid #1f3a5f;padding-bottom:8pt;margin-bottom:10pt}
+.pdoc .pemp{font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:#5b6775;font-weight:700;display:flex;align-items:center;gap:8pt}
+.pdoc .pemp img{height:26pt;width:auto}
+.pdoc h1{font-size:16pt;margin:3pt 0 0;color:#1f3a5f;line-height:1.15}
+.pdoc .psub{font-size:8.5pt;color:#5b6775;margin-top:2pt}
+.pdoc .pmeta{border:1pt solid #c6d0dc;border-radius:4pt;padding:6pt 10pt;min-width:150pt;font-size:7.5pt;color:#5b6775;text-transform:uppercase;letter-spacing:.06em}
+.pdoc .pmeta b{display:block;font:700 13pt ui-monospace,Consolas,monospace;color:#1a2230;letter-spacing:.08em;text-transform:none}
+.pdoc .pmeta em{display:block;font-style:normal;text-transform:none;letter-spacing:0;font-size:8pt;margin-top:2pt}
+.pdoc h2{font-size:9.5pt;color:#1f3a5f;text-transform:uppercase;letter-spacing:.08em;margin:14pt 0 6pt;padding-bottom:3pt;border-bottom:.75pt solid #c6d0dc;break-after:avoid;display:block}
+.pdoc .pgrid{display:grid;grid-template-columns:1fr 1fr;border:.75pt solid #c6d0dc;border-radius:3pt;overflow:hidden}
+.pdoc .pgrid>div{padding:5pt 8pt;border-bottom:.75pt solid #e1e7ee;border-right:.75pt solid #e1e7ee}
+.pdoc .pgrid>div:nth-child(2n){border-right:0}
+.pdoc .pgrid .full{grid-column:1/-1;border-right:0}
+.pdoc .pgrid span{display:block;font-size:7pt;color:#5b6775;text-transform:uppercase;letter-spacing:.06em}
+.pdoc .resumen{display:flex;gap:6pt;flex-wrap:wrap;margin-bottom:6pt}
+.pdoc .resumen span{border:.75pt solid #c6d0dc;border-radius:10pt;padding:1.5pt 8pt;font-size:8pt}
+.pdoc .resumen b{color:#1f3a5f}
+.pdoc table{width:100%;border-collapse:collapse}
+.pdoc thead{display:table-header-group}
+.pdoc th{background:#1f3a5f;color:#fff;font-size:7.5pt;text-align:left;padding:5pt 6pt;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+.pdoc td{border-bottom:.75pt solid #d5dde6;padding:6pt;vertical-align:top}
+.pdoc tr{break-inside:avoid}
+.pdoc td.nn{font-weight:700;color:#1f3a5f;width:18pt}
+.pdoc td .fd{color:#3b4654;white-space:pre-wrap;margin-top:2pt}
+.pdoc .box{border:.75pt solid #c6d0dc;border-radius:3pt;padding:7pt 9pt;white-space:pre-wrap;min-height:30pt}
+.pdoc .firmas{display:grid;grid-template-columns:1fr 1fr;gap:28pt;margin-top:34pt;break-inside:avoid}
+.pdoc .firmas div{border-top:.75pt solid #1a2230;padding-top:4pt;text-align:center;font-size:8pt;color:#3b4654}
+.pdoc .pfoot{margin-top:16pt;font-size:7.5pt;color:#6b7480;border-top:.75pt solid #e1e7ee;padding-top:5pt}
+.pdoc .leyp{display:flex;gap:14pt;font-size:8pt;color:#3b4654;margin:0 0 8pt}
+.pdoc .leyp span{display:inline-flex;align-items:center;gap:5pt}
+.pdoc .leyp i{width:10pt;height:10pt;display:inline-block;border-radius:2pt}
+.pdoc .leyp .d{border:.75pt solid #c6d0dc;border-left:2.5pt solid #1f3a5f}
+.pdoc .leyp .p{background:#fdf3e2;border-left:2.5pt solid #b8740b}
+.pdoc .pfn{border:.75pt solid #c6d0dc;border-radius:3pt;margin-bottom:7pt;break-inside:avoid;overflow:hidden}
+.pdoc .pfn .pd{padding:6pt 9pt;border-left:2.5pt solid #1f3a5f}
+.pdoc .pfn .pt{display:flex;gap:8pt;align-items:baseline;justify-content:space-between}
+.pdoc .pfn .pt b{font-size:9.5pt}
+.pdoc .pfn .pt small{font-size:7.5pt;color:#5b6775;white-space:nowrap}
+.pdoc .tag{display:block;font-size:6.5pt;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#5b6775;margin-bottom:2pt}
+.pdoc .pp{background:#fdf3e2;border-top:.75pt dashed #d9a54c;border-left:2.5pt solid #b8740b;padding:6pt 9pt;white-space:pre-wrap}
+.pdoc .pp .tag{color:#8a5a08}
+.pdoc .pp.sin{background:#f6f8fa;border-left-color:#c6d0dc;color:#8a94a0}
+.pdoc .pp.sin .tag{color:#8a94a0}
+.pdoc .pdesc{white-space:pre-wrap;color:#3b4654;margin-top:2pt}
+.pdoc .bf{display:grid;grid-template-columns:repeat(6,1fr);border:.75pt solid #9aa7b6;border-radius:3pt;overflow:hidden}
+.pdoc .bf>div{border-right:.75pt solid #c6d0dc;border-bottom:.75pt solid #c6d0dc;padding:3pt 6pt;height:12.5mm}
+.pdoc .bf span{display:block;font-size:6.8pt;color:#5b6775;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.pdoc .s2{grid-column:span 2}.pdoc .s3{grid-column:span 3}.pdoc .s4{grid-column:span 4}.pdoc .s6{grid-column:span 6}
+.pdoc .bf .alto{height:auto;min-height:12.5mm}
+.pdoc .cj{display:inline-block;width:8pt;height:8pt;border:.9pt solid #1a2230;border-radius:1.5pt;vertical-align:-1pt;margin-right:4pt;flex:none}
+.pdoc .ops{display:flex;flex-wrap:wrap;gap:4pt 14pt;font-size:8.5pt;margin-top:3pt}
+.pdoc .ops label{display:inline-flex;align-items:center}
+.pdoc .ops .ln{border-bottom:.75pt solid #1a2230;min-width:120pt;display:inline-block;height:10pt}
+.pdoc .ley2{display:grid;grid-template-columns:1fr 1fr;gap:4pt 16pt;font-size:7.8pt;color:#3b4654}
+.pdoc .ley2 b{color:#1a2230}
+.pdoc .tb td{height:24mm;padding:4pt 5pt}
+.pdoc .tb .op{font-size:7.4pt;line-height:1.75;white-space:nowrap}
+.pdoc .folio{border:1pt solid #1a2230;border-radius:3pt;padding:4pt 8pt;min-width:110pt;height:30pt;font-size:7pt;text-transform:uppercase;letter-spacing:.06em;color:#5b6775}
+.pdoc .inst{font-size:8.3pt;color:#3b4654;margin:0 0 4pt}
+.pdoc .usoint{display:grid;grid-template-columns:auto 1fr 1fr 1fr;border:.75pt dashed #9aa7b6;margin-top:12pt;font-size:7pt;color:#5b6775;text-transform:uppercase;letter-spacing:.05em;break-inside:avoid}
+.pdoc .usoint div{padding:4pt 6pt;height:11mm;border-right:.75pt dashed #c6d0dc}
+.pdoc .usoint div:first-child{background:#eef2f6;font-weight:700;display:flex;align-items:center;height:auto}
+.pdoc .usoint div:last-child{border-right:0}
 </style>
 </head>
 <body>
-<section id="carga" class="centro"><div><div class="spinner" aria-hidden="true"></div><p class="sub">Cargando formulario…</p></div></section>
-
-<section id="falla" class="centro" hidden><div class="tarjeta"><div class="icono mal" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg></div><h1>No disponible</h1><p id="fallaMsg" class="sub"></p><button type="button" id="reintentar" class="btn primario" style="margin-top:16px">Reintentar</button></div></section>
-
-<section id="exito" class="centro" hidden><div class="tarjeta"><div class="icono ok" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h1>Levantamiento enviado</h1><p class="sub">Su información fue registrada correctamente. Gracias por su colaboración.</p><div class="idbox">N° de registro<b id="exitoId"></b></div><p id="exitoVersion" class="ayuda" hidden></p><button type="button" id="nuevo" class="btn secundario" style="width:100%">Registrar otro levantamiento</button></div></section>
-
-<main id="app" hidden>
-<div class="contenedor">
-<header class="cabecera">
-<img id="logo" alt="" hidden>
-<div><p id="empresa" class="empresa" hidden></p><h1>Levantamiento de Funciones por Cargo</h1><p class="sub">Registre las funciones que realiza en su cargo. Los campos con * son obligatorios.</p></div>
+<header class="top">
+<div class="shell topin">
+<div class="marca"><img id="logo" alt="" hidden><div><p id="empresa" class="emp" hidden></p><p class="app">Levantamiento de Funciones</p></div></div>
+<nav class="tabs" role="tablist" aria-label="Secciones"><button type="button" role="tab" id="tabIngreso" data-tab="ingreso" aria-selected="true">Ingreso</button><button type="button" role="tab" id="tabDash" data-tab="dash" aria-selected="false">Dashboard</button></nav>
+</div>
 </header>
 
-<div id="bannerManual" class="aviso manual" hidden>Modo transcripción de formulario en papel</div>
+<section id="carga" class="centro"><div><div class="spinner" aria-hidden="true"></div><p class="sub">Cargando formulario…</p></div></section>
+
+<section id="falla" class="centro" hidden><div class="tarjeta" style="max-width:440px"><div class="icono mal" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg></div><h1>No disponible</h1><p id="fallaMsg" class="sub"></p><button type="button" id="reintentar" class="btn pri" style="margin-top:16px">Reintentar</button></div></section>
+
+<main id="vIngreso" class="shell" hidden>
+<div class="intro">
+<div><h1 id="tituloIngreso">Registro de funciones por cargo</h1><p class="sub" id="subIngreso">Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.</p></div>
+<div class="intro-acc"><button type="button" id="btnModificar" class="btn sec">Modificar mi registro</button><button type="button" id="btnBlanco" class="btn sec">Formulario en blanco (PDF)</button></div>
+</div>
+
+<section id="buscador" class="tarjeta" hidden style="margin-bottom:18px">
+<h2>Modificar mi registro</h2>
+<p class="sub" style="margin:-8px 0 14px">Ingrese el ID y la clave que recibió al enviar su formulario. Al guardar los cambios, su ID y su clave se mantienen.</p>
+<form id="fBuscar" class="g12" novalidate>
+<div class="campo c4"><label for="bId">ID de registro</label><input id="bId" inputmode="numeric" autocomplete="off" maxlength="14" placeholder="Ej.: 12345678"><small class="ayuda">Su RUT sin puntos, sin guion y sin dígito verificador.</small></div>
+<div class="campo c4"><label for="bClave">Clave</label><input id="bClave" class="mono" maxlength="8" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="8 caracteres"></div>
+<div class="campo c4" style="display:flex;gap:8px;align-items:flex-start;padding-top:26px"><button type="submit" id="bBtn" class="btn pri">Buscar registro</button><button type="button" id="bCerrar" class="btn txt">Cancelar</button></div>
+<p id="bErr" class="errBloque c12" role="alert"></p>
+</form>
+</section>
+
+<div class="layout">
+<form id="form" class="principal" novalidate autocomplete="on">
+<div id="bannerEdicion" class="aviso edicion" hidden><span>Modificando el registro <b id="edId" class="mono"></b> · versión <span id="edVer"></span>. Su ID y su clave se mantienen al guardar.</span><button type="button" id="salirEd" class="enlace">Salir sin guardar</button></div>
+<div id="bannerManual" class="aviso manual" hidden><span>Transcripción de formulario en papel (administración)</span><button type="button" id="salirManual" class="enlace">Volver al Dashboard</button></div>
 <div id="bannerBorrador" class="aviso borrador" hidden><span>Se recuperó un borrador guardado en este dispositivo.</span><button type="button" id="descartar" class="enlace">Descartar y empezar de nuevo</button></div>
 
-<form id="form" novalidate autocomplete="on">
 <section id="secManual" class="tarjeta" hidden>
 <h2><span class="num">0</span>Datos de transcripción</h2>
-<div class="grid2">
-<div class="campo"><label for="transcritoPor">Transcrito por *</label><input id="transcritoPor" maxlength="80" autocomplete="off" placeholder="Nombre de quien digita"><small class="err"></small></div>
-<div class="campo"><label for="folio">Folio del formulario</label><input id="folio" maxlength="30" autocomplete="off" placeholder="Ej.: 0125"><small class="err"></small></div>
+<div class="g12">
+<div class="campo c6"><label for="transcritoPor">Transcrito por *</label><input id="transcritoPor" maxlength="80" autocomplete="off" placeholder="Nombre de quien digita"><small class="err"></small></div>
+<div class="campo c6"><label for="folio">Folio del formulario</label><input id="folio" maxlength="30" autocomplete="off" placeholder="Ej.: 0125"><small class="err"></small></div>
 </div>
 </section>
 
 <section class="tarjeta">
 <h2><span class="num">1</span>Datos personales</h2>
-<div class="campo"><label for="nombre">Nombre completo *</label><input id="nombre" maxlength="120" autocomplete="name" placeholder="Nombres y apellidos"><small class="err"></small></div>
-<div class="grid2">
-<div class="campo"><label for="rut">RUT *</label><input id="rut" maxlength="12" inputmode="text" autocapitalize="characters" autocomplete="off" placeholder="12.345.678-9"><small class="err"></small></div>
-<div class="campo"><label for="sucursal">Sucursal *</label><select id="sucursal"></select><small class="err"></small></div>
+<div class="g12">
+<div class="campo c6"><label for="nombre">Nombre completo *</label><input id="nombre" maxlength="120" autocomplete="name" placeholder="Nombres y apellidos"><small class="err"></small></div>
+<div class="campo c3"><label for="rut">RUT *</label><input id="rut" maxlength="12" autocapitalize="characters" autocomplete="off" placeholder="12.345.678-9"><small class="err"></small></div>
+<div class="campo c3"><label for="sucursal">Sucursal *</label><select id="sucursal"></select><small class="err"></small></div>
+<div class="campo c6"><label for="jefatura">Jefatura o dependencia directa *</label><input id="jefatura" maxlength="120" autocomplete="off" placeholder="Nombre o cargo de su jefe directo"><small class="err"></small></div>
+<div class="campo c3"><label for="telefono">Teléfono</label><input id="telefono" type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="+56 9 1234 5678"><small class="err"></small></div>
+<div class="campo c3"><label for="correo">Correo electrónico</label><input id="correo" type="email" inputmode="email" maxlength="120" autocomplete="email" placeholder="nombre@correo.cl"><small class="err"></small></div>
+<small class="ayuda c12" style="margin:-6px 0 12px">Indique al menos un teléfono o un correo para mantener sus datos actualizados.</small>
+<div class="campo c12" id="campoCargos"><span class="lbl">Cargo contractual * <small>— el que figura en su contrato. Puede marcar más de uno.</small></span><div id="cargos" class="chips" role="group" aria-label="Cargo contractual"></div><div id="campoOtro" class="otro" hidden><input id="cargoOtro" maxlength="100" autocomplete="off" placeholder="Especifique el otro cargo" aria-label="Especifique el otro cargo"></div><small class="err"></small></div>
 </div>
-<div class="grid2">
-<div class="campo"><label for="cargoSel">Cargo contractual *</label><select id="cargoSel"></select><small class="ayuda">El cargo que figura en su contrato de trabajo.</small><small class="err"></small></div>
-<div class="campo"><label for="jefatura">Jefatura o dependencia directa *</label><input id="jefatura" maxlength="120" autocomplete="off" placeholder="Nombre o cargo de su jefe directo"><small class="err"></small></div>
-</div>
-<div id="campoOtro" class="campo" hidden><label for="cargoOtro">Especifique su cargo contractual *</label><input id="cargoOtro" maxlength="100" autocomplete="off"><small class="err"></small></div>
-<div class="grid2">
-<div class="campo"><label for="telefono">Teléfono</label><input id="telefono" type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="+56 9 1234 5678"><small class="err"></small></div>
-<div class="campo"><label for="correo">Correo electrónico</label><input id="correo" type="email" inputmode="email" maxlength="120" autocomplete="email" placeholder="nombre@correo.cl"><small class="err"></small></div>
-</div>
-<small class="ayuda" style="margin-top:-6px">Indique al menos un teléfono o un correo para mantener sus datos actualizados.</small>
 </section>
 
 <section class="tarjeta">
 <h2><span class="num">2</span>Funciones que realiza</h2>
-<p class="sub" style="margin:-6px 0 12px;font-size:.9rem">Registre todas las funciones que realiza habitualmente, estén o no descritas en su contrato. Una función por bloque. Al menos una debe ser <b id="nomPrincipal">Principal</b>.</p>
-<details class="leyenda"><summary>¿Qué significa cada tipo y frecuencia?</summary><ul id="leyendaTipos"></ul><ul id="leyendaFrec"></ul></details>
+<p class="sub" style="margin:-8px 0 14px">Registre todas las funciones que realiza habitualmente, estén o no descritas en su contrato. Una función por bloque. Al menos una debe ser <b id="nomPrincipal">Principal</b>.</p>
+<details class="leyenda leyMovil"><summary>¿Qué significa cada tipo y frecuencia?</summary><div class="leyCont"></div></details>
 <div id="funciones" aria-live="polite"></div>
 <button type="button" id="agregar" class="btn agregar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar función</button>
 <p id="contadorF" class="contadorF"></p>
-<p id="errFunciones" class="errBloque" role="alert" tabindex="-1"></p>
+<p id="errFunciones" class="errBloque" role="alert" tabindex="-1" style="text-align:center"></p>
 </section>
 
 <section class="tarjeta">
@@ -160,48 +362,133 @@ body.bloq{overflow:hidden}
 <div class="campo"><label for="comentarios">Comentarios generales</label><textarea id="comentarios" maxlength="2000" rows="4" placeholder="Observaciones sobre su cargo, carga de trabajo, funciones compartidas, sugerencias, etc."></textarea></div>
 <div class="campo"><label class="chk"><input type="checkbox" id="consentimiento"><span>Declaro que la información entregada es fidedigna y autorizo su uso exclusivo para fines de gestión interna de la empresa: levantamiento de funciones y elaboración de descriptores de cargo.</span></label><small class="err"></small></div>
 </section>
-
 <div class="hp" aria-hidden="true"><label>Sitio web<input id="website" tabindex="-1" autocomplete="off"></label></div>
-
-<div class="barra"><div class="in"><span class="nota">Revise sus datos antes de enviar.</span><button type="submit" class="btn primario">Revisar y enviar</button></div></div>
 </form>
+
+<aside class="lateral">
+<div class="tarjeta">
+<h3>Avance del formulario</h3>
+<ul class="avance" id="avance"></ul>
+<button type="submit" form="form" class="btn pri ancho">Revisar y enviar</button>
+<p class="mini">Antes de enviar verá un resumen para confirmar.</p>
 </div>
+<details class="tarjeta leyenda" open><summary>Tipos de función y frecuencias</summary><div class="leyCont"></div></details>
+</aside>
+</div>
+<div class="barra"><div class="in"><span id="barraTxt"></span><button type="submit" form="form" class="btn pri">Revisar y enviar</button></div></div>
+</main>
+
+<section id="vExito" class="shell" hidden>
+<div class="exito tarjeta">
+<div class="icono ok" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+<h1 id="exTit">Registro enviado</h1>
+<p class="sub" id="exSub"></p>
+<div class="cred">
+<div class="credbox"><span>ID de registro</span><b id="exId"></b><button type="button" class="copiar" data-copia="exId">Copiar</button></div>
+<div class="credbox" id="exClaveBox"><span>Clave de seguridad</span><b id="exClave"></b><button type="button" class="copiar" data-copia="exClave">Copiar</button></div>
+</div>
+<div id="exNota" class="aviso alerta"></div>
+<div class="acciones-fila"><button type="button" id="exPdf" class="btn pri">Imprimir / guardar PDF</button><button type="button" id="exOtro" class="btn sec">Volver al inicio</button></div>
+</div>
+</section>
+
+<main id="vDash" class="shell" hidden>
+<section id="dLogin" class="tarjeta login">
+<h1>Acceso al Dashboard</h1>
+<p class="sub">Ingrese el código de acceso de administración.</p>
+<form id="fLogin" novalidate style="margin-top:16px">
+<div class="campo"><label for="lCodigo">Código de acceso</label><input id="lCodigo" type="password" autocomplete="current-password" maxlength="40"></div>
+<button type="submit" id="lBtn" class="btn pri ancho">Ingresar</button>
+<p id="lErr" class="errBloque" role="alert"></p>
+</form>
+</section>
+
+<section id="dPanel" hidden>
+<div class="dhead">
+<div><h1>Dashboard</h1><p class="sub" id="dSub"></p></div>
+<div class="dacc"><button type="button" id="dManual" class="btn pri">Transcribir formulario en papel</button><button type="button" id="dRefrescar" class="btn sec">Actualizar</button><button type="button" id="dCodigo" class="btn sec">Cambiar código</button><button type="button" id="dSalir" class="btn txt">Cerrar sesión</button></div>
+</div>
+<div class="kpis" id="kpis"></div>
+<div class="graficos" id="graficos"></div>
+<section class="tarjeta">
+<div class="filtros"><input id="fTexto" type="search" placeholder="Buscar por nombre, RUT, ID o cargo" aria-label="Buscar"><select id="fSuc" aria-label="Filtrar por sucursal"></select><select id="fEstado" aria-label="Filtrar por estado"></select><span class="cuenta" id="fCuenta"></span></div>
+<div class="tablaw"><table class="tabla"><thead><tr><th>Nombre</th><th>ID</th><th>Sucursal</th><th>Cargo(s)</th><th class="n">Funciones</th><th class="n">Precisiones</th><th>Actualizado</th><th>Estado</th></tr></thead><tbody id="tBody"></tbody></table></div>
+</section>
+</section>
+
+<section id="dDetalle" hidden>
+<div class="dhead">
+<div><button type="button" id="volver" class="btn txt" style="padding-left:0">← Volver al listado</button><h1 id="detNombre"></h1><p class="sub" id="detSub"></p></div>
+<div class="dacc"><button type="button" id="detPdf" class="btn sec">Reporte de revisión (PDF)</button><button type="button" id="detClave" class="btn sec">Generar nueva clave</button><button type="button" id="detGuardar" class="btn pri">Guardar revisión</button></div>
+</div>
+<div class="detgrid">
+<section class="tarjeta"><h2>Datos declarados</h2><dl class="ddat" id="detDatos"></dl></section>
+<section class="tarjeta">
+<h2>Revisión</h2>
+<div class="campo"><label for="detEstado">Estado</label><select id="detEstado"></select></div>
+<p class="mini" id="detFRev"></p>
+<p class="mini" id="detClaveInfo"></p>
+<h3 style="margin-top:14px">Historial de versiones</h3>
+<ul class="hist" id="detHist"></ul>
+</section>
+</div>
+<section class="tarjeta" style="margin-bottom:16px">
+<h2>Funciones declaradas y precisiones</h2>
+<div class="leyRev"><span><i class="d"></i>Declarado por el trabajador</span><span><i class="p"></i>Precisión de revisión</span></div>
+<div id="detFunciones"></div>
+</section>
+<section class="tarjeta detcom">
+<div><span class="etq">Comentario general del trabajador</span><div class="decl" style="border-radius:8px;border:1px solid var(--line);border-left:4px solid var(--acc)"><p id="detComTrab" style="margin:0"></p></div></div>
+<div class="prec" style="border-radius:8px"><label class="etq" for="detComRev">Comentario general de revisión</label><textarea id="detComRev" maxlength="3000" rows="4" placeholder="Conclusiones, ajustes al cargo, observaciones generales"></textarea></div>
+</section>
+</section>
 </main>
 
 <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTit" hidden>
 <div class="caja">
 <div class="cab"><h2 id="modalTit">Revise su información</h2></div>
 <div class="cuerpo"><div id="resumen"></div><div id="errEnvio" class="errEnvio" role="alert" hidden></div></div>
-<div class="acciones"><button type="button" id="corregir" class="btn secundario">Corregir</button><button type="button" id="confirmar" class="btn primario">Confirmar y enviar</button></div>
+<div class="acc"><button type="button" id="corregir" class="btn sec">Corregir</button><button type="button" id="confirmar" class="btn pri">Confirmar y enviar</button></div>
 </div>
 </div>
 
+<div id="dlg" class="modal" role="dialog" aria-modal="true" aria-labelledby="dlgTit" hidden>
+<div class="caja chica"><div class="cab"><h2 id="dlgTit"></h2></div><div class="cuerpo" id="dlgCuerpo"></div><div class="acc" id="dlgAcc"></div></div>
+</div>
+
+<div id="toast" class="toast" role="status" hidden></div>
+<div id="print"></div>
+
 <script>
-const API_URL = 'https://script.google.com/macros/s/AKfycbzdyig-r-PoPUTOiA2LAMSj0tpXThfyuCIH8U0R4dLLoYxmwKtR90Tgd-xleFOZNfA9/exec';
-const API_TOKEN = 'e6ef02276f5e465cb4a7e472';
-const MODO = new URLSearchParams(location.search).get('modo') === 'manual' ? 'manual' : 'web';
-const CLAVE = 'lf_borrador_' + MODO;
-const CAMPOS = ['transcritoPor', 'folio', 'nombre', 'rut', 'sucursal', 'cargoSel', 'cargoOtro', 'jefatura', 'telefono', 'correo', 'comentarios'];
+const API_URL = 'PEGAR_AQUI_LA_URL_QUE_TERMINA_EN_EXEC';
+const API_TOKEN = 'PEGAR_AQUI_EL_TOKEN';
 const OTRO = '__otro__';
 const RE_MAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const CAMPOS = ['transcritoPor', 'folio', 'nombre', 'rut', 'sucursal', 'jefatura', 'telefono', 'correo', 'cargoOtro', 'comentarios'];
 let CFG = null;
 let funciones = [];
+let uid = 0;
 let enviando = false;
 let tGuardar = null;
-let uid = 0;
+let EDIT = null;
+let MANUAL = false;
+let SESION = null;
+let LISTA = [];
+let DET = null;
+let sucio = false;
+let ULTIMO = null;
+let tab = 'ingreso';
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const limpio = s => String(s == null ? '' : s).trim();
+const hoy = () => { const d = new Date(); const p = n => String(n).padStart(2, '0'); return p(d.getDate()) + '-' + p(d.getMonth() + 1) + '-' + d.getFullYear() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()); };
 
-function vista(v) {
-  ['carga', 'falla', 'app', 'exito'].forEach(x => { $(x).hidden = x !== v; });
-  window.scrollTo(0, 0);
-}
-
-function falla(msg) {
-  $('fallaMsg').textContent = msg;
-  vista('falla');
+function ss(k, v) {
+  try {
+    if (v === undefined) return sessionStorage.getItem(k);
+    if (v === null) sessionStorage.removeItem(k); else sessionStorage.setItem(k, v);
+  } catch (e) { return null; }
 }
 
 async function fetchT(url, op, ms) {
@@ -214,8 +501,72 @@ async function fetchT(url, op, ms) {
   }
 }
 
+async function api(accion, datos, ms) {
+  let j;
+  try {
+    const r = await fetchT(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(Object.assign({ token: API_TOKEN, accion: accion }, datos || {})) }, ms || 45000);
+    j = await r.json();
+  } catch (e) {
+    return { ok: false, red: true, mensaje: 'No se pudo conectar con el servicio. Revise su conexión e intente nuevamente.' };
+  }
+  if (j && j.sesion === false) finSesion(j.mensaje);
+  return j || { ok: false, mensaje: 'Respuesta inválida del servicio.' };
+}
+
+function toast(msg, mal) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (mal ? ' mal' : '');
+  t.hidden = false;
+  clearTimeout(toast.t);
+  toast.t = setTimeout(() => { t.hidden = true; }, 3800);
+}
+
+function copiar(texto, btn) {
+  const ok = () => { if (btn) { const o = btn.textContent; btn.textContent = 'Copiado'; setTimeout(() => { btn.textContent = o; }, 1500); } };
+  try {
+    navigator.clipboard.writeText(texto).then(ok, () => toast('Seleccione el texto y cópielo manualmente.'));
+  } catch (e) {
+    toast('Seleccione el texto y cópielo manualmente.');
+  }
+}
+
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-copia]');
+  if (b) copiar($(b.dataset.copia).textContent, b);
+});
+
+function mostrar(ids) {
+  ['carga', 'falla', 'vIngreso', 'vExito', 'vDash'].forEach(x => { $(x).hidden = ids.indexOf(x) < 0; });
+}
+
+function irTab(t, sinScroll) {
+  tab = t;
+  $('tabIngreso').setAttribute('aria-selected', String(t === 'ingreso'));
+  $('tabDash').setAttribute('aria-selected', String(t === 'dash'));
+  if (t === 'ingreso') mostrar([ULTIMO && ULTIMO.mostrar ? 'vExito' : 'vIngreso']);
+  else {
+    mostrar(['vDash']);
+    vistaDash();
+  }
+  try { history.replaceState(null, '', t === 'dash' ? '#dashboard' : location.pathname + location.search); } catch (e) {}
+  if (!sinScroll) window.scrollTo(0, 0);
+}
+
+document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+  if (b.dataset.tab === tab) return;
+  if (tab === 'dash' && sucio && !confirm('Tiene cambios de revisión sin guardar. ¿Salir de todos modos?')) return;
+  if (tab === 'dash' && sucio) sucio = false;
+  irTab(b.dataset.tab);
+}));
+
+function falla(msg) {
+  $('fallaMsg').textContent = msg;
+  mostrar(['falla']);
+}
+
 async function cargar() {
-  vista('carga');
+  mostrar(['carga']);
   if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(API_URL)) {
     falla('El formulario aún no está configurado: falta la dirección del servicio.');
     return;
@@ -225,6 +576,7 @@ async function cargar() {
     const j = await r.json();
     if (!j || !j.ok || !Array.isArray(j.tipos) || !j.tipos.length) throw new Error('config');
     CFG = j;
+    CFG.estados = CFG.estados || ['Pendiente', 'Observado', 'Revisado'];
     iniciar();
   } catch (e) {
     falla('No fue posible cargar el formulario. Revise su conexión e intente nuevamente.');
@@ -251,22 +603,29 @@ function iniciar() {
     $('logo').alt = emp;
     $('logo').hidden = false;
   }
-  llenar($('sucursal'), CFG.sucursales, false);
-  llenar($('cargoSel'), CFG.cargos, true);
+  llenar($('sucursal'), CFG.sucursales);
+  $('cargos').innerHTML = CFG.cargos.map((c, i) => '<label><input type="checkbox" name="cargo" id="cg' + i + '" value="' + esc(c) + '"><span>' + esc(c) + '</span></label>').join('') + '<label><input type="checkbox" name="cargo" id="cgOtro" value="' + OTRO + '"><span>Otro (especificar)</span></label>';
   $('nomPrincipal').textContent = tipoPrincipal();
-  $('leyendaTipos').innerHTML = CFG.tipos.map(t => '<li><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</li>').join('');
-  $('leyendaFrec').innerHTML = CFG.frecuencias.map(t => '<li><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</li>').join('');
-  const manual = MODO === 'manual';
-  $('secManual').hidden = !manual;
-  $('bannerManual').hidden = !manual;
+  const ley = '<dl>' + CFG.tipos.map(t => '<div><dt>' + esc(t.nombre) + '</dt><dd>' + esc(t.def) + '</dd></div>').join('') + '</dl><h4>Frecuencias</h4><dl>' + CFG.frecuencias.map(t => '<div><dt>' + esc(t.nombre) + '</dt><dd>' + esc(t.def) + '</dd></div>').join('') + '</dl>';
+  document.querySelectorAll('.leyCont').forEach(x => { x.innerHTML = ley; });
+  $('fSuc').innerHTML = '<option value="">Todas las sucursales</option>' + CFG.sucursales.map(s => '<option>' + esc(s) + '</option>').join('');
+  $('fEstado').innerHTML = '<option value="">Todos los estados</option>' + CFG.estados.map(s => '<option>' + esc(s) + '</option>').join('');
+  $('detEstado').innerHTML = CFG.estados.map(s => '<option>' + esc(s) + '</option>').join('');
+  SESION = ss('lf_sesion');
   if (!restaurar()) reiniciarFunciones();
   toggleOtro();
   renderFunciones();
-  vista('app');
+  modoUI();
+  irTab(location.hash === '#dashboard' ? 'dash' : 'ingreso', true);
 }
 
-function llenar(sel, lista, otro) {
-  sel.innerHTML = '<option value="">Seleccione…</option>' + lista.map(x => '<option value="' + esc(x) + '">' + esc(x) + '</option>').join('') + (otro ? '<option value="' + OTRO + '">Otro (especificar)</option>' : '');
+function llenar(sel, lista) {
+  sel.innerHTML = '<option value="">Seleccione…</option>' + lista.map(x => '<option value="' + esc(x) + '">' + esc(x) + '</option>').join('');
+}
+
+function selValor(sel, v) {
+  if (v && !Array.from(sel.options).some(o => o.value === v)) sel.insertAdjacentHTML('beforeend', '<option value="' + esc(v) + '">' + esc(v) + '</option>');
+  sel.value = v || '';
 }
 
 function nueva(tipo) {
@@ -289,22 +648,28 @@ function opciones(lista, sel) {
 function renderFunciones() {
   $('funciones').innerHTML = funciones.map((f, i) => `
 <article class="funcion" data-uid="${f.uid}">
-<div class="fcab"><span class="fnum">Función N° ${i + 1}</span><button type="button" class="quitar" data-accion="quitar" aria-label="Eliminar función ${i + 1}">Eliminar</button></div>
-<div class="grid2">
+<div class="fnum"><b>${i + 1}</b><span>Función</span></div>
+<div class="facc"><button type="button" class="quitar" data-accion="quitar" aria-label="Eliminar función ${i + 1}">Eliminar</button></div>
+<div class="fmeta">
 <div class="campo"><label for="t${f.uid}">Tipo de función *</label><select id="t${f.uid}" data-k="tipo">${opciones(CFG.tipos, f.tipo)}</select><small class="ayuda def">${esc(defTipo(f.tipo))}</small><small class="err"></small></div>
 <div class="campo"><label for="q${f.uid}">Frecuencia *</label><select id="q${f.uid}" data-k="frecuencia">${opciones(CFG.frecuencias, f.frecuencia)}</select><small class="err"></small></div>
 </div>
+<div class="ftexto">
 <div class="campo"><label for="f${f.uid}">Función *</label><input id="f${f.uid}" data-k="funcion" maxlength="200" autocomplete="off" placeholder="Ej.: Atención y venta a clientes en sala" value="${esc(f.funcion)}"><small class="err"></small></div>
 <div class="campo"><label for="d${f.uid}">Descripción / Especificación *</label><textarea id="d${f.uid}" data-k="descripcion" maxlength="1500" rows="3" placeholder="En qué consiste, cómo la realiza, con qué herramientas o sistemas y qué resultado entrega.">${esc(f.descripcion)}</textarea><div class="pie"><small class="err"></small><small class="contador">${f.descripcion.length}/1500</small></div></div>
+</div>
 </article>`).join('');
   contadorF();
+  avance();
 }
 
 function contadorF() {
   const pr = tipoPrincipal();
   const n = funciones.length;
   const p = funciones.filter(f => f.tipo === pr).length;
-  $('contadorF').textContent = n + (n === 1 ? ' función' : ' funciones') + ' · ' + p + ' ' + pr.toLowerCase() + (p === 1 ? '' : 'es') + ' · máximo ' + maxF();
+  const t = n + (n === 1 ? ' función' : ' funciones') + ' · ' + p + ' ' + pr.toLowerCase() + (p === 1 ? '' : 'es');
+  $('contadorF').textContent = t + ' · máximo ' + maxF();
+  $('barraTxt').textContent = t;
   $('agregar').disabled = n >= maxF();
 }
 
@@ -330,6 +695,7 @@ function onFuncion(ev) {
   if (k === 'descripcion') art.querySelector('.contador').textContent = f.descripcion.length + '/1500';
   quitarError(ev.target);
   contadorF();
+  avance();
   programarGuardado();
 }
 
@@ -398,7 +764,7 @@ function marcar(el, msg) {
   c.querySelector('.err').textContent = msg;
 }
 
-$('rut').addEventListener('input', () => { $('rut').value = rutFormato($('rut').value); });
+$('rut').addEventListener('input', () => { if (!$('rut').readOnly) $('rut').value = rutFormato($('rut').value); });
 $('rut').addEventListener('blur', () => {
   const v = limpio($('rut').value);
   if (v && !rutValido(v)) marcar($('rut'), 'RUT inválido. Revise el dígito verificador.');
@@ -407,12 +773,30 @@ $('telefono').addEventListener('blur', () => {
   const t = telNormal($('telefono').value);
   if (t) $('telefono').value = t;
 });
-$('cargoSel').addEventListener('change', toggleOtro);
+
+function getCargos() {
+  const out = Array.from(document.querySelectorAll('#cargos input:checked')).map(x => x.value).filter(v => v !== OTRO);
+  if ($('cgOtro') && $('cgOtro').checked && limpio($('cargoOtro').value)) out.push(limpio($('cargoOtro').value));
+  return out;
+}
+
+function setCargos(lista) {
+  const conocidos = CFG.cargos;
+  document.querySelectorAll('#cargos input').forEach(x => { x.checked = lista.indexOf(x.value) >= 0; });
+  const otros = lista.filter(c => conocidos.indexOf(c) < 0 && c !== OTRO);
+  $('cgOtro').checked = otros.length > 0;
+  $('cargoOtro').value = otros.join(', ');
+  toggleOtro();
+}
 
 function toggleOtro() {
-  const otro = $('cargoSel').value === OTRO;
-  $('campoOtro').hidden = !otro;
+  $('campoOtro').hidden = !($('cgOtro') && $('cgOtro').checked);
 }
+
+$('cargos').addEventListener('change', () => {
+  toggleOtro();
+  if ($('cgOtro').checked && !limpio($('cargoOtro').value)) $('cargoOtro').focus();
+});
 
 function onCampo(ev) {
   if (ev.target.closest('#funciones') || ev.target.id === 'website') return;
@@ -421,31 +805,50 @@ function onCampo(ev) {
     quitarError($('telefono'));
     quitarError($('correo'));
   }
+  avance();
   programarGuardado();
 }
 
 $('form').addEventListener('input', onCampo);
 $('form').addEventListener('change', onCampo);
 
+function avance() {
+  if (!CFG) return;
+  const v = id => limpio($(id).value);
+  const tel = v('telefono');
+  const mail = v('correo');
+  const datos = v('nombre').length >= 5 && rutValido(v('rut')) && !!v('sucursal') && v('jefatura').length >= 2 && (!!tel || !!mail) && (!tel || !!telNormal(tel)) && (!mail || RE_MAIL.test(mail)) && (!MANUAL || v('transcritoPor').length >= 3);
+  const completas = funciones.filter(f => f.tipo && f.frecuencia && limpio(f.funcion).length >= 3 && limpio(f.descripcion).length >= 5).length;
+  const items = [
+    ['Datos personales', datos],
+    ['Cargo contractual', getCargos().length > 0],
+    ['Funciones completas (' + completas + '/' + funciones.length + ')', completas === funciones.length],
+    ['Al menos una ' + tipoPrincipal().toLowerCase(), funciones.some(f => f.tipo === tipoPrincipal())],
+    ['Declaración aceptada', $('consentimiento').checked]
+  ];
+  $('avance').innerHTML = items.map(x => '<li class="' + (x[1] ? 'ok' : '') + '">' + esc(x[0]) + '</li>').join('');
+}
+
 function validar() {
-  document.querySelectorAll('.campo.invalido').forEach(c => c.classList.remove('invalido'));
-  document.querySelectorAll('.err').forEach(e => { e.textContent = ''; });
+  document.querySelectorAll('#form .campo.invalido').forEach(c => c.classList.remove('invalido'));
+  document.querySelectorAll('#form .err').forEach(e => { e.textContent = ''; });
   $('errFunciones').textContent = '';
   const malos = [];
   const mal = (el, msg) => { marcar(el, msg); malos.push(el); };
   const v = id => limpio($(id).value);
-  if (MODO === 'manual' && v('transcritoPor').length < 3) mal($('transcritoPor'), 'Indique quién transcribe el formulario.');
+  if (MANUAL && v('transcritoPor').length < 3) mal($('transcritoPor'), 'Indique quién transcribe el formulario.');
   if (v('nombre').length < 5) mal($('nombre'), 'Ingrese nombres y apellidos.');
   if (!rutValido(v('rut'))) mal($('rut'), 'RUT inválido. Revise el dígito verificador.');
   if (!v('sucursal')) mal($('sucursal'), 'Seleccione una sucursal.');
-  if (!v('cargoSel')) mal($('cargoSel'), 'Seleccione su cargo contractual.');
-  else if (v('cargoSel') === OTRO && v('cargoOtro').length < 2) mal($('cargoOtro'), 'Indique su cargo contractual.');
   if (v('jefatura').length < 2) mal($('jefatura'), 'Indique su jefatura o dependencia directa.');
   const tel = v('telefono');
   const mail = v('correo');
   if (tel && !telNormal(tel)) mal($('telefono'), 'Teléfono inválido. Ej.: +56 9 1234 5678');
   if (mail && !RE_MAIL.test(mail)) mal($('correo'), 'Correo inválido.');
   if (!tel && !mail) mal($('telefono'), 'Indique al menos un teléfono o un correo.');
+  if ($('cgOtro').checked && v('cargoOtro').length < 2) mal($('cargos'), 'Especifique el otro cargo.');
+  else if (!getCargos().length) mal($('cargos'), 'Marque al menos un cargo contractual.');
+  else if (getCargos().length > (CFG.maxCargos || 6)) mal($('cargos'), 'Puede marcar hasta ' + (CFG.maxCargos || 6) + ' cargos.');
   funciones.forEach(f => {
     const art = $('funciones').querySelector('[data-uid="' + f.uid + '"]');
     const q = k => art.querySelector('[data-k="' + k + '"]');
@@ -463,22 +866,18 @@ function validar() {
   if (malos.length) {
     const m = malos[0];
     m.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    setTimeout(() => m.focus({ preventScroll: true }), 350);
+    setTimeout(() => { const f = m.matches('input,select,textarea') ? m : m.querySelector('input,select,textarea') || m; f.focus({ preventScroll: true }); }, 350);
   }
   return !malos.length;
 }
 
 function datos() {
   const v = id => limpio($(id).value);
-  return {
-    token: API_TOKEN,
-    modo: MODO,
-    transcritoPor: MODO === 'manual' ? v('transcritoPor') : '',
-    folio: MODO === 'manual' ? v('folio') : '',
+  const d = {
     nombre: v('nombre').replace(/\s+/g, ' '),
     rut: rutFormato(v('rut')),
     sucursal: v('sucursal'),
-    cargo: v('cargoSel') === OTRO ? v('cargoOtro') : v('cargoSel'),
+    cargos: getCargos(),
     jefatura: v('jefatura'),
     telefono: v('telefono') ? telNormal(v('telefono')) : '',
     correo: v('correo').toLowerCase(),
@@ -487,73 +886,120 @@ function datos() {
     website: $('website').value,
     funciones: funciones.map(f => ({ tipo: f.tipo, funcion: limpio(f.funcion), descripcion: limpio(f.descripcion), frecuencia: f.frecuencia }))
   };
+  if (MANUAL) Object.assign(d, { modo: 'manual', sesion: SESION, transcritoPor: v('transcritoPor'), folio: v('folio') });
+  if (EDIT) Object.assign(d, { id: EDIT.id, clave: EDIT.clave });
+  return d;
 }
 
 function resumenHtml(d) {
   const fila = (k, val) => val ? '<div class="rfila"><dt>' + esc(k) + '</dt><dd>' + esc(val) + '</dd></div>' : '';
   return '<dl class="rlista">' +
-    (MODO === 'manual' ? fila('Transcrito por', d.transcritoPor) + fila('Folio', d.folio) : '') +
-    fila('Nombre', d.nombre) + fila('RUT', d.rut) + fila('Sucursal', d.sucursal) + fila('Cargo contractual', d.cargo) +
+    (MANUAL ? fila('Transcrito por', d.transcritoPor) + fila('Folio', d.folio) : '') +
+    fila('Nombre', d.nombre) + fila('RUT', d.rut) + fila('Sucursal', d.sucursal) + fila('Cargo(s)', d.cargos.join(', ')) +
     fila('Jefatura', d.jefatura) + fila('Teléfono', d.telefono) + fila('Correo', d.correo) + '</dl>' +
     '<h3>Funciones (' + d.funciones.length + ')</h3><ol class="rfun">' +
-    d.funciones.map(f => '<li><b>' + esc(f.funcion) + '</b><div class="chips"><span class="chip">' + esc(f.tipo) + '</span><span class="chip">' + esc(f.frecuencia) + '</span></div><p>' + esc(f.descripcion) + '</p></li>').join('') +
+    d.funciones.map(f => '<li><b>' + esc(f.funcion) + '</b><div class="chipsI"><span class="chip">' + esc(f.tipo) + '</span><span class="chip">' + esc(f.frecuencia) + '</span></div><p>' + esc(f.descripcion) + '</p></li>').join('') +
     '</ol>' + (d.comentarios ? '<h3>Comentarios</h3><p class="rcom">' + esc(d.comentarios) + '</p>' : '');
 }
 
 $('form').addEventListener('submit', ev => {
   ev.preventDefault();
   if (!validar()) return;
+  $('modalTit').textContent = EDIT ? 'Revise los cambios antes de guardar' : 'Revise su información';
+  $('confirmar').textContent = EDIT ? 'Guardar cambios' : 'Confirmar y enviar';
   $('resumen').innerHTML = resumenHtml(datos());
   $('errEnvio').hidden = true;
-  $('modal').hidden = false;
-  document.body.classList.add('bloq');
+  abrirModal('modal');
   $('modal').querySelector('.cuerpo').scrollTop = 0;
   $('confirmar').focus();
 });
 
-function cerrarModal() {
-  if (enviando) return;
-  $('modal').hidden = true;
-  document.body.classList.remove('bloq');
+function abrirModal(id) {
+  $(id).hidden = false;
+  document.body.classList.add('bloq');
 }
 
-$('corregir').addEventListener('click', cerrarModal);
-$('modal').addEventListener('click', ev => { if (ev.target === $('modal')) cerrarModal(); });
-document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && !$('modal').hidden) cerrarModal(); });
+function cerrarModal(id) {
+  if (id === 'modal' && enviando) return;
+  $(id).hidden = true;
+  if ($('modal').hidden && $('dlg').hidden) document.body.classList.remove('bloq');
+}
+
+$('corregir').addEventListener('click', () => cerrarModal('modal'));
+['modal', 'dlg'].forEach(id => $(id).addEventListener('click', ev => { if (ev.target === $(id)) cerrarModal(id); }));
+document.addEventListener('keydown', ev => {
+  if (ev.key !== 'Escape') return;
+  if (!$('dlg').hidden) cerrarModal('dlg');
+  else if (!$('modal').hidden) cerrarModal('modal');
+});
 
 $('confirmar').addEventListener('click', async () => {
   if (enviando) return;
   enviando = true;
   const btn = $('confirmar');
+  const txt = btn.textContent;
   btn.disabled = true;
   $('corregir').disabled = true;
   btn.textContent = 'Enviando…';
   $('errEnvio').hidden = true;
-  try {
-    const r = await fetchT(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(datos()) }, 45000);
-    const j = await r.json();
-    if (!j || !j.ok) {
-      const e = new Error((j && j.mensaje) || 'No fue posible registrar el levantamiento.');
-      e.servidor = true;
-      throw e;
+  const d = datos();
+  const j = await api('guardar', d);
+  enviando = false;
+  btn.disabled = false;
+  $('corregir').disabled = false;
+  btn.textContent = txt;
+  if (!j.ok) {
+    if (j.existe) {
+      cerrarModal('modal');
+      abrirBuscador(j.id, j.mensaje);
+      return;
     }
-    borrarBorrador();
-    $('exitoId').textContent = j.id;
-    $('exitoVersion').hidden = !(j.version > 1);
-    $('exitoVersion').textContent = j.version > 1 ? 'Se actualizó su registro anterior. Esta es la versión ' + j.version + '.' : '';
-    enviando = false;
-    cerrarModal();
-    vista('exito');
-  } catch (e) {
-    $('errEnvio').textContent = e.servidor ? e.message : 'No se pudo conectar con el servicio. Revise su conexión e intente nuevamente. Sus datos siguen guardados en este dispositivo.';
+    $('errEnvio').textContent = j.red ? j.mensaje + ' Sus datos siguen guardados en este dispositivo.' : j.mensaje;
     $('errEnvio').hidden = false;
     $('errEnvio').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  } finally {
-    enviando = false;
-    btn.disabled = false;
-    $('corregir').disabled = false;
-    btn.textContent = 'Confirmar y enviar';
+    return;
   }
+  borrarBorrador();
+  cerrarModal('modal');
+  ULTIMO = Object.assign({}, d, { id: j.id, version: j.version, fecha: j.fecha || hoy(), origen: MANUAL ? 'Manual' : 'Web', transcrito: d.transcritoPor, mostrar: true });
+  pantallaExito(j);
+});
+
+function pantallaExito(j) {
+  const nuevaClave = !!j.clave;
+  $('exId').textContent = j.id;
+  $('exClave').textContent = j.clave || '';
+  $('exClaveBox').hidden = !nuevaClave;
+  if (MANUAL) {
+    $('exTit').textContent = 'Formulario transcrito';
+    $('exSub').textContent = 'El registro quedó guardado como versión ' + j.version + '.';
+    $('exNota').innerHTML = nuevaClave ? '<span><b>Entregue el ID y la clave al trabajador.</b> Con ellos podrá revisar y modificar su registro desde la pestaña Ingreso.</span>' : '<span>El trabajador ya tenía clave asignada; se mantiene la misma.</span>';
+    $('exOtro').textContent = 'Transcribir otro formulario';
+  } else if (EDIT) {
+    $('exTit').textContent = 'Cambios guardados';
+    $('exSub').textContent = 'Su registro se actualizó a la versión ' + j.version + '. Su ID y su clave siguen siendo los mismos.';
+    $('exNota').innerHTML = '<span>Para futuras modificaciones use nuevamente su ID y su clave en <b>Modificar mi registro</b>.</span>';
+    $('exOtro').textContent = 'Volver al inicio';
+  } else {
+    $('exTit').textContent = 'Registro enviado';
+    $('exSub').textContent = 'Su información fue registrada correctamente. Gracias por su colaboración.';
+    $('exNota').innerHTML = '<span><b>Tome nota de su ID y su clave.</b> Los necesitará para modificar o actualizar su registro en el futuro. Por seguridad, la clave no se puede recuperar; si la pierde, solicite una nueva a su jefatura.</span>';
+    $('exOtro').textContent = 'Volver al inicio';
+  }
+  mostrar(['vExito']);
+  window.scrollTo(0, 0);
+}
+
+$('exPdf').addEventListener('click', () => { if (ULTIMO) imprimirComprobante(ULTIMO); });
+
+$('exOtro').addEventListener('click', () => {
+  ULTIMO = null;
+  const man = MANUAL;
+  EDIT = null;
+  limpiarFormulario();
+  modoUI();
+  irTab('ingreso');
+  if (man) setTimeout(() => $('folio').focus(), 50);
 });
 
 function programarGuardado() {
@@ -561,25 +1007,36 @@ function programarGuardado() {
   tGuardar = setTimeout(guardarBorrador, 400);
 }
 
+function claveBorrador() {
+  return EDIT ? null : (MANUAL ? 'lf_borrador_manual' : 'lf_borrador_web');
+}
+
 function guardarBorrador() {
+  const k = claveBorrador();
+  if (!k) return;
   try {
     const c = {};
     CAMPOS.forEach(id => { c[id] = $(id).value; });
+    c.cargos = Array.from(document.querySelectorAll('#cargos input:checked')).map(x => x.value);
     c.consentimiento = $('consentimiento').checked;
-    localStorage.setItem(CLAVE, JSON.stringify({ c: c, f: funciones.map(f => ({ tipo: f.tipo, funcion: f.funcion, descripcion: f.descripcion, frecuencia: f.frecuencia })) }));
+    localStorage.setItem(k, JSON.stringify({ c: c, f: funciones.map(f => ({ tipo: f.tipo, funcion: f.funcion, descripcion: f.descripcion, frecuencia: f.frecuencia })) }));
   } catch (e) {}
 }
 
 function borrarBorrador() {
   clearTimeout(tGuardar);
-  try { localStorage.removeItem(CLAVE); } catch (e) {}
+  const k = claveBorrador();
+  if (!k) return;
+  try { localStorage.removeItem(k); } catch (e) {}
 }
 
 function restaurar() {
+  const k = claveBorrador();
+  if (!k) return false;
   let b = null;
-  try { b = JSON.parse(localStorage.getItem(CLAVE) || 'null'); } catch (e) { b = null; }
+  try { b = JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { b = null; }
   if (!b || !b.c) return false;
-  const conDatos = CAMPOS.some(id => limpio(b.c[id])) || (b.f || []).some(f => limpio(f.funcion) || limpio(f.descripcion));
+  const conDatos = ['nombre', 'rut', 'jefatura', 'telefono', 'correo', 'comentarios'].some(id => limpio(b.c[id])) || (b.f || []).some(f => limpio(f.funcion) || limpio(f.descripcion));
   if (!conDatos) return false;
   CAMPOS.forEach(id => {
     const el = $(id);
@@ -588,10 +1045,7 @@ function restaurar() {
       if (Array.from(el.options).some(o => o.value === val)) el.value = val;
     } else el.value = val;
   });
-  if (b.c.cargoSel && b.c.cargoSel !== OTRO && $('cargoSel').value !== b.c.cargoSel) {
-    $('cargoSel').value = OTRO;
-    $('cargoOtro').value = b.c.cargoSel;
-  }
+  document.querySelectorAll('#cargos input').forEach(x => { x.checked = (b.c.cargos || []).indexOf(x.value) >= 0; });
   $('consentimiento').checked = !!b.c.consentimiento;
   const tn = CFG.tipos.map(t => t.nombre);
   const fn = CFG.frecuencias.map(t => t.nombre);
@@ -609,9 +1063,9 @@ function restaurar() {
 function limpiarFormulario() {
   const transcriptor = $('transcritoPor').value;
   $('form').reset();
-  if (MODO === 'manual') $('transcritoPor').value = transcriptor;
-  document.querySelectorAll('.campo.invalido').forEach(c => c.classList.remove('invalido'));
-  document.querySelectorAll('.err').forEach(e => { e.textContent = ''; });
+  if (MANUAL) $('transcritoPor').value = transcriptor;
+  document.querySelectorAll('#form .campo.invalido').forEach(c => c.classList.remove('invalido'));
+  document.querySelectorAll('#form .err').forEach(e => { e.textContent = ''; });
   $('errFunciones').textContent = '';
   $('bannerBorrador').hidden = true;
   reiniciarFunciones();
@@ -626,12 +1080,441 @@ $('descartar').addEventListener('click', () => {
   window.scrollTo(0, 0);
 });
 
-$('nuevo').addEventListener('click', () => {
-  limpiarFormulario();
-  vista('app');
-  setTimeout(() => (MODO === 'manual' ? $('folio') : $('nombre')).focus(), 50);
+function modoUI() {
+  $('secManual').hidden = !MANUAL;
+  $('bannerManual').hidden = !MANUAL;
+  $('bannerEdicion').hidden = !EDIT;
+  $('btnModificar').hidden = MANUAL || !!EDIT;
+  $('rut').readOnly = !!EDIT;
+  if (EDIT) {
+    $('edId').textContent = EDIT.id;
+    $('edVer').textContent = EDIT.version;
+  }
+  $('tituloIngreso').textContent = MANUAL ? 'Transcribir formulario en papel' : EDIT ? 'Modificar mi registro' : 'Registro de funciones por cargo';
+  $('subIngreso').textContent = MANUAL ? 'Digite la información tal como aparece en el formulario firmado.' : EDIT ? 'Actualice la información que necesite y guarde los cambios.' : 'Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.';
+  if (!MANUAL && !EDIT) $('buscador').hidden = $('buscador').hidden;
+  else $('buscador').hidden = true;
+  avance();
+}
+
+function abrirBuscador(id, msg) {
+  $('buscador').hidden = false;
+  $('bErr').textContent = msg || '';
+  if (id) $('bId').value = id;
+  $('buscador').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(() => (id ? $('bClave') : $('bId')).focus({ preventScroll: true }), 300);
+}
+
+$('btnModificar').addEventListener('click', () => {
+  if ($('buscador').hidden) abrirBuscador();
+  else $('buscador').hidden = true;
+});
+$('bCerrar').addEventListener('click', () => { $('buscador').hidden = true; $('bErr').textContent = ''; });
+
+$('fBuscar').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const id = limpio($('bId').value);
+  const clave = limpio($('bClave').value).toUpperCase();
+  $('bErr').textContent = '';
+  if (!id || clave.length !== 8) {
+    $('bErr').textContent = 'Ingrese su ID y su clave de 8 caracteres.';
+    return;
+  }
+  const b = $('bBtn');
+  b.disabled = true;
+  b.textContent = 'Buscando…';
+  const j = await api('buscar', { id: id, clave: clave });
+  b.disabled = false;
+  b.textContent = 'Buscar registro';
+  if (!j.ok) {
+    $('bErr').textContent = j.mensaje;
+    return;
+  }
+  guardarBorrador();
+  EDIT = { id: j.registro.id, clave: clave, version: j.registro.version };
+  rellenar(j.registro);
+  $('bClave').value = '';
+  $('buscador').hidden = true;
+  modoUI();
+  window.scrollTo(0, 0);
+  toast('Registro cargado. Recuerde aceptar la declaración antes de guardar.');
 });
 
+function rellenar(r) {
+  $('form').reset();
+  document.querySelectorAll('#form .campo.invalido').forEach(c => c.classList.remove('invalido'));
+  document.querySelectorAll('#form .err').forEach(e => { e.textContent = ''; });
+  $('bannerBorrador').hidden = true;
+  $('nombre').value = r.nombre;
+  $('rut').value = r.rut;
+  selValor($('sucursal'), r.sucursal);
+  $('jefatura').value = r.jefatura;
+  $('telefono').value = r.telefono;
+  $('correo').value = r.correo;
+  $('comentarios').value = r.comentarios;
+  setCargos(r.cargos || []);
+  const tn = CFG.tipos.map(t => t.nombre);
+  const fn = CFG.frecuencias.map(t => t.nombre);
+  funciones = (r.funciones || []).map(f => Object.assign(nueva(), {
+    tipo: tn.indexOf(f.tipo) >= 0 ? f.tipo : '',
+    frecuencia: fn.indexOf(f.frecuencia) >= 0 ? f.frecuencia : '',
+    funcion: f.funcion,
+    descripcion: f.descripcion
+  }));
+  if (!funciones.length) reiniciarFunciones();
+  renderFunciones();
+}
+
+$('salirEd').addEventListener('click', () => {
+  if (!confirm('¿Salir sin guardar los cambios?')) return;
+  EDIT = null;
+  limpiarFormulario();
+  restaurar();
+  renderFunciones();
+  toggleOtro();
+  modoUI();
+  window.scrollTo(0, 0);
+});
+
+$('btnBlanco').addEventListener('click', imprimirBlanco);
+
+function imprimir(html, nombre) {
+  $('print').innerHTML = html;
+  const t = document.title;
+  document.title = nombre.replace(/[\\/:*?"<>|]/g, '');
+  const fin = () => { document.title = t; window.removeEventListener('afterprint', fin); };
+  window.addEventListener('afterprint', fin);
+  const imgs = Array.from($('print').querySelectorAll('img'));
+  Promise.all(imgs.map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 2500); }))).then(() => setTimeout(() => window.print(), 60));
+}
+
+function pEnc(titulo, sub, meta) {
+  const emp = limpio(CFG.empresa);
+  return '<div class="ph"><div><div class="pemp">' + (CFG.logo ? '<img src="' + esc(CFG.logo) + '" alt="">' : '') + esc(emp) + '</div><h1>' + esc(titulo) + '</h1>' + (sub ? '<div class="psub">' + esc(sub) + '</div>' : '') + '</div>' + (meta || '') + '</div>';
+}
+
+function pDatos(r) {
+  const c = (k, v, full) => '<div' + (full ? ' class="full"' : '') + '><span>' + esc(k) + '</span>' + esc(v || '—') + '</div>';
+  return '<div class="pgrid">' + c('Nombre completo', r.nombre) + c('RUT', r.rut) + c('Sucursal', r.sucursal) + c('Jefatura o dependencia', r.jefatura) + c('Teléfono', r.telefono) + c('Correo', r.correo) + c('Cargo(s) contractual(es)', (r.cargos || []).join(' · '), true) + (r.origen === 'Manual' ? c('Origen', 'Transcrito de formulario en papel' + (r.folio ? ' · Folio ' + r.folio : '') + (r.transcrito ? ' · ' + r.transcrito : ''), true) : '') + '</div>';
+}
+
+function pResumen(fs) {
+  const m = {};
+  fs.forEach(f => { m[f.tipo] = (m[f.tipo] || 0) + 1; });
+  return '<div class="resumen"><span><b>' + fs.length + '</b> funciones</span>' + CFG.tipos.filter(t => m[t.nombre]).map(t => '<span>' + esc(t.nombre) + ': <b>' + m[t.nombre] + '</b></span>').join('') + '</div>';
+}
+
+function imprimirComprobante(r) {
+  const meta = '<div class="pmeta">ID de registro<b>' + esc(r.id) + '</b><em>Versión ' + esc(r.version) + ' · ' + esc(r.fecha) + '</em></div>';
+  const filas = r.funciones.map((f, i) => '<tr><td class="nn">' + (i + 1) + '</td><td><b>' + esc(f.funcion) + '</b><div class="fd">' + esc(f.descripcion) + '</div></td><td>' + esc(f.tipo) + '</td><td>' + esc(f.frecuencia) + '</td></tr>').join('');
+  const html = '<div class="pdoc">' + pEnc('Levantamiento de Funciones por Cargo', 'Comprobante de información declarada', meta) +
+    '<h2>1. Datos personales</h2>' + pDatos(r) +
+    '<h2>2. Funciones declaradas</h2>' + pResumen(r.funciones) +
+    '<table><thead><tr><th>N°</th><th>Función y descripción</th><th style="width:78pt">Tipo</th><th style="width:62pt">Frecuencia</th></tr></thead><tbody>' + filas + '</tbody></table>' +
+    '<h2>3. Comentarios generales</h2><div class="box">' + esc(r.comentarios || 'Sin comentarios.') + '</div>' +
+    '<div class="firmas"><div>Firma trabajador(a)<br>' + esc(r.nombre) + '</div><div>Firma jefatura directa<br>' + esc(r.jefatura) + '</div></div>' +
+    '<div class="pfoot">Declaración aceptada: la información entregada es fidedigna y se autoriza su uso exclusivo para fines de gestión interna. Documento generado el ' + esc(hoy()) + '.</div></div>';
+  imprimir(html, 'Levantamiento ' + r.id + ' v' + r.version);
+}
+
+function imprimirBlanco() {
+  const cj = '<span class="cj"></span>';
+  const ops = l => l.map(x => '<div>' + cj + esc(x.nombre) + '</div>').join('');
+  const cargos = CFG.cargos.map(c => '<label>' + cj + esc(c) + '</label>').join('') + '<label>' + cj + 'Otro: <span class="ln"></span></label>';
+  let filas = '';
+  for (let i = 1; i <= 18; i++) filas += '<tr><td class="nn">' + i + '</td><td class="op">' + ops(CFG.tipos) + '</td><td></td><td></td><td class="op">' + ops(CFG.frecuencias) + '</td></tr>';
+  const html = '<div class="pdoc">' + pEnc('Levantamiento de Funciones por Cargo', 'Formulario para completar a mano', '<div class="folio">Folio N°</div>') +
+    '<p class="inst">Complete con letra clara. Registre todas las funciones que realiza habitualmente en su cargo, estén o no descritas en su contrato. Use una fila por función y marque con una X el tipo y la frecuencia que correspondan. Al menos una función debe ser de tipo ' + esc(tipoPrincipal()) + '.</p>' +
+    '<h2>1. Datos personales</h2><div class="bf">' +
+    '<div class="s4"><span>Nombre completo</span></div><div class="s2"><span>RUT</span></div>' +
+    '<div class="s3"><span>Sucursal</span></div><div class="s3"><span>Jefatura o dependencia directa</span></div>' +
+    '<div class="s3"><span>Teléfono</span></div><div class="s3"><span>Correo electrónico</span></div>' +
+    '<div class="s6 alto"><span>Cargo contractual (puede marcar más de uno)</span><div class="ops">' + cargos + '</div></div></div>' +
+    '<h2>2. Tipos de función y frecuencias</h2><div class="ley2">' + CFG.tipos.map(t => '<div><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</div>').join('') + CFG.frecuencias.map(t => '<div><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</div>').join('') + '</div>' +
+    '<h2>3. Funciones que realiza</h2><table class="tb"><thead><tr><th>N°</th><th style="width:74pt">Tipo</th><th style="width:130pt">Función</th><th>Descripción / Especificación</th><th style="width:62pt">Frecuencia</th></tr></thead><tbody>' + filas + '</tbody></table>' +
+    '<h2>4. Comentarios generales</h2><div class="box" style="height:42mm"></div>' +
+    '<h2>5. Declaración y firmas</h2><p class="inst">Declaro que la información entregada es fidedigna y autorizo su uso exclusivo para fines de gestión interna de la empresa: levantamiento de funciones y elaboración de descriptores de cargo.</p>' +
+    '<div class="firmas"><div>Firma trabajador(a)</div><div>Firma jefatura directa</div></div>' +
+    '<div class="usoint"><div>Uso interno</div><div>Transcrito por</div><div>Fecha de transcripción</div><div>ID de registro</div></div></div>';
+  imprimir(html, 'Formulario Levantamiento de Funciones');
+}
+
+function imprimirRevision() {
+  const r = DET;
+  const est = $('detEstado').value;
+  const meta = '<div class="pmeta">ID de registro<b>' + esc(r.id) + '</b><em>Versión ' + esc(r.version) + ' · ' + esc(r.fecha) + '</em><em>Estado: ' + esc(est) + (r.fRev ? ' · Revisado ' + esc(r.fRev) : '') + '</em></div>';
+  const fns = r.funciones.map(f => {
+    const p = limpio(($('p' + f.n) || {}).value);
+    return '<div class="pfn"><div class="pd"><span class="tag">Declarado por el trabajador</span><div class="pt"><b>' + f.n + '. ' + esc(f.funcion) + '</b><small>' + esc(f.tipo) + ' · ' + esc(f.frecuencia) + '</small></div><div class="pdesc">' + esc(f.descripcion) + '</div></div>' +
+      '<div class="pp' + (p ? '' : ' sin') + '"><span class="tag">Precisión de revisión</span>' + esc(p || 'Sin precisiones.') + '</div></div>';
+  }).join('');
+  const cr = limpio($('detComRev').value);
+  const html = '<div class="pdoc">' + pEnc('Informe de revisión de funciones', r.nombre + ' · ' + (r.cargos || []).join(', '), meta) +
+    '<h2>1. Datos del trabajador</h2>' + pDatos(r) +
+    '<h2>2. Funciones declaradas y precisiones</h2><div class="leyp"><span><i class="d"></i>Declarado por el trabajador</span><span><i class="p"></i>Precisión de revisión</span></div>' + pResumen(r.funciones) + fns +
+    '<h2>3. Comentarios generales</h2><div class="pfn"><div class="pd"><span class="tag">Comentario del trabajador</span><div class="pdesc">' + esc(r.comentarios || 'Sin comentarios.') + '</div></div><div class="pp' + (cr ? '' : ' sin') + '"><span class="tag">Comentario de revisión</span>' + esc(cr || 'Sin comentarios.') + '</div></div>' +
+    '<div class="firmas"><div>Revisado por</div><div>Visto bueno jefatura</div></div>' +
+    '<div class="pfoot">Informe generado el ' + esc(hoy()) + '. Las precisiones corresponden a la revisión interna y no modifican lo declarado por el trabajador.</div></div>';
+  imprimir(html, 'Revision ' + r.id + ' ' + r.nombre);
+}
+
+function vistaDash() {
+  const conSesion = !!SESION;
+  $('dLogin').hidden = conSesion;
+  if (!conSesion) {
+    $('dPanel').hidden = true;
+    $('dDetalle').hidden = true;
+    setTimeout(() => $('lCodigo').focus(), 50);
+    return;
+  }
+  if (DET && !$('dDetalle').hidden) return;
+  $('dPanel').hidden = false;
+  $('dDetalle').hidden = true;
+  cargarLista();
+}
+
+function finSesion(msg) {
+  SESION = null;
+  ss('lf_sesion', null);
+  DET = null;
+  sucio = false;
+  if (MANUAL) {
+    MANUAL = false;
+    limpiarFormulario();
+    modoUI();
+  }
+  $('lErr').textContent = msg || '';
+  if (tab === 'dash') vistaDash();
+}
+
+$('fLogin').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const c = limpio($('lCodigo').value);
+  if (!c) return;
+  $('lBtn').disabled = true;
+  $('lBtn').textContent = 'Verificando…';
+  const j = await api('login', { codigo: c });
+  $('lBtn').disabled = false;
+  $('lBtn').textContent = 'Ingresar';
+  if (!j.ok) {
+    $('lErr').textContent = j.mensaje;
+    return;
+  }
+  $('lCodigo').value = '';
+  $('lErr').textContent = '';
+  SESION = j.sesion;
+  ss('lf_sesion', SESION);
+  vistaDash();
+});
+
+$('dSalir').addEventListener('click', () => {
+  api('salir', { sesion: SESION });
+  finSesion('');
+});
+
+$('dRefrescar').addEventListener('click', cargarLista);
+
+async function cargarLista() {
+  $('dSub').textContent = 'Cargando…';
+  const j = await api('lista', { sesion: SESION });
+  if (!j.ok) {
+    if (j.sesion !== false) {
+      $('dSub').textContent = j.mensaje;
+      toast(j.mensaje, true);
+    }
+    return;
+  }
+  LISTA = j.personas || [];
+  $('dSub').textContent = LISTA.length + (LISTA.length === 1 ? ' persona' : ' personas') + ' con registro vigente · ' + (j.envios || 0) + ((j.envios || 0) === 1 ? ' envío' : ' envíos') + ' en total · actualizado ' + hoy();
+  renderKpis();
+  renderTabla();
+}
+
+function barras(titulo, m, orden) {
+  let ks = Object.keys(m);
+  if (orden) ks = orden.filter(k => m[k]).concat(ks.filter(k => orden.indexOf(k) < 0));
+  else ks.sort((a, b) => m[b] - m[a]);
+  ks = ks.slice(0, 8);
+  const max = Math.max(1, ...ks.map(k => m[k]));
+  return '<section class="tarjeta"><h3>' + esc(titulo) + '</h3>' + (ks.length ? '<ul class="barras">' + ks.map(k => '<li><span class="bl" title="' + esc(k) + '">' + esc(k) + '</span><span class="bv">' + m[k] + '</span><span class="bt"><i style="width:' + Math.max(3, Math.round(m[k] / max * 100)) + '%"></i></span></li>').join('') + '</ul>' : '<p class="vacio">Sin datos aún.</p>') + '</section>';
+}
+
+function renderKpis() {
+  const n = LISTA.length;
+  const fn = LISTA.reduce((s, p) => s + p.nFunciones, 0);
+  const e = s => LISTA.filter(p => p.estado === s).length;
+  $('kpis').innerHTML = [['Personas', n, ''], ['Funciones declaradas', fn, ''], ['Promedio por persona', n ? (Math.round(fn / n * 10) / 10).toLocaleString('es-CL') : 0, ''], ['Pendientes', e('Pendiente'), 'pend'], ['Observados', e('Observado'), ''], ['Revisados', e('Revisado'), 'listo']]
+    .map(k => '<div class="kpi ' + k[2] + '"><span>' + k[0] + '</span><b>' + k[1] + '</b></div>').join('');
+  const suc = {};
+  const car = {};
+  const tip = {};
+  LISTA.forEach(p => {
+    suc[p.sucursal] = (suc[p.sucursal] || 0) + 1;
+    p.cargos.forEach(c => { car[c] = (car[c] || 0) + 1; });
+    Object.keys(p.tipos || {}).forEach(t => { tip[t] = (tip[t] || 0) + p.tipos[t]; });
+  });
+  $('graficos').innerHTML = barras('Personas por sucursal', suc) + barras('Personas por cargo', car) + barras('Funciones por tipo', tip, CFG.tipos.map(t => t.nombre));
+}
+
+function filtrada() {
+  const q = limpio($('fTexto').value).toLowerCase();
+  const s = $('fSuc').value;
+  const e = $('fEstado').value;
+  return LISTA.filter(p => (!s || p.sucursal === s) && (!e || p.estado === e) && (!q || [p.nombre, p.rut, p.id, p.cargos.join(' '), p.jefatura].join(' ').toLowerCase().indexOf(q) >= 0));
+}
+
+function renderTabla() {
+  const l = filtrada();
+  $('fCuenta').textContent = l.length + ' de ' + LISTA.length;
+  $('tBody').innerHTML = l.length ? l.map(p => '<tr tabindex="0" data-id="' + esc(p.id) + '"><td data-l="Nombre" class="nom">' + esc(p.nombre) + '</td><td data-l="ID" class="mono">' + esc(p.id) + '</td><td data-l="Sucursal">' + esc(p.sucursal) + '</td><td data-l="Cargo(s)">' + esc(p.cargos.join(', ')) + '</td><td data-l="Funciones" class="n">' + p.nFunciones + '</td><td data-l="Precisiones" class="n">' + p.nPrecisiones + '</td><td data-l="Actualizado">' + esc(p.fecha) + (p.version > 1 ? ' <span class="chip">v' + p.version + '</span>' : '') + '</td><td data-l="Estado"><span class="pill ' + esc(p.estado) + '">' + esc(p.estado) + '</span></td></tr>').join('') : '<tr><td colspan="8" class="vacio" style="cursor:default">' + (LISTA.length ? 'No hay resultados con estos filtros.' : 'Aún no hay registros. Cuando los trabajadores envíen el formulario aparecerán aquí.') + '</td></tr>';
+}
+
+['fTexto', 'fSuc', 'fEstado'].forEach(id => $(id).addEventListener('input', renderTabla));
+$('tBody').addEventListener('click', ev => { const tr = ev.target.closest('tr[data-id]'); if (tr) abrirDetalle(tr.dataset.id); });
+$('tBody').addEventListener('keydown', ev => { if (ev.key === 'Enter') { const tr = ev.target.closest('tr[data-id]'); if (tr) abrirDetalle(tr.dataset.id); } });
+
+async function abrirDetalle(id) {
+  toast('Abriendo registro…');
+  const j = await api('detalle', { sesion: SESION, id: id });
+  $('toast').hidden = true;
+  if (!j.ok) {
+    if (j.sesion !== false) toast(j.mensaje, true);
+    return;
+  }
+  DET = j.registro;
+  sucio = false;
+  renderDetalle();
+  $('dPanel').hidden = true;
+  $('dDetalle').hidden = false;
+  window.scrollTo(0, 0);
+}
+
+function renderDetalle() {
+  const r = DET;
+  $('detNombre').textContent = r.nombre;
+  $('detSub').textContent = 'ID ' + r.id + ' · ' + r.rut + ' · versión ' + r.version + ' del ' + r.fecha;
+  const c = (k, v) => '<div><dt>' + esc(k) + '</dt><dd>' + esc(v || '—') + '</dd></div>';
+  $('detDatos').innerHTML = c('Sucursal', r.sucursal) + c('Cargo(s) contractual(es)', r.cargos.join(', ')) + c('Jefatura o dependencia', r.jefatura) + c('Teléfono', r.telefono) + c('Correo', r.correo) + c('Origen', r.origen === 'Manual' ? 'Formulario en papel' + (r.folio ? ' · folio ' + r.folio : '') + (r.transcrito ? ' · transcrito por ' + r.transcrito : '') : 'Formulario web');
+  selValor($('detEstado'), r.estado);
+  $('detFRev').textContent = r.fRev ? 'Última revisión guardada: ' + r.fRev : 'Aún no se guarda una revisión para esta versión.';
+  $('detClaveInfo').textContent = r.clave ? 'El trabajador tiene clave asignada para modificar su registro.' : 'El trabajador no tiene clave. Genere una para que pueda modificar su registro.';
+  $('detHist').innerHTML = (r.historial || []).map(h => '<li><b>Versión ' + h.version + '</b> · ' + esc(h.fecha) + ' · ' + esc(h.origen) + (h.vigente ? ' · vigente' : '') + '</li>').join('');
+  $('detFunciones').innerHTML = r.funciones.map(f => '<article class="rev"><div class="decl"><span class="etq">Declarado · función ' + f.n + '</span><h3>' + esc(f.funcion) + '</h3><div class="chipsI"><span class="chip">' + esc(f.tipo) + '</span><span class="chip">' + esc(f.frecuencia) + '</span></div><p>' + esc(f.descripcion) + '</p></div><div class="prec"><label class="etq" for="p' + f.n + '">Precisión de revisión</label><textarea id="p' + f.n + '" data-n="' + f.n + '" maxlength="1500" rows="4" placeholder="Observaciones, precisiones o correcciones a esta función">' + esc(f.precision || '') + '</textarea></div></article>').join('');
+  $('detComTrab').textContent = r.comentarios || 'Sin comentarios.';
+  $('detComRev').value = r.comRev || '';
+}
+
+$('dDetalle').addEventListener('input', ev => { if (ev.target.matches('textarea,select')) sucio = true; });
+
+$('volver').addEventListener('click', () => {
+  if (sucio && !confirm('Tiene cambios sin guardar. ¿Volver al listado de todos modos?')) return;
+  sucio = false;
+  DET = null;
+  $('dDetalle').hidden = true;
+  $('dPanel').hidden = false;
+  cargarLista();
+  window.scrollTo(0, 0);
+});
+
+$('detGuardar').addEventListener('click', async () => {
+  const b = $('detGuardar');
+  b.disabled = true;
+  b.textContent = 'Guardando…';
+  const prec = DET.funciones.map(f => ({ n: f.n, texto: $('p' + f.n).value }));
+  const j = await api('revision', { sesion: SESION, id: DET.id, idLev: DET.idLev, estado: $('detEstado').value, comentario: $('detComRev').value, precisiones: prec });
+  b.disabled = false;
+  b.textContent = 'Guardar revisión';
+  if (!j.ok) {
+    if (j.sesion !== false) toast(j.mensaje, true);
+    return;
+  }
+  sucio = false;
+  DET.estado = j.estado;
+  DET.fRev = j.fRev;
+  DET.comRev = $('detComRev').value;
+  DET.funciones.forEach(f => { f.precision = $('p' + f.n).value; });
+  $('detFRev').textContent = 'Última revisión guardada: ' + j.fRev;
+  toast('Revisión guardada.');
+});
+
+$('detPdf').addEventListener('click', imprimirRevision);
+
+$('detClave').addEventListener('click', () => {
+  dialogo('Generar nueva clave', '<p>Se generará una clave nueva para <b>' + esc(DET.nombre) + '</b>. Si tenía una clave anterior, dejará de funcionar.</p>', [
+    { txt: 'Cancelar' },
+    { txt: 'Generar clave', cls: 'pri', fn: async b => {
+      b.disabled = true;
+      const j = await api('clave', { sesion: SESION, id: DET.id });
+      b.disabled = false;
+      if (!j.ok) { if (j.sesion !== false) toast(j.mensaje, true); cerrarModal('dlg'); return; }
+      DET.clave = true;
+      $('detClaveInfo').textContent = 'El trabajador tiene clave asignada para modificar su registro.';
+      dialogo('Nueva clave generada', '<div class="cred" style="margin:4px 0 12px"><div class="credbox"><span>ID de registro</span><b id="ncId">' + esc(j.id) + '</b><button type="button" class="copiar" data-copia="ncId">Copiar</button></div><div class="credbox"><span>Clave</span><b id="ncClave">' + esc(j.clave) + '</b><button type="button" class="copiar" data-copia="ncClave">Copiar</button></div></div><p class="sub">Entregue estos datos al trabajador. Por seguridad la clave no se vuelve a mostrar.</p>', [{ txt: 'Listo', cls: 'pri' }]);
+    } }
+  ]);
+});
+
+$('dCodigo').addEventListener('click', () => {
+  dialogo('Cambiar código de acceso', '<form id="fCod" novalidate><div class="campo"><label for="cAct">Código actual</label><input id="cAct" type="password" autocomplete="current-password"></div><div class="campo"><label for="cNue">Nuevo código</label><input id="cNue" type="password" autocomplete="new-password" minlength="6" maxlength="40"><small class="ayuda">Entre 6 y 40 caracteres. No distingue mayúsculas de minúsculas.</small></div><div class="campo"><label for="cNue2">Repita el nuevo código</label><input id="cNue2" type="password" autocomplete="new-password" maxlength="40"></div><p id="cErr" class="errBloque"></p></form>', [
+    { txt: 'Cancelar' },
+    { txt: 'Cambiar código', cls: 'pri', fn: async b => {
+      const a = $('cAct').value.trim();
+      const n = $('cNue').value.trim();
+      if (n.length < 6) { $('cErr').textContent = 'El nuevo código debe tener al menos 6 caracteres.'; return; }
+      if (n !== $('cNue2').value.trim()) { $('cErr').textContent = 'Los códigos nuevos no coinciden.'; return; }
+      b.disabled = true;
+      const j = await api('codigo', { sesion: SESION, actual: a, nueva: n });
+      b.disabled = false;
+      if (!j.ok) { $('cErr').textContent = j.mensaje || ''; return; }
+      cerrarModal('dlg');
+      toast('Código de acceso actualizado.');
+    } }
+  ]);
+  setTimeout(() => $('cAct').focus(), 50);
+});
+
+$('dManual').addEventListener('click', () => {
+  MANUAL = true;
+  EDIT = null;
+  ULTIMO = null;
+  limpiarFormulario();
+  restaurar();
+  renderFunciones();
+  toggleOtro();
+  modoUI();
+  irTab('ingreso');
+  setTimeout(() => $('transcritoPor').focus(), 50);
+});
+
+$('salirManual').addEventListener('click', () => {
+  if ((limpio($('nombre').value) || funciones.some(f => limpio(f.funcion))) && !confirm('El borrador de transcripción queda guardado en este dispositivo. ¿Volver al Dashboard?')) return;
+  guardarBorrador();
+  MANUAL = false;
+  limpiarFormulario();
+  if (!restaurar()) reiniciarFunciones();
+  renderFunciones();
+  toggleOtro();
+  modoUI();
+  irTab('dash');
+});
+
+function dialogo(titulo, html, botones) {
+  $('dlgTit').textContent = titulo;
+  $('dlgCuerpo').innerHTML = html;
+  const acc = $('dlgAcc');
+  acc.innerHTML = '';
+  botones.forEach(b => {
+    const e = document.createElement('button');
+    e.type = 'button';
+    e.className = 'btn ' + (b.cls || 'sec');
+    e.textContent = b.txt;
+    e.addEventListener('click', () => (b.fn ? b.fn(e) : cerrarModal('dlg')));
+    acc.appendChild(e);
+  });
+  abrirModal('dlg');
+}
+
+window.addEventListener('beforeunload', ev => { if (sucio) { ev.preventDefault(); ev.returnValue = ''; } });
 $('reintentar').addEventListener('click', cargar);
 
 cargar();
