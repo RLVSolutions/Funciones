@@ -577,6 +577,18 @@ body>*:not(#print){display:none!important}
 .lockbox{display:flex;gap:14px;align-items:flex-start;background:var(--acc-soft);border-radius:12px;padding:14px 16px;margin-bottom:12px}
 .lockbox svg{flex:none;color:var(--acc)}
 .lockbox p{margin:0}
+
+.pnav{display:flex;align-items:center;gap:8px;margin:0 0 16px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.pnav::-webkit-scrollbar{display:none}
+.pnav-tabs,.pnav-acc{display:flex;gap:8px;flex:none}
+.pnav-acc{margin-left:auto;padding-left:8px;border-left:1px solid var(--line)}
+.pnav button{font:600 .8rem var(--disp);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--line);background:var(--card);color:var(--txt);padding:8px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.pnav button:hover{border-color:var(--acc);color:var(--acc)}
+.pnav button[aria-selected="true"]{background:var(--acc-soft);border-color:var(--acc-soft);color:var(--acc)}
+.pnav button:focus-visible{outline:none;box-shadow:var(--focus)}
+.pnav .salir{border-color:transparent;color:var(--muted)}
+.pnav button:disabled{opacity:.5;cursor:default}
+@media (max-width:640px){.pnav button{padding:7px 13px;font-size:.76rem}}
 </style>
 </head>
 <body>
@@ -597,7 +609,7 @@ body>*:not(#print){display:none!important}
 <section id="falla" class="centro" hidden><div class="tarjeta" style="max-width:440px"><div class="icono mal" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg></div><h1>No disponible</h1><p id="fallaMsg" class="sub"></p><div class="acciones-fila"><button type="button" id="reintentar" class="btn pri">Reintentar</button><button type="button" id="fallaCx" class="btn sec" hidden>Cambiar conexión</button></div></div></section>
 
 <section id="conexion" class="centro" hidden><div class="tarjeta" style="max-width:540px"><h1>Conectar el formulario</h1><p class="sub">Si eres colaborador, abre el enlace o escanea el código QR que te compartieron: el formulario se conecta solo.</p>
-<form id="fCx" novalidate style="margin-top:16px"><div class="campo"><label for="cxUrl">Administrador: URL de la aplicación web de Apps Script</label><input id="cxUrl" class="mono" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://script.google.com/macros/s/…/exec"><small class="ayuda">Se obtiene en la hoja, menú Levantamiento › Ver conexión. Queda guardada solo en este navegador.</small><small class="err"></small></div><button type="submit" id="cxBtn" class="btn pri">Conectar</button></form></div></section>
+<form id="fCx" novalidate style="margin-top:16px"><div class="campo"><label for="cxUrl">Administrador: URL de la aplicación web de Apps Script</label><input id="cxUrl" class="mono" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://script.google.com/macros/s/…/exec"><small class="err"></small></div><div class="campo"><label for="cxTok">Token de acceso (API_TOKEN)</label><input id="cxTok" class="mono" autocomplete="off" spellcheck="false" placeholder="24 caracteres"><small class="ayuda">Ambos datos están en la hoja, menú Levantamiento › Ver conexión y enlace. Quedan guardados solo en este navegador hasta que se cambien en Datos › Configuración.</small><small class="err"></small></div><button type="submit" id="cxBtn" class="btn pri">Conectar</button></form></div></section>
 
 <main id="vIngreso" class="shell" hidden>
 <div class="hero"><div class="hero-t"><h1 id="tituloIngreso">Registro de funciones por cargo</h1><p class="sub" id="subIngreso">Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.</p></div><p class="hero-plazo" id="heroPlazo" hidden></p></div>
@@ -699,8 +711,8 @@ body>*:not(#print){display:none!important}
 </section>
 
 <main id="vPanel" class="shell" hidden>
-<div class="dhead"><div><h1>Dashboard</h1><p class="sub" id="pSub"></p></div><div class="dacc"><button type="button" id="pRefrescar" class="btn sec">Actualizar</button></div></div>
-<nav class="subtabs" id="pTabs" role="tablist" aria-label="Secciones del Dashboard"><button type="button" role="tab" data-psub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-psub="cal" aria-selected="false">Calendario del proceso</button></nav>
+<div class="dhead"><div><h1>Dashboard</h1><p class="sub" id="pSub"></p></div></div>
+<nav class="pnav" id="pTabs" aria-label="Secciones del Dashboard"><div class="pnav-tabs" role="tablist"><button type="button" role="tab" data-psub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-psub="cal" aria-selected="false">Calendario del proceso</button></div><div class="pnav-acc"><button type="button" id="pRefrescar">Actualizar</button></div></nav>
 <div id="pReg">
 <div class="kpis" id="kpis"></div>
 <div class="graficos" id="graficos"></div>
@@ -734,9 +746,8 @@ body>*:not(#print){display:none!important}
 <section id="dPanel" hidden>
 <div class="dhead">
 <div><h1>Datos</h1><p class="sub" id="dSub"></p></div>
-<div class="dacc"><button type="button" id="dManual" class="btn pri">Transcribir formulario en papel</button><button type="button" id="dRefrescar" class="btn sec">Actualizar</button><button type="button" id="dCodigo" class="btn sec">Cambiar código</button><button type="button" id="dSalir" class="btn txt">Cerrar sesión</button></div>
 </div>
-<nav class="subtabs" id="dTabs" role="tablist" aria-label="Secciones de Datos"><button type="button" role="tab" data-sub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-sub="faq" aria-selected="false">Entrenar asistente</button><button type="button" role="tab" data-sub="cfg" aria-selected="false">Configuración</button></nav>
+<nav class="pnav" id="dTabs" aria-label="Secciones de Datos"><div class="pnav-tabs" role="tablist"><button type="button" role="tab" data-sub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-sub="faq" aria-selected="false">Entrenar asistente</button><button type="button" role="tab" data-sub="cfg" aria-selected="false">Configuración</button></div><div class="pnav-acc"><button type="button" id="dManual">Transcribir formulario en papel</button><button type="button" id="dRefrescar">Actualizar</button><button type="button" id="dCodigo">Cambiar código</button><button type="button" id="dSalir" class="salir">Cerrar sesión</button></div></nav>
 <div id="subReg">
 <section class="tarjeta">
 <div class="filtros"><input id="fTexto" type="search" placeholder="Buscar por nombre, RUT, ID o cargo" aria-label="Buscar"><select id="fSuc" aria-label="Filtrar por sucursal"></select><select id="fEstado" aria-label="Filtrar por estado"></select><span class="cuenta" id="fCuenta"></span></div>
@@ -750,8 +761,9 @@ body>*:not(#print){display:none!important}
 <div class="campo c4"><label for="cIniciales">Iniciales del asistente</label><input id="cIniciales" maxlength="3" placeholder="RD" style="text-transform:uppercase"></div>
 <div class="campo c6"><label for="cWsp">WhatsApp para "Hablar con una persona"</label><input id="cWsp" maxlength="20" inputmode="tel" placeholder="56912345678"><small class="ayuda">Con código de país, solo números.</small></div>
 <div class="campo c6"><label for="cLogo">Logo (archivo o URL)</label><input id="cLogo" maxlength="300" placeholder="logo.png"></div>
-<div class="campo c12"><label for="cEnlace">Enlace para colaboradores</label><div class="cxfila"><input id="cEnlace" class="mono" readonly><button type="button" id="cCopiar" class="btn sec">Copiar</button></div><small class="ayuda">Compártalo por WhatsApp o correo. Incluye el código de conexión, por eso el repositorio ya no necesita config.js. El QR del formulario en papel y del instructivo usa este enlace.</small></div>
-<div class="campo c12"><label for="cApi">Servidor conectado (Apps Script)</label><div class="cxfila"><input id="cApi" class="mono" readonly><button type="button" id="cCambiarApi" class="btn txt">Cambiar</button></div></div>
+<div class="campo c12"><label for="cEnlace">Enlace para colaboradores</label><div class="cxfila"><input id="cEnlace" class="mono" readonly><button type="button" id="cCopiar" class="btn sec">Copiar</button></div><small class="ayuda">Compártalo por WhatsApp o correo. Incluye la URL del servidor y el token, por eso el repositorio no necesita config.js. El QR del formulario en papel y del instructivo usa este enlace.</small></div>
+<div class="campo c12"><label for="cApi">Servidor conectado (Apps Script)</label><div class="cxfila"><input id="cApi" class="mono" readonly><button type="button" id="cCambiarApi" class="btn sec">Cambiar</button></div></div>
+<div class="campo c12"><label for="cTok">Token de acceso (API_TOKEN)</label><div class="cxfila"><input id="cTok" class="mono" type="password" readonly><button type="button" id="cVerTok" class="btn txt">Mostrar</button><button type="button" id="cNuevoTok" class="btn sec">Regenerar</button></div><small class="ayuda">Viaja dentro del enlace para colaboradores. Al regenerarlo, los enlaces y QR anteriores dejan de funcionar.</small></div>
 <div class="campo c12"><label for="cUrl">Dirección pública del formulario</label><input id="cUrl" maxlength="300" inputmode="url" placeholder="https://rlvsolutions.github.io/SateliteRD/"><small class="ayuda">Página de GitHub donde está publicado index.html.</small></div>
 <div class="c12 cfgqr"><div id="cQr"></div><div><b>Vista previa del QR</b><br><small id="cQrUrl"></small></div></div>
 <div class="campo c12"><label for="cUnidades">Unidades funcionales (una por línea)</label><textarea id="cUnidades" rows="7"></textarea><small class="ayuda">La opción "Otro (especificar)" se agrega sola.</small></div>
@@ -849,6 +861,8 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
 let CONF = {};
 let API_URL = '';
 const LS_API = 'lf_api';
+const LS_TOK = 'lf_tok';
+let TOKEN = '';
 let WSP = '';
 const OTRO = '__otro__';
 const RE_MAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -898,12 +912,13 @@ async function fetchT(url, op, ms) {
 async function api(accion, datos, ms) {
   let j;
   try {
-    const r = await fetchT(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(Object.assign({ accion: accion }, datos || {})) }, ms || 45000);
+    const r = await fetchT(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(Object.assign({ accion: accion, token: TOKEN }, datos || {})) }, ms || 45000);
     j = await r.json();
   } catch (e) {
     estadoCx('mal');
     return { ok: false, red: true, mensaje: 'No se pudo conectar con el servicio. Revise su conexión e intente nuevamente.' };
   }
+  if (j && j.token === false) { estadoCx('mal'); sinToken(j.mensaje); return j; }
   estadoCx('ok');
   if (j && (j.sesion === false || j.cambiar === true) && accion !== 'login') finSesion(j.mensaje);
   return j || { ok: false, mensaje: 'Respuesta inválida del servicio.' };
@@ -969,11 +984,13 @@ async function cargar() {
   if (!API_URL) {
     estadoCx('');
     mostrar(['conexion']);
+    setTimeout(() => $('cxUrl').focus(), 50);
     return;
   }
   try {
-    const j = await leerConfigApi(API_URL);
-    if (!j) throw new Error('config');
+    const j = await leerConfigApi(API_URL, TOKEN);
+    if (j && j.token === false) { sinToken(j.mensaje); return; }
+    if (!j || !j.ok) throw new Error('config');
     estadoCx('ok');
     CFG = j;
     CFG.estados = CFG.estados || ['Pendiente', 'Observado', 'Revisado'];
@@ -2629,8 +2646,8 @@ async function detalleAdmin(p) {
 $('pBody').addEventListener('click', ev => { const tr = ev.target.closest('tr[data-i]'); if (tr) detallePub(Number(tr.dataset.i)); });
 $('pBody').addEventListener('keydown', ev => { if (ev.key === 'Enter') { const tr = ev.target.closest('tr[data-i]'); if (tr) detallePub(Number(tr.dataset.i)); } });
 $('pRefrescar').addEventListener('click', cargarPanel);
-document.querySelectorAll('#pTabs button').forEach(b => b.addEventListener('click', () => {
-  document.querySelectorAll('#pTabs button').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+document.querySelectorAll('#pTabs [data-psub]').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#pTabs [data-psub]').forEach(x => x.setAttribute('aria-selected', String(x === b)));
   $('pReg').hidden = b.dataset.psub !== 'reg';
   $('subCal').hidden = b.dataset.psub !== 'cal';
   if (b.dataset.psub === 'cal') renderEtapasAdmin();
@@ -2847,7 +2864,7 @@ let FAQ_SUCIO = false;
 let CONSULTAS = [];
 
 function irSub(sub) {
-  document.querySelectorAll('#dTabs button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.sub === sub)));
+  document.querySelectorAll('#dTabs [data-sub]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.sub === sub)));
   $('subReg').hidden = sub !== 'reg';
   $('subFaq').hidden = sub !== 'faq';
   $('subCfg').hidden = sub !== 'cfg';
@@ -2855,7 +2872,7 @@ function irSub(sub) {
   if (sub === 'faq') abrirFaqAdmin();
 }
 
-document.querySelectorAll('#dTabs button').forEach(b => b.addEventListener('click', () => {
+document.querySelectorAll('#dTabs [data-sub]').forEach(b => b.addEventListener('click', () => {
   if (b.dataset.sub !== 'faq' && FAQ_SUCIO && !$('subFaq').hidden && !confirm('Tiene cambios sin guardar en las preguntas. ¿Salir de todos modos?')) return;
   irSub(b.dataset.sub);
 }));
@@ -3161,7 +3178,7 @@ function apiDeCodigo(v) {
 }
 
 function enlace(base) {
-  return (base || urlForm()).replace(/#.*$/, '') + (API_URL ? '#api=' + codigoApi(API_URL) + '&ir=ingreso' : '#ingreso');
+  return (base || urlForm()).replace(/#.*$/, '') + (API_URL ? '#api=' + codigoApi(API_URL) + (TOKEN ? '&t=' + encodeURIComponent(TOKEN) : '') + '&ir=ingreso' : '#ingreso');
 }
 
 function estadoCx(e) {
@@ -3169,40 +3186,61 @@ function estadoCx(e) {
   $('cxTxt').textContent = e === 'ok' ? 'OK' : e === 'mal' ? 'Sin conexión' : 'Sin conectar';
 }
 
-async function leerConfigApi(u) {
-  const r = await fetchT(u + '?action=config', {}, 25000);
+async function leerConfigApi(u, t) {
+  const r = await fetchT(u + '?action=config&t=' + encodeURIComponent(t || ''), {}, 25000);
   const j = await r.json();
+  if (j && j.token === false) return j;
   return j && j.ok && Array.isArray(j.tipos) && j.tipos.length ? j : null;
 }
 
-function guardarApi(u) {
-  try { if (u) localStorage.setItem(LS_API, u); else localStorage.removeItem(LS_API); } catch (e) {}
+function sinToken(msg) {
+  $('cxUrl').value = API_URL;
+  $('cxTok').value = '';
+  mostrar(['conexion']);
+  marcar($('cxTok'), msg || 'Token de acceso inválido o faltante.');
+}
+
+function guardarApi(u, t) {
+  try {
+    if (u) localStorage.setItem(LS_API, u); else localStorage.removeItem(LS_API);
+    if (t) localStorage.setItem(LS_TOK, t); else localStorage.removeItem(LS_TOK);
+  } catch (e) {}
 }
 
 function leerApi() {
   try { return localStorage.getItem(LS_API) || ''; } catch (e) { return ''; }
 }
 
+function leerTok() {
+  try { return localStorage.getItem(LS_TOK) || ''; } catch (e) { return ''; }
+}
+
 function cambiarConexion() {
   if (!confirm('Se desconectará este navegador del servidor actual. ¿Continuar?')) return;
-  guardarApi('');
+  guardarApi('', '');
   API_URL = '';
+  TOKEN = '';
   location.replace(location.pathname + location.search);
 }
 
 $('fCx').addEventListener('submit', async ev => {
   ev.preventDefault();
   const el = $('cxUrl');
+  const tk = $('cxTok');
   quitarError(el);
+  quitarError(tk);
   const u = apiDeCodigo(el.value);
+  const t = limpio(tk.value);
   if (!u) { marcar(el, 'Pegue la URL completa que termina en /exec.'); return; }
   $('cxBtn').disabled = true;
   let j = null;
-  try { j = await leerConfigApi(u); } catch (e) { j = null; }
+  try { j = await leerConfigApi(u, t); } catch (e) { j = null; }
   $('cxBtn').disabled = false;
+  if (j && j.token === false) { marcar(tk, t ? 'El token no corresponde a este servidor.' : 'Ingrese el token de acceso.'); return; }
   if (!j) { marcar(el, 'No hubo respuesta válida. Revise la URL y que la implementación tenga acceso "Cualquier usuario".'); return; }
-  guardarApi(u);
+  guardarApi(u, t);
   API_URL = u;
+  TOKEN = t;
   cargar();
 });
 
@@ -3438,6 +3476,9 @@ function irCfg() {
   $('cQrUrl').textContent = enlace();
   $('cEnlace').value = enlace();
   $('cApi').value = API_URL;
+  $('cTok').value = TOKEN;
+  $('cTok').type = 'password';
+  $('cVerTok').textContent = 'Mostrar';
   cargarNomina();
 }
 
@@ -3479,6 +3520,18 @@ function renderNomina() {
 $('nBuscar').addEventListener('input', renderNomina);
 $('cCopiar').addEventListener('click', () => copiar($('cEnlace').value, $('cCopiar')));
 $('cCambiarApi').addEventListener('click', cambiarConexion);
+$('cVerTok').addEventListener('click', () => { const i = $('cTok'); i.type = i.type === 'password' ? 'text' : 'password'; $('cVerTok').textContent = i.type === 'password' ? 'Mostrar' : 'Ocultar'; });
+$('cNuevoTok').addEventListener('click', async () => {
+  if (!confirm('Se generará un nuevo token. Los enlaces y códigos QR ya compartidos dejarán de funcionar y deberá compartir el enlace nuevo. ¿Continuar?')) return;
+  $('cNuevoTok').disabled = true;
+  const j = await api('token', { sesion: SESION });
+  $('cNuevoTok').disabled = false;
+  if (!j.ok) { if (j.sesion !== false) toast(j.mensaje, true); return; }
+  TOKEN = j.token;
+  guardarApi(API_URL, TOKEN);
+  irCfg();
+  toast('Token regenerado. Comparta el nuevo enlace para colaboradores.');
+});
 
 function parsearNomina(t) {
   return String(t || '').split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => (l.indexOf('\t') >= 0 ? l.split('\t') : l.split(';')).map(c => c.trim())).filter(c => !/^rut$/i.test(c[0]));
@@ -3524,12 +3577,16 @@ function aplicarInfoRut() {
   const m = location.hash.match(/[#&]api=([^&]+)/);
   if (m) {
     let v = '';
+    let t = '';
     try { v = decodeURIComponent(m[1]); } catch (e) { v = ''; }
+    const mt = location.hash.match(/[#&]t=([^&]+)/);
+    try { t = mt ? decodeURIComponent(mt[1]) : ''; } catch (e) { t = ''; }
     const u = apiDeCodigo(v);
-    if (u) guardarApi(u);
+    if (u) guardarApi(u, t);
     try { history.replaceState(null, '', location.pathname + location.search + (/ir=ingreso|#ingreso/.test(location.hash) ? '#ingreso' : /datos/.test(location.hash) ? '#datos' : '')); } catch (e) {}
   }
   API_URL = leerApi();
+  TOKEN = leerTok();
   cargar();
 })();
 </script>
