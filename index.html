@@ -582,6 +582,7 @@ body>*:not(#print){display:none!important}
 .pnav::-webkit-scrollbar{display:none}
 .pnav-tabs,.pnav-acc{display:flex;gap:8px;flex:none}
 .pnav-acc{margin-left:auto;padding-left:8px;border-left:1px solid var(--line)}
+.pnav-acc:not(:has(button:not([hidden]))){display:none}
 .pnav button{font:600 .8rem var(--disp);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--line);background:var(--card);color:var(--txt);padding:8px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
 .pnav button:hover{border-color:var(--acc);color:var(--acc)}
 .pnav button[aria-selected="true"]{background:var(--acc-soft);border-color:var(--acc-soft);color:var(--acc)}
@@ -600,7 +601,7 @@ body>*:not(#print){display:none!important}
 <nav class="navrow" id="tabs" aria-label="Secciones" hidden><div class="navin">
 <button type="button" id="tabDash" data-tab="dash" aria-selected="true">Dashboard</button><button type="button" id="tabIngreso" data-tab="ingreso" aria-selected="false">Ingreso</button>
 <span class="navsep" aria-hidden="true"></span>
-<button type="button" data-acc="instructivo">Instructivo</button><button type="button" data-acc="calendario">Calendario</button><button type="button" data-acc="modificar">Modificar mi registro</button><button type="button" data-acc="blanco">Formulario en blanco</button><button type="button" id="tabDatos" data-tab="datos" aria-selected="false" class="navdatos"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Datos</button>
+<button type="button" data-acc="modificar">Modificar mi registro</button><button type="button" data-acc="blanco">Formulario en blanco</button><button type="button" id="tabDatos" data-tab="datos" aria-selected="false" class="navdatos"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Datos</button>
 </div></nav>
 </header>
 
@@ -712,8 +713,9 @@ body>*:not(#print){display:none!important}
 
 <main id="vPanel" class="shell" hidden>
 <div class="dhead"><div><h1>Dashboard</h1><p class="sub" id="pSub"></p></div></div>
-<nav class="pnav" id="pTabs" aria-label="Secciones del Dashboard"><div class="pnav-tabs" role="tablist"><button type="button" role="tab" data-psub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-psub="cal" aria-selected="false">Calendario del proceso</button></div><div class="pnav-acc"><button type="button" id="pRefrescar">Actualizar</button></div></nav>
-<div id="pReg">
+<nav class="pnav" id="pTabs" aria-label="Secciones del Dashboard"><div class="pnav-tabs" role="tablist"><button type="button" role="tab" data-psub="ins" aria-selected="true">Instructivo</button><button type="button" role="tab" data-psub="cal" aria-selected="false">Calendario</button><button type="button" role="tab" data-psub="reg" aria-selected="false">Registros</button></div><div class="pnav-acc"><button type="button" id="pImprimir">Imprimir / PDF</button><button type="button" id="pRefrescar" hidden>Actualizar</button></div></nav>
+<section id="pIns" class="tarjeta"><div id="pInsCont"></div></section>
+<div id="pReg" hidden>
 <div class="kpis" id="kpis"></div>
 <div class="graficos" id="graficos"></div>
 <section class="tarjeta">
@@ -2553,6 +2555,7 @@ async function cargarPanel() {
   renderKpis(vig, (j.enCurso || []).length);
   renderPub();
   if (!$('subCal').hidden) renderEtapasAdmin();
+  if (!$('pIns').hidden && !$('pInsCont').innerHTML) $('pInsCont').innerHTML = instrHTML(true);
 }
 
 function filtradaPub() {
@@ -2648,10 +2651,21 @@ $('pBody').addEventListener('keydown', ev => { if (ev.key === 'Enter') { const t
 $('pRefrescar').addEventListener('click', cargarPanel);
 document.querySelectorAll('#pTabs [data-psub]').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('#pTabs [data-psub]').forEach(x => x.setAttribute('aria-selected', String(x === b)));
-  $('pReg').hidden = b.dataset.psub !== 'reg';
-  $('subCal').hidden = b.dataset.psub !== 'cal';
-  if (b.dataset.psub === 'cal') renderEtapasAdmin();
+  irPsub(b.dataset.psub);
 }));
+
+function irPsub(s) {
+  document.querySelectorAll('#pTabs [data-psub]').forEach(x => x.setAttribute('aria-selected', String(x.dataset.psub === s)));
+  $('pIns').hidden = s !== 'ins';
+  $('subCal').hidden = s !== 'cal';
+  $('pReg').hidden = s !== 'reg';
+  $('pImprimir').hidden = s !== 'ins';
+  $('pRefrescar').hidden = s !== 'reg';
+  if (s === 'ins') $('pInsCont').innerHTML = instrHTML(true);
+  if (s === 'cal') renderEtapasAdmin();
+}
+
+$('pImprimir').addEventListener('click', imprimirInstructivo);
 
 
 async function cargarLista() {
