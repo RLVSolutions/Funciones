@@ -185,6 +185,61 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc-h);b
 .barra .in{max-width:1400px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between}
 .barra span{color:var(--muted);font-size:.85rem}
 .barra .bts{display:flex;gap:8px}
+.hero{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap}
+.hero-t{position:relative;z-index:1;min-width:0}
+.hero-plazo{position:relative;z-index:1;margin:0;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);border-radius:10px;padding:7px 14px;font-size:.82rem;line-height:1.3;color:#f1e6f3}
+.hero-plazo b{display:block;font-family:var(--disp);font-size:1.08rem;color:#fff;font-weight:600}
+.procMovil{display:block;margin-bottom:16px;padding:14px 16px}
+.procMovil summary{cursor:pointer;font-weight:700;color:var(--acc);font-family:var(--disp)}
+.procMovil .procCont{margin-top:10px}
+@media (min-width:1100px){.procMovil{display:none}}
+.plazo{border-radius:10px;padding:10px 12px;background:var(--acc-soft);margin:6px 0 12px;font-size:.84rem;color:var(--muted)}
+.plazo b{display:block;font-family:var(--disp);font-size:1.05rem;color:var(--acc);margin:2px 0}
+.plazo.vencido{background:var(--err-soft)}
+.plazo.vencido b{color:var(--err)}
+.etapas{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:12px}
+.etapas li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;font-size:.85rem}
+.etapas .en{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.8rem;border:2px solid var(--line);color:var(--muted);background:var(--card)}
+.etapas .st-actual .en{background:var(--acc);border-color:var(--acc);color:#fff}
+.etapas .st-pasada .en{background:var(--ok);border-color:var(--ok);color:#fff}
+.etapas b{display:block;line-height:1.3}
+.etapas small{color:var(--muted)}
+.etapas p{margin:3px 0 0;color:var(--muted);font-size:.8rem}
+.etq-est{display:inline-block;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:1px 7px;border-radius:999px;margin-left:6px;vertical-align:2px;font-family:var(--disp)}
+.etq-est.actual{background:var(--acc);color:#fff}
+.etq-est.pasada{background:var(--ok-soft);color:var(--ok)}
+.etq-est.proxima{background:var(--line2);color:var(--muted)}
+.cal{font-size:.84rem;margin-bottom:14px}
+.cal-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.cal-h b{font-family:var(--disp);font-size:1rem}
+.cal-h button{border:1px solid var(--line);background:var(--card);border-radius:8px;width:32px;height:32px;cursor:pointer;color:var(--acc);font-size:1.1rem}
+.cal-h button:focus-visible{outline:none;box-shadow:var(--focus)}
+.cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;text-align:center}
+.cal-g .dn{font-size:.7rem;color:var(--muted);font-weight:700;padding:2px 0}
+.cal-g span{padding:6px 0;border-radius:6px;font-variant-numeric:tabular-nums}
+.cal-g .e1,.cal-ley .e1{background:#efe1f2;color:#4a1b52}
+.cal-g .e2,.cal-ley .e2{background:var(--mark-soft);color:#7a4d06}
+.cal-g .e3,.cal-ley .e3{background:var(--ok-soft);color:var(--ok)}
+.cal-g .hoy{outline:2px solid var(--acc);outline-offset:-2px;font-weight:700}
+.cal-g .lim{box-shadow:inset 0 -3px 0 var(--err);font-weight:700}
+.cal-ley{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:.75rem;color:var(--muted)}
+.cal-ley i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.cal-ley i.lim{background:var(--card);box-shadow:inset 0 -3px 0 var(--err);border:1px solid var(--line)}
+@media (min-width:1100px){.layout>.lateral{grid-column:2;grid-row:1 / span 2}.layout>.faq{grid-column:1;grid-row:2}}
+.faq h3{margin:18px 0 8px;color:var(--acc);font-size:.95rem}
+.faqq{border:1px solid var(--line);border-radius:8px;margin-bottom:6px;background:var(--card)}
+.faqq summary{cursor:pointer;padding:10px 14px;font-weight:600;font-size:.92rem}
+.faqq[open] summary{color:var(--acc)}
+.faqq div{padding:0 14px 12px;color:var(--muted);font-size:.9rem;max-width:80ch}
+.calsum{cursor:pointer;font-weight:700;font-family:var(--disp);color:var(--acc);font-size:1.02rem}
+#dCalRes{font-weight:400;color:var(--muted);font-family:system-ui,sans-serif;font-size:.86rem;margin-left:8px}
+.calgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:14px}
+@media (min-width:1000px){.calgrid{grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr)}}
+#fEtapas fieldset{border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:8px 14px 0;margin:0 0 12px;min-width:0}
+#fEtapas fieldset.e2{border-left-color:var(--mark)}
+#fEtapas fieldset.e3{border-left-color:var(--ok)}
+#fEtapas legend{font-weight:700;color:var(--acc);padding:0 6px;font-family:var(--disp)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
 .resto{display:contents}
 .resto[inert] .campo,.resto[inert] .ayuda{opacity:.42}
 section[inert]{opacity:.5}
@@ -382,8 +437,9 @@ body>*:not(#print){display:none!important}
 <section id="falla" class="centro" hidden><div class="tarjeta" style="max-width:440px"><div class="icono mal" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg></div><h1>No disponible</h1><p id="fallaMsg" class="sub"></p><button type="button" id="reintentar" class="btn pri" style="margin-top:16px">Reintentar</button></div></section>
 
 <main id="vIngreso" class="shell" hidden>
-<div class="hero"><h1 id="tituloIngreso">Registro de funciones por cargo</h1><p class="sub" id="subIngreso">Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.</p></div>
+<div class="hero"><div class="hero-t"><h1 id="tituloIngreso">Registro de funciones por cargo</h1><p class="sub" id="subIngreso">Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.</p></div><p class="hero-plazo" id="heroPlazo" hidden></p></div>
 <div class="movil-acc"><button type="button" class="btn sec" data-acc="modificar">Modificar mi registro</button><button type="button" class="btn sec" data-acc="blanco">Formulario en blanco (PDF)</button><button type="button" class="btn btn-wsp" data-acc="wsp" hidden>Asistente de ayuda</button></div>
+<details class="tarjeta procMovil"><summary>Calendario del proceso</summary><div class="procCont"></div></details>
 
 <section id="buscador" class="tarjeta" hidden style="margin-bottom:18px">
 <h2>Modificar mi registro</h2>
@@ -448,7 +504,10 @@ body>*:not(#print){display:none!important}
 <div class="hp" aria-hidden="true"><label>Sitio web<input id="website" tabindex="-1" autocomplete="off"></label></div>
 </form>
 
+<section class="tarjeta faq" id="faq"><h2>Preguntas frecuentes</h2><p class="sub" style="margin:-8px 0 4px">Si no encuentras tu respuesta, usa el asistente o habla directo con una persona.</p><div id="faqCont"></div></section>
+
 <aside class="lateral">
+<div class="tarjeta proc"><h3>Calendario del proceso</h3><div class="procCont"></div></div>
 <div class="tarjeta">
 <h3>Avance del formulario</h3>
 <ul class="avance" id="avance"></ul>
@@ -503,6 +562,7 @@ body>*:not(#print){display:none!important}
 <div class="dacc"><button type="button" id="dManual" class="btn pri">Transcribir formulario en papel</button><button type="button" id="dRefrescar" class="btn sec">Actualizar</button><button type="button" id="dCodigo" class="btn sec">Cambiar código</button><button type="button" id="dSalir" class="btn txt">Cerrar sesión</button></div>
 </div>
 <div class="kpis" id="kpis"></div>
+<details class="tarjeta" id="dCal" style="margin-bottom:16px"><summary class="calsum">Calendario del proceso<span id="dCalRes"></span></summary><div class="calgrid"><form id="fEtapas" novalidate></form><div><div id="dCalPrev"></div></div></div></details>
 <div class="graficos" id="graficos"></div>
 <section class="tarjeta">
 <div class="filtros"><input id="fTexto" type="search" placeholder="Buscar por nombre, RUT, ID o cargo" aria-label="Buscar"><select id="fSuc" aria-label="Filtrar por sucursal"></select><select id="fEstado" aria-label="Filtrar por estado"></select><span class="cuenta" id="fCuenta"></span></div>
@@ -736,6 +796,8 @@ function iniciar() {
   SESION = ss('lf_sesion');
   $('tabs').hidden = false;
   iniciarWsp(emp);
+  renderProceso();
+  renderFaq();
   if (!restaurar()) reiniciarFunciones();
   toggleOtro();
   renderFunciones();
@@ -1457,9 +1519,189 @@ document.addEventListener('click', ev => {
   else if (a === 'blanco') imprimirBlanco();
   else if (a === 'wsp') abrirWsp();
   else if (a === 'borrador') guardarAvance();
+  else if (a === 'calendario') abrirCalendario();
+});
+
+const DIAS_CAL = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+
+function fLocal(s) {
+  if (!s) return null;
+  const p = String(s).split('-');
+  return p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2]) : null;
+}
+
+function fTxt(s, largo) {
+  const d = fLocal(s);
+  if (!d) return 'por definir';
+  return d.toLocaleDateString('es-CL', largo ? { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' } : { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function hoy0() {
+  const d = new Date();
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
+function etapas() {
+  return (CFG && Array.isArray(CFG.etapas) && CFG.etapas.length === 3) ? CFG.etapas : [];
+}
+
+function estadoEtapa(e) {
+  const i = fLocal(e.inicio);
+  const f = fLocal(e.fin);
+  const h = hoy0();
+  if (!i && !f) return 'sin';
+  if (f && h > f) return 'pasada';
+  if (i && h < i) return 'proxima';
+  return 'actual';
+}
+
+function diasPlazo() {
+  const e = etapas()[0];
+  const f = e ? fLocal(e.fin) : null;
+  return f ? Math.round((f - hoy0()) / 86400000) : null;
+}
+
+function textoPlazo() {
+  const n = diasPlazo();
+  if (n === null) return '';
+  if (n < 0) return 'El plazo terminó el ' + fTxt(etapas()[0].fin);
+  if (n === 0) return 'Hoy es el último día';
+  return 'Quedan ' + n + (n === 1 ? ' día' : ' días');
+}
+
+function rangoTxt(e) {
+  if (!e.inicio && !e.fin) return 'Fechas por definir';
+  if (e.inicio && e.fin) return fTxt(e.inicio) + ' al ' + fTxt(e.fin);
+  return e.fin ? 'Hasta el ' + fTxt(e.fin) : 'Desde el ' + fTxt(e.inicio);
+}
+
+function etapasHTML(et) {
+  const lbl = { actual: 'En curso', pasada: 'Finalizada', proxima: 'Próxima', sin: '' };
+  return '<ol class="etapas">' + et.map((e, i) => {
+    const st = estadoEtapa(e);
+    return '<li class="st-' + st + '"><span class="en">' + (i + 1) + '</span><div><b>' + esc(e.nombre) + (lbl[st] ? '<span class="etq-est ' + st + '">' + lbl[st] + '</span>' : '') + '</b><small>' + esc(rangoTxt(e)) + '</small>' + (e.desc ? '<p>' + esc(e.desc) + '</p>' : '') + '</div></li>';
+  }).join('') + '</ol>';
+}
+
+function renderProceso() {
+  const et = etapas();
+  if (!et.length) return;
+  const n = diasPlazo();
+  const e0 = et[0];
+  const plazo = e0.fin ? '<div class="plazo' + (n < 0 ? ' vencido' : '') + '">Plazo para entregar tu información<b>' + esc(fTxt(e0.fin, true)) + '</b>' + esc(textoPlazo()) + '</div>' : '<div class="plazo">El plazo de entrega se informará próximamente.</div>';
+  const html = plazo + etapasHTML(et) + '<button type="button" class="btn sec ancho" data-acc="calendario">Ver calendario</button>';
+  document.querySelectorAll('.procCont').forEach(x => { x.innerHTML = html; });
+  const hp = $('heroPlazo');
+  if (e0.fin && !MANUAL) {
+    hp.innerHTML = (n < 0 ? 'Plazo terminado' : 'Plazo de entrega') + '<b>' + esc(fTxt(e0.fin)) + '</b>' + esc(n < 0 ? '' : textoPlazo());
+    hp.hidden = false;
+  } else hp.hidden = true;
+}
+
+function calHTML(y, m, et) {
+  const first = new Date(y, m, 1);
+  const ini = (first.getDay() + 6) % 7;
+  const nd = new Date(y, m + 1, 0).getDate();
+  const h = hoy0().getTime();
+  const lim = et[0] ? fLocal(et[0].fin) : null;
+  let c = DIAS_CAL.map(d => '<span class="dn">' + d + '</span>').join('');
+  for (let i = 0; i < ini; i++) c += '<span></span>';
+  for (let d = 1; d <= nd; d++) {
+    const f = new Date(y, m, d);
+    let cls = '';
+    let tip = '';
+    et.forEach((e, i) => {
+      const a = fLocal(e.inicio) || fLocal(e.fin);
+      const b = fLocal(e.fin) || fLocal(e.inicio);
+      if (!cls && a && b && f >= a && f <= b) { cls = 'e' + (i + 1); tip = e.nombre; }
+    });
+    if (f.getTime() === h) cls += ' hoy';
+    if (lim && f.getTime() === lim.getTime()) { cls += ' lim'; tip = 'Plazo de entrega'; }
+    c += '<span class="' + cls.trim() + '"' + (tip ? ' title="' + esc(tip) + '"' : '') + '>' + d + '</span>';
+  }
+  let mes = first.toLocaleDateString('es-CL', { month: 'long', year: 'numeric' });
+  mes = mes.charAt(0).toUpperCase() + mes.slice(1);
+  return '<div class="cal" data-y="' + y + '" data-m="' + m + '"><div class="cal-h"><button type="button" data-cal="-1" aria-label="Mes anterior">‹</button><b>' + esc(mes) + '</b><button type="button" data-cal="1" aria-label="Mes siguiente">›</button></div><div class="cal-g">' + c + '</div><div class="cal-ley">' + et.map((e, i) => '<span><i class="e' + (i + 1) + '"></i>' + esc(e.nombre) + '</span>').join('') + (lim ? '<span><i class="lim"></i>Plazo de entrega</span>' : '') + '</div></div>';
+}
+
+function mesBase(et) {
+  const h = hoy0();
+  const act = et.find(e => estadoEtapa(e) === 'actual');
+  const prox = et.find(e => estadoEtapa(e) === 'proxima');
+  const ref = act ? h : prox ? fLocal(prox.inicio || prox.fin) : (fLocal(et[0] && et[0].inicio) || h);
+  return [ref.getFullYear(), ref.getMonth()];
+}
+
+function abrirCalendario() {
+  const et = etapas();
+  const b = mesBase(et);
+  dialogo('Calendario del proceso', '<div class="calCont">' + calHTML(b[0], b[1], et) + '</div>' + etapasHTML(et), [{ txt: 'Cerrar', cls: 'pri' }]);
+}
+
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-cal]');
+  if (!b) return;
+  const c = b.closest('.cal');
+  let y = +c.dataset.y;
+  let m = +c.dataset.m + Number(b.dataset.cal);
+  if (m < 0) { m = 11; y -= 1; }
+  if (m > 11) { m = 0; y += 1; }
+  const et = c.closest('#dCal') ? etapasForm() : etapas();
+  c.outerHTML = calHTML(y, m, et);
+});
+
+function renderFaq() {
+  $('faqCont').innerHTML = BOT.map(c => '<h3>' + esc(c.t) + '</h3>' + c.q.map(q => '<details class="faqq"><summary>' + esc(q.t) + '</summary><div>' + (typeof q.r === 'function' ? q.r() : q.r) + '</div></details>').join('')).join('');
+}
+
+function etapasForm() {
+  return [0, 1, 2].map(i => ({ nombre: limpio($('eN' + i).value), desc: limpio($('eD' + i).value), inicio: $('eI' + i).value, fin: $('eF' + i).value }));
+}
+
+function renderEtapasAdmin() {
+  const et = etapas();
+  if (!et.length) return;
+  $('fEtapas').innerHTML = et.map((e, i) => '<fieldset class="etapa e' + (i + 1) + '"><legend>Etapa ' + (i + 1) + '</legend><div class="campo"><label for="eN' + i + '">Nombre</label><input id="eN' + i + '" maxlength="60" value="' + esc(e.nombre) + '"></div><div class="campo"><label for="eD' + i + '">Descripción para los colaboradores</label><textarea id="eD' + i + '" rows="2" maxlength="300">' + esc(e.desc) + '</textarea></div><div class="g2"><div class="campo"><label for="eI' + i + '">Inicio</label><input type="date" id="eI' + i + '" value="' + esc(e.inicio) + '"></div><div class="campo"><label for="eF' + i + '">Término' + (i === 0 ? ' (plazo de entrega)' : '') + '</label><input type="date" id="eF' + i + '" value="' + esc(e.fin) + '"></div></div></fieldset>').join('') + '<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><button type="submit" class="btn pri" id="eBtn">Guardar calendario</button><span class="mini" style="margin:0">Los colaboradores verán los cambios al recargar la página.</span></div><p class="errBloque" id="eErr"></p>';
+  previewEtapas();
+  const act = et.findIndex(e => estadoEtapa(e) === 'actual');
+  $('dCalRes').textContent = act >= 0 ? '· Etapa en curso: ' + et[act].nombre + (act === 0 && textoPlazo() ? ' · ' + textoPlazo().toLowerCase() : '') : (et.some(e => e.inicio || e.fin) ? '' : '· Fechas por definir');
+}
+
+function previewEtapas() {
+  const et = etapasForm();
+  const b = mesBase(et);
+  $('dCalPrev').innerHTML = calHTML(b[0], b[1], et);
+}
+
+$('fEtapas').addEventListener('input', ev => { if (ev.target.type === 'date') previewEtapas(); });
+
+$('fEtapas').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const et = etapasForm();
+  $('eErr').textContent = '';
+  for (let i = 0; i < 3; i++) {
+    if (et[i].inicio && et[i].fin && et[i].inicio > et[i].fin) { $('eErr').textContent = 'Etapa ' + (i + 1) + ': el inicio es posterior al término.'; return; }
+  }
+  $('eBtn').disabled = true;
+  const j = await api('etapas', { sesion: SESION, etapas: et });
+  if ($('eBtn')) $('eBtn').disabled = false;
+  if (!j.ok) { if (j.sesion !== false) $('eErr').textContent = j.mensaje; return; }
+  CFG.etapas = j.etapas;
+  renderProceso();
+  renderFaq();
+  renderEtapasAdmin();
+  toast('Calendario del proceso guardado.');
 });
 
 const BOT = [
+  { t: 'El proceso y plazos', q: [
+    { t: '¿Cuáles son las etapas del proceso?', k: 'etapa proceso calendario cronograma', r: () => 'El levantamiento tiene tres etapas:<br><br>' + etapas().map((e, i) => '<b>' + (i + 1) + '. ' + esc(e.nombre) + '</b> (' + esc(rangoTxt(e)) + ')' + (e.desc ? ': ' + esc(e.desc) : '')).join('<br>'), acc: [['calendario', 'Ver calendario']] },
+    { t: '¿Hasta cuándo tengo plazo?', k: 'plazo fecha limite hasta cuando', r: () => { const e = etapas()[0]; return e && e.fin ? 'Tienes plazo hasta el <b>' + esc(fTxt(e.fin, true)) + '</b> para entregar tu información. ' + esc(textoPlazo()) + '.<br><br>Si no alcanzas a terminar de una vez, guarda tu avance y continúa después.' : 'El plazo aún no está definido; se informará en esta página. Te recomendamos completarlo cuanto antes y guardar tu avance si no alcanzas a terminar.'; }, acc: [['calendario', 'Ver calendario']] },
+    { t: '¿Qué pasa después de enviar mi información?', k: 'despues enviar pasa luego siguiente', r: () => { const e = etapas(); return 'Tu registro pasa a la etapa de <b>' + esc(e[1] ? e[1].nombre : 'diálogo') + '</b>: tu jefatura lo revisa y puede conversar contigo para precisar tus funciones. Después viene <b>' + esc(e[2] ? e[2].nombre : 'feedback y actualización') + '</b>, donde recibirás observaciones y podrás actualizar tu registro.'; } },
+    { t: '¿En qué consiste la etapa de diálogo?', k: 'dialogo revision jefatura', r: () => { const e = etapas()[1]; return (e && e.desc ? esc(e.desc) + '<br><br>' : '') + 'Es una conversación para aclarar y precisar lo que declaraste. No es una evaluación de desempeño.' + (e ? '<br><br><b>Fechas:</b> ' + esc(rangoTxt(e)) + '.' : ''); } },
+    { t: '¿En qué consiste la etapa de feedback?', k: 'feedback observacion actualizacion actualizar resultado', r: () => { const e = etapas()[2]; return (e && e.desc ? esc(e.desc) + '<br><br>' : '') + 'Recibirás las precisiones de la revisión y podrás actualizar tu registro con tu RUT y tu clave.' + (e ? '<br><br><b>Fechas:</b> ' + esc(rangoTxt(e)) + '.' : ''); } },
+    { t: '¿Puedo modificar mi registro después del plazo?', k: 'modificar despues vencido tarde atrasado', r: 'Durante la etapa de <b>feedback y actualización</b> podrás actualizar tu registro con tu RUT y tu clave. Si el plazo de entrega venció y aún no envías tu información, consulta con tu jefatura.' }
+  ] },
   { t: 'Dudas con el formulario', q: [
     { t: '¿Cómo guardo mi avance?', k: 'guardar borrador continuar despues tarde terminar', r: 'Presiona <b>Guardar avance</b>, bajo "Revisar y enviar". Solo necesitas haber verificado tu RUT y escrito tu nombre.<br><br>La primera vez recibirás un <b>ID</b> y una <b>clave</b>: anótalos, descárgalos o guárdalos en el navegador.', acc: [['borrador', 'Guardar avance ahora']] },
     { t: '¿Cómo retomo un registro que dejé a medias?', k: 'continuar borrador medias incompleto inconcluso pendiente', r: 'Escribe tu <b>RUT</b> al comienzo del formulario. Si tienes un avance guardado, aparecerá el aviso "Tiene un registro sin finalizar": ingresa tu clave y presiona <b>Retomar registro</b>.' },
@@ -1493,12 +1735,11 @@ const BOT = [
     { t: 'Consejos para completar el formulario', k: 'consejo recomendacion tips sugerencia completar', r: '• Piensa en una semana y en un mes típicos de trabajo.<br>• Registra primero tus funciones principales.<br>• Escribe con tus palabras: no hay respuestas correctas o incorrectas.<br>• Guarda tu avance si necesitas consultar algo y sigue después.' },
     { t: 'Quiero proponer mejoras a mi cargo', k: 'mejora proponer sugerir', r: 'Escríbelas en <b>Comentarios generales</b>, al final del formulario. Si prefieres conversarlo, elige "Hablar directo con una persona" en el menú.' },
     { t: '¿Para qué se usa esta información?', k: 'objetivo proposito sirve finalidad uso', r: 'Para elaborar los descriptores de cargo de la empresa, es decir, describir con precisión qué hace cada cargo.' },
-    { t: '¿Quién ve mis datos?', k: 'privacidad datos confidencial ver quien acceso', r: 'Solo el equipo administrador del levantamiento. La información se usa exclusivamente para gestión interna.' },
-    { t: '¿Hasta cuándo tengo plazo?', k: 'plazo fecha cuando limite hasta', r: 'Tu jefatura te informará el plazo. Te recomendamos completarlo cuanto antes y guardar tu avance si no alcanzas a terminar.' }
+    { t: '¿Quién ve mis datos?', k: 'privacidad datos confidencial ver quien acceso', r: 'Solo el equipo administrador del levantamiento. La información se usa exclusivamente para gestión interna.' }
   ] }
 ];
-const BOT_SIN = { contrasena: 'clave', password: 'clave', pass: 'clave', codigo: 'clave', pin: 'clave', avance: 'borrador', pausa: 'borrador', retomar: 'continuar', seguir: 'continuar', reanudar: 'continuar', terminar: 'continuar', editar: 'modificar', corregir: 'modificar', cambiar: 'modificar', actualizar: 'modificar', jefe: 'jefatura', jefa: 'jefatura', supervisor: 'jefatura', encargado: 'jefatura', superior: 'jefatura', puesto: 'cargo', rol: 'cargo', labor: 'funcion', actividad: 'tarea', movil: 'celular', telefono: 'celular', notebook: 'computador', pc: 'computador', impreso: 'papel', imprimir: 'papel', mano: 'papel', pdf: 'papel', falla: 'error', problema: 'error', funciona: 'error', cantidad: 'cuantas', cuanto: 'cuantas', perdi: 'olvide', recuerdo: 'olvide', extravie: 'olvide', borrar: 'eliminar', quitar: 'eliminar', sacar: 'eliminar', clasificacion: 'tipo', categoria: 'tipo', ejemplo: 'describir', redaccion: 'redactar', guardo: 'guardar', guarde: 'guardar', envie: 'enviado', mande: 'enviado', mandado: 'enviado', edito: 'modificar', corrijo: 'modificar', cambio: 'modificar', borro: 'eliminar', elimino: 'eliminar', redacto: 'redactar', redacta: 'redactar', escribo: 'redactar', anoto: 'anotar', apunto: 'anotar', pongo: 'elegir', escojo: 'elegir', selecciono: 'elegir', medio: 'medias', guardado: 'borrador' };
-const BOT_STOP = ['que', 'de', 'la', 'el', 'en', 'mi', 'me', 'es', 'un', 'una', 'los', 'las', 'con', 'por', 'para', 'como', 'cual', 'debo', 'hay', 'lo', 'ya', 'se', 'y', 'o', 'a', 'al', 'del', 'su', 'tu', 'hago', 'tengo', 'puedo', 'esta', 'este', 'donde', 'cuando', 'si', 'no', 'mis', 'tus', 'le', 'les', 'pero', 'hola', 'quiero', 'necesito', 'saber', 'favor', 'porfa', 'ayuda', 'mas', 'muy', 'algo', 'hacer', 'tiene', 'ser', 'eso', 'esto', 'desde', 'llenar', 'llenarlo', 'hacerlo', 'usar', 'usarlo', 'sobre', 'dame', 'dime', 'decir', 'poner', 'puede', 'sale', 'debe', 'tengo', 'tener', 'cosa', 'cosas'];
+const BOT_SIN = { contrasena: 'clave', password: 'clave', pass: 'clave', codigo: 'clave', pin: 'clave', avance: 'borrador', pausa: 'borrador', retomar: 'continuar', seguir: 'continuar', reanudar: 'continuar', terminar: 'continuar', editar: 'modificar', corregir: 'modificar', cambiar: 'modificar', actualizar: 'modificar', jefe: 'jefatura', jefa: 'jefatura', supervisor: 'jefatura', encargado: 'jefatura', superior: 'jefatura', puesto: 'cargo', rol: 'cargo', labor: 'funcion', actividad: 'tarea', movil: 'celular', telefono: 'celular', notebook: 'computador', pc: 'computador', impreso: 'papel', imprimir: 'papel', mano: 'papel', pdf: 'papel', falla: 'error', problema: 'error', funciona: 'error', cantidad: 'cuantas', cuanto: 'cuantas', perdi: 'olvide', recuerdo: 'olvide', extravie: 'olvide', borrar: 'eliminar', quitar: 'eliminar', sacar: 'eliminar', clasificacion: 'tipo', categoria: 'tipo', ejemplo: 'describir', redaccion: 'redactar', guardo: 'guardar', guarde: 'guardar', envie: 'enviado', mande: 'enviado', mandado: 'enviado', edito: 'modificar', corrijo: 'modificar', cambio: 'modificar', borro: 'eliminar', elimino: 'eliminar', redacto: 'redactar', redacta: 'redactar', escribo: 'redactar', anoto: 'anotar', apunto: 'anotar', pongo: 'elegir', escojo: 'elegir', selecciono: 'elegir', medio: 'medias', guardado: 'borrador', fase: 'etapa', paso: 'etapa', cronograma: 'calendario', fechas: 'calendario', retroalimentacion: 'feedback', devolucion: 'feedback', vence: 'plazo', vencimiento: 'plazo', limite: 'plazo', conversacion: 'dialogo', reunion: 'dialogo', entrevista: 'dialogo', enviar: 'enviar' };
+const BOT_STOP = ['que', 'de', 'la', 'el', 'en', 'mi', 'me', 'es', 'un', 'una', 'los', 'las', 'con', 'por', 'para', 'como', 'cual', 'debo', 'hay', 'lo', 'ya', 'se', 'y', 'o', 'a', 'al', 'del', 'su', 'tu', 'hago', 'tengo', 'puedo', 'esta', 'este', 'donde', 'cuando', 'si', 'no', 'mis', 'tus', 'le', 'les', 'pero', 'hola', 'quiero', 'necesito', 'saber', 'favor', 'porfa', 'ayuda', 'mas', 'muy', 'algo', 'hacer', 'tiene', 'ser', 'eso', 'esto', 'desde', 'llenar', 'llenarlo', 'hacerlo', 'usar', 'usarlo', 'sobre', 'dame', 'dime', 'decir', 'poner', 'puede', 'sale', 'debe', 'tengo', 'tener', 'cosa', 'cosas', 'ver', 'mirar', 'revisar'];
 let botUlt = null;
 let botModo = '';
 let botTema = -1;
@@ -1696,6 +1937,7 @@ function botAccion(a) {
     if (acc === 'modificar') { if ($('buscador').hidden) abrirBuscador(); else $('buscador').scrollIntoView({ behavior: 'smooth' }); }
     else if (acc === 'blanco') imprimirBlanco();
     else if (acc === 'borrador') guardarAvance();
+    else if (acc === 'calendario') abrirCalendario();
   }
 }
 
@@ -2014,6 +2256,7 @@ async function cargarLista() {
     return;
   }
   LISTA = j.personas || [];
+  renderEtapasAdmin();
   BORR = j.borradores || 0;
   $('dSub').textContent = LISTA.length + (LISTA.length === 1 ? ' persona' : ' personas') + ' con registro vigente · ' + (j.envios || 0) + ((j.envios || 0) === 1 ? ' envío' : ' envíos') + ' en total · actualizado ' + hoy();
   renderKpis();
