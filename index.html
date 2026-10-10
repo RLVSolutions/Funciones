@@ -17,28 +17,19 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 .mono{font-family:var(--mono)}
 h1,h2,h3,.app,.btn,.tabs button,.kpi b,.eyebrow,.credbox b{font-family:var(--disp)}
-.franja{background:var(--acc-dark);color:#e9dcec;font-size:.8rem}
-.franin{display:flex;justify-content:flex-end;align-items:center;gap:12px;min-height:32px}
-.franja-wsp{background:none;border:0;color:#fff;font:inherit;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:4px 0}
-.franja-wsp::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--wsp)}
-.hero{background:linear-gradient(120deg,var(--acc-dark) 0%,#4a1b52 55%,var(--acc) 100%);color:#fff;border-radius:14px;padding:clamp(14px,1.8vw,20px) clamp(18px,2.6vw,30px);margin-bottom:18px;position:relative;overflow:hidden}
+.hero{background:linear-gradient(120deg,var(--acc-dark) 0%,#4a1b52 55%,var(--acc) 100%);color:#fff;border-radius:12px;padding:clamp(10px,1.2vw,14px) clamp(16px,2vw,24px);margin-bottom:14px;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.13),transparent 70%);pointer-events:none}
-.hero h1{color:#fff;font-size:clamp(1.3rem,2.2vw,1.7rem);font-weight:600}
+.hero h1{color:#fff;font-size:clamp(1.15rem,1.7vw,1.4rem);font-weight:600}
 .hero .sub{color:#e6d6ea;font-size:.95rem;margin-top:2px}
 .eyebrow{display:inline-block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);padding:3px 10px;border-radius:6px;margin-bottom:10px}
 .opciones{display:grid;gap:8px;margin-top:10px}
 .opciones .btn{justify-content:flex-start;width:100%}
 .btn-wsp{background:var(--wsp);color:#06351a;border-color:var(--wsp)}
 .btn-wsp:hover{filter:brightness(.96)}
-.movil-acc{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.movil-acc .btn{flex:1 1 180px}
-@media (min-width:1100px){.movil-acc{display:none}}
 .wsp{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 @media (max-width:1099px){.wsp{right:14px;bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
 .wsp-btn{width:58px;height:58px;border-radius:50%;border:0;background:var(--wsp);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.22)}
-.wsp-btn:focus-visible,.wsp-globo:focus-visible,.wsp-op:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-@media (min-width:1100px){.wsp-globo{display:none}}
-.wsp-globo{background:#fff;color:var(--txt);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font:inherit;font-size:.88rem;font-weight:600;box-shadow:var(--sh);cursor:pointer}
+.wsp-btn:focus-visible,.wsp-pop button:focus-visible,.wsp-op:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 .wsp-panel{width:min(380px,calc(100vw - 28px));background:#efeae2;border-radius:14px;overflow:hidden;box-shadow:0 12px 34px rgba(0,0,0,.25);display:flex;flex-direction:column;height:min(600px,74vh)}
 .wsp-head{background:#075e54;color:#fff;display:flex;gap:10px;align-items:center;padding:12px 14px}
 .wsp-av{width:38px;height:38px;border-radius:50%;background:var(--acc);display:grid;place-items:center;font:700 .82rem var(--disp);flex:none}
@@ -69,18 +60,34 @@ h1,h2,h3,.app,.btn,.tabs button,.kpi b,.eyebrow,.credbox b{font-family:var(--dis
 .wsp-op b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#dcf8c6;color:#075e54;font-size:.8rem;flex:none}
 .wsp-op:hover{border-color:var(--wsp)}
 .shell{width:100%;max-width:1400px;margin:0 auto;padding-inline:clamp(16px,2.6vw,40px)}
-.top{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
-.topin{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap;padding-block:8px}
+.top{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(43,18,50,.06)}
+.topbar{background:var(--acc);color:#fff}
+.topin{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:50px;padding:5px 16px}
 .marca{display:flex;align-items:center;gap:12px;min-width:0}
-.marca img{height:40px;width:auto;max-width:110px;object-fit:contain}
-.emp{margin:0;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.app{margin:0;font-weight:600;font-size:1.12rem;color:var(--acc);line-height:1.2}
-.tabs{display:flex;gap:4px;background:var(--bg);padding:4px;border-radius:10px;border:1px solid var(--line)}
-.tabs button{font:inherit;font-weight:600;border:0;background:none;color:var(--muted);padding:8px 18px;border-radius:7px;cursor:pointer}
-.tabs button[aria-selected="true"]{background:var(--acc);color:#fff;box-shadow:var(--sh)}
-.tabs button:focus-visible{outline:none;box-shadow:var(--focus)}
-@media (max-width:560px){.tabs{width:100%}.tabs button{flex:1}}
-main.shell,section.shell{padding-block:22px 120px}
+.marca-logo{width:34px;height:34px;border-radius:10px;background:#fff;display:grid;place-items:center;flex:none;overflow:hidden;color:var(--acc);font:700 .85rem var(--disp);box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.marca-logo img{width:100%;height:100%;object-fit:contain;padding:3px}
+.app{margin:0;font-family:var(--disp);font-size:1.12rem;line-height:1.2;color:#fff;font-weight:600;display:flex;flex-wrap:wrap;column-gap:7px;min-width:0}
+.app b{font-weight:700}
+.app span{color:#ead7ef;font-weight:500}
+.topder{display:flex;align-items:center;gap:8px;flex:none}
+.cx{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font-size:.78rem;font-weight:700;background:rgba(255,255,255,.18);color:#fff;white-space:nowrap}
+.cx.ok{background:#1e8a4c}
+.cx.mal{background:#c0392b}
+.cx svg{width:15px;height:15px}
+.icob{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;cursor:pointer;display:grid;place-items:center;flex:none}
+.icob:hover{background:rgba(255,255,255,.28)}
+.icob:focus-visible,.cx:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.navrow{background:var(--card)}
+.navin{display:flex;align-items:center;gap:8px;overflow-x:auto;padding:8px 16px;scrollbar-width:none}
+.navin::-webkit-scrollbar{display:none}
+.tabs,.navacc{display:flex;gap:8px;flex:none}
+.navin button{font:600 .8rem var(--disp);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--line);background:var(--card);color:var(--txt);padding:8px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.navin button:hover{border-color:var(--acc);color:var(--acc)}
+.navin button[aria-selected="true"]{background:var(--acc-soft);border-color:var(--acc-soft);color:var(--acc)}
+.navin button:focus-visible{outline:none;box-shadow:var(--focus)}
+.navsep{width:1px;height:24px;background:var(--line);flex:none}
+@media (max-width:640px){.app span{display:none}.topin{min-height:52px}.navin button{padding:7px 13px;font-size:.76rem}}
+main.shell,section.shell{padding-block:16px 120px}
 h1{margin:0;font-size:clamp(1.3rem,2.2vw,1.65rem);line-height:1.2;color:var(--txt);text-wrap:balance}
 h2{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:1.06rem}
 h3{margin:0 0 6px;font-size:.98rem}
@@ -93,7 +100,7 @@ h3{margin:0 0 6px;font-size:.98rem}
 @media (min-width:1100px){.layout{grid-template-columns:minmax(0,1fr) 300px}}
 .principal{display:grid;gap:18px;min-width:0}
 .lateral{display:none}
-@media (min-width:1100px){.lateral{display:grid;gap:16px;position:sticky;top:88px}}
+@media (min-width:1100px){.lateral{display:grid;gap:16px;position:sticky;top:calc(var(--toph,112px) + 16px)}}
 .g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px 16px}
 .c3,.c4,.c6,.c8,.c12{grid-column:span 12}
 @media (min-width:700px){.c3{grid-column:span 6}.c4{grid-column:span 6}.c6{grid-column:span 12}.c8{grid-column:span 12}}
@@ -229,7 +236,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc-h);b
 .subtabs button{font:inherit;font-family:var(--disp);font-weight:600;border:0;background:none;color:var(--muted);padding:10px 14px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
 .subtabs button[aria-selected="true"]{color:var(--acc);border-bottom-color:var(--acc)}
 .subtabs button:focus-visible{outline:none;box-shadow:var(--focus)}
-.aBarra{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;position:sticky;top:76px;z-index:5}
+.aBarra{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;position:sticky;top:calc(var(--toph,112px) + 8px);z-index:5}
 .faqadm{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
 @media (min-width:1000px){.faqadm{grid-template-columns:230px minmax(0,1fr)}.faqadm .acol{grid-column:1 / -1}}
 @media (min-width:1300px){.faqadm{grid-template-columns:230px minmax(0,1fr) 320px}.faqadm .acol{grid-column:auto}}
@@ -460,24 +467,133 @@ body>*:not(#print){display:none!important}
 .pdoc .usoint div{padding:4pt 6pt;height:11mm;border-right:.75pt dashed #c6d0dc}
 .pdoc .usoint div:first-child{background:#eef2f6;font-weight:700;display:flex;align-items:center;height:auto}
 .pdoc .usoint div:last-child{border-right:0}
+
+.combo{position:relative}
+.sug{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:25;list-style:none;margin:0;padding:4px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 28px rgba(43,18,50,.16);max-height:300px;overflow:auto}
+.sug li{padding:8px 10px;border-radius:7px;cursor:pointer;display:grid;gap:1px}
+.sug li b{font-weight:600;font-size:.92rem}
+.sug li small{color:var(--muted);font-size:.78rem}
+.sug li[aria-selected="true"],.sug li:hover{background:var(--acc-soft)}
+.sug li.nada{cursor:default;color:var(--muted);font-size:.86rem}
+.sug li.nada:hover{background:none}
+.rutok{color:var(--ok);font-weight:600;font-size:.9rem;display:inline-flex;align-items:center;gap:6px}
+.rutok::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat}
+.caja.grande{max-width:1000px}
+.instr{font-size:.92rem}
+.instr-lead{margin:0 0 14px;color:var(--muted)}
+.ins-etapas{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:stretch}
+.ins-fl{display:none;align-self:center;color:var(--acc);font-size:1.4rem;font-weight:700}
+@media (min-width:760px){.ins-etapas{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}.ins-fl{display:block}}
+.ins-et{border-radius:12px;padding:14px;border:1px solid var(--line);display:flex;flex-direction:column;gap:3px;min-width:0}
+.ins-et.e1{background:#f3e8f5;border-color:#dcc3e2}
+.ins-et.e2{background:var(--mark-soft);border-color:#ecd3a6}
+.ins-et.e3{background:var(--ok-soft);border-color:#b9dcc3}
+.ins-n{width:30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;font-weight:700;font-family:var(--disp);margin-bottom:4px}
+.ins-et.e2 .ins-n{background:var(--mark)}
+.ins-et.e3 .ins-n{background:var(--ok)}
+.ins-et b{font-family:var(--disp);font-size:1rem}
+.ins-et small{color:var(--muted)}
+.ins-et em{font-style:normal;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--acc)}
+.ins-et p{margin:4px 0 0;font-size:.84rem}
+.ins-plazo{margin:12px 0 0;background:var(--acc);color:#fff;border-radius:10px;padding:10px 14px;font-size:.92rem}
+.instr h3{font-family:var(--disp);color:var(--acc);margin:20px 0 10px;font-size:1.05rem}
+.ins-pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.ins-pasos li{border:1px solid var(--line);border-radius:12px;padding:14px;position:relative;background:var(--card);min-width:0}
+.ins-pasos .ico{width:34px;height:34px;color:var(--acc);margin-bottom:6px;display:block}
+.ins-pn{position:absolute;top:10px;right:14px;font-family:var(--disp);font-weight:700;font-size:1.7rem;color:#e6dbe8}
+.ins-pasos b{display:block;font-family:var(--disp)}
+.ins-pasos p{margin:4px 0 0;color:var(--muted);font-size:.86rem}
+.ins-pasos img{display:block;width:100%;margin-top:10px;border-radius:8px;border:1px solid var(--line)}
+.ins-tips{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:16px;background:var(--acc-soft);border-radius:12px;padding:14px 16px}
+.ins-tips ul{margin:6px 0 0;padding-left:18px;font-size:.88rem}
+.ins-qr{text-align:center}
+.ins-qr svg{width:110px;height:110px;display:block;margin:0 auto 4px;background:#fff;padding:6px;border-radius:8px}
+.ins-qr small{font-size:.72rem;color:var(--muted);word-break:break-all}
+.bimg{display:block;width:100%;border-radius:8px;margin:6px 0 8px;border:1px solid #d8d2c8}
+.cfggrid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+@media (min-width:1100px){.cfggrid{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}}
+.cfgqr{display:flex;gap:14px;align-items:center;background:var(--acc-soft);border-radius:10px;padding:10px 12px;margin:4px 0 12px}
+.cfgqr svg{width:84px;height:84px;background:#fff;padding:4px;border-radius:6px;flex:none}
+.cfgqr small{word-break:break-all;color:var(--muted)}
+.nimp{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.nimp label{display:inline-flex;gap:6px;align-items:center;font-size:.9rem}
+.nimp input[type=radio]{width:16px;height:16px;min-height:0;flex:none;margin:0;accent-color:var(--acc)}
+.ntabla{max-height:420px;overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:10px}
+.ntabla table{width:100%;border-collapse:collapse;font-size:.86rem}
+.ntabla th{position:sticky;top:0;background:var(--bg);text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:8px 10px}
+.ntabla td{padding:7px 10px;border-top:1px solid var(--line2)}
+.pdoc .pdigital{display:flex;gap:12pt;align-items:center;justify-content:space-between;border:1pt solid #5b2463;border-radius:6pt;padding:7pt 12pt;margin:0 0 9pt;background:#f6eef7;break-inside:avoid}
+.pdoc .pdigital b{display:block;font-size:10.5pt;color:#5b2463}
+.pdoc .pdigital span{display:block;font-size:8.3pt;color:#3b4654}
+.pdoc .pdigital .purl{font:700 9pt ui-monospace,Consolas,monospace;color:#1a2230;margin:1pt 0}
+.pdoc .pqr2 svg{width:24mm;height:24mm;display:block;background:#fff}
+.pdoc .tb10 td{height:18mm}
+.pblanco .firmas{margin-top:26pt}
+.pblanco .usoint{margin-top:8pt}
+.pblanco .usoint div{height:9mm}
+.pblanco h2{margin-top:11pt}
+.pdoc .tb10 .op{line-height:1.42;font-size:7.2pt;padding-top:3pt;padding-bottom:3pt}
+.pdoc .pqr{display:flex;flex-direction:column;align-items:center;gap:2pt;font-size:7pt;color:#5b6775;text-transform:uppercase;letter-spacing:.06em}
+.pdoc .pqr svg{width:20mm;height:20mm;display:block}
+.pinstr{font-size:9.5pt}
+.pinstr .instr{font-size:9.5pt}
+.pinstr .ins-etapas{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}
+.pinstr .ins-fl{display:block}
+.pinstr .ins-et{padding:9pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pinstr .ins-pasos{grid-template-columns:repeat(3,minmax(0,1fr));gap:8pt}
+.pinstr .ins-pasos li{padding:9pt;break-inside:avoid}
+.pinstr .ins-pasos .ico{width:22pt;height:22pt}
+.pinstr .ins-plazo{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pinstr .ins-tips{-webkit-print-color-adjust:exact;print-color-adjust:exact;break-inside:avoid}
+.pinstr .ins-qr svg{width:26mm;height:26mm}
+.pinstr h3{font-size:11pt;margin:12pt 0 6pt}
+
+.wsp-pop{position:relative;display:flex;align-items:center;gap:2px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 26px rgba(43,18,50,.2);padding:4px 4px 4px 14px;max-width:min(290px,calc(100vw - 40px));animation:popin .35s ease both;margin-right:6px}
+.wsp-pop::after{content:"";position:absolute;right:22px;bottom:-7px;width:12px;height:12px;background:#fff;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
+.wsp-pop-t{background:none;border:0;font:inherit;font-size:.9rem;color:var(--txt);cursor:pointer;text-align:left;display:flex;align-items:center;gap:9px;padding:8px 2px;border-radius:8px}
+.wsp-pop-t b{color:var(--acc)}
+.wsp-pop-t>span:last-child{white-space:nowrap}
+.wsp-dot{width:9px;height:9px;border-radius:50%;background:var(--wsp);flex:none;box-shadow:0 0 0 3px rgba(37,211,102,.2)}
+.wsp-pop-x{border:0;background:none;color:var(--muted);font-size:1.25rem;line-height:1;cursor:pointer;width:30px;height:30px;border-radius:50%;flex:none}
+.wsp-pop-x:hover{background:var(--line2);color:var(--txt)}
+@keyframes popin{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.wsp-pop{animation:none}}
+.cxfila{display:flex;gap:8px;align-items:center}
+.cxfila input{flex:1;min-width:0}
+.cxnota{background:var(--acc-soft);border-radius:10px;padding:10px 12px;font-size:.84rem;margin:4px 0 12px}
+
+.navdatos{display:inline-flex;align-items:center;gap:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.candado{display:flex;gap:10px;align-items:center;background:var(--acc-soft);color:var(--acc-dark);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:.9rem}
+.candado svg{flex:none;color:var(--acc)}
+.tabla td.lk{width:28px;color:var(--muted);text-align:center}
+.lockbox{display:flex;gap:14px;align-items:flex-start;background:var(--acc-soft);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.lockbox svg{flex:none;color:var(--acc)}
+.lockbox p{margin:0}
 </style>
 </head>
 <body>
-<div class="franja" id="franja" hidden><div class="shell franin"><button type="button" class="franja-wsp" data-acc="wsp" hidden>¿Dudas? Pregúntale al asistente</button></div></div>
-<header class="top">
-<div class="shell topin">
-<div class="marca"><img id="logo" alt="" hidden><div><p id="empresa" class="emp" hidden></p><p class="app">Levantamiento de Funciones</p></div></div>
-<nav class="tabs" id="tabs" role="tablist" aria-label="Secciones" hidden><button type="button" role="tab" id="tabIngreso" data-tab="ingreso" aria-selected="true">Ingreso</button><button type="button" role="tab" id="tabDash" data-tab="dash" aria-selected="false">Dashboard</button></nav>
-</div>
+<header class="top" id="top">
+<div class="topbar"><div class="topin">
+<div class="marca"><span class="marca-logo"><img id="logo" alt="" hidden><span id="marcaIni">RD</span></span><p class="app"><b id="empresa" hidden></b><span>Levantamiento de Funciones</span></p></div>
+<div class="topder"><span id="cx" class="cx" role="status"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 10a6 6 0 0 0-11.6-1.8A4.5 4.5 0 0 0 6.5 19H18a4.5 4.5 0 0 0 0-9z"/></svg><b id="cxTxt">Conectando…</b></span><button type="button" id="recargar" class="icob" aria-label="Recargar" title="Recargar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></button></div>
+</div></div>
+<nav class="navrow" id="tabs" aria-label="Secciones" hidden><div class="navin">
+<button type="button" id="tabIngreso" data-tab="ingreso" aria-selected="true">Ingreso</button>
+<span class="navsep" aria-hidden="true"></span>
+<button type="button" id="tabDash" data-tab="dash" aria-selected="false">Dashboard</button><button type="button" data-acc="instructivo">Instructivo</button><button type="button" data-acc="calendario">Calendario</button><button type="button" data-acc="modificar">Modificar mi registro</button><button type="button" data-acc="blanco">Formulario en blanco</button><button type="button" id="tabDatos" data-tab="datos" aria-selected="false" class="navdatos"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Datos</button>
+</div></nav>
 </header>
 
 <section id="carga" class="centro"><div><div class="spinner" aria-hidden="true"></div><p class="sub">Cargando formulario…</p></div></section>
 
-<section id="falla" class="centro" hidden><div class="tarjeta" style="max-width:440px"><div class="icono mal" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg></div><h1>No disponible</h1><p id="fallaMsg" class="sub"></p><button type="button" id="reintentar" class="btn pri" style="margin-top:16px">Reintentar</button></div></section>
+<section id="falla" class="centro" hidden><div class="tarjeta" style="max-width:440px"><div class="icono mal" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg></div><h1>No disponible</h1><p id="fallaMsg" class="sub"></p><div class="acciones-fila"><button type="button" id="reintentar" class="btn pri">Reintentar</button><button type="button" id="fallaCx" class="btn sec" hidden>Cambiar conexión</button></div></div></section>
+
+<section id="conexion" class="centro" hidden><div class="tarjeta" style="max-width:540px"><h1>Conectar el formulario</h1><p class="sub">Si eres colaborador, abre el enlace o escanea el código QR que te compartieron: el formulario se conecta solo.</p>
+<form id="fCx" novalidate style="margin-top:16px"><div class="campo"><label for="cxUrl">Administrador: URL de la aplicación web de Apps Script</label><input id="cxUrl" class="mono" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://script.google.com/macros/s/…/exec"><small class="ayuda">Se obtiene en la hoja, menú Levantamiento › Ver conexión. Queda guardada solo en este navegador.</small><small class="err"></small></div><button type="submit" id="cxBtn" class="btn pri">Conectar</button></form></div></section>
 
 <main id="vIngreso" class="shell" hidden>
 <div class="hero"><div class="hero-t"><h1 id="tituloIngreso">Registro de funciones por cargo</h1><p class="sub" id="subIngreso">Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.</p></div><p class="hero-plazo" id="heroPlazo" hidden></p></div>
-<div class="movil-acc"><button type="button" class="btn sec" data-acc="modificar">Modificar mi registro</button><button type="button" class="btn sec" data-acc="blanco">Formulario en blanco (PDF)</button><button type="button" class="btn btn-wsp" data-acc="wsp" hidden>Asistente de ayuda</button></div>
 <details class="tarjeta procMovil"><summary>Calendario del proceso</summary><div class="procCont"></div></details>
 
 <section id="buscador" class="tarjeta" hidden style="margin-bottom:18px">
@@ -508,14 +624,15 @@ body>*:not(#print){display:none!important}
 
 <section class="tarjeta">
 <h2><span class="num">1</span>Datos personales</h2>
-<p class="sub" id="rutGuia" style="margin:-8px 0 14px">Comience ingresando su RUT. Si ya tiene un registro o un avance guardado, podrá retomarlo con su clave.</p>
+<p class="sub" id="rutGuia" style="margin:-8px 0 14px">Comience con su RUT o busque su nombre. Se verifica solo al presionar Enter o pasar al campo siguiente; si ya tiene un registro o un avance guardado, podrá retomarlo con su clave.</p>
 <div class="g12">
-<div class="campo c4"><label for="rut">RUT *</label><input id="rut" maxlength="12" autocapitalize="characters" autocomplete="off" placeholder="12.345.678-9"><small class="err"></small></div>
-<div class="campo c4 rutacc"><button type="button" id="rutBtn" class="btn pri">Verificar RUT</button><button type="button" id="rutCambiar" class="enlace" hidden>Cambiar RUT</button></div>
+<div class="campo c6"><label for="rut">RUT *</label><div class="combo"><input id="rut" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="rutSug" maxlength="60" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="12.345.678-9"><ul id="rutSug" class="sug" role="listbox" hidden></ul></div><small class="ayuda" id="rutInfo"></small><small class="err"></small></div>
+<div class="campo c6 rutacc"><span id="rutOk" class="rutok" hidden>RUT verificado</span><button type="button" id="rutCambiar" class="enlace" hidden>Cambiar RUT</button></div>
 <div class="c12" id="rutEstado" aria-live="polite" hidden></div>
 <div id="restoDatos" class="resto">
-<div class="campo c8"><label for="nombre">Nombre completo *</label><input id="nombre" maxlength="120" autocomplete="name" placeholder="Nombres y apellidos"><small class="err"></small></div>
-<div class="campo c4"><label for="sucursal">Sucursal *</label><select id="sucursal"></select><small class="err"></small></div>
+<div class="campo c6"><label for="nombre">Nombre completo *</label><input id="nombre" maxlength="120" autocomplete="name" placeholder="Nombres y apellidos"><small class="err"></small></div>
+<div class="campo c3"><label for="sucursal">Sucursal *</label><select id="sucursal"></select><small class="err"></small></div>
+<div class="campo c3"><label for="unidad">Unidad funcional *</label><select id="unidad"><option value="">Seleccione…</option></select><input id="unidadOtro" maxlength="60" autocomplete="off" placeholder="Especifique la unidad" aria-label="Especifique la unidad funcional" hidden style="margin-top:6px"><small class="err"></small></div>
 <div class="campo c6"><label for="jefatura">Jefatura o dependencia directa *</label><input id="jefatura" maxlength="120" autocomplete="off" placeholder="Nombre o cargo de su jefe directo"><small class="err"></small></div>
 <div class="campo c3"><label for="telefono">Teléfono</label><input id="telefono" type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="+56 9 1234 5678"><small class="err"></small></div>
 <div class="campo c3"><label for="correo">Correo electrónico</label><input id="correo" type="email" inputmode="email" maxlength="120" autocomplete="email" placeholder="nombre@correo.cl"><small class="err"></small></div>
@@ -552,7 +669,6 @@ body>*:not(#print){display:none!important}
 <button type="button" class="btn sec ancho" data-acc="borrador" style="margin-top:8px">Guardar avance</button>
 <p class="mini">Guarde su avance para continuar después con su ID y clave. Antes de enviar verá un resumen para confirmar.</p>
 </div>
-<div class="tarjeta"><h3>Otras opciones</h3><div class="opciones"><button type="button" class="btn sec" data-acc="modificar">Modificar mi registro</button><button type="button" class="btn sec" data-acc="blanco">Formulario en blanco (PDF)</button><button type="button" class="btn btn-wsp" data-acc="wsp" hidden>Asistente de ayuda</button></div></div>
 <div class="tarjeta ftarea"><h3>¿Función o tarea?</h3><div class="ftCont"></div></div>
 <details class="tarjeta leyenda" open><summary>Tipos de función</summary><div class="leyCont"></div></details>
 </aside>
@@ -575,10 +691,25 @@ body>*:not(#print){display:none!important}
 </div>
 </section>
 
+<main id="vPanel" class="shell" hidden>
+<div class="dhead"><div><h1>Dashboard</h1><p class="sub" id="pSub"></p></div><div class="dacc"><button type="button" id="pRefrescar" class="btn sec">Actualizar</button></div></div>
+<nav class="subtabs" id="pTabs" role="tablist" aria-label="Secciones del Dashboard"><button type="button" role="tab" data-psub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-psub="cal" aria-selected="false">Calendario del proceso</button></nav>
+<div id="pReg">
+<div class="kpis" id="kpis"></div>
+<div class="graficos" id="graficos"></div>
+<section class="tarjeta">
+<div class="candado"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><b>Detalle protegido.</b> El detalle de cada registro solo puede verlo el administrador o el titular.</span></div>
+<div class="filtros"><input id="pTexto" type="search" placeholder="Buscar por nombre, sucursal, unidad o cargo" aria-label="Buscar"><select id="pSuc" aria-label="Filtrar por sucursal"></select><select id="pEstado" aria-label="Filtrar por estado"></select><span class="cuenta" id="pCuenta"></span></div>
+<div class="tablaw"><table class="tabla"><thead><tr><th>Nombre</th><th>Sucursal</th><th>Unidad</th><th>Cargo(s)</th><th class="n">Funciones</th><th>Actualizado</th><th>Estado</th><th><span class="sr">Acceso</span></th></tr></thead><tbody id="pBody"></tbody></table></div>
+</section>
+</div>
+<section id="subCal" class="tarjeta" hidden><h2 style="margin-bottom:4px">Calendario del proceso</h2><p class="sub" id="dCalRes" style="margin:0 0 6px"></p><div class="calgrid"><form id="fEtapas" novalidate></form><div><div id="dCalPrev"></div></div></div></section>
+</main>
+
 <main id="vDash" class="shell" hidden>
 <section id="dLogin" class="tarjeta login">
-<h1>Acceso al Dashboard</h1>
-<p class="sub" id="lSub">Ingrese el código de acceso de administración.</p>
+<h1>Acceso a Datos</h1>
+<p class="sub" id="lSub">Área restringida al administrador. Ingrese el código de acceso.</p>
 <form id="fLogin" novalidate style="margin-top:16px">
 <div class="campo"><label for="lCodigo">Código de acceso</label><input id="lCodigo" type="password" autocomplete="current-password" maxlength="40"></div>
 <button type="submit" id="lBtn" class="btn pri ancho">Ingresar</button>
@@ -595,19 +726,41 @@ body>*:not(#print){display:none!important}
 
 <section id="dPanel" hidden>
 <div class="dhead">
-<div><h1>Dashboard</h1><p class="sub" id="dSub"></p></div>
+<div><h1>Datos</h1><p class="sub" id="dSub"></p></div>
 <div class="dacc"><button type="button" id="dManual" class="btn pri">Transcribir formulario en papel</button><button type="button" id="dRefrescar" class="btn sec">Actualizar</button><button type="button" id="dCodigo" class="btn sec">Cambiar código</button><button type="button" id="dSalir" class="btn txt">Cerrar sesión</button></div>
 </div>
-<nav class="subtabs" role="tablist" aria-label="Secciones del Dashboard"><button type="button" role="tab" data-sub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-sub="cal" aria-selected="false">Calendario del proceso</button><button type="button" role="tab" data-sub="faq" aria-selected="false">Entrenar asistente</button></nav>
+<nav class="subtabs" id="dTabs" role="tablist" aria-label="Secciones de Datos"><button type="button" role="tab" data-sub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-sub="faq" aria-selected="false">Entrenar asistente</button><button type="button" role="tab" data-sub="cfg" aria-selected="false">Configuración</button></nav>
 <div id="subReg">
-<div class="kpis" id="kpis"></div>
-<div class="graficos" id="graficos"></div>
 <section class="tarjeta">
 <div class="filtros"><input id="fTexto" type="search" placeholder="Buscar por nombre, RUT, ID o cargo" aria-label="Buscar"><select id="fSuc" aria-label="Filtrar por sucursal"></select><select id="fEstado" aria-label="Filtrar por estado"></select><span class="cuenta" id="fCuenta"></span></div>
-<div class="tablaw"><table class="tabla"><thead><tr><th>Nombre</th><th>ID</th><th>Sucursal</th><th>Cargo(s)</th><th class="n">Funciones</th><th class="n">Precisiones</th><th>Actualizado</th><th>Estado</th></tr></thead><tbody id="tBody"></tbody></table></div>
+<div class="tablaw"><table class="tabla"><thead><tr><th>Nombre</th><th>ID</th><th>Sucursal</th><th>Unidad</th><th>Cargo(s)</th><th class="n">Funciones</th><th class="n">Precisiones</th><th>Actualizado</th><th>Estado</th></tr></thead><tbody id="tBody"></tbody></table></div>
 </section>
 </div>
-<section id="subCal" class="tarjeta" hidden><h2 style="margin-bottom:4px">Calendario del proceso</h2><p class="sub" id="dCalRes" style="margin:0 0 6px"></p><div class="calgrid"><form id="fEtapas" novalidate></form><div><div id="dCalPrev"></div></div></div></section>
+<section id="subCfg" hidden><div class="cfggrid">
+<form id="fAjustes" class="tarjeta" novalidate><h2 style="margin-bottom:4px">Ajustes generales</h2><p class="sub" style="margin:0 0 14px">Se guardan en el servidor. No es necesario modificar archivos del repositorio.</p>
+<div class="g12">
+<div class="campo c8"><label for="cEmpresa">Nombre de la empresa</label><input id="cEmpresa" maxlength="80"></div>
+<div class="campo c4"><label for="cIniciales">Iniciales del asistente</label><input id="cIniciales" maxlength="3" placeholder="RD" style="text-transform:uppercase"></div>
+<div class="campo c6"><label for="cWsp">WhatsApp para "Hablar con una persona"</label><input id="cWsp" maxlength="20" inputmode="tel" placeholder="56912345678"><small class="ayuda">Con código de país, solo números.</small></div>
+<div class="campo c6"><label for="cLogo">Logo (archivo o URL)</label><input id="cLogo" maxlength="300" placeholder="logo.png"></div>
+<div class="campo c12"><label for="cEnlace">Enlace para colaboradores</label><div class="cxfila"><input id="cEnlace" class="mono" readonly><button type="button" id="cCopiar" class="btn sec">Copiar</button></div><small class="ayuda">Compártalo por WhatsApp o correo. Incluye el código de conexión, por eso el repositorio ya no necesita config.js. El QR del formulario en papel y del instructivo usa este enlace.</small></div>
+<div class="campo c12"><label for="cApi">Servidor conectado (Apps Script)</label><div class="cxfila"><input id="cApi" class="mono" readonly><button type="button" id="cCambiarApi" class="btn txt">Cambiar</button></div></div>
+<div class="campo c12"><label for="cUrl">Dirección pública del formulario</label><input id="cUrl" maxlength="300" inputmode="url" placeholder="https://rlvsolutions.github.io/SateliteRD/"><small class="ayuda">Página de GitHub donde está publicado index.html.</small></div>
+<div class="c12 cfgqr"><div id="cQr"></div><div><b>Vista previa del QR</b><br><small id="cQrUrl"></small></div></div>
+<div class="campo c12"><label for="cUnidades">Unidades funcionales (una por línea)</label><textarea id="cUnidades" rows="7"></textarea><small class="ayuda">La opción "Otro (especificar)" se agrega sola.</small></div>
+<label class="c12 chk" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="cBusca" style="width:18px;height:18px;accent-color:var(--acc)"> Permitir buscar por nombre en el campo RUT (usa la nómina)</label>
+<label class="c12 chk" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="cNombres" style="width:18px;height:18px;accent-color:var(--acc)"> Mostrar nombres completos en el Dashboard (si se desmarca, solo iniciales)</label>
+</div>
+<button type="submit" id="cGuardar" class="btn pri" style="margin-top:14px">Guardar ajustes</button>
+</form>
+<section class="tarjeta"><h2 style="margin-bottom:4px">Nómina de colaboradores <small class="mini" id="nCuenta"></small></h2><p class="sub" style="margin:0 0 10px">Alimenta el selector del campo RUT y completa nombre, sucursal y unidad. Copie desde Excel las columnas en este orden: <b>RUT · Nombre · Sucursal · Unidad funcional · Cargo · Jefatura</b> (las dos últimas son opcionales).</p>
+<textarea id="nPegar" rows="6" class="mono" placeholder="12.345.678-9&#9;Juan Pérez Soto&#9;Casa Matriz&#9;Ventas&#9;Vendedor&#9;Ana Rojas" aria-label="Filas de la nómina"></textarea>
+<div class="nimp"><label><input type="radio" name="nModo" value="agregar" checked> Agregar o actualizar</label><label><input type="radio" name="nModo" value="reemplazar"> Reemplazar toda la nómina</label><button type="button" id="nImportar" class="btn pri">Importar</button></div>
+<p class="mini" id="nRes" aria-live="polite"></p>
+<input id="nBuscar" type="search" placeholder="Buscar en la nómina" aria-label="Buscar en la nómina" style="margin-top:8px">
+<div class="ntabla"><table><thead><tr><th>RUT</th><th>Nombre</th><th>Sucursal</th><th>Unidad</th><th></th></tr></thead><tbody id="nLista"></tbody></table></div>
+</section>
+</div></section>
 <section id="subFaq" hidden>
 <div class="aBarra tarjeta"><div><h2 style="margin:0">Entrenamiento del asistente</h2><p class="sub" id="aOrigen" style="margin:2px 0 0"></p></div><div class="dacc" style="align-items:center"><span id="aEstado" class="mini" style="margin:0"></span><button type="button" id="aRestaurar" class="btn txt">Restaurar predeterminadas</button><button type="button" id="aGuardar" class="btn pri">Guardar cambios</button></div></div>
 <div class="faqadm">
@@ -616,7 +769,7 @@ body>*:not(#print){display:none!important}
 <p id="aVacio" class="vacio" hidden>No hay temas. Cree uno con "+ Nuevo tema".</p>
 <div id="aTemaBox">
 <div class="atcab"><input id="aTemaNom" maxlength="60" aria-label="Nombre del tema"><button type="button" id="aTemaUp" class="ap-b" aria-label="Subir tema">↑</button><button type="button" id="aTemaDown" class="ap-b" aria-label="Bajar tema">↓</button><button type="button" id="aTemaDel" class="ap-b del">Eliminar tema</button></div>
-<details class="ayudafmt"><summary>Formato de las respuestas y variables</summary><p><code>**texto**</code> se muestra en negrita. Cada salto de línea se respeta.</p><p>Variables que se reemplazan por los datos reales: <code>{plazo}</code> fecha de término de la etapa 1 · <code>{dias}</code> días que quedan · <code>{etapas}</code> lista de etapas con fechas · <code>{etapa1}</code> <code>{etapa2}</code> <code>{etapa3}</code> nombre y fechas de cada etapa · <code>{tipos}</code> definiciones de los tipos de función · <code>{principal}</code> nombre del tipo principal.</p><p>Palabras clave: escriba las palabras que usaría alguien al hacer esta pregunta, incluidos sinónimos. También se agregan solas al entrenar.</p></details>
+<details class="ayudafmt"><summary>Formato de las respuestas y variables</summary><p><code>**texto**</code> se muestra en negrita. Cada salto de línea se respeta.</p><p>Variables que se reemplazan por los datos reales: <code>{plazo}</code> fecha de término de la etapa 1 · <code>{dias}</code> días que quedan · <code>{etapas}</code> lista de etapas con fechas · <code>{etapa1}</code> <code>{etapa2}</code> <code>{etapa3}</code> nombre y fechas de cada etapa · <code>{tipos}</code> definiciones de los tipos de función · <code>{principal}</code> nombre del tipo principal · <code>{pasos}</code> los seis pasos para completar el formulario, con imágenes.</p><p>Palabras clave: escriba las palabras que usaría alguien al hacer esta pregunta, incluidos sinónimos. También se agregan solas al entrenar.</p></details>
 <div id="aPregs"></div>
 <button type="button" id="aPregNueva" class="btn agregar">+ Agregar pregunta</button>
 </div>
@@ -675,21 +828,24 @@ body>*:not(#print){display:none!important}
 <div class="wsp-body" id="wspChat" aria-live="polite"></div>
 <form class="wsp-input" id="wspForm" autocomplete="off"><input id="wspIn" maxlength="300" placeholder="Escribe tu pregunta…" aria-label="Escribe tu pregunta"><button type="submit" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 20.5 21 12 3 3.5l.01 6.6L15 12 3.01 13.9z"/></svg></button></form>
 </div>
-<button type="button" id="wspGlobo" class="wsp-globo">¡Hola! ¿En qué te ayudamos?</button>
+<div id="wspGlobo" class="wsp-pop" hidden><button type="button" id="wspPopAbrir" class="wsp-pop-t"><span class="wsp-dot" aria-hidden="true"></span><span><b>¿Dudas?</b> Pregúntale al asistente</span></button><button type="button" id="wspPopX" class="wsp-pop-x" aria-label="Cerrar aviso">×</button></div>
 <button type="button" id="wspBtn" class="wsp-btn" aria-label="Ayuda por WhatsApp" aria-expanded="false"><svg width="30" height="30" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.3.6 4.5 1.8 6.4L3 29l7.2-1.9c1.8 1 3.8 1.5 5.8 1.5 7 0 12.7-5.6 12.7-12.6S23 3 16 3Zm0 23.2c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.3 1.1 1.2-4.2-.3-.4a10.4 10.4 0 0 1-1.6-5.5C5.3 9.8 10.1 5.1 16 5.1s10.7 4.7 10.7 10.5S21.9 26.2 16 26.2Zm5.9-7.8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.7c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3c.2.2 2.2 3.4 5.4 4.8 2 .8 2.8.9 3.8.8.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.3Z"/></svg></button>
 </div>
 <div id="toast" class="toast" role="status" hidden></div>
 <div id="print"></div>
 
 <script>
+/*! qrcode-generator 1.4.4 (c) Kazuhiko Arase, MIT License, https://github.com/kazuhikoarase/qrcode-generator */
+var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],f={},c=function(t,r){o=function(t){for(var r=new Array(t),e=0;e<t;e+=1){r[e]=new Array(t);for(var n=0;n<t;n+=1)r[e][n]=null}return r}(i=4*e+17),l(0,0),l(i-7,0),l(0,i-7),s(),h(),d(t,r),e>=7&&v(t),null==a&&(a=p(e,n,u)),w(a,r)},l=function(t,r){for(var e=-1;e<=7;e+=1)if(!(t+e<=-1||i<=t+e))for(var n=-1;n<=7;n+=1)r+n<=-1||i<=r+n||(o[t+e][r+n]=0<=e&&e<=6&&(0==n||6==n)||0<=n&&n<=6&&(0==e||6==e)||2<=e&&e<=4&&2<=n&&n<=4)},h=function(){for(var t=8;t<i-8;t+=1)null==o[t][6]&&(o[t][6]=t%2==0);for(var r=8;r<i-8;r+=1)null==o[6][r]&&(o[6][r]=r%2==0)},s=function(){for(var t=B.getPatternPosition(e),r=0;r<t.length;r+=1)for(var n=0;n<t.length;n+=1){var i=t[r],a=t[n];if(null==o[i][a])for(var u=-2;u<=2;u+=1)for(var f=-2;f<=2;f+=1)o[i+u][a+f]=-2==u||2==u||-2==f||2==f||0==u&&0==f}},v=function(t){for(var r=B.getBCHTypeNumber(e),n=0;n<18;n+=1){var a=!t&&1==(r>>n&1);o[Math.floor(n/3)][n%3+i-8-3]=a}for(n=0;n<18;n+=1){a=!t&&1==(r>>n&1);o[n%3+i-8-3][Math.floor(n/3)]=a}},d=function(t,r){for(var e=n<<3|r,a=B.getBCHTypeInfo(e),u=0;u<15;u+=1){var f=!t&&1==(a>>u&1);u<6?o[u][8]=f:u<8?o[u+1][8]=f:o[i-15+u][8]=f}for(u=0;u<15;u+=1){f=!t&&1==(a>>u&1);u<8?o[8][i-u-1]=f:u<9?o[8][15-u-1+1]=f:o[8][15-u-1]=f}o[i-8][8]=!t},w=function(t,r){for(var e=-1,n=i-1,a=7,u=0,f=B.getMaskFunction(r),c=i-1;c>0;c-=2)for(6==c&&(c-=1);;){for(var g=0;g<2;g+=1)if(null==o[n][c-g]){var l=!1;u<t.length&&(l=1==(t[u]>>>a&1)),f(n,c-g)&&(l=!l),o[n][c-g]=l,-1==(a-=1)&&(u+=1,a=7)}if((n+=e)<0||i<=n){n-=e,e=-e;break}}},p=function(t,r,e){for(var n=A.getRSBlocks(t,r),o=b(),i=0;i<e.length;i+=1){var a=e[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var u=0;for(i=0;i<n.length;i+=1)u+=n[i].dataCount;if(o.getLengthInBits()>8*u)throw"code length overflow. ("+o.getLengthInBits()+">"+8*u+")";for(o.getLengthInBits()+4<=8*u&&o.put(0,4);o.getLengthInBits()%8!=0;)o.putBit(!1);for(;!(o.getLengthInBits()>=8*u||(o.put(236,8),o.getLengthInBits()>=8*u));)o.put(17,8);return function(t,r){for(var e=0,n=0,o=0,i=new Array(r.length),a=new Array(r.length),u=0;u<r.length;u+=1){var f=r[u].dataCount,c=r[u].totalCount-f;n=Math.max(n,f),o=Math.max(o,c),i[u]=new Array(f);for(var g=0;g<i[u].length;g+=1)i[u][g]=255&t.getBuffer()[g+e];e+=f;var l=B.getErrorCorrectPolynomial(c),h=k(i[u],l.getLength()-1).mod(l);for(a[u]=new Array(l.getLength()-1),g=0;g<a[u].length;g+=1){var s=g+h.getLength()-a[u].length;a[u][g]=s>=0?h.getAt(s):0}}var v=0;for(g=0;g<r.length;g+=1)v+=r[g].totalCount;var d=new Array(v),w=0;for(g=0;g<n;g+=1)for(u=0;u<r.length;u+=1)g<i[u].length&&(d[w]=i[u][g],w+=1);for(g=0;g<o;g+=1)for(u=0;u<r.length;u+=1)g<a[u].length&&(d[w]=a[u][g],w+=1);return d}(o,n)};f.addData=function(t,r){var e=null;switch(r=r||"Byte"){case"Numeric":e=M(t);break;case"Alphanumeric":e=x(t);break;case"Byte":e=m(t);break;case"Kanji":e=L(t);break;default:throw"mode:"+r}u.push(e),a=null},f.isDark=function(t,r){if(t<0||i<=t||r<0||i<=r)throw t+","+r;return o[t][r]},f.getModuleCount=function(){return i},f.make=function(){if(e<1){for(var t=1;t<40;t++){for(var r=A.getRSBlocks(t,n),o=b(),i=0;i<u.length;i++){var a=u[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var g=0;for(i=0;i<r.length;i++)g+=r[i].dataCount;if(o.getLengthInBits()<=8*g)break}e=t}c(!1,function(){for(var t=0,r=0,e=0;e<8;e+=1){c(!0,e);var n=B.getLostPoint(f);(0==e||t>n)&&(t=n,r=e)}return r}())},f.createTableTag=function(t,r){t=t||2;var e="";e+='<table style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: "+(r=void 0===r?4*t:r)+"px;",e+='">',e+="<tbody>";for(var n=0;n<f.getModuleCount();n+=1){e+="<tr>";for(var o=0;o<f.getModuleCount();o+=1)e+='<td style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: 0px;",e+=" width: "+t+"px;",e+=" height: "+t+"px;",e+=" background-color: ",e+=f.isDark(n,o)?"#000000":"#ffffff",e+=";",e+='"/>';e+="</tr>"}return e+="</tbody>",e+="</table>"},f.createSvgTag=function(t,r,e,n){var o={};"object"==typeof arguments[0]&&(t=(o=arguments[0]).cellSize,r=o.margin,e=o.alt,n=o.title),t=t||2,r=void 0===r?4*t:r,(e="string"==typeof e?{text:e}:e||{}).text=e.text||null,e.id=e.text?e.id||"qrcode-description":null,(n="string"==typeof n?{text:n}:n||{}).text=n.text||null,n.id=n.text?n.id||"qrcode-title":null;var i,a,u,c,g=f.getModuleCount()*t+2*r,l="";for(c="l"+t+",0 0,"+t+" -"+t+",0 0,-"+t+"z ",l+='<svg version="1.1" xmlns="http://www.w3.org/2000/svg"',l+=o.scalable?"":' width="'+g+'px" height="'+g+'px"',l+=' viewBox="0 0 '+g+" "+g+'" ',l+=' preserveAspectRatio="xMinYMin meet"',l+=n.text||e.text?' role="img" aria-labelledby="'+y([n.id,e.id].join(" ").trim())+'"':"",l+=">",l+=n.text?'<title id="'+y(n.id)+'">'+y(n.text)+"</title>":"",l+=e.text?'<description id="'+y(e.id)+'">'+y(e.text)+"</description>":"",l+='<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>',l+='<path d="',a=0;a<f.getModuleCount();a+=1)for(u=a*t+r,i=0;i<f.getModuleCount();i+=1)f.isDark(a,i)&&(l+="M"+(i*t+r)+","+u+c);return l+='" stroke="transparent" fill="black"/>',l+="</svg>"},f.createDataURL=function(t,r){t=t||2,r=void 0===r?4*t:r;var e=f.getModuleCount()*t+2*r,n=r,o=e-r;return I(e,e,(function(r,e){if(n<=r&&r<o&&n<=e&&e<o){var i=Math.floor((r-n)/t),a=Math.floor((e-n)/t);return f.isDark(a,i)?0:1}return 1}))},f.createImgTag=function(t,r,e){t=t||2,r=void 0===r?4*t:r;var n=f.getModuleCount()*t+2*r,o="";return o+="<img",o+=' src="',o+=f.createDataURL(t,r),o+='"',o+=' width="',o+=n,o+='"',o+=' height="',o+=n,o+='"',e&&(o+=' alt="',o+=y(e),o+='"'),o+="/>"};var y=function(t){for(var r="",e=0;e<t.length;e+=1){var n=t.charAt(e);switch(n){case"<":r+="&lt;";break;case">":r+="&gt;";break;case"&":r+="&amp;";break;case'"':r+="&quot;";break;default:r+=n}}return r};return f.createASCII=function(t,r){if((t=t||1)<2)return function(t){t=void 0===t?2:t;var r,e,n,o,i,a=1*f.getModuleCount()+2*t,u=t,c=a-t,g={"██":"█","█ ":"▀"," █":"▄","  ":" "},l={"██":"▀","█ ":"▀"," █":" ","  ":" "},h="";for(r=0;r<a;r+=2){for(n=Math.floor((r-u)/1),o=Math.floor((r+1-u)/1),e=0;e<a;e+=1)i="█",u<=e&&e<c&&u<=r&&r<c&&f.isDark(n,Math.floor((e-u)/1))&&(i=" "),u<=e&&e<c&&u<=r+1&&r+1<c&&f.isDark(o,Math.floor((e-u)/1))?i+=" ":i+="█",h+=t<1&&r+1>=c?l[i]:g[i];h+="\n"}return a%2&&t>0?h.substring(0,h.length-a-1)+Array(a+1).join("▀"):h.substring(0,h.length-1)}(r);t-=1,r=void 0===r?2*t:r;var e,n,o,i,a=f.getModuleCount()*t+2*r,u=r,c=a-r,g=Array(t+1).join("██"),l=Array(t+1).join("  "),h="",s="";for(e=0;e<a;e+=1){for(o=Math.floor((e-u)/t),s="",n=0;n<a;n+=1)i=1,u<=n&&n<c&&u<=e&&e<c&&f.isDark(o,Math.floor((n-u)/t))&&(i=0),s+=i?g:l;for(o=0;o<t;o+=1)h+=s+"\n"}return h.substring(0,h.length-1)},f.renderTo2dContext=function(t,r){r=r||2;for(var e=f.getModuleCount(),n=0;n<e;n++)for(var o=0;o<e;o++)t.fillStyle=f.isDark(n,o)?"black":"white",t.fillRect(n*r,o*r,r,r)},f};t.stringToBytes=(t.stringToBytesFuncs={default:function(t){for(var r=[],e=0;e<t.length;e+=1){var n=t.charCodeAt(e);r.push(255&n)}return r}}).default,t.createStringToBytes=function(t,r){var e=function(){for(var e=S(t),n=function(){var t=e.read();if(-1==t)throw"eof";return t},o=0,i={};;){var a=e.read();if(-1==a)break;var u=n(),f=n()<<8|n();i[String.fromCharCode(a<<8|u)]=f,o+=1}if(o!=r)throw o+" != "+r;return i}(),n="?".charCodeAt(0);return function(t){for(var r=[],o=0;o<t.length;o+=1){var i=t.charCodeAt(o);if(i<128)r.push(i);else{var a=e[t.charAt(o)];"number"==typeof a?(255&a)==a?r.push(a):(r.push(a>>>8),r.push(255&a)):r.push(n)}}return r}};var r,e,n,o,i,a=1,u=2,f=4,c=8,g={L:1,M:0,Q:3,H:2},l=0,h=1,s=2,v=3,d=4,w=5,p=6,y=7,B=(r=[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]],e=1335,n=7973,i=function(t){for(var r=0;0!=t;)r+=1,t>>>=1;return r},(o={}).getBCHTypeInfo=function(t){for(var r=t<<10;i(r)-i(e)>=0;)r^=e<<i(r)-i(e);return 21522^(t<<10|r)},o.getBCHTypeNumber=function(t){for(var r=t<<12;i(r)-i(n)>=0;)r^=n<<i(r)-i(n);return t<<12|r},o.getPatternPosition=function(t){return r[t-1]},o.getMaskFunction=function(t){switch(t){case l:return function(t,r){return(t+r)%2==0};case h:return function(t,r){return t%2==0};case s:return function(t,r){return r%3==0};case v:return function(t,r){return(t+r)%3==0};case d:return function(t,r){return(Math.floor(t/2)+Math.floor(r/3))%2==0};case w:return function(t,r){return t*r%2+t*r%3==0};case p:return function(t,r){return(t*r%2+t*r%3)%2==0};case y:return function(t,r){return(t*r%3+(t+r)%2)%2==0};default:throw"bad maskPattern:"+t}},o.getErrorCorrectPolynomial=function(t){for(var r=k([1],0),e=0;e<t;e+=1)r=r.multiply(k([1,C.gexp(e)],0));return r},o.getLengthInBits=function(t,r){if(1<=r&&r<10)switch(t){case a:return 10;case u:return 9;case f:case c:return 8;default:throw"mode:"+t}else if(r<27)switch(t){case a:return 12;case u:return 11;case f:return 16;case c:return 10;default:throw"mode:"+t}else{if(!(r<41))throw"type:"+r;switch(t){case a:return 14;case u:return 13;case f:return 16;case c:return 12;default:throw"mode:"+t}}},o.getLostPoint=function(t){for(var r=t.getModuleCount(),e=0,n=0;n<r;n+=1)for(var o=0;o<r;o+=1){for(var i=0,a=t.isDark(n,o),u=-1;u<=1;u+=1)if(!(n+u<0||r<=n+u))for(var f=-1;f<=1;f+=1)o+f<0||r<=o+f||0==u&&0==f||a==t.isDark(n+u,o+f)&&(i+=1);i>5&&(e+=3+i-5)}for(n=0;n<r-1;n+=1)for(o=0;o<r-1;o+=1){var c=0;t.isDark(n,o)&&(c+=1),t.isDark(n+1,o)&&(c+=1),t.isDark(n,o+1)&&(c+=1),t.isDark(n+1,o+1)&&(c+=1),0!=c&&4!=c||(e+=3)}for(n=0;n<r;n+=1)for(o=0;o<r-6;o+=1)t.isDark(n,o)&&!t.isDark(n,o+1)&&t.isDark(n,o+2)&&t.isDark(n,o+3)&&t.isDark(n,o+4)&&!t.isDark(n,o+5)&&t.isDark(n,o+6)&&(e+=40);for(o=0;o<r;o+=1)for(n=0;n<r-6;n+=1)t.isDark(n,o)&&!t.isDark(n+1,o)&&t.isDark(n+2,o)&&t.isDark(n+3,o)&&t.isDark(n+4,o)&&!t.isDark(n+5,o)&&t.isDark(n+6,o)&&(e+=40);var g=0;for(o=0;o<r;o+=1)for(n=0;n<r;n+=1)t.isDark(n,o)&&(g+=1);return e+=Math.abs(100*g/r/r-50)/5*10},o),C=function(){for(var t=new Array(256),r=new Array(256),e=0;e<8;e+=1)t[e]=1<<e;for(e=8;e<256;e+=1)t[e]=t[e-4]^t[e-5]^t[e-6]^t[e-8];for(e=0;e<255;e+=1)r[t[e]]=e;var n={glog:function(t){if(t<1)throw"glog("+t+")";return r[t]},gexp:function(r){for(;r<0;)r+=255;for(;r>=256;)r-=255;return t[r]}};return n}();function k(t,r){if(void 0===t.length)throw t.length+"/"+r;var e=function(){for(var e=0;e<t.length&&0==t[e];)e+=1;for(var n=new Array(t.length-e+r),o=0;o<t.length-e;o+=1)n[o]=t[o+e];return n}(),n={getAt:function(t){return e[t]},getLength:function(){return e.length},multiply:function(t){for(var r=new Array(n.getLength()+t.getLength()-1),e=0;e<n.getLength();e+=1)for(var o=0;o<t.getLength();o+=1)r[e+o]^=C.gexp(C.glog(n.getAt(e))+C.glog(t.getAt(o)));return k(r,0)},mod:function(t){if(n.getLength()-t.getLength()<0)return n;for(var r=C.glog(n.getAt(0))-C.glog(t.getAt(0)),e=new Array(n.getLength()),o=0;o<n.getLength();o+=1)e[o]=n.getAt(o);for(o=0;o<t.getLength();o+=1)e[o]^=C.gexp(C.glog(t.getAt(o))+r);return k(e,0).mod(t)}};return n}var A=function(){var t=[[1,26,19],[1,26,16],[1,26,13],[1,26,9],[1,44,34],[1,44,28],[1,44,22],[1,44,16],[1,70,55],[1,70,44],[2,35,17],[2,35,13],[1,100,80],[2,50,32],[2,50,24],[4,25,9],[1,134,108],[2,67,43],[2,33,15,2,34,16],[2,33,11,2,34,12],[2,86,68],[4,43,27],[4,43,19],[4,43,15],[2,98,78],[4,49,31],[2,32,14,4,33,15],[4,39,13,1,40,14],[2,121,97],[2,60,38,2,61,39],[4,40,18,2,41,19],[4,40,14,2,41,15],[2,146,116],[3,58,36,2,59,37],[4,36,16,4,37,17],[4,36,12,4,37,13],[2,86,68,2,87,69],[4,69,43,1,70,44],[6,43,19,2,44,20],[6,43,15,2,44,16],[4,101,81],[1,80,50,4,81,51],[4,50,22,4,51,23],[3,36,12,8,37,13],[2,116,92,2,117,93],[6,58,36,2,59,37],[4,46,20,6,47,21],[7,42,14,4,43,15],[4,133,107],[8,59,37,1,60,38],[8,44,20,4,45,21],[12,33,11,4,34,12],[3,145,115,1,146,116],[4,64,40,5,65,41],[11,36,16,5,37,17],[11,36,12,5,37,13],[5,109,87,1,110,88],[5,65,41,5,66,42],[5,54,24,7,55,25],[11,36,12,7,37,13],[5,122,98,1,123,99],[7,73,45,3,74,46],[15,43,19,2,44,20],[3,45,15,13,46,16],[1,135,107,5,136,108],[10,74,46,1,75,47],[1,50,22,15,51,23],[2,42,14,17,43,15],[5,150,120,1,151,121],[9,69,43,4,70,44],[17,50,22,1,51,23],[2,42,14,19,43,15],[3,141,113,4,142,114],[3,70,44,11,71,45],[17,47,21,4,48,22],[9,39,13,16,40,14],[3,135,107,5,136,108],[3,67,41,13,68,42],[15,54,24,5,55,25],[15,43,15,10,44,16],[4,144,116,4,145,117],[17,68,42],[17,50,22,6,51,23],[19,46,16,6,47,17],[2,139,111,7,140,112],[17,74,46],[7,54,24,16,55,25],[34,37,13],[4,151,121,5,152,122],[4,75,47,14,76,48],[11,54,24,14,55,25],[16,45,15,14,46,16],[6,147,117,4,148,118],[6,73,45,14,74,46],[11,54,24,16,55,25],[30,46,16,2,47,17],[8,132,106,4,133,107],[8,75,47,13,76,48],[7,54,24,22,55,25],[22,45,15,13,46,16],[10,142,114,2,143,115],[19,74,46,4,75,47],[28,50,22,6,51,23],[33,46,16,4,47,17],[8,152,122,4,153,123],[22,73,45,3,74,46],[8,53,23,26,54,24],[12,45,15,28,46,16],[3,147,117,10,148,118],[3,73,45,23,74,46],[4,54,24,31,55,25],[11,45,15,31,46,16],[7,146,116,7,147,117],[21,73,45,7,74,46],[1,53,23,37,54,24],[19,45,15,26,46,16],[5,145,115,10,146,116],[19,75,47,10,76,48],[15,54,24,25,55,25],[23,45,15,25,46,16],[13,145,115,3,146,116],[2,74,46,29,75,47],[42,54,24,1,55,25],[23,45,15,28,46,16],[17,145,115],[10,74,46,23,75,47],[10,54,24,35,55,25],[19,45,15,35,46,16],[17,145,115,1,146,116],[14,74,46,21,75,47],[29,54,24,19,55,25],[11,45,15,46,46,16],[13,145,115,6,146,116],[14,74,46,23,75,47],[44,54,24,7,55,25],[59,46,16,1,47,17],[12,151,121,7,152,122],[12,75,47,26,76,48],[39,54,24,14,55,25],[22,45,15,41,46,16],[6,151,121,14,152,122],[6,75,47,34,76,48],[46,54,24,10,55,25],[2,45,15,64,46,16],[17,152,122,4,153,123],[29,74,46,14,75,47],[49,54,24,10,55,25],[24,45,15,46,46,16],[4,152,122,18,153,123],[13,74,46,32,75,47],[48,54,24,14,55,25],[42,45,15,32,46,16],[20,147,117,4,148,118],[40,75,47,7,76,48],[43,54,24,22,55,25],[10,45,15,67,46,16],[19,148,118,6,149,119],[18,75,47,31,76,48],[34,54,24,34,55,25],[20,45,15,61,46,16]],r=function(t,r){var e={};return e.totalCount=t,e.dataCount=r,e},e={};return e.getRSBlocks=function(e,n){var o=function(r,e){switch(e){case g.L:return t[4*(r-1)+0];case g.M:return t[4*(r-1)+1];case g.Q:return t[4*(r-1)+2];case g.H:return t[4*(r-1)+3];default:return}}(e,n);if(void 0===o)throw"bad rs block @ typeNumber:"+e+"/errorCorrectionLevel:"+n;for(var i=o.length/3,a=[],u=0;u<i;u+=1)for(var f=o[3*u+0],c=o[3*u+1],l=o[3*u+2],h=0;h<f;h+=1)a.push(r(c,l));return a},e}(),b=function(){var t=[],r=0,e={getBuffer:function(){return t},getAt:function(r){var e=Math.floor(r/8);return 1==(t[e]>>>7-r%8&1)},put:function(t,r){for(var n=0;n<r;n+=1)e.putBit(1==(t>>>r-n-1&1))},getLengthInBits:function(){return r},putBit:function(e){var n=Math.floor(r/8);t.length<=n&&t.push(0),e&&(t[n]|=128>>>r%8),r+=1}};return e},M=function(t){var r=a,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+2<r.length;)t.put(o(r.substring(n,n+3)),10),n+=3;n<r.length&&(r.length-n==1?t.put(o(r.substring(n,n+1)),4):r.length-n==2&&t.put(o(r.substring(n,n+2)),7))}},o=function(t){for(var r=0,e=0;e<t.length;e+=1)r=10*r+i(t.charAt(e));return r},i=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);throw"illegal char :"+t};return n},x=function(t){var r=u,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+1<r.length;)t.put(45*o(r.charAt(n))+o(r.charAt(n+1)),11),n+=2;n<r.length&&t.put(o(r.charAt(n)),6)}},o=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);if("A"<=t&&t<="Z")return t.charCodeAt(0)-"A".charCodeAt(0)+10;switch(t){case" ":return 36;case"$":return 37;case"%":return 38;case"*":return 39;case"+":return 40;case"-":return 41;case".":return 42;case"/":return 43;case":":return 44;default:throw"illegal char :"+t}};return n},m=function(r){var e=f,n=t.stringToBytes(r),o={getMode:function(){return e},getLength:function(t){return n.length},write:function(t){for(var r=0;r<n.length;r+=1)t.put(n[r],8)}};return o},L=function(r){var e=c,n=t.stringToBytesFuncs.SJIS;if(!n)throw"sjis not supported.";!function(t,r){var e=n("友");if(2!=e.length||38726!=(e[0]<<8|e[1]))throw"sjis not supported."}();var o=n(r),i={getMode:function(){return e},getLength:function(t){return~~(o.length/2)},write:function(t){for(var r=o,e=0;e+1<r.length;){var n=(255&r[e])<<8|255&r[e+1];if(33088<=n&&n<=40956)n-=33088;else{if(!(57408<=n&&n<=60351))throw"illegal char at "+(e+1)+"/"+n;n-=49472}n=192*(n>>>8&255)+(255&n),t.put(n,13),e+=2}if(e<r.length)throw"illegal char at "+(e+1)}};return i},D=function(){var t=[],r={writeByte:function(r){t.push(255&r)},writeShort:function(t){r.writeByte(t),r.writeByte(t>>>8)},writeBytes:function(t,e,n){e=e||0,n=n||t.length;for(var o=0;o<n;o+=1)r.writeByte(t[o+e])},writeString:function(t){for(var e=0;e<t.length;e+=1)r.writeByte(t.charCodeAt(e))},toByteArray:function(){return t},toString:function(){var r="";r+="[";for(var e=0;e<t.length;e+=1)e>0&&(r+=","),r+=t[e];return r+="]"}};return r},S=function(t){var r=t,e=0,n=0,o=0,i={read:function(){for(;o<8;){if(e>=r.length){if(0==o)return-1;throw"unexpected end of file./"+o}var t=r.charAt(e);if(e+=1,"="==t)return o=0,-1;t.match(/^\s$/)||(n=n<<6|a(t.charCodeAt(0)),o+=6)}var i=n>>>o-8&255;return o-=8,i}},a=function(t){if(65<=t&&t<=90)return t-65;if(97<=t&&t<=122)return t-97+26;if(48<=t&&t<=57)return t-48+52;if(43==t)return 62;if(47==t)return 63;throw"c:"+t};return i},I=function(t,r,e){for(var n=function(t,r){var e=t,n=r,o=new Array(t*r),i={setPixel:function(t,r,n){o[r*e+t]=n},write:function(t){t.writeString("GIF87a"),t.writeShort(e),t.writeShort(n),t.writeByte(128),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(255),t.writeByte(255),t.writeByte(255),t.writeString(","),t.writeShort(0),t.writeShort(0),t.writeShort(e),t.writeShort(n),t.writeByte(0);var r=a(2);t.writeByte(2);for(var o=0;r.length-o>255;)t.writeByte(255),t.writeBytes(r,o,255),o+=255;t.writeByte(r.length-o),t.writeBytes(r,o,r.length-o),t.writeByte(0),t.writeString(";")}},a=function(t){for(var r=1<<t,e=1+(1<<t),n=t+1,i=u(),a=0;a<r;a+=1)i.add(String.fromCharCode(a));i.add(String.fromCharCode(r)),i.add(String.fromCharCode(e));var f,c,g,l=D(),h=(f=l,c=0,g=0,{write:function(t,r){if(t>>>r!=0)throw"length over";for(;c+r>=8;)f.writeByte(255&(t<<c|g)),r-=8-c,t>>>=8-c,g=0,c=0;g|=t<<c,c+=r},flush:function(){c>0&&f.writeByte(g)}});h.write(r,n);var s=0,v=String.fromCharCode(o[s]);for(s+=1;s<o.length;){var d=String.fromCharCode(o[s]);s+=1,i.contains(v+d)?v+=d:(h.write(i.indexOf(v),n),i.size()<4095&&(i.size()==1<<n&&(n+=1),i.add(v+d)),v=d)}return h.write(i.indexOf(v),n),h.write(e,n),h.flush(),l.toByteArray()},u=function(){var t={},r=0,e={add:function(n){if(e.contains(n))throw"dup key:"+n;t[n]=r,r+=1},size:function(){return r},indexOf:function(r){return t[r]},contains:function(r){return void 0!==t[r]}};return e};return i}(t,r),o=0;o<r;o+=1)for(var i=0;i<t;i+=1)n.setPixel(i,o,e(i,o));var a=D();n.write(a);for(var u=function(){var t=0,r=0,e=0,n="",o={},i=function(t){n+=String.fromCharCode(a(63&t))},a=function(t){if(t<0);else{if(t<26)return 65+t;if(t<52)return t-26+97;if(t<62)return t-52+48;if(62==t)return 43;if(63==t)return 47}throw"n:"+t};return o.writeByte=function(n){for(t=t<<8|255&n,r+=8,e+=1;r>=6;)i(t>>>r-6),r-=6},o.flush=function(){if(r>0&&(i(t<<6-r),t=0,r=0),e%3!=0)for(var o=3-e%3,a=0;a<o;a+=1)n+="="},o.toString=function(){return n},o}(),f=a.toByteArray(),c=0;c<f.length;c+=1)u.writeByte(f[c]);return u.flush(),"data:image/gif;base64,"+u};return t}();qrcode.stringToBytesFuncs["UTF-8"]=function(t){return function(t){for(var r=[],e=0;e<t.length;e++){var n=t.charCodeAt(e);n<128?r.push(n):n<2048?r.push(192|n>>6,128|63&n):n<55296||n>=57344?r.push(224|n>>12,128|n>>6&63,128|63&n):(e++,n=65536+((1023&n)<<10|1023&t.charCodeAt(e)),r.push(240|n>>18,128|n>>12&63,128|n>>6&63,128|63&n))}return r}(t)},function(t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports&&(module.exports=t())}((function(){return qrcode}));
+</script>
+<script>
 let CONF = {};
 let API_URL = '';
-let API_TOKEN = '';
+const LS_API = 'lf_api';
 let WSP = '';
-let CONF_ERR = '';
 const OTRO = '__otro__';
 const RE_MAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const CAMPOS = ['transcritoPor', 'folio', 'nombre', 'rut', 'sucursal', 'jefatura', 'telefono', 'correo', 'cargoOtro', 'comentarios'];
+const CAMPOS = ['transcritoPor', 'folio', 'nombre', 'rut', 'sucursal', 'unidad', 'unidadOtro', 'jefatura', 'telefono', 'correo', 'cargoOtro', 'comentarios'];
 let CFG = null;
 let funciones = [];
 let uid = 0;
@@ -735,11 +891,13 @@ async function fetchT(url, op, ms) {
 async function api(accion, datos, ms) {
   let j;
   try {
-    const r = await fetchT(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(Object.assign({ token: API_TOKEN, accion: accion }, datos || {})) }, ms || 45000);
+    const r = await fetchT(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(Object.assign({ accion: accion }, datos || {})) }, ms || 45000);
     j = await r.json();
   } catch (e) {
+    estadoCx('mal');
     return { ok: false, red: true, mensaje: 'No se pudo conectar con el servicio. Revise su conexión e intente nuevamente.' };
   }
+  estadoCx('ok');
   if (j && (j.sesion === false || j.cambiar === true) && accion !== 'login') finSesion(j.mensaje);
   return j || { ok: false, mensaje: 'Respuesta inválida del servicio.' };
 }
@@ -768,28 +926,29 @@ document.addEventListener('click', ev => {
 });
 
 function mostrar(ids) {
-  ['carga', 'falla', 'vIngreso', 'vExito', 'vDash'].forEach(x => { $(x).hidden = ids.indexOf(x) < 0; });
+  ['carga', 'falla', 'conexion', 'vIngreso', 'vExito', 'vPanel', 'vDash'].forEach(x => { $(x).hidden = ids.indexOf(x) < 0; });
 }
 
 function irTab(t, sinScroll) {
   tab = t;
-  $('tabIngreso').setAttribute('aria-selected', String(t === 'ingreso'));
-  $('tabDash').setAttribute('aria-selected', String(t === 'dash'));
+  document.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === t)));
   if (t === 'ingreso') mostrar([ULTIMO && ULTIMO.mostrar ? 'vExito' : 'vIngreso']);
-  else {
+  else if (t === 'dash') {
+    mostrar(['vPanel']);
+    cargarPanel();
+  } else {
     mostrar(['vDash']);
     vistaDash();
   }
-  $('wsp').hidden = t === 'dash';
-  $('franja').hidden = false;
-  try { history.replaceState(null, '', t === 'dash' ? '#dashboard' : location.pathname + location.search); } catch (e) {}
+  $('wsp').hidden = t === 'datos';
+  try { history.replaceState(null, '', t === 'dash' ? '#dashboard' : t === 'datos' ? '#datos' : location.pathname + location.search); } catch (e) {}
   if (!sinScroll) window.scrollTo(0, 0);
 }
 
-document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => {
   if (!CFG || b.dataset.tab === tab) return;
-  if (tab === 'dash' && sucio && !confirm('Tiene cambios de revisión sin guardar. ¿Salir de todos modos?')) return;
-  if (tab === 'dash' && sucio) sucio = false;
+  if (tab === 'datos' && sucio && !confirm('Tiene cambios de revisión sin guardar. ¿Salir de todos modos?')) return;
+  if (tab === 'datos' && sucio) sucio = false;
   irTab(b.dataset.tab);
 }));
 
@@ -800,22 +959,21 @@ function falla(msg) {
 
 async function cargar() {
   mostrar(['carga']);
-  if (CONF_ERR) {
-    falla(CONF_ERR);
-    return;
-  }
-  if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(API_URL) || !API_TOKEN || API_TOKEN.indexOf('PEGAR') === 0) {
-    falla('Falta configurar API_URL o API_TOKEN en el archivo config.js del repositorio.');
+  if (!API_URL) {
+    estadoCx('');
+    mostrar(['conexion']);
     return;
   }
   try {
-    const r = await fetchT(API_URL + '?action=config', {}, 25000);
-    const j = await r.json();
-    if (!j || !j.ok || !Array.isArray(j.tipos) || !j.tipos.length) throw new Error('config');
+    const j = await leerConfigApi(API_URL);
+    if (!j) throw new Error('config');
+    estadoCx('ok');
     CFG = j;
     CFG.estados = CFG.estados || ['Pendiente', 'Observado', 'Revisado'];
     iniciar();
   } catch (e) {
+    estadoCx('mal');
+    $('fallaCx').hidden = false;
     falla('No fue posible cargar el formulario. Revise su conexión e intente nuevamente.');
   }
 }
@@ -830,18 +988,6 @@ function maxF() {
 }
 
 function iniciar() {
-  CFG.empresa = limpio(CONF.EMPRESA || CFG.empresa);
-  CFG.logo = limpio(CONF.LOGO || CFG.logo);
-  const emp = CFG.empresa;
-  $('empresa').textContent = emp;
-  $('empresa').hidden = !emp;
-  if (emp) document.title = 'Levantamiento de Funciones · ' + emp;
-  if (CFG.logo) {
-    $('logo').onerror = () => { $('logo').hidden = true; };
-    $('logo').src = CFG.logo;
-    $('logo').alt = emp;
-    $('logo').hidden = false;
-  }
   llenar($('sucursal'), CFG.sucursales);
   $('cargos').innerHTML = CFG.cargos.map((c, i) => '<label><input type="checkbox" name="cargo" id="cg' + i + '" value="' + esc(c) + '"><span>' + esc(c) + '</span></label>').join('') + '<label><input type="checkbox" name="cargo" id="cgOtro" value="' + OTRO + '"><span>Otro (especificar)</span></label>';
   $('nomPrincipal').textContent = tipoPrincipal();
@@ -851,17 +997,21 @@ function iniciar() {
   credGuardadas();
   $('fSuc').innerHTML = '<option value="">Todas las sucursales</option>' + CFG.sucursales.map(s => '<option>' + esc(s) + '</option>').join('');
   $('fEstado').innerHTML = '<option value="">Todos los estados</option>' + CFG.estados.map(s => '<option>' + esc(s) + '</option>').join('');
+  $('pSuc').innerHTML = $('fSuc').innerHTML;
+  $('pEstado').innerHTML = $('fEstado').innerHTML;
   $('detEstado').innerHTML = CFG.estados.map(s => '<option>' + esc(s) + '</option>').join('');
   SESION = ss('lf_sesion');
   $('tabs').hidden = false;
-  iniciarWsp(emp);
+  ajTop();
+  aplicarAjustes();
+  iniciarWsp();
   renderProceso();
   cargarFaq();
   if (!restaurar()) reiniciarFunciones();
   toggleOtro();
   renderFunciones();
   modoUI();
-  irTab(location.hash === '#dashboard' ? 'dash' : 'ingreso', true);
+  irTab(location.hash === '#dashboard' ? 'dash' : location.hash === '#datos' ? 'datos' : 'ingreso', true);
   if (rutValido($('rut').value)) verificarRut();
 }
 
@@ -1006,11 +1156,6 @@ function marcar(el, msg) {
   c.querySelector('.err').textContent = msg;
 }
 
-$('rut').addEventListener('input', () => { if (!$('rut').readOnly) $('rut').value = rutFormato($('rut').value); });
-$('rut').addEventListener('blur', () => {
-  const v = limpio($('rut').value);
-  if (v && !rutValido(v)) marcar($('rut'), 'RUT inválido. Revise el dígito verificador.');
-});
 $('telefono').addEventListener('blur', () => {
   const t = telNormal($('telefono').value);
   if (t) $('telefono').value = t;
@@ -1059,7 +1204,7 @@ function avance() {
   const v = id => limpio($(id).value);
   const tel = v('telefono');
   const mail = v('correo');
-  const datos = v('nombre').length >= 5 && rutValido(v('rut')) && !!v('sucursal') && v('jefatura').length >= 2 && (!!tel || !!mail) && (!tel || !!telNormal(tel)) && (!mail || RE_MAIL.test(mail)) && (!MANUAL || v('transcritoPor').length >= 3);
+  const datos = v('nombre').length >= 5 && rutValido(v('rut')) && !!v('sucursal') && !!getUnidad() && v('jefatura').length >= 2 && (!!tel || !!mail) && (!tel || !!telNormal(tel)) && (!mail || RE_MAIL.test(mail)) && (!MANUAL || v('transcritoPor').length >= 3);
   const completas = funciones.filter(f => f.tipo && limpio(f.funcion).length >= 3 && limpio(f.descripcion).length >= 5).length;
   const items = [
     ['RUT verificado', libre()],
@@ -1083,6 +1228,8 @@ function validar() {
   if (v('nombre').length < 5) mal($('nombre'), 'Ingrese nombres y apellidos.');
   if (!rutValido(v('rut'))) mal($('rut'), 'RUT inválido. Revise el dígito verificador.');
   if (!v('sucursal')) mal($('sucursal'), 'Seleccione una sucursal.');
+  if (!$('unidad').value) mal($('unidad'), 'Seleccione su unidad funcional.');
+  else if (getUnidad().length < 2) mal($('unidadOtro'), 'Especifique su unidad funcional.');
   if (v('jefatura').length < 2) mal($('jefatura'), 'Indique su jefatura o dependencia directa.');
   const tel = v('telefono');
   const mail = v('correo');
@@ -1119,6 +1266,7 @@ function datos() {
     nombre: v('nombre').replace(/\s+/g, ' '),
     rut: rutFormato(v('rut')),
     sucursal: v('sucursal'),
+    unidad: getUnidad(),
     cargos: getCargos(),
     jefatura: v('jefatura'),
     telefono: v('telefono') ? telNormal(v('telefono')) : '',
@@ -1137,7 +1285,7 @@ function resumenHtml(d) {
   const fila = (k, val) => val ? '<div class="rfila"><dt>' + esc(k) + '</dt><dd>' + esc(val) + '</dd></div>' : '';
   return '<dl class="rlista">' +
     (MANUAL ? fila('Transcrito por', d.transcritoPor) + fila('Folio', d.folio) : '') +
-    fila('Nombre', d.nombre) + fila('RUT', d.rut) + fila('Sucursal', d.sucursal) + fila('Cargo(s)', d.cargos.join(', ')) +
+    fila('Nombre', d.nombre) + fila('RUT', d.rut) + fila('Sucursal', d.sucursal) + fila('Unidad funcional', d.unidad) + fila('Cargo(s)', d.cargos.join(', ')) +
     fila('Jefatura', d.jefatura) + fila('Teléfono', d.telefono) + fila('Correo', d.correo) + '</dl>' +
     '<h3>Funciones (' + d.funciones.length + ')</h3><ol class="rfun">' +
     d.funciones.map(f => '<li><b>' + esc(f.funcion) + '</b><div class="chipsI"><span class="chip">' + esc(f.tipo) + '</span></div><p>' + esc(f.descripcion) + '</p></li>').join('') +
@@ -1294,6 +1442,7 @@ function restaurar() {
     } else el.value = val;
   });
   document.querySelectorAll('#cargos input').forEach(x => { x.checked = (b.c.cargos || []).indexOf(x.value) >= 0; });
+  toggleUnidad();
   $('consentimiento').checked = !!b.c.consentimiento;
   const tn = CFG.tipos.map(t => t.nombre);
   funciones = (b.f || []).slice(0, maxF()).map(f => Object.assign(nueva(), {
@@ -1317,6 +1466,7 @@ function limpiarFormulario() {
   reiniciarPuerta();
   reiniciarFunciones();
   toggleOtro();
+  toggleUnidad();
   renderFunciones();
 }
 
@@ -1338,7 +1488,8 @@ function modoUI() {
   $('tituloIngreso').textContent = MANUAL ? 'Transcribir formulario en papel' : EDIT ? (EDIT.borrador ? 'Continuar mi registro' : 'Modificar mi registro') : 'Registro de funciones por cargo';
   $('subIngreso').textContent = MANUAL ? 'Digite la información tal como aparece en el formulario firmado.' : EDIT ? 'Actualice la información que necesite y guarde los cambios.' : 'Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.';
   if (MANUAL || EDIT) $('buscador').hidden = true;
-  $('rutBtn').hidden = MANUAL || !!EDIT || !!RUTOK;
+  $('rutOk').hidden = MANUAL || !!EDIT || !RUTOK;
+  aplicarInfoRut();
   $('rutCambiar').hidden = MANUAL || !!EDIT || !RUTOK;
   $('rutGuia').hidden = MANUAL || !!EDIT;
   if (MANUAL || EDIT) $('rutEstado').hidden = true;
@@ -1365,15 +1516,18 @@ function reiniciarPuerta() {
 
 function pedirRut() {
   const v = limpio($('rut').value);
-  marcar($('rut'), rutValido(v) ? 'Presione "Verificar RUT" para continuar.' : 'Comience ingresando un RUT válido.');
+  if (rutValido(v)) verificarRut();
+  else marcar($('rut'), 'Comience escribiendo su RUT o buscando su nombre.');
   $('rut').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  setTimeout(() => (rutValido(v) ? $('rutBtn') : $('rut')).focus({ preventScroll: true }), 350);
+  setTimeout(() => $('rut').focus({ preventScroll: true }), 350);
 }
 
 async function verificarRut() {
   if (MANUAL || EDIT || RUTOK) return;
   clearTimeout(tRut);
   const v = limpio($('rut').value);
+  if (VERIF && VERIF === rutFormato(v)) return;
+  if (!$('rutEstado').hidden && ULT && ULT === rutFormato(v)) return;
   quitarError($('rut'));
   if (!rutValido(v)) {
     marcar($('rut'), 'RUT inválido. Revise el dígito verificador.');
@@ -1381,22 +1535,34 @@ async function verificarRut() {
   }
   const rut = rutFormato(v);
   const est = $('rutEstado');
-  est.hidden = false;
-  est.innerHTML = '<p class="mini" style="margin:0 0 12px">Verificando RUT…</p>';
-  $('rutBtn').disabled = true;
+  est.hidden = true;
+  cerrarSug();
+  $('rutInfo').textContent = 'Verificando…';
+  VERIF = rut;
   const j = await api('estado', { rut: rut });
-  $('rutBtn').disabled = false;
-  if (rutFormato($('rut').value) !== rut) return;
+  VERIF = '';
+  ULT = rut;
+  aplicarInfoRut();
+  if (rutFormato($('rut').value) !== rut || RUTOK || EDIT) return;
   if (!j.ok) {
+    est.hidden = false;
     est.innerHTML = '<p class="errBloque" style="margin:0 0 12px">' + esc(j.mensaje) + '</p>';
     return;
   }
   if (j.estado === 'nuevo') {
     RUTOK = rut;
-    est.innerHTML = '<div class="aviso ok">RUT verificado. No tiene registros previos: complete el formulario.</div>';
+    $('rut').value = rut;
+    est.hidden = true;
+    est.innerHTML = '';
+    prellenar(j.nomina);
     modoUI();
     programarGuardado();
-    if (!limpio($('nombre').value)) setTimeout(() => $('nombre').focus(), 50);
+    setTimeout(() => {
+      const ae = document.activeElement;
+      if (ae && $('restoDatos').contains(ae)) return;
+      const sig = ['nombre', 'sucursal', 'unidad', 'jefatura', 'telefono'].find(id => !limpio($(id).value)) || 'telefono';
+      $(sig).focus();
+    }, 50);
     return;
   }
   mostrarRetomar(j, rut);
@@ -1410,9 +1576,11 @@ function mostrarRetomar(j, rut) {
   const tit = j.estado === 'borrador' ? 'Tiene un registro sin finalizar' : 'Ya tiene un registro enviado';
   const txt = j.estado === 'borrador' ? 'Su avance fue guardado el ' + esc(j.fecha) + '. Ingrese su clave para retomarlo donde lo dejó.' : 'Versión ' + esc(j.version) + ', enviada el ' + esc(j.fecha) + '. Ingrese su clave para revisarlo o modificarlo.';
   if (!j.clave) {
-    est.innerHTML = '<div class="retomar"><p class="tit">' + tit + '</p><p>Este registro aún no tiene clave asignada. Solicite a su jefatura que le genere una para poder continuar.</p><p class="mini" style="margin:0">No es posible crear un nuevo registro con este RUT.</p></div>';
+    est.hidden = false;
+  est.innerHTML = '<div class="retomar"><p class="tit">' + tit + '</p><p>Este registro aún no tiene clave asignada. Solicite a su jefatura que le genere una para poder continuar.</p><p class="mini" style="margin:0">No es posible crear un nuevo registro con este RUT.</p></div>';
     return;
   }
+  est.hidden = false;
   est.innerHTML = '<div class="retomar"><p class="tit">' + tit + '</p><p>' + txt + '</p>' +
     '<input type="text" name="username" autocomplete="username" value="' + esc(j.id) + '" hidden>' +
     '<div class="retfila"><div class="conclave"><input id="rClave" name="password" type="password" class="mono" maxlength="8" autocomplete="current-password" autocapitalize="characters" spellcheck="false" placeholder="Clave de 8 caracteres" aria-label="Clave"><button type="button" class="verclave" id="rVer">Mostrar</button></div><button type="button" id="rBtn" class="btn pri">' + (j.estado === 'borrador' ? 'Retomar registro' : 'Abrir mi registro') + '</button></div>' +
@@ -1452,14 +1620,6 @@ function cargarRegistro(r, clave) {
   toast(EDIT.borrador ? 'Borrador cargado. Continúe donde lo dejó.' : 'Registro cargado. Recuerde aceptar la declaración antes de guardar.');
 }
 
-$('rutBtn').addEventListener('click', verificarRut);
-$('rut').addEventListener('keydown', ev => { if (ev.key === 'Enter') { ev.preventDefault(); verificarRut(); } });
-$('rut').addEventListener('input', () => {
-  if (MANUAL || EDIT || RUTOK) return;
-  $('rutEstado').hidden = true;
-  clearTimeout(tRut);
-  if (rutValido($('rut').value) && rutLimpio($('rut').value).length >= 8) tRut = setTimeout(verificarRut, 700);
-});
 $('rutCambiar').addEventListener('click', () => {
   reiniciarPuerta();
   modoUI();
@@ -1574,11 +1734,12 @@ document.addEventListener('click', ev => {
   const b = ev.target.closest('[data-acc]');
   if (!b || !CFG) return;
   const a = b.dataset.acc;
-  if (a === 'modificar') toggleBuscador();
+  if (a === 'modificar') { if (tab !== 'ingreso') irTab('ingreso'); if ($('buscador').hidden) abrirBuscador(); else $('buscador').scrollIntoView({ behavior: 'smooth' }); }
   else if (a === 'blanco') imprimirBlanco();
   else if (a === 'wsp') abrirWsp();
   else if (a === 'borrador') guardarAvance();
   else if (a === 'calendario') abrirCalendario();
+  else if (a === 'instructivo') abrirInstructivo();
 });
 
 const DIAS_CAL = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -1716,8 +1877,12 @@ function etapasForm() {
 function renderEtapasAdmin() {
   const et = etapas();
   if (!et.length) return;
-  $('fEtapas').innerHTML = et.map((e, i) => '<fieldset class="etapa e' + (i + 1) + '"><legend>Etapa ' + (i + 1) + '</legend><div class="campo"><label for="eN' + i + '">Nombre</label><input id="eN' + i + '" maxlength="60" value="' + esc(e.nombre) + '"></div><div class="campo"><label for="eD' + i + '">Descripción para los colaboradores</label><textarea id="eD' + i + '" rows="2" maxlength="300">' + esc(e.desc) + '</textarea></div><div class="g2"><div class="campo"><label for="eI' + i + '">Inicio</label><input type="date" id="eI' + i + '" value="' + esc(e.inicio) + '"></div><div class="campo"><label for="eF' + i + '">Término' + (i === 0 ? ' (plazo de entrega)' : '') + '</label><input type="date" id="eF' + i + '" value="' + esc(e.fin) + '"></div></div></fieldset>').join('') + '<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><button type="submit" class="btn pri" id="eBtn">Guardar calendario</button><span class="mini" style="margin:0">Los colaboradores verán los cambios al recargar la página.</span></div><p class="errBloque" id="eErr"></p>';
-  previewEtapas();
+  if (!SESION) {
+    $('fEtapas').innerHTML = etapasHTML(et) + '<p class="mini">Las fechas del proceso las define el administrador desde <b>Datos</b>.</p>';
+    const b = mesBase(et);
+    $('dCalPrev').innerHTML = calHTML(b[0], b[1], et);
+  } else $('fEtapas').innerHTML = et.map((e, i) => '<fieldset class="etapa e' + (i + 1) + '"><legend>Etapa ' + (i + 1) + '</legend><div class="campo"><label for="eN' + i + '">Nombre</label><input id="eN' + i + '" maxlength="60" value="' + esc(e.nombre) + '"></div><div class="campo"><label for="eD' + i + '">Descripción para los colaboradores</label><textarea id="eD' + i + '" rows="2" maxlength="300">' + esc(e.desc) + '</textarea></div><div class="g2"><div class="campo"><label for="eI' + i + '">Inicio</label><input type="date" id="eI' + i + '" value="' + esc(e.inicio) + '"></div><div class="campo"><label for="eF' + i + '">Término' + (i === 0 ? ' (plazo de entrega)' : '') + '</label><input type="date" id="eF' + i + '" value="' + esc(e.fin) + '"></div></div></fieldset>').join('') + '<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><button type="submit" class="btn pri" id="eBtn">Guardar calendario</button><span class="mini" style="margin:0">Los colaboradores verán los cambios al recargar la página.</span></div><p class="errBloque" id="eErr"></p>';
+  if (SESION) previewEtapas();
   const act = et.findIndex(e => estadoEtapa(e) === 'actual');
   $('dCalRes').textContent = act >= 0 ? 'Etapa en curso: ' + et[act].nombre + (act === 0 && textoPlazo() ? ' · ' + textoPlazo().toLowerCase() : '') : (et.some(e => e.inicio || e.fin) ? '' : 'Fechas por definir');
 }
@@ -1757,6 +1922,8 @@ const FAQ_DEF = [
     { t: '¿Puedo modificar mi registro después del plazo?', k: 'modificar despues vencido tarde atrasado', acc: '', r: 'Durante la etapa de **feedback y actualización** podrás actualizar tu registro con tu RUT y tu clave. Si el plazo de entrega venció y aún no envías tu información, consulta con tu jefatura.' }
   ] },
   { t: 'Dudas con el formulario', q: [
+    { t: '¿Cómo completo el formulario paso a paso?', k: 'instructivo completar completo guia infografia empezar empiezo comenzar comienzo instrucciones', acc: 'instructivo', r: 'Son seis pasos:\n\n{pasos}' },
+    { t: '¿Qué unidad funcional elijo?', k: 'unidad funcional area departamento seccion ventas caja bodega', acc: '', r: 'Elige el área donde trabajas día a día (por ejemplo Ventas, Caja o Bodega). Si no aparece, marca **Otro** y escríbela.' },
     { t: '¿Cómo guardo mi avance?', k: 'guardar borrador continuar despues tarde terminar', acc: 'borrador', r: 'Presiona **Guardar avance**, bajo "Revisar y enviar". Solo necesitas haber verificado tu RUT y escrito tu nombre.\n\nLa primera vez recibirás un **ID** y una **clave**: anótalos, descárgalos o guárdalos en el navegador.' },
     { t: '¿Cómo retomo un registro que dejé a medias?', k: 'continuar borrador medias incompleto inconcluso pendiente', acc: '', r: 'Escribe tu **RUT** al comienzo del formulario. Si tienes un avance guardado, aparecerá el aviso "Tiene un registro sin finalizar": ingresa tu clave y presiona **Retomar registro**.' },
     { t: '¿Cómo modifico lo que ya envié?', k: 'modificar enviado', acc: 'modificar', r: 'Escribe tu **RUT** al comienzo del formulario y luego tu clave, o usa **Modificar mi registro** con tu ID y tu clave. Corrige lo necesario y guarda: tu ID y tu clave se mantienen.' },
@@ -1792,7 +1959,7 @@ const FAQ_DEF = [
     { t: '¿Quién ve mis datos?', k: 'privacidad datos confidencial ver quien acceso', acc: '', r: 'Solo el equipo administrador del levantamiento. La información se usa exclusivamente para gestión interna.' }
   ] }
 ];
-const ACC_LBL = { borrador: 'Guardar avance ahora', modificar: 'Ir a Modificar mi registro', blanco: 'Descargar formulario en blanco', calendario: 'Ver calendario' };
+const ACC_LBL = { borrador: 'Guardar avance ahora', modificar: 'Ir a Modificar mi registro', blanco: 'Descargar formulario en blanco', calendario: 'Ver calendario', instructivo: 'Ver instructivo' };
 let BOT = FAQ_DEF;
 
 function clonar(x) {
@@ -1812,33 +1979,39 @@ const VARS = {
   etapa2: () => { const e = etapas()[1]; return e ? '<b>' + esc(e.nombre) + '</b> (' + esc(rangoTxt(e)) + ')' : ''; },
   etapa3: () => { const e = etapas()[2]; return e ? '<b>' + esc(e.nombre) + '</b> (' + esc(rangoTxt(e)) + ')' : ''; },
   tipos: () => (CFG ? CFG.tipos.map(t => '<b>' + esc(t.nombre) + ':</b> ' + esc(t.def)).join('<br>') : ''),
-  principal: () => esc(CFG ? tipoPrincipal() : 'Principal')
+  principal: () => esc(CFG ? tipoPrincipal() : 'Principal'),
+  pasos: () => PASOS.map((p, i) => '<b>' + (i + 1) + '. ' + esc(p[0]) + '</b><br>' + esc(p[1]) + '<img class="bimg" src="instructivo/paso-' + (i + 1) + '.png" alt="" loading="lazy" onerror="this.remove()">').join('')
 };
 
 function formatear(r) {
-  return esc(r).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>').replace(/\{(plazo|dias|etapas|etapa1|etapa2|etapa3|tipos|principal)\}/g, (m, v) => VARS[v]());
+  return esc(r).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>').replace(/\{(plazo|dias|etapas|etapa1|etapa2|etapa3|tipos|principal|pasos)\}/g, (m, v) => VARS[v]());
 }
 const BOT_SIN = { contrasena: 'clave', password: 'clave', pass: 'clave', codigo: 'clave', pin: 'clave', avance: 'borrador', pausa: 'borrador', retomar: 'continuar', seguir: 'continuar', reanudar: 'continuar', terminar: 'continuar', editar: 'modificar', corregir: 'modificar', cambiar: 'modificar', actualizar: 'modificar', jefe: 'jefatura', jefa: 'jefatura', supervisor: 'jefatura', encargado: 'jefatura', superior: 'jefatura', puesto: 'cargo', rol: 'cargo', labor: 'funcion', actividad: 'tarea', movil: 'celular', telefono: 'celular', notebook: 'computador', pc: 'computador', impreso: 'papel', imprimir: 'papel', mano: 'papel', pdf: 'papel', falla: 'error', problema: 'error', funciona: 'error', cantidad: 'cuantas', cuanto: 'cuantas', perdi: 'olvide', recuerdo: 'olvide', acuerdo: 'olvide', acordaba: 'olvide', extravie: 'olvide', borrar: 'eliminar', quitar: 'eliminar', sacar: 'eliminar', clasificacion: 'tipo', categoria: 'tipo', ejemplo: 'describir', redaccion: 'redactar', guardo: 'guardar', guarde: 'guardar', envie: 'enviado', mande: 'enviado', mandado: 'enviado', edito: 'modificar', corrijo: 'modificar', cambio: 'modificar', borro: 'eliminar', elimino: 'eliminar', redacto: 'redactar', redacta: 'redactar', escribo: 'redactar', anoto: 'anotar', apunto: 'anotar', pongo: 'elegir', escojo: 'elegir', selecciono: 'elegir', medio: 'medias', guardado: 'borrador', fase: 'etapa', paso: 'etapa', cronograma: 'calendario', fechas: 'calendario', retroalimentacion: 'feedback', devolucion: 'feedback', vence: 'plazo', vencimiento: 'plazo', limite: 'plazo', conversacion: 'dialogo', reunion: 'dialogo', entrevista: 'dialogo', enviar: 'enviar' };
 const BOT_STOP = ['que', 'de', 'la', 'el', 'en', 'mi', 'me', 'es', 'un', 'una', 'los', 'las', 'con', 'por', 'para', 'como', 'cual', 'debo', 'hay', 'lo', 'ya', 'se', 'y', 'o', 'a', 'al', 'del', 'su', 'tu', 'hago', 'tengo', 'puedo', 'esta', 'este', 'donde', 'cuando', 'si', 'no', 'mis', 'tus', 'le', 'les', 'pero', 'hola', 'quiero', 'necesito', 'saber', 'favor', 'porfa', 'ayuda', 'mas', 'muy', 'algo', 'hacer', 'tiene', 'ser', 'eso', 'esto', 'desde', 'llenar', 'llenarlo', 'hacerlo', 'usar', 'usarlo', 'sobre', 'dame', 'dime', 'decir', 'poner', 'puede', 'sale', 'debe', 'tengo', 'tener', 'cosa', 'cosas', 'ver', 'mirar', 'revisar'];
 let botUlt = null;
+let VERIF = '';
+let ULT = '';
 let botModo = '';
 let botTema = -1;
 
-function iniciarWsp(emp) {
-  document.querySelectorAll('[data-acc="wsp"]').forEach(b => { b.hidden = false; });
-  if (emp) {
-    $('wspNom').textContent = 'Asistente ' + emp;
-    const pal = emp.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ ]/g, '').split(/\s+/).filter(Boolean);
-    $('wspAv').textContent = (limpio(CONF.INICIALES) || (pal[0] && pal[0].length <= 3 ? pal[0] : pal.slice(0, 2).map(x => x[0]).join('')) || 'RD').toUpperCase().slice(0, 3);
-  }
-  if (ss('lf_wsp')) $('wspGlobo').hidden = true;
+function popVisto() {
+  try { return localStorage.getItem('lf_pop') === '1'; } catch (e) { return false; }
+}
+
+function ocultarPop() {
+  $('wspGlobo').hidden = true;
+  try { localStorage.setItem('lf_pop', '1'); } catch (e) {}
+}
+
+function iniciarWsp() {
+  if (popVisto()) return;
+  setTimeout(() => { if ($('wspPanel').hidden && !popVisto()) $('wspGlobo').hidden = false; }, 1200);
 }
 
 function abrirWsp() {
   $('wspPanel').hidden = false;
-  $('wspGlobo').hidden = true;
+  ocultarPop();
   $('wspBtn').setAttribute('aria-expanded', 'true');
-  ss('lf_wsp', '1');
   if (!$('wspChat').children.length) botInicio();
   setTimeout(() => { if (window.matchMedia('(min-width:700px)').matches) $('wspIn').focus(); }, 60);
 }
@@ -2019,6 +2192,7 @@ function botAccion(a) {
     else if (acc === 'blanco') imprimirBlanco();
     else if (acc === 'borrador') guardarAvance();
     else if (acc === 'calendario') abrirCalendario();
+    else if (acc === 'instructivo') abrirInstructivo();
   }
 }
 
@@ -2071,7 +2245,8 @@ function enviarWsp(texto) {
 }
 
 $('wspBtn').addEventListener('click', () => ($('wspPanel').hidden ? abrirWsp() : cerrarWsp()));
-$('wspGlobo').addEventListener('click', abrirWsp);
+$('wspPopAbrir').addEventListener('click', abrirWsp);
+$('wspPopX').addEventListener('click', ocultarPop);
 $('wspX').addEventListener('click', cerrarWsp);
 $('wspReset').addEventListener('click', botInicio);
 $('wspChat').addEventListener('click', ev => {
@@ -2118,6 +2293,7 @@ function rellenar(r) {
   $('nombre').value = r.nombre;
   $('rut').value = r.rut;
   selValor($('sucursal'), r.sucursal);
+  setUnidad(r.unidad);
   $('jefatura').value = r.jefatura;
   $('telefono').value = r.telefono;
   $('correo').value = r.correo;
@@ -2162,7 +2338,7 @@ function pEnc(titulo, sub, meta) {
 
 function pDatos(r) {
   const c = (k, v, full) => '<div' + (full ? ' class="full"' : '') + '><span>' + esc(k) + '</span>' + esc(v || '—') + '</div>';
-  return '<div class="pgrid">' + c('Nombre completo', r.nombre) + c('RUT', r.rut) + c('Sucursal', r.sucursal) + c('Jefatura o dependencia', r.jefatura) + c('Teléfono', r.telefono) + c('Correo', r.correo) + c('Cargo(s) contractual(es)', (r.cargos || []).join(' · '), true) + (r.origen === 'Manual' ? c('Origen', 'Transcrito de formulario en papel' + (r.folio ? ' · Folio ' + r.folio : '') + (r.transcrito ? ' · ' + r.transcrito : ''), true) : '') + '</div>';
+  return '<div class="pgrid">' + c('Nombre completo', r.nombre) + c('RUT', r.rut) + c('Sucursal', r.sucursal) + c('Unidad funcional', r.unidad) + c('Jefatura o dependencia', r.jefatura) + c('Teléfono', r.telefono) + c('Correo', r.correo) + c('Cargo(s) contractual(es)', (r.cargos || []).join(' · '), true) + (r.origen === 'Manual' ? c('Origen', 'Transcrito de formulario en papel' + (r.folio ? ' · Folio ' + r.folio : '') + (r.transcrito ? ' · ' + r.transcrito : ''), true) : '') + '</div>';
 }
 
 function pResumen(fs) {
@@ -2188,18 +2364,24 @@ function imprimirBlanco() {
   const cj = '<span class="cj"></span>';
   const ops = l => l.map(x => '<div>' + cj + esc(x.nombre) + '</div>').join('');
   const cargos = CFG.cargos.map(c => '<label>' + cj + esc(c) + '</label>').join('') + '<label>' + cj + 'Otro: <span class="ln"></span></label>';
+  const unis = unidades().map(u => '<label>' + cj + esc(u) + '</label>').join('') + '<label>' + cj + 'Otro: <span class="ln"></span></label>';
+  const url = urlForm();
+  const lnk = enlace();
+  const e0 = etapas()[0];
   let filas = '';
-  for (let i = 1; i <= 16; i++) filas += '<tr><td class="nn">' + i + '</td><td class="op">' + ops(CFG.tipos) + '</td><td></td><td></td></tr>';
-  const html = '<div class="pdoc">' + pEnc('Levantamiento de Funciones por Cargo', 'Formulario para completar a mano', '<div class="folio">Folio N°</div>') +
-    '<p class="inst">Complete con letra clara. Registre todas las funciones que realiza habitualmente en su cargo, estén o no descritas en su contrato. Use una fila por función, marque con una X su tipo y detalle en la descripción las tareas con que la cumple. Al menos una función debe ser de tipo ' + esc(tipoPrincipal()) + '.</p>' +
+  for (let i = 1; i <= 10; i++) filas += '<tr><td class="nn">' + i + '</td><td class="op">' + ops(CFG.tipos) + '</td><td></td><td></td></tr>';
+  const html = '<div class="pdoc pblanco">' + pEnc('Levantamiento de Funciones por Cargo', 'Formulario para completar a mano', '<div class="folio">Folio N°</div>') +
+    '<div class="pdigital"><div><b>¿Prefieres hacerlo en línea?</b><span>Escanea el código con la cámara de tu celular. También puedes abrir el enlace que te enviaron o ingresar a:</span><span class="purl">' + esc(url) + '</span><span>Es más rápido: guardas tu avance y recibes tu comprobante al instante.</span></div><div class="pqr2">' + qrSvg(lnk) + '</div></div>' +
+    '<p class="inst">Complete con letra clara. Registre hasta 10 funciones que realiza habitualmente, estén o no descritas en su contrato. Use una fila por función, marque con una X su tipo y detalle en la descripción las tareas con que la cumple. Al menos una función debe ser de tipo ' + esc(tipoPrincipal()) + '.' + (e0 && e0.fin ? ' Plazo de entrega: <b>' + esc(fTxt(e0.fin, true)) + '</b>.' : '') + '</p>' +
     '<h2>1. Datos personales</h2><div class="bf">' +
     '<div class="s4"><span>Nombre completo</span></div><div class="s2"><span>RUT</span></div>' +
     '<div class="s3"><span>Sucursal</span></div><div class="s3"><span>Jefatura o dependencia directa</span></div>' +
     '<div class="s3"><span>Teléfono</span></div><div class="s3"><span>Correo electrónico</span></div>' +
+    '<div class="s6 alto"><span>Unidad funcional (marque una)</span><div class="ops">' + unis + '</div></div>' +
     '<div class="s6 alto"><span>Cargo contractual (puede marcar más de uno)</span><div class="ops">' + cargos + '</div></div></div>' +
     '<h2>2. Tipos de función</h2><div class="ley2">' + CFG.tipos.map(t => '<div><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</div>').join('') + '<div><b>Función:</b> responsabilidad permanente del cargo, orientada a un resultado. Ej.: Gestionar la cobranza a clientes.</div><div><b>Tarea:</b> acción concreta con la que se cumple una función. Ej.: Llamar a clientes con facturas vencidas.</div></div>' +
-    '<h2>3. Funciones que realiza</h2><table class="tb"><thead><tr><th>N°</th><th style="width:80pt">Tipo</th><th style="width:150pt">Función</th><th>Descripción / Especificación (tareas)</th></tr></thead><tbody>' + filas + '</tbody></table>' +
-    '<h2>4. Comentarios generales</h2><div class="box" style="height:42mm"></div>' +
+    '<h2>3. Funciones que realiza (máximo 10)</h2><table class="tb tb10"><thead><tr><th>N°</th><th style="width:80pt">Tipo</th><th style="width:150pt">Función</th><th>Descripción / Especificación (tareas)</th></tr></thead><tbody>' + filas + '</tbody></table>' +
+    '<h2>4. Comentarios generales</h2><div class="box" style="height:26mm"></div>' +
     '<h2>5. Declaración y firmas</h2><p class="inst">Declaro que la información entregada es fidedigna y autorizo su uso exclusivo para fines de gestión interna de la empresa: levantamiento de funciones y elaboración de descriptores de cargo.</p>' +
     '<div class="firmas"><div>Firma trabajador(a)</div><div>Firma jefatura directa</div></div>' +
     '<div class="usoint"><div>Uso interno</div><div>Transcrito por</div><div>Fecha de transcripción</div><div>ID de registro</div></div></div>';
@@ -2251,7 +2433,7 @@ function finSesion(msg) {
     modoUI();
   }
   resetLogin(msg);
-  if (tab === 'dash') vistaDash();
+  if (tab === 'datos') vistaDash();
 }
 
 $('fLogin').addEventListener('submit', async ev => {
@@ -2316,7 +2498,7 @@ function resetLogin(msg) {
   $('fInicial').hidden = true;
   $('fLogin').hidden = false;
   $('lSub').hidden = false;
-  $('dLogin').querySelector('h1').textContent = 'Acceso al Dashboard';
+  $('dLogin').querySelector('h1').textContent = 'Acceso a Datos';
   $('lErr').textContent = msg || '';
 }
 
@@ -2326,6 +2508,54 @@ $('dSalir').addEventListener('click', () => {
 });
 
 $('dRefrescar').addEventListener('click', cargarLista);
+
+let PUB = [];
+
+async function cargarPanel() {
+  $('pSub').textContent = 'Cargando…';
+  const j = await api('resumen', {});
+  if (!j.ok) { $('pSub').textContent = j.mensaje || 'No fue posible cargar el resumen.'; return; }
+  PUB = j.personas || [];
+  $('pSub').textContent = 'Avance del levantamiento · ' + PUB.length + (PUB.length === 1 ? ' persona' : ' personas') + ' con registro vigente · ' + (j.envios || 0) + ((j.envios || 0) === 1 ? ' envío' : ' envíos') + ' · actualizado ' + hoy();
+  renderKpis(PUB, j.borradores || 0);
+  renderPub();
+  if (!$('subCal').hidden) renderEtapasAdmin();
+}
+
+function filtradaPub() {
+  const q = norm($('pTexto').value);
+  const s = $('pSuc').value;
+  const e = $('pEstado').value;
+  return PUB.map((p, i) => Object.assign({ i: i }, p)).filter(p => (!s || p.sucursal === s) && (!e || p.estado === e) && (!q || norm([p.nombre, p.sucursal, p.unidad, p.cargos.join(' ')].join(' ')).indexOf(q) >= 0));
+}
+
+function renderPub() {
+  const l = filtradaPub();
+  const lk = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-label="Protegido"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+  $('pCuenta').textContent = l.length + ' de ' + PUB.length;
+  $('pBody').innerHTML = l.length ? l.map(p => '<tr tabindex="0" data-i="' + p.i + '"><td data-l="Nombre" class="nom">' + esc(p.nombre) + '</td><td data-l="Sucursal">' + esc(p.sucursal) + '</td><td data-l="Unidad">' + esc(p.unidad || '') + '</td><td data-l="Cargo(s)">' + esc(p.cargos.join(', ')) + '</td><td data-l="Funciones" class="n">' + p.nFunciones + '</td><td data-l="Actualizado">' + esc(p.fecha) + (p.version > 1 ? ' <span class="chip">v' + p.version + '</span>' : '') + '</td><td data-l="Estado"><span class="pill ' + esc(p.estado) + '">' + esc(p.estado) + '</span></td><td class="lk">' + lk + '</td></tr>').join('') : '<tr><td colspan="8" class="vacio" style="cursor:default">' + (PUB.length ? 'No hay resultados con estos filtros.' : 'Aún no hay registros enviados.') + '</td></tr>';
+}
+
+function detallePub(i) {
+  const p = PUB[i];
+  if (!p) return;
+  dialogo('Detalle protegido', '<div class="lockbox"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><p><b>' + esc(p.nombre) + '</b><br>El detalle de este registro solo puede verlo el <b>administrador</b> o el <b>titular</b>.</p></div><p class="sub">Si es el titular, ingrese con su ID y su clave. Si es el administrador, ingrese a Datos con su código de acceso.</p>', [
+    { txt: 'Soy el titular', cls: 'sec', fn: () => { cerrarModal('dlg'); irTab('ingreso'); abrirBuscador(); } },
+    { txt: SESION ? 'Abrir en Datos' : 'Soy el administrador', cls: 'pri', fn: () => { cerrarModal('dlg'); if (SESION && ajustes().dashNombres !== false) { $('fTexto').value = p.nombre; } irTab('datos'); } }
+  ]);
+}
+
+['pTexto', 'pSuc', 'pEstado'].forEach(id => $(id).addEventListener('input', renderPub));
+$('pBody').addEventListener('click', ev => { const tr = ev.target.closest('tr[data-i]'); if (tr) detallePub(Number(tr.dataset.i)); });
+$('pBody').addEventListener('keydown', ev => { if (ev.key === 'Enter') { const tr = ev.target.closest('tr[data-i]'); if (tr) detallePub(Number(tr.dataset.i)); } });
+$('pRefrescar').addEventListener('click', cargarPanel);
+document.querySelectorAll('#pTabs button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#pTabs button').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+  $('pReg').hidden = b.dataset.psub !== 'reg';
+  $('subCal').hidden = b.dataset.psub !== 'cal';
+  if (b.dataset.psub === 'cal') renderEtapasAdmin();
+}));
+
 
 async function cargarLista() {
   $('dSub').textContent = 'Cargando…';
@@ -2338,10 +2568,8 @@ async function cargarLista() {
     return;
   }
   LISTA = j.personas || [];
-  renderEtapasAdmin();
   BORR = j.borradores || 0;
   $('dSub').textContent = LISTA.length + (LISTA.length === 1 ? ' persona' : ' personas') + ' con registro vigente · ' + (j.envios || 0) + ((j.envios || 0) === 1 ? ' envío' : ' envíos') + ' en total · actualizado ' + hoy();
-  renderKpis();
   renderTabla();
 }
 
@@ -2354,34 +2582,36 @@ function barras(titulo, m, orden) {
   return '<section class="tarjeta"><h3>' + esc(titulo) + '</h3>' + (ks.length ? '<ul class="barras">' + ks.map(k => '<li><span class="bl" title="' + esc(k) + '">' + esc(k) + '</span><span class="bv">' + m[k] + '</span><span class="bt"><i style="width:' + Math.max(3, Math.round(m[k] / max * 100)) + '%"></i></span></li>').join('') + '</ul>' : '<p class="vacio">Sin datos aún.</p>') + '</section>';
 }
 
-function renderKpis() {
-  const n = LISTA.length;
-  const fn = LISTA.reduce((s, p) => s + p.nFunciones, 0);
-  const e = s => LISTA.filter(p => p.estado === s).length;
-  $('kpis').innerHTML = [['Personas', n, ''], ['Funciones declaradas', fn, ''], ['Borradores sin enviar', BORR, ''], ['Pendientes', e('Pendiente'), 'pend'], ['Observados', e('Observado'), ''], ['Revisados', e('Revisado'), 'listo']]
+function renderKpis(L, borr) {
+  const n = L.length;
+  const fn = L.reduce((s, p) => s + p.nFunciones, 0);
+  const e = s => L.filter(p => p.estado === s).length;
+  $('kpis').innerHTML = [['Personas', n, ''], ['Funciones declaradas', fn, ''], ['Borradores sin enviar', borr, ''], ['Pendientes', e('Pendiente'), 'pend'], ['Observados', e('Observado'), ''], ['Revisados', e('Revisado'), 'listo']]
     .map(k => '<div class="kpi ' + k[2] + '"><span>' + k[0] + '</span><b>' + k[1] + '</b></div>').join('');
   const suc = {};
   const car = {};
   const tip = {};
-  LISTA.forEach(p => {
+  const uni = {};
+  L.forEach(p => {
     suc[p.sucursal] = (suc[p.sucursal] || 0) + 1;
+    if (p.unidad) uni[p.unidad] = (uni[p.unidad] || 0) + 1;
     p.cargos.forEach(c => { car[c] = (car[c] || 0) + 1; });
     Object.keys(p.tipos || {}).forEach(t => { tip[t] = (tip[t] || 0) + p.tipos[t]; });
   });
-  $('graficos').innerHTML = barras('Personas por sucursal', suc) + barras('Personas por cargo', car) + barras('Funciones por tipo', tip, CFG.tipos.map(t => t.nombre));
+  $('graficos').innerHTML = barras('Personas por sucursal', suc) + barras('Personas por unidad funcional', uni) + barras('Personas por cargo', car) + barras('Funciones por tipo', tip, CFG.tipos.map(t => t.nombre));
 }
 
 function filtrada() {
   const q = limpio($('fTexto').value).toLowerCase();
   const s = $('fSuc').value;
   const e = $('fEstado').value;
-  return LISTA.filter(p => (!s || p.sucursal === s) && (!e || p.estado === e) && (!q || [p.nombre, p.rut, p.id, p.cargos.join(' '), p.jefatura].join(' ').toLowerCase().indexOf(q) >= 0));
+  return LISTA.filter(p => (!s || p.sucursal === s) && (!e || p.estado === e) && (!q || [p.nombre, p.rut, p.id, p.cargos.join(' '), p.jefatura, p.unidad || ''].join(' ').toLowerCase().indexOf(q) >= 0));
 }
 
 function renderTabla() {
   const l = filtrada();
   $('fCuenta').textContent = l.length + ' de ' + LISTA.length;
-  $('tBody').innerHTML = l.length ? l.map(p => '<tr tabindex="0" data-id="' + esc(p.id) + '"><td data-l="Nombre" class="nom">' + esc(p.nombre) + '</td><td data-l="ID" class="mono">' + esc(p.id) + '</td><td data-l="Sucursal">' + esc(p.sucursal) + '</td><td data-l="Cargo(s)">' + esc(p.cargos.join(', ')) + '</td><td data-l="Funciones" class="n">' + p.nFunciones + '</td><td data-l="Precisiones" class="n">' + p.nPrecisiones + '</td><td data-l="Actualizado">' + esc(p.fecha) + (p.version > 1 ? ' <span class="chip">v' + p.version + '</span>' : '') + '</td><td data-l="Estado"><span class="pill ' + esc(p.estado) + '">' + esc(p.estado) + '</span></td></tr>').join('') : '<tr><td colspan="8" class="vacio" style="cursor:default">' + (LISTA.length ? 'No hay resultados con estos filtros.' : 'Aún no hay registros. Cuando los trabajadores envíen el formulario aparecerán aquí.') + '</td></tr>';
+  $('tBody').innerHTML = l.length ? l.map(p => '<tr tabindex="0" data-id="' + esc(p.id) + '"><td data-l="Nombre" class="nom">' + esc(p.nombre) + '</td><td data-l="ID" class="mono">' + esc(p.id) + '</td><td data-l="Sucursal">' + esc(p.sucursal) + '</td><td data-l="Unidad">' + esc(p.unidad || '') + '</td><td data-l="Cargo(s)">' + esc(p.cargos.join(', ')) + '</td><td data-l="Funciones" class="n">' + p.nFunciones + '</td><td data-l="Precisiones" class="n">' + p.nPrecisiones + '</td><td data-l="Actualizado">' + esc(p.fecha) + (p.version > 1 ? ' <span class="chip">v' + p.version + '</span>' : '') + '</td><td data-l="Estado"><span class="pill ' + esc(p.estado) + '">' + esc(p.estado) + '</span></td></tr>').join('') : '<tr><td colspan="9" class="vacio" style="cursor:default">' + (LISTA.length ? 'No hay resultados con estos filtros.' : 'Aún no hay registros. Cuando los trabajadores envíen el formulario aparecerán aquí.') + '</td></tr>';
 }
 
 ['fTexto', 'fSuc', 'fEstado'].forEach(id => $(id).addEventListener('input', renderTabla));
@@ -2409,7 +2639,7 @@ function renderDetalle() {
   $('detNombre').textContent = r.nombre;
   $('detSub').textContent = 'ID ' + r.id + ' · ' + r.rut + ' · versión ' + r.version + ' del ' + r.fecha;
   const c = (k, v) => '<div><dt>' + esc(k) + '</dt><dd>' + esc(v || '—') + '</dd></div>';
-  $('detDatos').innerHTML = c('Sucursal', r.sucursal) + c('Cargo(s) contractual(es)', r.cargos.join(', ')) + c('Jefatura o dependencia', r.jefatura) + c('Teléfono', r.telefono) + c('Correo', r.correo) + c('Origen', r.origen === 'Manual' ? 'Formulario en papel' + (r.folio ? ' · folio ' + r.folio : '') + (r.transcrito ? ' · transcrito por ' + r.transcrito : '') : 'Formulario web');
+  $('detDatos').innerHTML = c('Sucursal', r.sucursal) + c('Unidad funcional', r.unidad) + c('Cargo(s) contractual(es)', r.cargos.join(', ')) + c('Jefatura o dependencia', r.jefatura) + c('Teléfono', r.telefono) + c('Correo', r.correo) + c('Origen', r.origen === 'Manual' ? 'Formulario en papel' + (r.folio ? ' · folio ' + r.folio : '') + (r.transcrito ? ' · transcrito por ' + r.transcrito : '') : 'Formulario web');
   selValor($('detEstado'), r.estado);
   $('detFRev').textContent = r.fRev ? 'Última revisión guardada: ' + r.fRev : 'Aún no se guarda una revisión para esta versión.';
   $('detClaveInfo').textContent = r.clave ? 'El trabajador tiene clave asignada para modificar su registro.' : 'El trabajador no tiene clave. Genere una para que pueda modificar su registro.';
@@ -2510,7 +2740,7 @@ $('salirManual').addEventListener('click', () => {
   renderFunciones();
   toggleOtro();
   modoUI();
-  irTab('dash');
+  irTab('datos');
 });
 
 function dialogo(titulo, html, botones) {
@@ -2536,15 +2766,15 @@ let FAQ_SUCIO = false;
 let CONSULTAS = [];
 
 function irSub(sub) {
-  document.querySelectorAll('.subtabs button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.sub === sub)));
+  document.querySelectorAll('#dTabs button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.sub === sub)));
   $('subReg').hidden = sub !== 'reg';
-  $('subCal').hidden = sub !== 'cal';
   $('subFaq').hidden = sub !== 'faq';
-  if (sub === 'cal') renderEtapasAdmin();
+  $('subCfg').hidden = sub !== 'cfg';
+  if (sub === 'cfg') irCfg();
   if (sub === 'faq') abrirFaqAdmin();
 }
 
-document.querySelectorAll('.subtabs button').forEach(b => b.addEventListener('click', () => {
+document.querySelectorAll('#dTabs button').forEach(b => b.addEventListener('click', () => {
   if (b.dataset.sub !== 'faq' && FAQ_SUCIO && !$('subFaq').hidden && !confirm('Tiene cambios sin guardar en las preguntas. ¿Salir de todos modos?')) return;
   irSub(b.dataset.sub);
 }));
@@ -2571,7 +2801,7 @@ function renderTemasAdm() {
 }
 
 function accOpts(sel) {
-  return [['', 'Sin botón'], ['borrador', 'Guardar avance'], ['modificar', 'Modificar mi registro'], ['blanco', 'Formulario en blanco'], ['calendario', 'Ver calendario']].map(o => '<option value="' + o[0] + '"' + (o[0] === sel ? ' selected' : '') + '>' + o[1] + '</option>').join('');
+  return [['', 'Sin botón'], ['borrador', 'Guardar avance'], ['modificar', 'Modificar mi registro'], ['blanco', 'Formulario en blanco'], ['calendario', 'Ver calendario'], ['instructivo', 'Ver instructivo']].map(o => '<option value="' + o[0] + '"' + (o[0] === sel ? ' selected' : '') + '>' + o[1] + '</option>').join('');
 }
 
 function renderPregsAdm() {
@@ -2824,26 +3054,402 @@ $('aRestaurar').addEventListener('click', () => {
 
 $('reintentar').addEventListener('click', () => location.reload());
 
-window.addEventListener('error', ev => {
-  if (ev.filename && ev.filename.indexOf('config.js') >= 0) CONF_ERR = 'El archivo config.js tiene un error de escritura (' + ev.message + '). Revise comillas y comas.';
+
+let SUG = [];
+let SUGi = -1;
+let tSug = null;
+let NOMINA = [];
+
+function ajustes() {
+  return (CFG && CFG.ajustes) || {};
+}
+
+function urlForm() {
+  return limpio(ajustes().urlForm || CONF.URL_FORMULARIO) || (location.origin + location.pathname);
+}
+
+function codigoApi(u) {
+  const m = String(u || '').match(/^https:\/\/script\.google\.com\/macros\/s\/([\w-]{20,})\/exec$/);
+  return m ? m[1] : encodeURIComponent(u || '');
+}
+
+function apiDeCodigo(v) {
+  v = String(v || '').trim();
+  if (/^[\w-]{20,}$/.test(v)) return 'https://script.google.com/macros/s/' + v + '/exec';
+  return /^https:\/\/script\.google\.com\/.+\/exec$/.test(v) ? v : '';
+}
+
+function enlace(base) {
+  return (base || urlForm()).replace(/#.*$/, '') + (API_URL ? '#api=' + codigoApi(API_URL) : '');
+}
+
+function estadoCx(e) {
+  $('cx').className = 'cx' + (e ? ' ' + e : '');
+  $('cxTxt').textContent = e === 'ok' ? 'OK' : e === 'mal' ? 'Sin conexión' : 'Sin conectar';
+}
+
+async function leerConfigApi(u) {
+  const r = await fetchT(u + '?action=config', {}, 25000);
+  const j = await r.json();
+  return j && j.ok && Array.isArray(j.tipos) && j.tipos.length ? j : null;
+}
+
+function guardarApi(u) {
+  try { if (u) localStorage.setItem(LS_API, u); else localStorage.removeItem(LS_API); } catch (e) {}
+}
+
+function leerApi() {
+  try { return localStorage.getItem(LS_API) || ''; } catch (e) { return ''; }
+}
+
+function cambiarConexion() {
+  if (!confirm('Se desconectará este navegador del servidor actual. ¿Continuar?')) return;
+  guardarApi('');
+  API_URL = '';
+  location.replace(location.pathname + location.search);
+}
+
+$('fCx').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const el = $('cxUrl');
+  quitarError(el);
+  const u = apiDeCodigo(el.value);
+  if (!u) { marcar(el, 'Pegue la URL completa que termina en /exec.'); return; }
+  $('cxBtn').disabled = true;
+  let j = null;
+  try { j = await leerConfigApi(u); } catch (e) { j = null; }
+  $('cxBtn').disabled = false;
+  if (!j) { marcar(el, 'No hubo respuesta válida. Revise la URL y que la implementación tenga acceso "Cualquier usuario".'); return; }
+  guardarApi(u);
+  API_URL = u;
+  cargar();
 });
 
-(function cargarConfig() {
-  const sc = document.createElement('script');
-  sc.src = 'config.js?v=' + Date.now();
-  sc.onload = () => {
-    if (!CONF_ERR && !window.LF_CONFIG) CONF_ERR = 'El archivo config.js tiene un error de escritura. Revise que cada valor esté entre comillas simples, separado por comas, y que comience con: window.LF_CONFIG = {';
-    CONF = window.LF_CONFIG || {};
-    API_URL = String(CONF.API_URL || '').trim();
-    API_TOKEN = String(CONF.API_TOKEN || '').trim();
-    WSP = String(CONF.WHATSAPP || '').replace(/\D/g, '');
-    cargar();
-  };
-  sc.onerror = () => {
-    CONF_ERR = 'No se encontró el archivo config.js junto a index.html. Verifique que exista en el repositorio con ese nombre exacto (sin "(1)" ni ".txt").';
-    cargar();
-  };
-  document.head.appendChild(sc);
+$('fallaCx').addEventListener('click', cambiarConexion);
+$('recargar').addEventListener('click', () => location.reload());
+
+function ajTop() {
+  document.documentElement.style.setProperty('--toph', $('top').offsetHeight + 'px');
+}
+window.addEventListener('resize', ajTop);
+
+function aplicarAjustes() {
+  const a = ajustes();
+  CFG.empresa = limpio(a.empresa || CONF.EMPRESA || CFG.empresa);
+  CFG.logo = limpio(a.logo || CONF.LOGO || CFG.logo);
+  WSP = String(a.whatsapp || CONF.WHATSAPP || '').replace(/\D/g, '');
+  const emp = CFG.empresa;
+  $('empresa').textContent = emp;
+  $('empresa').hidden = !emp;
+  if (emp) document.title = 'Levantamiento de Funciones · ' + emp;
+  const pal = emp.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ ]/g, '').split(/\s+/).filter(Boolean);
+  const ini = (limpio(a.iniciales || CONF.INICIALES) || (pal[0] && pal[0].length <= 3 ? pal[0] : pal.slice(0, 2).map(x => x[0]).join('')) || 'RD').toUpperCase().slice(0, 3);
+  $('marcaIni').textContent = ini;
+  $('marcaIni').hidden = !!CFG.logo;
+  if (CFG.logo) {
+    $('logo').onerror = () => { $('logo').hidden = true; $('marcaIni').hidden = false; };
+    $('logo').src = CFG.logo;
+    $('logo').alt = emp;
+    $('logo').hidden = false;
+  }
+  $('wspNom').textContent = 'Asistente ' + (emp || 'del levantamiento');
+  $('wspAv').textContent = ini;
+  const v = getUnidad();
+  $('unidad').innerHTML = '<option value="">Seleccione…</option>' + unidades().map(u => '<option value="' + esc(u) + '">' + esc(u) + '</option>').join('') + '<option value="Otro">Otro (especificar)</option>';
+  setUnidad(v);
+  const busca = a.busquedaNombre !== false;
+  $('rut').placeholder = busca ? 'Escriba su RUT o busque su nombre' : '12.345.678-9';
+  aplicarInfoRut();
+}
+
+function unidades() {
+  const u = ajustes().unidades;
+  return Array.isArray(u) && u.length ? u : ['Ventas', 'Caja', 'Servicio Técnico', 'Bodega', 'Contabilidad', 'Finanzas', 'Administración'];
+}
+
+function getUnidad() {
+  const s = $('unidad').value;
+  return s === 'Otro' ? limpio($('unidadOtro').value) : s;
+}
+
+function setUnidad(v) {
+  v = limpio(v);
+  if (!v) { $('unidad').value = ''; $('unidadOtro').value = ''; }
+  else if (unidades().indexOf(v) >= 0) { $('unidad').value = v; $('unidadOtro').value = ''; }
+  else { $('unidad').value = 'Otro'; $('unidadOtro').value = v; }
+  toggleUnidad();
+}
+
+function toggleUnidad() {
+  $('unidadOtro').hidden = $('unidad').value !== 'Otro';
+}
+
+$('unidad').addEventListener('change', () => {
+  toggleUnidad();
+  if ($('unidad').value === 'Otro') $('unidadOtro').focus();
+});
+
+function esNombre(v) {
+  return /[a-jl-zñáéíóúü]/i.test(String(v || '').replace(/k\s*$/i, ''));
+}
+
+function enmascarar(r) {
+  return String(r).replace(/^[\d.]+(?=\d{3}-)/, m => m.replace(/\d/g, '•'));
+}
+
+function cerrarSug() {
+  $('rutSug').hidden = true;
+  $('rut').setAttribute('aria-expanded', 'false');
+  SUG = [];
+  SUGi = -1;
+}
+
+function renderSug(vacio) {
+  const ul = $('rutSug');
+  if (!SUG.length && !vacio) { cerrarSug(); return; }
+  ul.innerHTML = SUG.length ? SUG.map((x, i) => '<li role="option" id="sg' + i + '" data-i="' + i + '"' + (i === SUGi ? ' aria-selected="true"' : '') + '><b>' + esc(x.nombre) + '</b><small>' + esc([x.sucursal, x.unidad].filter(Boolean).join(' · ')) + ' · ' + esc(enmascarar(x.rut)) + '</small></li>').join('') : '<li class="nada">No encontramos ese nombre en la nómina. Escriba su RUT.</li>';
+  ul.hidden = false;
+  $('rut').setAttribute('aria-expanded', 'true');
+  if (SUGi >= 0) $('rut').setAttribute('aria-activedescendant', 'sg' + SUGi);
+  else $('rut').removeAttribute('aria-activedescendant');
+}
+
+async function buscarSug() {
+  if (MANUAL || EDIT || RUTOK || $('rut').readOnly) return;
+  const q = limpio($('rut').value);
+  const nom = esNombre(q);
+  if (nom && ajustes().busquedaNombre === false) { cerrarSug(); return; }
+  if ((nom && q.replace(/\s/g, '').length < 3) || (!nom && q.replace(/\D/g, '').length < 4) || (!nom && rutValido(q) && rutLimpio(q).length >= 8)) { cerrarSug(); return; }
+  const j = await api('nomina', { q: q });
+  if (limpio($('rut').value) !== q || document.activeElement !== $('rut')) return;
+  if (!j.ok) { cerrarSug(); return; }
+  SUG = j.resultados || [];
+  SUGi = SUG.length ? 0 : -1;
+  renderSug(nom);
+}
+
+function prellenar(n) {
+  if (!n) return;
+  if (!limpio($('nombre').value) && n.nombre) $('nombre').value = n.nombre;
+  if (!$('sucursal').value && n.sucursal && CFG.sucursales.indexOf(n.sucursal) >= 0) $('sucursal').value = n.sucursal;
+  if (!getUnidad() && n.unidad) setUnidad(n.unidad);
+  if (!limpio($('jefatura').value) && n.jefatura) $('jefatura').value = n.jefatura;
+  if (n.cargo && !getCargos().length) {
+    const c = CFG.cargos.find(x => norm(x) === norm(n.cargo));
+    if (c) document.querySelectorAll('#cargos input').forEach(x => { if (x.value === c) x.checked = true; });
+    else { $('cgOtro').checked = true; $('cargoOtro').value = n.cargo; toggleOtro(); }
+  }
+  avance();
+}
+
+function elegirSug(i) {
+  const x = SUG[i];
+  if (!x) return;
+  $('rut').value = x.rut;
+  cerrarSug();
+  prellenar(x);
+  verificarRut();
+}
+
+$('rutSug').addEventListener('mousedown', ev => {
+  const li = ev.target.closest('li[data-i]');
+  if (!li) return;
+  ev.preventDefault();
+  elegirSug(Number(li.dataset.i));
+});
+
+$('rut').addEventListener('input', () => {
+  if ($('rut').readOnly) return;
+  const v = $('rut').value;
+  if (!esNombre(v)) $('rut').value = rutFormato(v);
+  if (MANUAL || EDIT || RUTOK) return;
+  $('rutEstado').hidden = true;
+  clearTimeout(tSug);
+  tSug = setTimeout(buscarSug, 280);
+});
+
+$('rut').addEventListener('keydown', ev => {
+  const abierto = !$('rutSug').hidden && SUG.length;
+  if (ev.key === 'ArrowDown' && abierto) { ev.preventDefault(); SUGi = (SUGi + 1) % SUG.length; renderSug(); }
+  else if (ev.key === 'ArrowUp' && abierto) { ev.preventDefault(); SUGi = (SUGi - 1 + SUG.length) % SUG.length; renderSug(); }
+  else if (ev.key === 'Escape') cerrarSug();
+  else if (ev.key === 'Enter') {
+    ev.preventDefault();
+    if (abierto && SUGi >= 0) elegirSug(SUGi);
+    else { cerrarSug(); revisarRut(); }
+  } else if (ev.key === 'Tab' && abierto && SUGi >= 0 && esNombre($('rut').value)) {
+    elegirSug(SUGi);
+  }
+});
+
+$('rut').addEventListener('blur', () => {
+  setTimeout(() => { if (document.activeElement !== $('rut')) cerrarSug(); }, 120);
+  revisarRut();
+});
+
+function revisarRut() {
+  if (MANUAL || EDIT || RUTOK || $('rut').readOnly) return;
+  const v = limpio($('rut').value);
+  if (!v) return;
+  if (rutValido(v)) { verificarRut(); return; }
+  marcar($('rut'), esNombre(v) ? 'Seleccione su nombre de la lista o escriba su RUT.' : 'RUT inválido. Revise el dígito verificador.');
+}
+
+function qrSvg(texto) {
+  try {
+    const q = qrcode(0, 'M');
+    q.addData(texto);
+    q.make();
+    return q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+  } catch (e) {
+    return '';
+  }
+}
+
+const PASOS = [
+  ['Identifícate', 'Escribe tu RUT o busca tu nombre. Si ya tienes un registro o un avance, te pedirá tu clave.', '<path d="M4 6h16v12H4z"/><circle cx="9" cy="11" r="2.2"/><path d="M6.5 15.5c.6-1.4 1.5-2 2.5-2s1.9.6 2.5 2M14 10h4M14 13h3"/>'],
+  ['Revisa tus datos', 'Confirma tu sucursal, unidad funcional, cargo contractual y jefatura.', '<circle cx="10" cy="8" r="3.2"/><path d="M4 19c.8-3.2 3.2-5 6-5 1.2 0 2.3.3 3.2.9"/><path d="m14.5 17 2 2 4-4"/>'],
+  ['Registra tus funciones', 'Una por bloque: tipo, nombre de la función y las tareas con que la cumples.', '<path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/>'],
+  ['Guarda tu avance', 'Si no terminas de una vez, guarda: recibirás un ID y una clave para continuar después.', '<path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/>'],
+  ['Revisa y envía', 'Acepta la declaración, revisa el resumen y confirma el envío.', '<path d="M21 3 10 14"/><path d="M21 3l-7 18-4-7-7-4z"/>'],
+  ['Guarda tu comprobante', 'Descarga el PDF y conserva tu ID y tu clave para futuras modificaciones.', '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="m10 15 2 2 4-4"/>']
+];
+
+function icono(p, cls) {
+  return '<svg class="' + (cls || 'ico') + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
+}
+
+function instrHTML(imagenes) {
+  const et = etapas();
+  const lbl = { actual: 'En curso', pasada: 'Finalizada', proxima: 'Próxima', sin: '' };
+  const e0 = et[0];
+  return '<div class="instr">' +
+    '<p class="instr-lead">El levantamiento de funciones se realiza en <b>tres etapas</b>. En la primera, cada colaborador registra lo que realmente hace en su cargo.</p>' +
+    '<div class="ins-etapas">' + et.map((e, i) => { const st = estadoEtapa(e); return '<div class="ins-et e' + (i + 1) + ' st-' + st + '"><span class="ins-n">' + (i + 1) + '</span><b>' + esc(e.nombre) + '</b><small>' + esc(rangoTxt(e)) + '</small>' + (lbl[st] ? '<em>' + lbl[st] + '</em>' : '') + (e.desc ? '<p>' + esc(e.desc) + '</p>' : '') + '</div>'; }).join('<span class="ins-fl" aria-hidden="true">→</span>') + '</div>' +
+    (e0 && e0.fin ? '<div class="ins-plazo">Plazo para entregar tu información: <b>' + esc(fTxt(e0.fin, true)) + '</b>' + (textoPlazo() ? ' · ' + esc(textoPlazo()) : '') + '</div>' : '') +
+    '<h3>Cómo completar tu registro</h3>' +
+    '<ol class="ins-pasos">' + PASOS.map((p, i) => '<li>' + icono(p[2]) + '<span class="ins-pn">' + (i + 1) + '</span><b>' + p[0] + '</b><p>' + p[1] + '</p>' + (imagenes ? '<img src="instructivo/paso-' + (i + 1) + '.png" alt="Paso ' + (i + 1) + ': ' + p[0] + '" loading="lazy" onerror="this.remove()">' : '') + '</li>').join('') + '</ol>' +
+    '<div class="ins-tips"><div><b>Recuerda</b><ul><li>Una función por bloque; detalla sus tareas en la descripción.</li><li>Al menos una función debe ser de tipo ' + esc(tipoPrincipal()) + '.</li><li>Guarda tu ID y tu clave: con ellos retomas o modificas tu registro.</li><li>¿Dudas? Usa el asistente o habla directo con una persona.</li></ul></div><div class="ins-qr">' + qrSvg(enlace()) + '<small>' + esc(urlForm().replace(/^https?:\/\//, '')) + '</small></div></div>' +
+    '</div>';
+}
+
+function abrirInstructivo() {
+  dialogo('Instructivo del proceso', instrHTML(true), [{ txt: 'Imprimir / guardar PDF', cls: 'sec', fn: () => { cerrarModal('dlg'); imprimirInstructivo(); } }, { txt: 'Cerrar', cls: 'pri' }]);
+  $('dlg').querySelector('.caja').classList.add('grande');
+}
+
+function imprimirInstructivo() {
+  const html = '<div class="pdoc pinstr">' + pEnc('Instructivo: Levantamiento de Funciones', 'Etapas del proceso y pasos para completar tu registro', '<div class="pqr">' + qrSvg(enlace()) + '<span>Completa en línea</span></div>') + instrHTML(false) + '</div>';
+  imprimir(html, 'Instructivo Levantamiento de Funciones');
+}
+
+function irCfg() {
+  const a = ajustes();
+  $('cEmpresa').value = a.empresa || CFG.empresa || '';
+  $('cIniciales').value = a.iniciales || '';
+  $('cWsp').value = a.whatsapp || '';
+  $('cUrl').value = a.urlForm || '';
+  $('cLogo').value = a.logo || '';
+  $('cUnidades').value = unidades().join('\n');
+  $('cBusca').checked = a.busquedaNombre !== false;
+  $('cNombres').checked = a.dashNombres !== false;
+  $('cQr').innerHTML = qrSvg(enlace());
+  $('cQrUrl').textContent = enlace();
+  $('cEnlace').value = enlace();
+  $('cApi').value = API_URL;
+  cargarNomina();
+}
+
+$('fAjustes').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const b = $('cGuardar');
+  b.disabled = true;
+  const j = await api('ajustes', { sesion: SESION, ajustes: { empresa: $('cEmpresa').value, iniciales: $('cIniciales').value, whatsapp: $('cWsp').value, urlForm: $('cUrl').value, logo: $('cLogo').value, unidades: $('cUnidades').value.split('\n'), busquedaNombre: $('cBusca').checked, dashNombres: $('cNombres').checked } });
+  b.disabled = false;
+  if (!j.ok) { if (j.sesion !== false) toast(j.mensaje, true); return; }
+  CFG.ajustes = j.ajustes;
+  aplicarAjustes();
+  irCfg();
+  toast('Ajustes guardados.');
+});
+
+$('cUrl').addEventListener('input', () => {
+  const u = enlace(limpio($('cUrl').value) || urlForm());
+  $('cQr').innerHTML = qrSvg(u);
+  $('cQrUrl').textContent = u;
+  $('cEnlace').value = u;
+});
+
+async function cargarNomina() {
+  $('nLista').innerHTML = '<tr><td colspan="5" class="vacio">Cargando…</td></tr>';
+  const j = await api('nominaLista', { sesion: SESION });
+  if (!j.ok) { $('nLista').innerHTML = '<tr><td colspan="5" class="vacio">' + esc(j.mensaje || '') + '</td></tr>'; return; }
+  NOMINA = j.nomina || [];
+  renderNomina();
+}
+
+function renderNomina() {
+  const q = norm($('nBuscar').value);
+  const l = NOMINA.filter(x => !q || norm(x.nombre + ' ' + x.rut + ' ' + x.sucursal + ' ' + x.unidad).indexOf(q) >= 0);
+  $('nCuenta').textContent = NOMINA.length + (NOMINA.length === 1 ? ' persona' : ' personas');
+  $('nLista').innerHTML = l.length ? l.slice(0, 200).map(x => '<tr><td class="mono">' + esc(x.rut) + '</td><td>' + esc(x.nombre) + '</td><td>' + esc(x.sucursal) + '</td><td>' + esc(x.unidad) + '</td><td><button type="button" class="enlace" data-nborrar="' + esc(x.rut) + '">Quitar</button></td></tr>').join('') : '<tr><td colspan="5" class="vacio">' + (NOMINA.length ? 'Sin resultados.' : 'La nómina está vacía. Pegue las filas desde Excel para cargarla.') + '</td></tr>';
+}
+
+$('nBuscar').addEventListener('input', renderNomina);
+$('cCopiar').addEventListener('click', () => copiar($('cEnlace').value, $('cCopiar')));
+$('cCambiarApi').addEventListener('click', cambiarConexion);
+
+function parsearNomina(t) {
+  return String(t || '').split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => (l.indexOf('\t') >= 0 ? l.split('\t') : l.split(';')).map(c => c.trim())).filter(c => !/^rut$/i.test(c[0]));
+}
+
+$('nPegar').addEventListener('input', () => {
+  const f = parsearNomina($('nPegar').value);
+  const ok = f.filter(c => rutValido(c[0]) && c[1]).length;
+  $('nRes').textContent = f.length ? f.length + ' filas detectadas · ' + ok + ' válidas' + (f.length - ok ? ' · ' + (f.length - ok) + ' con RUT o nombre inválido' : '') : '';
+});
+
+$('nImportar').addEventListener('click', async () => {
+  const f = parsearNomina($('nPegar').value);
+  if (!f.length) { toast('Pegue primero las filas de la nómina.', true); return; }
+  const modo = document.querySelector('input[name="nModo"]:checked').value;
+  if (modo === 'reemplazar' && !confirm('Se reemplazará toda la nómina actual por las filas pegadas. ¿Continuar?')) return;
+  const b = $('nImportar');
+  b.disabled = true;
+  const j = await api('nominaImportar', { sesion: SESION, modo: modo, filas: f });
+  b.disabled = false;
+  if (!j.ok) { if (j.sesion !== false) toast(j.mensaje, true); return; }
+  $('nPegar').value = '';
+  $('nRes').textContent = j.importadas + ' importadas · nómina total: ' + j.total + (j.malas.length ? ' · filas omitidas: ' + j.malas.slice(0, 15).join(', ') + (j.malas.length > 15 ? '…' : '') : '');
+  cargarNomina();
+  toast('Nómina actualizada.');
+});
+
+$('nLista').addEventListener('click', async ev => {
+  const b = ev.target.closest('[data-nborrar]');
+  if (!b || !confirm('¿Quitar a esta persona de la nómina?')) return;
+  const j = await api('nominaBorrar', { sesion: SESION, rut: b.dataset.nborrar });
+  if (j.ok) { NOMINA = NOMINA.filter(x => x.rut !== b.dataset.nborrar); renderNomina(); }
+});
+
+function aplicarInfoRut() {
+  const busca = ajustes().busquedaNombre !== false;
+  $('rutInfo').hidden = MANUAL || !!EDIT || !!RUTOK;
+  $('rutInfo').textContent = busca ? 'Puede escribir su RUT o buscar su nombre en la nómina.' : 'Escriba su RUT con dígito verificador.';
+}
+
+
+(function conectar() {
+  const m = location.hash.match(/[#&]api=([^&]+)/);
+  if (m) {
+    let v = '';
+    try { v = decodeURIComponent(m[1]); } catch (e) { v = ''; }
+    const u = apiDeCodigo(v);
+    if (u) guardarApi(u);
+    try { history.replaceState(null, '', location.pathname + location.search + (/dashboard/.test(location.hash) ? '#dashboard' : /datos/.test(location.hash) ? '#datos' : '')); } catch (e) {}
+  }
+  API_URL = leerApi();
+  cargar();
 })();
 </script>
 </body>
