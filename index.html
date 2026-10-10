@@ -18,14 +18,13 @@ body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 system-ui,-app
 .mono{font-family:var(--mono)}
 h1,h2,h3,.app,.btn,.tabs button,.kpi b,.eyebrow,.credbox b{font-family:var(--disp)}
 .franja{background:var(--acc-dark);color:#e9dcec;font-size:.8rem}
-.franin{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:34px}
+.franin{display:flex;justify-content:flex-end;align-items:center;gap:12px;min-height:32px}
 .franja-wsp{background:none;border:0;color:#fff;font:inherit;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:4px 0}
 .franja-wsp::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--wsp)}
-@media (max-width:560px){.franin>span{display:none}.franin{justify-content:flex-end}}
-.hero{background:linear-gradient(120deg,var(--acc-dark) 0%,#4a1b52 55%,var(--acc) 100%);color:#fff;border-radius:14px;padding:clamp(20px,3vw,34px) clamp(20px,3.4vw,40px);margin-bottom:20px;position:relative;overflow:hidden}
+.hero{background:linear-gradient(120deg,var(--acc-dark) 0%,#4a1b52 55%,var(--acc) 100%);color:#fff;border-radius:14px;padding:clamp(14px,1.8vw,20px) clamp(18px,2.6vw,30px);margin-bottom:18px;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.13),transparent 70%);pointer-events:none}
-.hero h1{color:#fff;font-size:clamp(1.45rem,2.8vw,2.15rem);font-weight:600;max-width:32ch}
-.hero .sub{color:#e6d6ea;max-width:64ch;font-size:.98rem}
+.hero h1{color:#fff;font-size:clamp(1.3rem,2.2vw,1.7rem);font-weight:600}
+.hero .sub{color:#e6d6ea;font-size:.95rem;margin-top:2px}
 .eyebrow{display:inline-block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);padding:3px 10px;border-radius:6px;margin-bottom:10px}
 .opciones{display:grid;gap:8px;margin-top:10px}
 .opciones .btn{justify-content:flex-start;width:100%}
@@ -123,17 +122,16 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc-h);b
 .aviso.borrador{background:var(--acc-soft)}
 .aviso.alerta{background:var(--mark-soft);color:var(--txt);border-left:4px solid var(--mark);border-radius:0 10px 10px 0;justify-content:flex-start}
 .enlace{background:none;border:0;color:inherit;font:inherit;font-weight:600;text-decoration:underline;cursor:pointer;padding:0}
-.funcion{display:grid;gap:4px 18px;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"num acc" "meta meta" "texto texto";border:1px solid var(--line);border-radius:10px;padding:14px 14px 2px;margin-bottom:12px;background:var(--card)}
-.fnum{grid-area:num;display:flex;align-items:center;gap:8px}
-.fnum b{display:grid;place-items:center;min-width:34px;height:34px;padding:0 6px;border-radius:9px;background:var(--acc);color:var(--on-acc);font-size:.95rem}
-.fnum span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.facc{grid-area:acc;justify-self:end}
-.fmeta{grid-area:meta;display:grid;grid-template-columns:1fr 1fr;gap:0 12px;min-width:0}
-.ftexto{grid-area:texto;min-width:0}
-.quitar{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:5px 10px;font:inherit;font-size:.8rem;cursor:pointer}
+.funcion{border:1px solid var(--line);border-radius:10px;margin-bottom:12px;background:var(--card);overflow:hidden}
+.fcab{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 14px;background:var(--acc-soft);border-bottom:1px solid var(--line)}
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:0 16px;padding:14px 14px 2px}
+@media (min-width:700px){.fgrid{grid-template-columns:minmax(200px,280px) minmax(0,1fr)}}
+.fdesc{grid-column:1/-1}
+.fnum{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--acc);font-family:var(--disp)}
+.fnum b{display:grid;place-items:center;min-width:28px;height:28px;padding:0 6px;border-radius:8px;background:var(--acc);color:var(--on-acc);font-size:.9rem}
+.quitar{background:var(--card);border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:5px 10px;font:inherit;font-size:.8rem;cursor:pointer}
 .quitar:hover{color:var(--err);border-color:var(--err)}
 .quitar:focus-visible{outline:none;box-shadow:var(--focus)}
-@media (min-width:900px){.funcion{grid-template-columns:52px 230px minmax(0,1fr);grid-template-areas:"num meta texto" "acc meta texto";padding:16px 16px 4px}.fnum{flex-direction:column;align-items:center;align-self:start}.fnum span{display:none}.facc{justify-self:center;align-self:start}.fmeta{grid-template-columns:1fr}.quitar{padding:4px 7px;font-size:.72rem}}
 .agregar{width:100%;background:var(--card);color:var(--acc);border:1.5px dashed var(--acc)}
 .agregar:hover{background:var(--acc-soft)}
 .contadorF{margin:10px 0 0;color:var(--muted);font-size:.85rem;text-align:center}
@@ -158,9 +156,22 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc-h);b
 @media (min-width:1100px){.leyMovil{display:none}}
 .leyMovil{background:var(--acc-soft);border-radius:10px;padding:10px 14px;margin-bottom:14px}
 .leyMovil dl{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.ftarea dl{margin:8px 0 0;display:grid;gap:10px;font-size:.84rem}
+.ftarea dt{font-weight:700;color:var(--acc)}
+.ftarea dd{margin:2px 0 0;color:var(--muted)}
+.ftarea em{font-style:normal;color:var(--txt)}
+.credacc{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:4px 0 14px}
+.credacc .btn{min-height:36px;padding:7px 12px;font-size:.88rem}
+.guardadas{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--acc-soft);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:.9rem}
+.guardadas .acc2{margin-left:auto;display:flex;gap:10px}
+.verclave{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--acc);font:inherit;font-size:.8rem;font-weight:600;cursor:pointer}
+.conclave{position:relative}
+.conclave input{padding-right:70px}
 .barra{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));z-index:15}
 .barra .in{max-width:1400px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between}
 .barra span{color:var(--muted);font-size:.85rem}
+.barra .bts{display:flex;gap:8px}
+@media (max-width:480px){.barra span{display:none}.barra .bts{flex:1}.barra .bts .btn{flex:1;padding-inline:10px}}
 @media (min-width:1100px){.barra{display:none}}
 .centro{min-height:70vh;display:grid;place-items:center;padding:24px 16px;text-align:center}
 .spinner{width:42px;height:42px;border-radius:50%;border:4px solid var(--acc-soft);border-top-color:var(--acc);animation:gira .9s linear infinite;margin:0 auto 14px}
@@ -332,7 +343,7 @@ body>*:not(#print){display:none!important}
 </style>
 </head>
 <body>
-<div class="franja"><div class="shell franin"><span>Formulario interno · Levantamiento de funciones por cargo</span><button type="button" class="franja-wsp" data-acc="wsp" hidden>¿Dudas? Escríbenos por WhatsApp</button></div></div>
+<div class="franja" id="franja" hidden><div class="shell franin"><button type="button" class="franja-wsp" data-acc="wsp" hidden>¿Dudas? Escríbenos por WhatsApp</button></div></div>
 <header class="top">
 <div class="shell topin">
 <div class="marca"><img id="logo" alt="" hidden><div><p id="empresa" class="emp" hidden></p><p class="app">Levantamiento de Funciones</p></div></div>
@@ -345,15 +356,16 @@ body>*:not(#print){display:none!important}
 <section id="falla" class="centro" hidden><div class="tarjeta" style="max-width:440px"><div class="icono mal" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg></div><h1>No disponible</h1><p id="fallaMsg" class="sub"></p><button type="button" id="reintentar" class="btn pri" style="margin-top:16px">Reintentar</button></div></section>
 
 <main id="vIngreso" class="shell" hidden>
-<div class="hero"><span class="eyebrow" id="heroEye">Levantamiento de funciones</span><h1 id="tituloIngreso">Registro de funciones por cargo</h1><p class="sub" id="subIngreso">Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.</p></div>
+<div class="hero"><h1 id="tituloIngreso">Registro de funciones por cargo</h1><p class="sub" id="subIngreso">Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.</p></div>
 <div class="movil-acc"><button type="button" class="btn sec" data-acc="modificar">Modificar mi registro</button><button type="button" class="btn sec" data-acc="blanco">Formulario en blanco (PDF)</button><button type="button" class="btn btn-wsp" data-acc="wsp" hidden>Ayuda por WhatsApp</button></div>
 
 <section id="buscador" class="tarjeta" hidden style="margin-bottom:18px">
 <h2>Modificar mi registro</h2>
-<p class="sub" style="margin:-8px 0 14px">Ingrese el ID y la clave que recibió al enviar su formulario. Al guardar los cambios, su ID y su clave se mantienen.</p>
+<p class="sub" style="margin:-8px 0 14px">Ingrese el ID y la clave que recibió al guardar su avance o enviar su formulario. Al guardar cambios, su ID y su clave se mantienen.</p>
+<div id="bGuardadas" class="guardadas" hidden></div>
 <form id="fBuscar" class="g12" novalidate>
-<div class="campo c4"><label for="bId">ID de registro</label><input id="bId" inputmode="numeric" autocomplete="off" maxlength="14" placeholder="Ej.: 12345678"><small class="ayuda">Su RUT sin puntos, sin guion y sin dígito verificador.</small></div>
-<div class="campo c4"><label for="bClave">Clave</label><input id="bClave" class="mono" maxlength="8" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="8 caracteres"></div>
+<div class="campo c4"><label for="bId">ID de registro</label><input id="bId" name="username" inputmode="numeric" autocomplete="username" maxlength="14" placeholder="Ej.: 12345678"><small class="ayuda">Su RUT sin puntos, sin guion y sin dígito verificador.</small></div>
+<div class="campo c4"><label for="bClave">Clave</label><div class="conclave"><input id="bClave" name="password" type="password" class="mono" maxlength="8" autocomplete="current-password" autocapitalize="characters" spellcheck="false" placeholder="8 caracteres"><button type="button" class="verclave" id="verClave">Mostrar</button></div></div>
 <div class="campo c4" style="display:flex;gap:8px;align-items:flex-start;padding-top:26px"><button type="submit" id="bBtn" class="btn pri">Buscar registro</button><button type="button" id="bCerrar" class="btn txt">Cancelar</button></div>
 <p id="bErr" class="errBloque c12" role="alert"></p>
 </form>
@@ -361,7 +373,7 @@ body>*:not(#print){display:none!important}
 
 <div class="layout">
 <form id="form" class="principal" novalidate autocomplete="on">
-<div id="bannerEdicion" class="aviso edicion" hidden><span>Modificando el registro <b id="edId" class="mono"></b> · versión <span id="edVer"></span>. Su ID y su clave se mantienen al guardar.</span><button type="button" id="salirEd" class="enlace">Salir sin guardar</button></div>
+<div id="bannerEdicion" class="aviso edicion" hidden><span id="edTxt"></span><button type="button" id="salirEd" class="enlace">Salir</button></div>
 <div id="bannerManual" class="aviso manual" hidden><span>Transcripción de formulario en papel (administración)</span><button type="button" id="salirManual" class="enlace">Volver al Dashboard</button></div>
 <div id="bannerBorrador" class="aviso borrador" hidden><span>Se recuperó un borrador guardado en este dispositivo.</span><button type="button" id="descartar" class="enlace">Descartar y empezar de nuevo</button></div>
 
@@ -390,7 +402,7 @@ body>*:not(#print){display:none!important}
 <section class="tarjeta">
 <h2><span class="num">2</span>Funciones que realiza</h2>
 <p class="sub" style="margin:-8px 0 14px">Registre todas las funciones que realiza habitualmente, estén o no descritas en su contrato. Una función por bloque. Al menos una debe ser <b id="nomPrincipal">Principal</b>.</p>
-<details class="leyenda leyMovil"><summary>¿Qué significa cada tipo y frecuencia?</summary><div class="leyCont"></div></details>
+<details class="leyenda leyMovil"><summary>¿Qué significa cada tipo? ¿Función o tarea?</summary><div class="leyCont"></div><div class="ftarea ftCont"></div></details>
 <div id="funciones" aria-live="polite"></div>
 <button type="button" id="agregar" class="btn agregar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar función</button>
 <p id="contadorF" class="contadorF"></p>
@@ -410,13 +422,15 @@ body>*:not(#print){display:none!important}
 <h3>Avance del formulario</h3>
 <ul class="avance" id="avance"></ul>
 <button type="submit" form="form" class="btn pri ancho">Revisar y enviar</button>
-<p class="mini">Antes de enviar verá un resumen para confirmar.</p>
+<button type="button" class="btn sec ancho" data-acc="borrador" style="margin-top:8px">Guardar avance</button>
+<p class="mini">Guarde su avance para continuar después con su ID y clave. Antes de enviar verá un resumen para confirmar.</p>
 </div>
 <div class="tarjeta"><h3>Otras opciones</h3><div class="opciones"><button type="button" class="btn sec" data-acc="modificar">Modificar mi registro</button><button type="button" class="btn sec" data-acc="blanco">Formulario en blanco (PDF)</button><button type="button" class="btn btn-wsp" data-acc="wsp" hidden>Ayuda por WhatsApp</button></div></div>
-<details class="tarjeta leyenda" open><summary>Tipos de función y frecuencias</summary><div class="leyCont"></div></details>
+<div class="tarjeta ftarea"><h3>¿Función o tarea?</h3><div class="ftCont"></div></div>
+<details class="tarjeta leyenda" open><summary>Tipos de función</summary><div class="leyCont"></div></details>
 </aside>
 </div>
-<div class="barra"><div class="in"><span id="barraTxt"></span><button type="submit" form="form" class="btn pri">Revisar y enviar</button></div></div>
+<div class="barra"><div class="in"><span id="barraTxt"></span><div class="bts"><button type="button" class="btn sec" data-acc="borrador">Guardar avance</button><button type="submit" form="form" class="btn pri">Revisar y enviar</button></div></div></div>
 </main>
 
 <section id="vExito" class="shell" hidden>
@@ -428,6 +442,7 @@ body>*:not(#print){display:none!important}
 <div class="credbox"><span>ID de registro</span><b id="exId"></b><button type="button" class="copiar" data-copia="exId">Copiar</button></div>
 <div class="credbox" id="exClaveBox"><span>Clave de seguridad</span><b id="exClave"></b><button type="button" class="copiar" data-copia="exClave">Copiar</button></div>
 </div>
+<div id="exCredAcc"></div>
 <div id="exNota" class="aviso alerta"></div>
 <div class="acciones-fila"><button type="button" id="exPdf" class="btn pri">Imprimir / guardar PDF</button><button type="button" id="exOtro" class="btn sec">Volver al inicio</button></div>
 </div>
@@ -538,11 +553,14 @@ let EDIT = null;
 let MANUAL = false;
 let SESION = null;
 let LISTA = [];
+let BORR = 0;
 let DET = null;
 let sucio = false;
 let ULTIMO = null;
 let tab = 'ingreso';
 
+const FT_HTML = '<dl><div><dt>Función</dt><dd>Responsabilidad permanente del cargo, orientada a un resultado. Responde a <em>¿para qué existe mi puesto?</em> Ej.: Gestionar la cobranza a clientes.</dd></div><div><dt>Tarea</dt><dd>Acción concreta con la que se cumple una función. Responde a <em>¿qué hago para lograrlo?</em> Ej.: Llamar a clientes con facturas vencidas.</dd></div></dl><p class="mini">Registre cada función en un bloque y detalle sus tareas en la descripción.</p>';
+let CRED = null;
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const limpio = s => String(s == null ? '' : s).trim();
@@ -614,6 +632,7 @@ function irTab(t, sinScroll) {
     vistaDash();
   }
   $('wsp').hidden = !WSP || t === 'dash';
+  $('franja').hidden = !WSP;
   try { history.replaceState(null, '', t === 'dash' ? '#dashboard' : location.pathname + location.search); } catch (e) {}
   if (!sinScroll) window.scrollTo(0, 0);
 }
@@ -662,7 +681,9 @@ function maxF() {
 }
 
 function iniciar() {
-  const emp = limpio(CFG.empresa);
+  CFG.empresa = limpio(CONF.EMPRESA || CFG.empresa);
+  CFG.logo = limpio(CONF.LOGO || CFG.logo);
+  const emp = CFG.empresa;
   $('empresa').textContent = emp;
   $('empresa').hidden = !emp;
   if (emp) document.title = 'Levantamiento de Funciones · ' + emp;
@@ -675,8 +696,10 @@ function iniciar() {
   llenar($('sucursal'), CFG.sucursales);
   $('cargos').innerHTML = CFG.cargos.map((c, i) => '<label><input type="checkbox" name="cargo" id="cg' + i + '" value="' + esc(c) + '"><span>' + esc(c) + '</span></label>').join('') + '<label><input type="checkbox" name="cargo" id="cgOtro" value="' + OTRO + '"><span>Otro (especificar)</span></label>';
   $('nomPrincipal').textContent = tipoPrincipal();
-  const ley = '<dl>' + CFG.tipos.map(t => '<div><dt>' + esc(t.nombre) + '</dt><dd>' + esc(t.def) + '</dd></div>').join('') + '</dl><h4>Frecuencias</h4><dl>' + CFG.frecuencias.map(t => '<div><dt>' + esc(t.nombre) + '</dt><dd>' + esc(t.def) + '</dd></div>').join('') + '</dl>';
+  const ley = '<dl>' + CFG.tipos.map(t => '<div><dt>' + esc(t.nombre) + '</dt><dd>' + esc(t.def) + '</dd></div>').join('') + '</dl>';
   document.querySelectorAll('.leyCont').forEach(x => { x.innerHTML = ley; });
+  document.querySelectorAll('.ftCont').forEach(x => { x.innerHTML = FT_HTML; });
+  credGuardadas();
   $('fSuc').innerHTML = '<option value="">Todas las sucursales</option>' + CFG.sucursales.map(s => '<option>' + esc(s) + '</option>').join('');
   $('fEstado').innerHTML = '<option value="">Todos los estados</option>' + CFG.estados.map(s => '<option>' + esc(s) + '</option>').join('');
   $('detEstado').innerHTML = CFG.estados.map(s => '<option>' + esc(s) + '</option>').join('');
@@ -700,7 +723,7 @@ function selValor(sel, v) {
 }
 
 function nueva(tipo) {
-  return { uid: ++uid, tipo: tipo || '', funcion: '', descripcion: '', frecuencia: '' };
+  return { uid: ++uid, tipo: tipo || '', funcion: '', descripcion: '' };
 }
 
 function reiniciarFunciones() {
@@ -719,15 +742,11 @@ function opciones(lista, sel) {
 function renderFunciones() {
   $('funciones').innerHTML = funciones.map((f, i) => `
 <article class="funcion" data-uid="${f.uid}">
-<div class="fnum"><b>${i + 1}</b><span>Función</span></div>
-<div class="facc"><button type="button" class="quitar" data-accion="quitar" aria-label="Eliminar función ${i + 1}">Eliminar</button></div>
-<div class="fmeta">
+<div class="fcab"><span class="fnum"><b>${i + 1}</b>Función N° ${i + 1}</span><button type="button" class="quitar" data-accion="quitar" aria-label="Eliminar función ${i + 1}">Eliminar</button></div>
+<div class="fgrid">
 <div class="campo"><label for="t${f.uid}">Tipo de función *</label><select id="t${f.uid}" data-k="tipo">${opciones(CFG.tipos, f.tipo)}</select><small class="ayuda def">${esc(defTipo(f.tipo))}</small><small class="err"></small></div>
-<div class="campo"><label for="q${f.uid}">Frecuencia *</label><select id="q${f.uid}" data-k="frecuencia">${opciones(CFG.frecuencias, f.frecuencia)}</select><small class="err"></small></div>
-</div>
-<div class="ftexto">
-<div class="campo"><label for="f${f.uid}">Función *</label><input id="f${f.uid}" data-k="funcion" maxlength="200" autocomplete="off" placeholder="Ej.: Atención y venta a clientes en sala" value="${esc(f.funcion)}"><small class="err"></small></div>
-<div class="campo"><label for="d${f.uid}">Descripción / Especificación *</label><textarea id="d${f.uid}" data-k="descripcion" maxlength="1500" rows="3" placeholder="En qué consiste, cómo la realiza, con qué herramientas o sistemas y qué resultado entrega.">${esc(f.descripcion)}</textarea><div class="pie"><small class="err"></small><small class="contador">${f.descripcion.length}/1500</small></div></div>
+<div class="campo"><label for="f${f.uid}">Función *</label><input id="f${f.uid}" data-k="funcion" maxlength="200" autocomplete="off" placeholder="Ej.: Gestionar la cobranza a clientes" value="${esc(f.funcion)}"><small class="err"></small></div>
+<div class="campo fdesc"><label for="d${f.uid}">Descripción / Especificación *</label><textarea id="d${f.uid}" data-k="descripcion" maxlength="1500" rows="3" placeholder="Detalle las tareas con que cumple esta función: cómo las realiza, con qué herramientas o sistemas y qué resultado entrega.">${esc(f.descripcion)}</textarea><div class="pie"><small class="err"></small><small class="contador">${f.descripcion.length}/1500</small></div></div>
 </div>
 </article>`).join('');
   contadorF();
@@ -889,7 +908,7 @@ function avance() {
   const tel = v('telefono');
   const mail = v('correo');
   const datos = v('nombre').length >= 5 && rutValido(v('rut')) && !!v('sucursal') && v('jefatura').length >= 2 && (!!tel || !!mail) && (!tel || !!telNormal(tel)) && (!mail || RE_MAIL.test(mail)) && (!MANUAL || v('transcritoPor').length >= 3);
-  const completas = funciones.filter(f => f.tipo && f.frecuencia && limpio(f.funcion).length >= 3 && limpio(f.descripcion).length >= 5).length;
+  const completas = funciones.filter(f => f.tipo && limpio(f.funcion).length >= 3 && limpio(f.descripcion).length >= 5).length;
   const items = [
     ['Datos personales', datos],
     ['Cargo contractual', getCargos().length > 0],
@@ -924,7 +943,6 @@ function validar() {
     const art = $('funciones').querySelector('[data-uid="' + f.uid + '"]');
     const q = k => art.querySelector('[data-k="' + k + '"]');
     if (!f.tipo) mal(q('tipo'), 'Seleccione el tipo.');
-    if (!f.frecuencia) mal(q('frecuencia'), 'Seleccione la frecuencia.');
     if (limpio(f.funcion).length < 3) mal(q('funcion'), 'Indique la función.');
     if (limpio(f.descripcion).length < 5) mal(q('descripcion'), 'Agregue la descripción o especificación.');
   });
@@ -955,7 +973,7 @@ function datos() {
     comentarios: v('comentarios'),
     consentimiento: $('consentimiento').checked,
     website: $('website').value,
-    funciones: funciones.map(f => ({ tipo: f.tipo, funcion: limpio(f.funcion), descripcion: limpio(f.descripcion), frecuencia: f.frecuencia }))
+    funciones: funciones.map(f => ({ tipo: f.tipo, funcion: limpio(f.funcion), descripcion: limpio(f.descripcion) }))
   };
   if (MANUAL) Object.assign(d, { modo: 'manual', sesion: SESION, transcritoPor: v('transcritoPor'), folio: v('folio') });
   if (EDIT) Object.assign(d, { id: EDIT.id, clave: EDIT.clave });
@@ -969,7 +987,7 @@ function resumenHtml(d) {
     fila('Nombre', d.nombre) + fila('RUT', d.rut) + fila('Sucursal', d.sucursal) + fila('Cargo(s)', d.cargos.join(', ')) +
     fila('Jefatura', d.jefatura) + fila('Teléfono', d.telefono) + fila('Correo', d.correo) + '</dl>' +
     '<h3>Funciones (' + d.funciones.length + ')</h3><ol class="rfun">' +
-    d.funciones.map(f => '<li><b>' + esc(f.funcion) + '</b><div class="chipsI"><span class="chip">' + esc(f.tipo) + '</span><span class="chip">' + esc(f.frecuencia) + '</span></div><p>' + esc(f.descripcion) + '</p></li>').join('') +
+    d.funciones.map(f => '<li><b>' + esc(f.funcion) + '</b><div class="chipsI"><span class="chip">' + esc(f.tipo) + '</span></div><p>' + esc(f.descripcion) + '</p></li>').join('') +
     '</ol>' + (d.comentarios ? '<h3>Comentarios</h3><p class="rcom">' + esc(d.comentarios) + '</p>' : '');
 }
 
@@ -1038,7 +1056,11 @@ $('confirmar').addEventListener('click', async () => {
 });
 
 function pantallaExito(j) {
+  const deBorrador = !!(EDIT && EDIT.borrador);
+  if (deBorrador && !j.clave) j.clave = EDIT.clave;
   const nuevaClave = !!j.clave;
+  CRED = nuevaClave ? { id: j.id, clave: j.clave, nombre: limpio($('nombre').value) } : null;
+  $('exCredAcc').innerHTML = nuevaClave ? credAcciones() : '';
   $('exId').textContent = j.id;
   $('exClave').textContent = j.clave || '';
   $('exClaveBox').hidden = !nuevaClave;
@@ -1047,7 +1069,7 @@ function pantallaExito(j) {
     $('exSub').textContent = 'El registro quedó guardado como versión ' + j.version + '.';
     $('exNota').innerHTML = nuevaClave ? '<span><b>Entregue el ID y la clave al trabajador.</b> Con ellos podrá revisar y modificar su registro desde la pestaña Ingreso.</span>' : '<span>El trabajador ya tenía clave asignada; se mantiene la misma.</span>';
     $('exOtro').textContent = 'Transcribir otro formulario';
-  } else if (EDIT) {
+  } else if (EDIT && !deBorrador) {
     $('exTit').textContent = 'Cambios guardados';
     $('exSub').textContent = 'Su registro se actualizó a la versión ' + j.version + '. Su ID y su clave siguen siendo los mismos.';
     $('exNota').innerHTML = '<span>Para futuras modificaciones use nuevamente su ID y su clave en <b>Modificar mi registro</b>.</span>';
@@ -1091,7 +1113,7 @@ function guardarBorrador() {
     CAMPOS.forEach(id => { c[id] = $(id).value; });
     c.cargos = Array.from(document.querySelectorAll('#cargos input:checked')).map(x => x.value);
     c.consentimiento = $('consentimiento').checked;
-    localStorage.setItem(k, JSON.stringify({ c: c, f: funciones.map(f => ({ tipo: f.tipo, funcion: f.funcion, descripcion: f.descripcion, frecuencia: f.frecuencia })) }));
+    localStorage.setItem(k, JSON.stringify({ c: c, f: funciones.map(f => ({ tipo: f.tipo, funcion: f.funcion, descripcion: f.descripcion })) }));
   } catch (e) {}
 }
 
@@ -1120,10 +1142,8 @@ function restaurar() {
   document.querySelectorAll('#cargos input').forEach(x => { x.checked = (b.c.cargos || []).indexOf(x.value) >= 0; });
   $('consentimiento').checked = !!b.c.consentimiento;
   const tn = CFG.tipos.map(t => t.nombre);
-  const fn = CFG.frecuencias.map(t => t.nombre);
   funciones = (b.f || []).slice(0, maxF()).map(f => Object.assign(nueva(), {
     tipo: tn.indexOf(f.tipo) >= 0 ? f.tipo : '',
-    frecuencia: fn.indexOf(f.frecuencia) >= 0 ? f.frecuencia : '',
     funcion: f.funcion || '',
     descripcion: f.descripcion || ''
   }));
@@ -1158,12 +1178,9 @@ function modoUI() {
   $('bannerEdicion').hidden = !EDIT;
   document.querySelectorAll('[data-acc="modificar"]').forEach(b => { b.hidden = MANUAL || !!EDIT; });
   $('rut').readOnly = !!EDIT;
-  if (EDIT) {
-    $('edId').textContent = EDIT.id;
-    $('edVer').textContent = EDIT.version;
-  }
-  $('heroEye').textContent = MANUAL ? 'Administración' : EDIT ? 'Actualización de registro' : 'Levantamiento de funciones';
-  $('tituloIngreso').textContent = MANUAL ? 'Transcribir formulario en papel' : EDIT ? 'Modificar mi registro' : 'Registro de funciones por cargo';
+  document.querySelectorAll('[data-acc="borrador"]').forEach(b => { b.hidden = MANUAL; });
+  if (EDIT) $('edTxt').innerHTML = EDIT.borrador ? 'Borrador <b class="mono">' + esc(EDIT.id) + '</b>' + (EDIT.fecha ? ' guardado el ' + esc(EDIT.fecha) : '') + '. Puede guardar avances cuando quiera y enviar al terminar.' : 'Modificando el registro <b class="mono">' + esc(EDIT.id) + '</b> · versión ' + esc(EDIT.version) + '. Su ID y su clave se mantienen al guardar.';
+  $('tituloIngreso').textContent = MANUAL ? 'Transcribir formulario en papel' : EDIT ? (EDIT.borrador ? 'Continuar mi registro' : 'Modificar mi registro') : 'Registro de funciones por cargo';
   $('subIngreso').textContent = MANUAL ? 'Digite la información tal como aparece en el formulario firmado.' : EDIT ? 'Actualice la información que necesite y guarde los cambios.' : 'Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.';
   if (!MANUAL && !EDIT) $('buscador').hidden = $('buscador').hidden;
   else $('buscador').hidden = true;
@@ -1178,6 +1195,95 @@ function abrirBuscador(id, msg) {
   setTimeout(() => (id ? $('bClave') : $('bId')).focus({ preventScroll: true }), 300);
 }
 
+async function guardarAvance() {
+  if (MANUAL) return;
+  const v = id => limpio($(id).value);
+  const malos = [];
+  if (v('nombre').length < 5) { marcar($('nombre'), 'Para guardar el avance ingrese su nombre completo.'); malos.push($('nombre')); }
+  if (!rutValido(v('rut'))) { marcar($('rut'), 'Para guardar el avance ingrese un RUT válido.'); malos.push($('rut')); }
+  if (malos.length) {
+    malos[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => malos[0].focus({ preventScroll: true }), 350);
+    toast('Ingrese su nombre y RUT para guardar el avance.', true);
+    return;
+  }
+  const bts = document.querySelectorAll('[data-acc="borrador"]');
+  bts.forEach(b => { b.disabled = true; b.dataset.t = b.textContent; b.textContent = 'Guardando…'; });
+  const d = datos();
+  delete d.consentimiento;
+  const j = await api('borrador', d);
+  bts.forEach(b => { b.disabled = false; b.textContent = b.dataset.t; });
+  if (!j.ok) {
+    if (j.existe) { abrirBuscador(j.id, j.mensaje); return; }
+    toast(j.mensaje, true);
+    return;
+  }
+  if (j.clave) {
+    borrarBorrador();
+    EDIT = { id: j.id, clave: j.clave, version: 0, borrador: true, fecha: j.fecha, nombre: d.nombre };
+    modoUI();
+    CRED = { id: j.id, clave: j.clave, nombre: d.nombre };
+    dialogo('Avance guardado', '<p class="sub" style="margin:0 0 6px">Con estos datos puede continuar su registro más tarde, desde este u otro dispositivo, en <b>Modificar mi registro</b>.</p><div class="cred" style="margin:12px 0"><div class="credbox"><span>ID de registro</span><b id="dlgId">' + esc(j.id) + '</b><button type="button" class="copiar" data-copia="dlgId">Copiar</button></div><div class="credbox"><span>Clave</span><b id="dlgClave">' + esc(j.clave) + '</b><button type="button" class="copiar" data-copia="dlgClave">Copiar</button></div></div>' + credAcciones() + '<div class="aviso alerta"><span><b>Tome nota de su ID y su clave.</b> Por seguridad la clave no se puede recuperar; si la pierde, solicite una nueva a su jefatura.</span></div>', [{ txt: 'Seguir completando', cls: 'pri' }]);
+  } else {
+    if (EDIT) EDIT.fecha = j.fecha;
+    modoUI();
+    toast('Avance guardado el ' + j.fecha + '.');
+  }
+}
+
+function credAcciones() {
+  return '<div class="credacc"><button type="button" class="btn sec" data-cred="txt">Descargar credenciales</button><button type="button" class="btn sec" data-cred="local">Recordar en este navegador</button>' + (window.PasswordCredential ? '<button type="button" class="btn sec" data-cred="gestor">Guardar en contraseñas del navegador</button>' : '') + '</div>';
+}
+
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('[data-cred]');
+  if (!b || !CRED) return;
+  const a = b.dataset.cred;
+  if (a === 'txt') {
+    const t = ['Levantamiento de Funciones' + (CFG.empresa ? ' · ' + CFG.empresa : ''), '', 'Nombre: ' + (CRED.nombre || ''), 'ID de registro: ' + CRED.id, 'Clave: ' + CRED.clave, 'Fecha: ' + hoy(), '', 'Use estos datos en "Modificar mi registro" en:', location.origin + location.pathname];
+    const url = URL.createObjectURL(new Blob([t.join('\r\n')], { type: 'text/plain;charset=utf-8' }));
+    const l = document.createElement('a');
+    l.href = url;
+    l.download = 'Credenciales levantamiento ' + CRED.id + '.txt';
+    document.body.appendChild(l);
+    l.click();
+    setTimeout(() => { URL.revokeObjectURL(url); l.remove(); }, 800);
+  } else if (a === 'local') {
+    try {
+      localStorage.setItem('lf_cred', JSON.stringify({ id: CRED.id, clave: CRED.clave, nombre: CRED.nombre || '' }));
+      b.textContent = 'Guardado en este navegador';
+      b.disabled = true;
+      credGuardadas();
+      toast('Credenciales guardadas en este navegador. Úselo solo en un dispositivo personal.');
+    } catch (e) {
+      toast('Este navegador no permite guardar datos.', true);
+    }
+  } else if (a === 'gestor') {
+    try {
+      navigator.credentials.store(new PasswordCredential({ id: CRED.id, password: CRED.clave, name: CRED.nombre || CRED.id })).then(() => toast('Si el navegador lo solicita, confirme guardar la contraseña.'), () => toast('El navegador no permitió guardar la contraseña.', true));
+    } catch (e) {
+      toast('El navegador no permitió guardar la contraseña.', true);
+    }
+  }
+});
+
+function credGuardadas() {
+  let c = null;
+  try { c = JSON.parse(localStorage.getItem('lf_cred') || 'null'); } catch (e) { c = null; }
+  const box = $('bGuardadas');
+  if (!c || !c.id || !c.clave) { box.hidden = true; return; }
+  box.innerHTML = '<span>Credenciales recordadas en este navegador: <b class="mono">' + esc(c.id) + '</b>' + (c.nombre ? ' · ' + esc(c.nombre) : '') + '</span><span class="acc2"><button type="button" class="enlace" id="usarCred">Usar</button><button type="button" class="enlace" id="olvCred">Olvidar</button></span>';
+  box.hidden = false;
+  $('usarCred').onclick = () => { $('bId').value = c.id; $('bClave').value = c.clave; $('fBuscar').requestSubmit(); };
+  $('olvCred').onclick = () => { try { localStorage.removeItem('lf_cred'); } catch (e) {} credGuardadas(); };
+}
+
+$('verClave').addEventListener('click', () => {
+  const i = $('bClave');
+  i.type = i.type === 'password' ? 'text' : 'password';
+  $('verClave').textContent = i.type === 'password' ? 'Mostrar' : 'Ocultar';
+});
+
 function toggleBuscador() {
   if ($('buscador').hidden) abrirBuscador();
   else $('buscador').hidden = true;
@@ -1190,6 +1296,7 @@ document.addEventListener('click', ev => {
   if (a === 'modificar') toggleBuscador();
   else if (a === 'blanco') imprimirBlanco();
   else if (a === 'wsp') abrirWsp();
+  else if (a === 'borrador') guardarAvance();
 });
 
 function iniciarWsp(emp) {
@@ -1274,13 +1381,13 @@ $('fBuscar').addEventListener('submit', async ev => {
     return;
   }
   guardarBorrador();
-  EDIT = { id: j.registro.id, clave: clave, version: j.registro.version };
+  EDIT = { id: j.registro.id, clave: clave, version: j.registro.version, borrador: !!j.registro.borrador, fecha: j.registro.fechaBorrador || '', nombre: j.registro.nombre };
   rellenar(j.registro);
   $('bClave').value = '';
   $('buscador').hidden = true;
   modoUI();
   window.scrollTo(0, 0);
-  toast('Registro cargado. Recuerde aceptar la declaración antes de guardar.');
+  toast(EDIT.borrador ? 'Borrador cargado. Continúe donde lo dejó.' : 'Registro cargado. Recuerde aceptar la declaración antes de guardar.');
 });
 
 function rellenar(r) {
@@ -1297,10 +1404,8 @@ function rellenar(r) {
   $('comentarios').value = r.comentarios;
   setCargos(r.cargos || []);
   const tn = CFG.tipos.map(t => t.nombre);
-  const fn = CFG.frecuencias.map(t => t.nombre);
   funciones = (r.funciones || []).map(f => Object.assign(nueva(), {
     tipo: tn.indexOf(f.tipo) >= 0 ? f.tipo : '',
-    frecuencia: fn.indexOf(f.frecuencia) >= 0 ? f.frecuencia : '',
     funcion: f.funcion,
     descripcion: f.descripcion
   }));
@@ -1348,11 +1453,11 @@ function pResumen(fs) {
 
 function imprimirComprobante(r) {
   const meta = '<div class="pmeta">ID de registro<b>' + esc(r.id) + '</b><em>Versión ' + esc(r.version) + ' · ' + esc(r.fecha) + '</em></div>';
-  const filas = r.funciones.map((f, i) => '<tr><td class="nn">' + (i + 1) + '</td><td><b>' + esc(f.funcion) + '</b><div class="fd">' + esc(f.descripcion) + '</div></td><td>' + esc(f.tipo) + '</td><td>' + esc(f.frecuencia) + '</td></tr>').join('');
+  const filas = r.funciones.map((f, i) => '<tr><td class="nn">' + (i + 1) + '</td><td><b>' + esc(f.funcion) + '</b><div class="fd">' + esc(f.descripcion) + '</div></td><td>' + esc(f.tipo) + '</td></tr>').join('');
   const html = '<div class="pdoc">' + pEnc('Levantamiento de Funciones por Cargo', 'Comprobante de información declarada', meta) +
     '<h2>1. Datos personales</h2>' + pDatos(r) +
     '<h2>2. Funciones declaradas</h2>' + pResumen(r.funciones) +
-    '<table><thead><tr><th>N°</th><th>Función y descripción</th><th style="width:78pt">Tipo</th><th style="width:62pt">Frecuencia</th></tr></thead><tbody>' + filas + '</tbody></table>' +
+    '<table><thead><tr><th>N°</th><th>Función y descripción</th><th style="width:90pt">Tipo</th></tr></thead><tbody>' + filas + '</tbody></table>' +
     '<h2>3. Comentarios generales</h2><div class="box">' + esc(r.comentarios || 'Sin comentarios.') + '</div>' +
     '<div class="firmas"><div>Firma trabajador(a)<br>' + esc(r.nombre) + '</div><div>Firma jefatura directa<br>' + esc(r.jefatura) + '</div></div>' +
     '<div class="pfoot">Declaración aceptada: la información entregada es fidedigna y se autoriza su uso exclusivo para fines de gestión interna. Documento generado el ' + esc(hoy()) + '.</div></div>';
@@ -1364,16 +1469,16 @@ function imprimirBlanco() {
   const ops = l => l.map(x => '<div>' + cj + esc(x.nombre) + '</div>').join('');
   const cargos = CFG.cargos.map(c => '<label>' + cj + esc(c) + '</label>').join('') + '<label>' + cj + 'Otro: <span class="ln"></span></label>';
   let filas = '';
-  for (let i = 1; i <= 18; i++) filas += '<tr><td class="nn">' + i + '</td><td class="op">' + ops(CFG.tipos) + '</td><td></td><td></td><td class="op">' + ops(CFG.frecuencias) + '</td></tr>';
+  for (let i = 1; i <= 16; i++) filas += '<tr><td class="nn">' + i + '</td><td class="op">' + ops(CFG.tipos) + '</td><td></td><td></td></tr>';
   const html = '<div class="pdoc">' + pEnc('Levantamiento de Funciones por Cargo', 'Formulario para completar a mano', '<div class="folio">Folio N°</div>') +
-    '<p class="inst">Complete con letra clara. Registre todas las funciones que realiza habitualmente en su cargo, estén o no descritas en su contrato. Use una fila por función y marque con una X el tipo y la frecuencia que correspondan. Al menos una función debe ser de tipo ' + esc(tipoPrincipal()) + '.</p>' +
+    '<p class="inst">Complete con letra clara. Registre todas las funciones que realiza habitualmente en su cargo, estén o no descritas en su contrato. Use una fila por función, marque con una X su tipo y detalle en la descripción las tareas con que la cumple. Al menos una función debe ser de tipo ' + esc(tipoPrincipal()) + '.</p>' +
     '<h2>1. Datos personales</h2><div class="bf">' +
     '<div class="s4"><span>Nombre completo</span></div><div class="s2"><span>RUT</span></div>' +
     '<div class="s3"><span>Sucursal</span></div><div class="s3"><span>Jefatura o dependencia directa</span></div>' +
     '<div class="s3"><span>Teléfono</span></div><div class="s3"><span>Correo electrónico</span></div>' +
     '<div class="s6 alto"><span>Cargo contractual (puede marcar más de uno)</span><div class="ops">' + cargos + '</div></div></div>' +
-    '<h2>2. Tipos de función y frecuencias</h2><div class="ley2">' + CFG.tipos.map(t => '<div><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</div>').join('') + CFG.frecuencias.map(t => '<div><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</div>').join('') + '</div>' +
-    '<h2>3. Funciones que realiza</h2><table class="tb"><thead><tr><th>N°</th><th style="width:74pt">Tipo</th><th style="width:130pt">Función</th><th>Descripción / Especificación</th><th style="width:62pt">Frecuencia</th></tr></thead><tbody>' + filas + '</tbody></table>' +
+    '<h2>2. Tipos de función</h2><div class="ley2">' + CFG.tipos.map(t => '<div><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</div>').join('') + '<div><b>Función:</b> responsabilidad permanente del cargo, orientada a un resultado. Ej.: Gestionar la cobranza a clientes.</div><div><b>Tarea:</b> acción concreta con la que se cumple una función. Ej.: Llamar a clientes con facturas vencidas.</div></div>' +
+    '<h2>3. Funciones que realiza</h2><table class="tb"><thead><tr><th>N°</th><th style="width:80pt">Tipo</th><th style="width:150pt">Función</th><th>Descripción / Especificación (tareas)</th></tr></thead><tbody>' + filas + '</tbody></table>' +
     '<h2>4. Comentarios generales</h2><div class="box" style="height:42mm"></div>' +
     '<h2>5. Declaración y firmas</h2><p class="inst">Declaro que la información entregada es fidedigna y autorizo su uso exclusivo para fines de gestión interna de la empresa: levantamiento de funciones y elaboración de descriptores de cargo.</p>' +
     '<div class="firmas"><div>Firma trabajador(a)</div><div>Firma jefatura directa</div></div>' +
@@ -1387,7 +1492,7 @@ function imprimirRevision() {
   const meta = '<div class="pmeta">ID de registro<b>' + esc(r.id) + '</b><em>Versión ' + esc(r.version) + ' · ' + esc(r.fecha) + '</em><em>Estado: ' + esc(est) + (r.fRev ? ' · Revisado ' + esc(r.fRev) : '') + '</em></div>';
   const fns = r.funciones.map(f => {
     const p = limpio(($('p' + f.n) || {}).value);
-    return '<div class="pfn"><div class="pd"><span class="tag">Declarado por el trabajador</span><div class="pt"><b>' + f.n + '. ' + esc(f.funcion) + '</b><small>' + esc(f.tipo) + ' · ' + esc(f.frecuencia) + '</small></div><div class="pdesc">' + esc(f.descripcion) + '</div></div>' +
+    return '<div class="pfn"><div class="pd"><span class="tag">Declarado por el trabajador</span><div class="pt"><b>' + f.n + '. ' + esc(f.funcion) + '</b><small>' + esc(f.tipo) + '</small></div><div class="pdesc">' + esc(f.descripcion) + '</div></div>' +
       '<div class="pp' + (p ? '' : ' sin') + '"><span class="tag">Precisión de revisión</span>' + esc(p || 'Sin precisiones.') + '</div></div>';
   }).join('');
   const cr = limpio($('detComRev').value);
@@ -1467,6 +1572,7 @@ async function cargarLista() {
     return;
   }
   LISTA = j.personas || [];
+  BORR = j.borradores || 0;
   $('dSub').textContent = LISTA.length + (LISTA.length === 1 ? ' persona' : ' personas') + ' con registro vigente · ' + (j.envios || 0) + ((j.envios || 0) === 1 ? ' envío' : ' envíos') + ' en total · actualizado ' + hoy();
   renderKpis();
   renderTabla();
@@ -1485,7 +1591,7 @@ function renderKpis() {
   const n = LISTA.length;
   const fn = LISTA.reduce((s, p) => s + p.nFunciones, 0);
   const e = s => LISTA.filter(p => p.estado === s).length;
-  $('kpis').innerHTML = [['Personas', n, ''], ['Funciones declaradas', fn, ''], ['Promedio por persona', n ? (Math.round(fn / n * 10) / 10).toLocaleString('es-CL') : 0, ''], ['Pendientes', e('Pendiente'), 'pend'], ['Observados', e('Observado'), ''], ['Revisados', e('Revisado'), 'listo']]
+  $('kpis').innerHTML = [['Personas', n, ''], ['Funciones declaradas', fn, ''], ['Borradores sin enviar', BORR, ''], ['Pendientes', e('Pendiente'), 'pend'], ['Observados', e('Observado'), ''], ['Revisados', e('Revisado'), 'listo']]
     .map(k => '<div class="kpi ' + k[2] + '"><span>' + k[0] + '</span><b>' + k[1] + '</b></div>').join('');
   const suc = {};
   const car = {};
@@ -1541,7 +1647,7 @@ function renderDetalle() {
   $('detFRev').textContent = r.fRev ? 'Última revisión guardada: ' + r.fRev : 'Aún no se guarda una revisión para esta versión.';
   $('detClaveInfo').textContent = r.clave ? 'El trabajador tiene clave asignada para modificar su registro.' : 'El trabajador no tiene clave. Genere una para que pueda modificar su registro.';
   $('detHist').innerHTML = (r.historial || []).map(h => '<li><b>Versión ' + h.version + '</b> · ' + esc(h.fecha) + ' · ' + esc(h.origen) + (h.vigente ? ' · vigente' : '') + '</li>').join('');
-  $('detFunciones').innerHTML = r.funciones.map(f => '<article class="rev"><div class="decl"><span class="etq">Declarado · función ' + f.n + '</span><h3>' + esc(f.funcion) + '</h3><div class="chipsI"><span class="chip">' + esc(f.tipo) + '</span><span class="chip">' + esc(f.frecuencia) + '</span></div><p>' + esc(f.descripcion) + '</p></div><div class="prec"><label class="etq" for="p' + f.n + '">Precisión de revisión</label><textarea id="p' + f.n + '" data-n="' + f.n + '" maxlength="1500" rows="4" placeholder="Observaciones, precisiones o correcciones a esta función">' + esc(f.precision || '') + '</textarea></div></article>').join('');
+  $('detFunciones').innerHTML = r.funciones.map(f => '<article class="rev"><div class="decl"><span class="etq">Declarado · función ' + f.n + '</span><h3>' + esc(f.funcion) + '</h3><div class="chipsI"><span class="chip">' + esc(f.tipo) + '</span></div><p>' + esc(f.descripcion) + '</p></div><div class="prec"><label class="etq" for="p' + f.n + '">Precisión de revisión</label><textarea id="p' + f.n + '" data-n="' + f.n + '" maxlength="1500" rows="4" placeholder="Observaciones, precisiones o correcciones a esta función">' + esc(f.precision || '') + '</textarea></div></article>').join('');
   $('detComTrab').textContent = r.comentarios || 'Sin comentarios.';
   $('detComRev').value = r.comRev || '';
 }
