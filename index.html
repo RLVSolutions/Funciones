@@ -451,11 +451,18 @@ body>*:not(#print){display:none!important}
 <main id="vDash" class="shell" hidden>
 <section id="dLogin" class="tarjeta login">
 <h1>Acceso al Dashboard</h1>
-<p class="sub">Ingrese el código de acceso de administración.</p>
+<p class="sub" id="lSub">Ingrese el código de acceso de administración.</p>
 <form id="fLogin" novalidate style="margin-top:16px">
 <div class="campo"><label for="lCodigo">Código de acceso</label><input id="lCodigo" type="password" autocomplete="current-password" maxlength="40"></div>
 <button type="submit" id="lBtn" class="btn pri ancho">Ingresar</button>
 <p id="lErr" class="errBloque" role="alert"></p>
+</form>
+<form id="fInicial" novalidate hidden style="margin-top:16px">
+<div class="aviso alerta" style="margin-bottom:14px"><span><b>Primer ingreso.</b> Ingresó con el código inicial. Cree ahora su código de acceso personal; el código inicial dejará de funcionar.</span></div>
+<div class="campo"><label for="iNueva">Nuevo código de acceso</label><input id="iNueva" type="password" autocomplete="new-password" maxlength="40"><small class="ayuda">Entre 6 y 40 caracteres. No distingue mayúsculas de minúsculas.</small></div>
+<div class="campo"><label for="iNueva2">Repita el nuevo código</label><input id="iNueva2" type="password" autocomplete="new-password" maxlength="40"></div>
+<button type="submit" id="iBtn" class="btn pri ancho">Guardar y entrar</button>
+<p id="iErr" class="errBloque" role="alert"></p>
 </form>
 </section>
 
@@ -554,6 +561,7 @@ let MANUAL = false;
 let SESION = null;
 let LISTA = [];
 let BORR = 0;
+let INICIAL = null;
 let DET = null;
 let sucio = false;
 let ULTIMO = null;
@@ -591,7 +599,7 @@ async function api(accion, datos, ms) {
   } catch (e) {
     return { ok: false, red: true, mensaje: 'No se pudo conectar con el servicio. Revise su conexión e intente nuevamente.' };
   }
-  if (j && j.sesion === false) finSesion(j.mensaje);
+  if (j && (j.sesion === false || j.cambiar === true) && accion !== 'login') finSesion(j.mensaje);
   return j || { ok: false, mensaje: 'Respuesta inválida del servicio.' };
 }
 
@@ -1530,7 +1538,7 @@ function finSesion(msg) {
     limpiarFormulario();
     modoUI();
   }
-  $('lErr').textContent = msg || '';
+  resetLogin(msg);
   if (tab === 'dash') vistaDash();
 }
 
@@ -1547,12 +1555,58 @@ $('fLogin').addEventListener('submit', async ev => {
     $('lErr').textContent = j.mensaje;
     return;
   }
-  $('lCodigo').value = '';
   $('lErr').textContent = '';
+  if (j.cambiar) {
+    INICIAL = { sesion: j.sesion, codigo: c };
+    $('lCodigo').value = '';
+    $('fLogin').hidden = true;
+    $('fInicial').hidden = false;
+    $('lSub').hidden = true;
+    $('dLogin').querySelector('h1').textContent = 'Cree su código de acceso';
+    setTimeout(() => $('iNueva').focus(), 50);
+    return;
+  }
+  $('lCodigo').value = '';
   SESION = j.sesion;
   ss('lf_sesion', SESION);
   vistaDash();
 });
+
+$('fInicial').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const n = $('iNueva').value.trim();
+  $('iErr').textContent = '';
+  if (n.length < 6) { $('iErr').textContent = 'El código debe tener al menos 6 caracteres.'; return; }
+  if (n !== $('iNueva2').value.trim()) { $('iErr').textContent = 'Los códigos no coinciden.'; return; }
+  if (!INICIAL) return;
+  $('iBtn').disabled = true;
+  $('iBtn').textContent = 'Guardando…';
+  const j = await api('codigo', { sesion: INICIAL.sesion, actual: INICIAL.codigo, nueva: n });
+  $('iBtn').disabled = false;
+  $('iBtn').textContent = 'Guardar y entrar';
+  if (!j.ok) {
+    if (j.sesion === false) { resetLogin(j.mensaje); return; }
+    $('iErr').textContent = j.mensaje || 'No fue posible guardar el código.';
+    return;
+  }
+  SESION = INICIAL.sesion;
+  ss('lf_sesion', SESION);
+  resetLogin('');
+  toast('Código de acceso creado. Úselo en sus próximos ingresos.');
+  vistaDash();
+});
+
+function resetLogin(msg) {
+  INICIAL = null;
+  $('iNueva').value = '';
+  $('iNueva2').value = '';
+  $('iErr').textContent = '';
+  $('fInicial').hidden = true;
+  $('fLogin').hidden = false;
+  $('lSub').hidden = false;
+  $('dLogin').querySelector('h1').textContent = 'Acceso al Dashboard';
+  $('lErr').textContent = msg || '';
+}
 
 $('dSalir').addEventListener('click', () => {
   api('salir', { sesion: SESION });
