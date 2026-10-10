@@ -528,12 +528,12 @@ body>*:not(#print){display:none!important}
 <div id="toast" class="toast" role="status" hidden></div>
 <div id="print"></div>
 
-<script src="config.js"></script>
 <script>
-const CONF = window.LF_CONFIG || {};
-const API_URL = String(CONF.API_URL || '').trim();
-const API_TOKEN = String(CONF.API_TOKEN || '').trim();
-const WSP = String(CONF.WHATSAPP || '').replace(/\D/g, '');
+let CONF = {};
+let API_URL = '';
+let API_TOKEN = '';
+let WSP = '';
+let CONF_ERR = '';
 const WSP_OPS = [
   ['Dudas con el formulario', 'Hola, tengo una duda sobre cómo completar el formulario de levantamiento de funciones.'],
   ['Dudas con las funciones', 'Hola, tengo una duda sobre cómo describir o clasificar mis funciones (principal, responsabilidad, apoyo o esporádica).'],
@@ -651,8 +651,8 @@ function falla(msg) {
 
 async function cargar() {
   mostrar(['carga']);
-  if (!window.LF_CONFIG) {
-    falla('No se encontró el archivo config.js junto a index.html en el repositorio.');
+  if (CONF_ERR) {
+    falla(CONF_ERR);
     return;
   }
   if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(API_URL) || !API_TOKEN || API_TOKEN.indexOf('PEGAR') === 0) {
@@ -1763,9 +1763,29 @@ function dialogo(titulo, html, botones) {
 }
 
 window.addEventListener('beforeunload', ev => { if (sucio) { ev.preventDefault(); ev.returnValue = ''; } });
-$('reintentar').addEventListener('click', cargar);
+$('reintentar').addEventListener('click', () => location.reload());
 
-cargar();
+window.addEventListener('error', ev => {
+  if (ev.filename && ev.filename.indexOf('config.js') >= 0) CONF_ERR = 'El archivo config.js tiene un error de escritura (' + ev.message + '). Revise comillas y comas.';
+});
+
+(function cargarConfig() {
+  const sc = document.createElement('script');
+  sc.src = 'config.js?v=' + Date.now();
+  sc.onload = () => {
+    if (!CONF_ERR && !window.LF_CONFIG) CONF_ERR = 'El archivo config.js tiene un error de escritura. Revise que cada valor esté entre comillas simples, separado por comas, y que comience con: window.LF_CONFIG = {';
+    CONF = window.LF_CONFIG || {};
+    API_URL = String(CONF.API_URL || '').trim();
+    API_TOKEN = String(CONF.API_TOKEN || '').trim();
+    WSP = String(CONF.WHATSAPP || '').replace(/\D/g, '');
+    cargar();
+  };
+  sc.onerror = () => {
+    CONF_ERR = 'No se encontró el archivo config.js junto a index.html. Verifique que exista en el repositorio con ese nombre exacto (sin "(1)" ni ".txt").';
+    cargar();
+  };
+  document.head.appendChild(sc);
+})();
 </script>
 </body>
 </html>
