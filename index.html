@@ -552,7 +552,7 @@ body>*:not(#print){display:none!important}
 
 <div id="wsp" class="wsp" hidden>
 <div id="wspPanel" class="wsp-panel" role="dialog" aria-label="Asistente de ayuda" hidden>
-<div class="wsp-head"><div class="wsp-av" id="wspAv">RD</div><div><b id="wspNom">Asistente de levantamiento</b><span>Respuestas al instante</span></div><button type="button" id="wspReset" class="wsp-x wsp-r" aria-label="Volver al inicio" title="Volver al inicio">↺</button><button type="button" id="wspX" class="wsp-x" aria-label="Cerrar">×</button></div>
+<div class="wsp-head"><div class="wsp-av" id="wspAv">RD</div><div><b id="wspNom">Asistente de levantamiento</b><span>Responde al instante</span></div><button type="button" id="wspReset" class="wsp-x wsp-r" aria-label="Volver al inicio" title="Volver al inicio">↺</button><button type="button" id="wspX" class="wsp-x" aria-label="Cerrar">×</button></div>
 <div class="wsp-body" id="wspChat" aria-live="polite"></div>
 <form class="wsp-input" id="wspForm" autocomplete="off"><input id="wspIn" maxlength="300" placeholder="Escribe tu pregunta…" aria-label="Escribe tu pregunta"><button type="submit" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 20.5 21 12 3 3.5l.01 6.6L15 12 3.01 13.9z"/></svg></button></form>
 </div>
@@ -1461,34 +1461,47 @@ document.addEventListener('click', ev => {
 
 const BOT = [
   { t: 'Dudas con el formulario', q: [
-    { t: '¿Cómo guardo mi avance?', k: 'guardar avance borrador continuar despues luego tarde terminar pausa', r: 'Presiona <b>Guardar avance</b>, bajo "Revisar y enviar". Solo necesitas haber escrito tu nombre y tu RUT.<br><br>La primera vez recibirás un <b>ID</b> y una <b>clave</b>: anótalos, descárgalos o guárdalos en el navegador. Con ellos continúas cuando quieras, desde cualquier dispositivo.', acc: [['borrador', 'Guardar avance ahora']] },
-    { t: '¿Cómo modifico lo que ya envié?', k: 'modificar cambiar corregir editar actualizar enviado envie', r: 'Usa <b>Modificar mi registro</b> e ingresa tu ID y tu clave. Se cargará tu información; corrige lo necesario y guarda. Tu ID y tu clave se mantienen.', acc: [['modificar', 'Ir a Modificar mi registro']] },
-    { t: '¿Qué es mi ID de registro?', k: 'id registro usuario identificador numero', r: 'Tu ID es tu <b>RUT sin puntos, sin guion y sin dígito verificador</b>.<br><br>Ejemplo: para el RUT 12.345.678-9, tu ID es <b>12345678</b>.' },
-    { t: 'Olvidé mi clave', k: 'olvide clave perdi contrasena password recuperar recuerdo', r: 'Por seguridad la clave no se puede recuperar. Pide a tu jefatura una <b>nueva clave</b>; la anterior dejará de funcionar.<br><br>Si la guardaste en este navegador, aparece en <b>Modificar mi registro</b> con la opción "Usar".' },
-    { t: 'Prefiero completarlo en papel', k: 'papel imprimir mano manual pdf blanco impreso escrito', r: 'Descarga el <b>Formulario en blanco (PDF)</b>, complétalo con letra clara, fírmalo junto a tu jefatura y entrégalo. Luego se transcribe al sistema y recibirás tu ID y tu clave.', acc: [['blanco', 'Descargar formulario en blanco']] },
-    { t: 'Me aparece un error al enviar', k: 'error falla envia problema conexion funciona rojo', r: 'Revisa los campos marcados en rojo: el formulario indica qué falta en cada uno.<br><br>Si el error es de conexión, tus datos quedan guardados en este dispositivo; intenta de nuevo en unos minutos.' }
+    { t: '¿Cómo guardo mi avance?', k: 'guardar borrador continuar despues tarde terminar', r: 'Presiona <b>Guardar avance</b>, bajo "Revisar y enviar". Solo necesitas haber verificado tu RUT y escrito tu nombre.<br><br>La primera vez recibirás un <b>ID</b> y una <b>clave</b>: anótalos, descárgalos o guárdalos en el navegador.', acc: [['borrador', 'Guardar avance ahora']] },
+    { t: '¿Cómo retomo un registro que dejé a medias?', k: 'continuar borrador medias incompleto inconcluso pendiente', r: 'Escribe tu <b>RUT</b> al comienzo del formulario. Si tienes un avance guardado, aparecerá el aviso "Tiene un registro sin finalizar": ingresa tu clave y presiona <b>Retomar registro</b>.' },
+    { t: '¿Cómo modifico lo que ya envié?', k: 'modificar enviado', r: 'Escribe tu <b>RUT</b> al comienzo del formulario y luego tu clave, o usa <b>Modificar mi registro</b> con tu ID y tu clave. Corrige lo necesario y guarda: tu ID y tu clave se mantienen.', acc: [['modificar', 'Ir a Modificar mi registro']] },
+    { t: 'Me dice que ya tengo un registro', k: 'existe registro bloqueado crear nuevo aparece sin finalizar', r: 'Cada persona tiene un solo registro. Si el sistema detecta tu RUT, debes <b>retomarlo o modificarlo con tu clave</b>; no se puede crear uno nuevo. Si no tienes la clave, pídele una nueva a tu jefatura.' },
+    { t: '¿Qué es mi ID de registro?', k: 'id identificador usuario numero', r: 'Tu ID es tu <b>RUT sin puntos, sin guion y sin dígito verificador</b>.<br><br>Ejemplo: para el RUT 12.345.678-9, tu ID es <b>12345678</b>.' },
+    { t: 'Olvidé mi clave', k: 'olvide clave recuperar', r: 'Por seguridad la clave no se puede recuperar. Pídele a tu jefatura una <b>nueva clave</b>; la anterior dejará de funcionar.<br><br>Si la guardaste en este navegador, el formulario te ofrecerá "Usar la clave recordada".' },
+    { t: '¿Dónde guardo mi clave?', k: 'guardar clave anotar descargar recordar navegador', r: 'Al recibirla tienes tres opciones: <b>Descargar credenciales</b> (un archivo de texto), <b>Recordar en este navegador</b> o <b>Guardar en contraseñas del navegador</b>. Usa las dos últimas solo en un dispositivo personal.' },
+    { t: 'Prefiero completarlo en papel', k: 'papel imprimir manual blanco', r: 'Descarga el <b>Formulario en blanco (PDF)</b>, complétalo con letra clara, fírmalo junto a tu jefatura y entrégalo. Luego se transcribe al sistema y recibirás tu ID y tu clave.', acc: [['blanco', 'Descargar formulario en blanco']] },
+    { t: '¿Puedo usarlo en el celular?', k: 'celular tablet computador dispositivo', r: 'Sí. Funciona en celular, tablet y computador. Puedes empezar en uno y terminar en otro con tu RUT y tu clave.' },
+    { t: 'Me aparece un error al enviar', k: 'error enviar rojo', r: 'Revisa los campos marcados en rojo: cada uno indica qué falta.<br><br>Si el error es de conexión, tus datos quedan guardados en este dispositivo; intenta de nuevo en unos minutos.' }
   ] },
   { t: 'Dudas con las funciones', q: [
     { t: '¿Qué diferencia hay entre función y tarea?', k: 'diferencia funcion tarea', r: '<b>Función:</b> responsabilidad permanente del cargo, orientada a un resultado. Responde a "¿para qué existe mi puesto?". Ej.: Gestionar la cobranza a clientes.<br><br><b>Tarea:</b> acción concreta con la que cumples una función. Responde a "¿qué hago para lograrlo?". Ej.: Llamar a clientes con facturas vencidas.<br><br>Registra cada función en un bloque y detalla sus tareas en la descripción.' },
-    { t: '¿Qué tipo de función elijo?', k: 'tipo principal apoyo responsabilidad esporadica clasificar elegir categoria', r: () => (CFG ? CFG.tipos.map(t => '<b>' + esc(t.nombre) + ':</b> ' + esc(t.def)).join('<br>') : '') + '<br><br>Elige el tipo que mejor represente el peso de esa función en tu cargo. Debes tener al menos una de tipo <b>' + esc(CFG ? tipoPrincipal() : 'Principal') + '</b>.' },
-    { t: '¿Cuántas funciones debo registrar?', k: 'cuantas cantidad numero minimo maximo', r: 'Registra todas las funciones que realizas habitualmente. En la mayoría de los cargos bastan entre <b>5 y 15</b>.<br><br>El mínimo es una de tipo Principal y el máximo es ' + 40 + '.' },
-    { t: '¿Cómo describo una función?', k: 'describir descripcion redactar escribir ejemplo especificacion detallar', r: 'Comienza el nombre con un verbo y di qué haces. En la descripción detalla las tareas, las herramientas o sistemas y el resultado.<br><br><b>Función:</b> Gestionar la cobranza a clientes.<br><b>Descripción:</b> Llamo a clientes con facturas vencidas, acuerdo fechas de pago y las registro en el sistema para reducir la morosidad.' },
-    { t: 'Hago funciones que no están en mi contrato', k: 'contrato aparece extra adicional otras fuera', r: 'Regístralas igual. El objetivo es reflejar lo que realmente haces, estén o no descritas en tu contrato.' }
+    { t: '¿Qué tipo de función elijo?', k: 'tipo principal apoyo responsabilidad esporadica clasificar elegir', r: () => (CFG ? CFG.tipos.map(t => '<b>' + esc(t.nombre) + ':</b> ' + esc(t.def)).join('<br>') : '') + '<br><br>Elige el tipo que mejor represente el peso de esa función en tu cargo. Debes tener al menos una de tipo <b>' + esc(CFG ? tipoPrincipal() : 'Principal') + '</b>.' },
+    { t: '¿Cuántas funciones debo registrar?', k: 'cuantas minimo maximo', r: 'Registra todas las funciones que realizas habitualmente. En la mayoría de los cargos bastan entre <b>5 y 15</b>. El mínimo es una de tipo Principal y el máximo es 40.' },
+    { t: '¿Cómo describo una función?', k: 'describir redactar escribir ejemplo especificacion detallar', r: 'Comienza el nombre con un verbo y di qué haces. En la descripción detalla las tareas, las herramientas o sistemas y el resultado.<br><br><b>Función:</b> Gestionar la cobranza a clientes.<br><b>Descripción:</b> Llamo a clientes con facturas vencidas, acuerdo fechas de pago y las registro en el sistema para reducir la morosidad.' },
+    { t: 'Hago funciones que no están en mi contrato', k: 'contrato extra adicional fuera', r: 'Regístralas igual. El objetivo es reflejar lo que realmente haces, estén o no descritas en tu contrato.' },
+    { t: 'Comparto funciones con otros compañeros', k: 'comparto compartida companero equipo otros', r: 'Regístralas igual. En la descripción indica que la compartes y con qué cargo o área.' },
+    { t: '¿Puedo marcar una función con dos tipos?', k: 'repetir dos misma duplicar marcar', r: 'Registra cada función una sola vez, con el tipo que mejor la represente. Si tiene varias partes, puedes separarlas en funciones distintas.' },
+    { t: '¿Cómo elimino o reordeno una función?', k: 'eliminar borrar quitar ordenar reordenar numero', r: 'Usa el botón <b>Eliminar</b> del bloque. Los números se reordenan solos. Para agregar otra, usa <b>Agregar función</b>.' }
   ] },
   { t: 'Dudas con tu cargo', q: [
-    { t: '¿Cuál es mi cargo contractual?', k: 'cargo contractual cual puesto nombre contrato', r: 'Es el cargo que figura en tu contrato de trabajo o en su último anexo. Si no lo tienes a mano, consúltalo con tu jefatura.' },
-    { t: 'Tengo más de un cargo', k: 'mas varios dos multiples cargos', r: 'Marca todos los cargos que correspondan; puedes elegir más de uno.' },
+    { t: '¿Cuál es mi cargo contractual?', k: 'cargo contractual cual contrato', r: 'Es el cargo que figura en tu contrato de trabajo o en su último anexo. Si no lo tienes a mano, consúltalo con tu jefatura.' },
+    { t: 'Tengo más de un cargo', k: 'varios dos multiples', r: 'Marca todos los cargos que correspondan; puedes elegir más de uno.' },
     { t: 'Mi cargo no aparece en la lista', k: 'aparece lista otro falta encuentro', r: 'Marca <b>Otro (especificar)</b> y escribe el nombre de tu cargo tal como figura en tu contrato.' },
-    { t: '¿Quién es mi jefatura directa?', k: 'jefe jefatura dependencia supervisor reporto encargado', r: 'Es la persona a quien reportas en tu trabajo diario y que organiza tus tareas. Escribe su nombre o su cargo.' }
+    { t: 'Lo que hago no coincide con mi cargo', k: 'coincide distinto diferente real', r: 'Marca el cargo de tu contrato y describe en las funciones lo que realmente haces. Si quieres, coméntalo en <b>Comentarios generales</b>.' },
+    { t: '¿Quién es mi jefatura directa?', k: 'jefatura dependencia reporto', r: 'Es la persona a quien reportas en tu trabajo diario y que organiza tus tareas. Escribe su nombre o su cargo.' }
   ] },
   { t: 'Recomendaciones', q: [
-    { t: 'Consejos para completar el formulario', k: 'consejo recomendacion tips sugerencia completar ayuda', r: '• Piensa en una semana y en un mes típicos de trabajo.<br>• Registra primero tus funciones principales.<br>• Escribe con tus palabras: no hay respuestas correctas o incorrectas.<br>• Guarda tu avance si necesitas consultar algo y sigue después.' },
-    { t: 'Quiero proponer mejoras a mi cargo', k: 'mejora proponer sugerir cambio mejorar', r: 'Escríbelas en <b>Comentarios generales</b>, al final del formulario. Si prefieres conversarlo, háblanos por WhatsApp.' },
-    { t: '¿Para qué se usa esta información?', k: 'para que uso objetivo proposito datos sirve finalidad', r: 'Para elaborar los descriptores de cargo de la empresa, es decir, describir con precisión qué hace cada cargo. Tus datos se usan solo para gestión interna.' }
+    { t: 'Consejos para completar el formulario', k: 'consejo recomendacion tips sugerencia completar', r: '• Piensa en una semana y en un mes típicos de trabajo.<br>• Registra primero tus funciones principales.<br>• Escribe con tus palabras: no hay respuestas correctas o incorrectas.<br>• Guarda tu avance si necesitas consultar algo y sigue después.' },
+    { t: 'Quiero proponer mejoras a mi cargo', k: 'mejora proponer sugerir', r: 'Escríbelas en <b>Comentarios generales</b>, al final del formulario. Si prefieres conversarlo, elige "Hablar directo con una persona" en el menú.' },
+    { t: '¿Para qué se usa esta información?', k: 'objetivo proposito sirve finalidad uso', r: 'Para elaborar los descriptores de cargo de la empresa, es decir, describir con precisión qué hace cada cargo.' },
+    { t: '¿Quién ve mis datos?', k: 'privacidad datos confidencial ver quien acceso', r: 'Solo el equipo administrador del levantamiento. La información se usa exclusivamente para gestión interna.' },
+    { t: '¿Hasta cuándo tengo plazo?', k: 'plazo fecha cuando limite hasta', r: 'Tu jefatura te informará el plazo. Te recomendamos completarlo cuanto antes y guardar tu avance si no alcanzas a terminar.' }
   ] }
 ];
+const BOT_SIN = { contrasena: 'clave', password: 'clave', pass: 'clave', codigo: 'clave', pin: 'clave', avance: 'borrador', pausa: 'borrador', retomar: 'continuar', seguir: 'continuar', reanudar: 'continuar', terminar: 'continuar', editar: 'modificar', corregir: 'modificar', cambiar: 'modificar', actualizar: 'modificar', jefe: 'jefatura', jefa: 'jefatura', supervisor: 'jefatura', encargado: 'jefatura', superior: 'jefatura', puesto: 'cargo', rol: 'cargo', labor: 'funcion', actividad: 'tarea', movil: 'celular', telefono: 'celular', notebook: 'computador', pc: 'computador', impreso: 'papel', imprimir: 'papel', mano: 'papel', pdf: 'papel', falla: 'error', problema: 'error', funciona: 'error', cantidad: 'cuantas', cuanto: 'cuantas', perdi: 'olvide', recuerdo: 'olvide', extravie: 'olvide', borrar: 'eliminar', quitar: 'eliminar', sacar: 'eliminar', clasificacion: 'tipo', categoria: 'tipo', ejemplo: 'describir', redaccion: 'redactar', guardo: 'guardar', guarde: 'guardar', envie: 'enviado', mande: 'enviado', mandado: 'enviado', edito: 'modificar', corrijo: 'modificar', cambio: 'modificar', borro: 'eliminar', elimino: 'eliminar', redacto: 'redactar', redacta: 'redactar', escribo: 'redactar', anoto: 'anotar', apunto: 'anotar', pongo: 'elegir', escojo: 'elegir', selecciono: 'elegir', medio: 'medias', guardado: 'borrador' };
+const BOT_STOP = ['que', 'de', 'la', 'el', 'en', 'mi', 'me', 'es', 'un', 'una', 'los', 'las', 'con', 'por', 'para', 'como', 'cual', 'debo', 'hay', 'lo', 'ya', 'se', 'y', 'o', 'a', 'al', 'del', 'su', 'tu', 'hago', 'tengo', 'puedo', 'esta', 'este', 'donde', 'cuando', 'si', 'no', 'mis', 'tus', 'le', 'les', 'pero', 'hola', 'quiero', 'necesito', 'saber', 'favor', 'porfa', 'ayuda', 'mas', 'muy', 'algo', 'hacer', 'tiene', 'ser', 'eso', 'esto', 'desde', 'llenar', 'llenarlo', 'hacerlo', 'usar', 'usarlo', 'sobre', 'dame', 'dime', 'decir', 'poner', 'puede', 'sale', 'debe', 'tengo', 'tener', 'cosa', 'cosas'];
 let botUlt = null;
-let botPend = '';
+let botModo = '';
+let botTema = -1;
 
 function iniciarWsp(emp) {
   document.querySelectorAll('[data-acc="wsp"]').forEach(b => { b.hidden = false; });
@@ -1517,6 +1530,66 @@ function norm(s) {
   return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9ñ ]/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
+function raiz(w) {
+  w = BOT_SIN[w] || w;
+  w = w.replace(/(ion)es$/, '$1').replace(/([aeiou])s$/, '$1');
+  return BOT_SIN[w] || w;
+}
+
+function tokens(s) {
+  return norm(s).split(' ').filter(w => w && BOT_STOP.indexOf(w) < 0).map(raiz);
+}
+
+function dist(a, b) {
+  if (Math.abs(a.length - b.length) > 2) return 9;
+  const m = [];
+  for (let i = 0; i <= a.length; i++) m[i] = [i];
+  for (let j = 0; j <= b.length; j++) m[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) m[i][j] = Math.min(m[i - 1][j] + 1, m[i][j - 1] + 1, m[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  }
+  return m[a.length][b.length];
+}
+
+const BOT_IDX = [];
+function indexar() {
+  if (BOT_IDX.length) return;
+  BOT.forEach((c, ci) => c.q.forEach((q, qi) => {
+    BOT_IDX.push({ ci: ci, qi: qi, k: new Set(tokens(q.k)), t: new Set(tokens(q.t)) });
+  }));
+}
+
+function botBuscar(texto) {
+  indexar();
+  const tq = Array.from(new Set(tokens(texto)));
+  if (!tq.length) return [];
+  return BOT_IDX.map(e => {
+    let p = 0;
+    let m = 0;
+    tq.forEach(w => {
+      if (e.k.has(w)) { p += 2; m += 1; }
+      else if (e.t.has(w)) { p += 1.5; m += 1; }
+      else if (w.length >= 5) {
+        const lim = w.length >= 8 ? 2 : 1;
+        if (Array.from(e.k).concat(Array.from(e.t)).some(x => x.length >= 4 && dist(w, x) <= lim)) { p += 1; m += 1; }
+      }
+    });
+    if (p > 0 && e.ci === botTema) p += 0.5;
+    return { ci: e.ci, qi: e.qi, p: p, c: m / tq.length };
+  }).filter(x => x.p >= 1.5).sort((a, b) => b.p - a.p || b.c - a.c);
+}
+
+function intencion(texto) {
+  const t = ' ' + norm(texto) + ' ';
+  const hay = l => l.some(x => t.indexOf(' ' + x + ' ') >= 0);
+  if (hay(['persona', 'humano', 'alguien', 'ejecutivo', 'whatsapp', 'whatsap', 'wsp', 'contacto', 'contactar', 'hablar'])) return 'humano';
+  if (hay(['menu', 'inicio', 'opciones', 'temas'])) return 'menu';
+  if (hay(['gracias', 'grax', 'agradezco', 'genial', 'perfecto', 'listo', 'excelente', 'buenisimo'])) return 'gracias';
+  if (hay(['chao', 'adios', 'nos vemos', 'hasta luego'])) return 'chao';
+  if (tokens(texto).length === 0 && hay(['hola', 'buenas', 'buenos dias', 'buenas tardes', 'buenas noches', 'ola', 'alo'])) return 'hola';
+  return '';
+}
+
 function msj(html, quien) {
   const d = document.createElement('div');
   d.className = 'msj ' + (quien || 'bot');
@@ -1529,7 +1602,7 @@ function msj(html, quien) {
 function botDice(html, ops) {
   $('wspChat').querySelectorAll('.bot-ops').forEach(x => x.classList.add('usado'));
   const t = msj('<span class="tipeo"><i></i><i></i><i></i></span>', 'bot');
-  const espera = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 550;
+  const espera = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 500;
   setTimeout(() => {
     t.innerHTML = html;
     if (ops && ops.length) {
@@ -1542,60 +1615,81 @@ function botDice(html, ops) {
   }, espera);
 }
 
+const OP_MENU = ['↩ Menú inicial', 'menu'];
+const OP_HUMANO = ['Hablar directo con una persona', 'humano', 'verde'];
+
 function opsMenu() {
-  return BOT.map((c, i) => [(i + 1) + '. ' + c.t, 'cat:' + i]).concat([[(BOT.length + 1) + '. Hacer una pregunta directa', 'directa']]);
+  return BOT.map((c, i) => [(i + 1) + '. ' + c.t, 'cat:' + i]).concat([[(BOT.length + 1) + '. Escribir mi pregunta', 'libre'], [(BOT.length + 2) + '. Hablar directo con una persona', 'humano', 'verde']]);
 }
 
-function opsFin() {
-  const o = [['Sí, me sirvió', 'si'], ['Otra consulta', 'otra']];
-  if (WSP) o.push(['Hablar con una persona', 'persona', 'verde']);
-  return o;
+function opsTema(ci) {
+  return BOT[ci].q.map((q, i) => [q.t, 'q:' + ci + ':' + i]).concat([OP_MENU]);
 }
 
 function botInicio() {
   $('wspChat').innerHTML = '';
   botUlt = null;
-  botDice('¡Hola! 👋 Soy el asistente del levantamiento de funciones. Elige un tema o escribe tu pregunta abajo.', opsMenu());
+  botModo = '';
+  botTema = -1;
+  botDice('¡Hola! 👋 Soy el asistente del levantamiento de funciones. Elige un tema o escribe tu pregunta abajo con tus palabras.', opsMenu());
 }
 
 function botRespuesta(ci, qi) {
   const q = BOT[ci].q[qi];
   botUlt = { ci: ci, qi: qi };
+  botTema = ci;
+  botModo = '';
   const r = typeof q.r === 'function' ? q.r() : q.r;
   const acc = (q.acc || []).map(a => ['→ ' + a[1], 'acc:' + a[0]]);
-  botDice(r, acc.concat(opsFin()));
+  botDice(r, acc.concat([['👍 Sí, me sirvió', 'si'], ['No me sirvió', 'no'], ['Otra pregunta de este tema', 'otra'], OP_MENU]));
+}
+
+function botHumano() {
+  botModo = 'humano';
+  if (!WSP) {
+    botDice('Por ahora no hay un número de contacto configurado. Consulta directamente con tu jefatura.', [OP_MENU]);
+    return;
+  }
+  botDice('Te comunicaré por WhatsApp con una persona del equipo. Si quieres, escribe tu consulta abajo y la incluyo en el mensaje; o abre WhatsApp directamente.', [['Abrir WhatsApp ahora', 'abrirwsp', 'verde'], OP_MENU]);
+  setTimeout(() => $('wspIn').focus(), 550);
 }
 
 function botAccion(a) {
   if (a.indexOf('cat:') === 0) {
     const ci = Number(a.slice(4));
     msj(esc(BOT[ci].t), 'yo');
-    botUlt = { ci: ci };
-    botDice('Elige tu consulta:', BOT[ci].q.map((q, i) => [q.t, 'q:' + ci + ':' + i]).concat([['↩ Volver al menú', 'menu']]));
+    botTema = ci;
+    botModo = '';
+    botDice('Elige tu consulta sobre <b>' + esc(BOT[ci].t.toLowerCase()) + '</b>:', opsTema(ci));
   } else if (a.indexOf('q:') === 0) {
     const p = a.split(':');
     msj(esc(BOT[+p[1]].q[+p[2]].t), 'yo');
     botRespuesta(+p[1], +p[2]);
   } else if (a === 'menu') {
+    msj('Menú inicial', 'yo');
+    botModo = '';
     botDice('¿En qué más te ayudo?', opsMenu());
   } else if (a === 'si') {
-    msj('Sí, me sirvió', 'yo');
-    botDice('¡Qué bueno! Si necesitas algo más, elige un tema o escríbeme.', opsMenu());
+    msj('👍 Sí, me sirvió', 'yo');
+    botDice('¡Qué bueno! Si necesitas algo más, elige un tema o escríbeme tu pregunta.', opsMenu());
+  } else if (a === 'no') {
+    msj('No me sirvió', 'yo');
+    botDice('Lo siento. Puedes escribir tu pregunta con otras palabras, revisar otro tema o hablar directo con una persona.', [OP_MENU, OP_HUMANO]);
   } else if (a === 'otra') {
-    msj('Otra consulta', 'yo');
-    if (botUlt && BOT[botUlt.ci]) botDice('Elige tu consulta:', BOT[botUlt.ci].q.map((q, i) => [q.t, 'q:' + botUlt.ci + ':' + i]).concat([['↩ Volver al menú', 'menu']]));
+    msj('Otra pregunta de este tema', 'yo');
+    if (botTema >= 0) botDice('Elige tu consulta:', opsTema(botTema));
     else botDice('¿En qué más te ayudo?', opsMenu());
-  } else if (a === 'persona') {
-    msj('Hablar con una persona', 'yo');
-    const q = botUlt && botUlt.qi != null ? BOT[botUlt.ci].q[botUlt.qi] : null;
-    enviarWsp('Hola, tengo una consulta sobre el levantamiento de funciones' + (q ? ' (' + BOT[botUlt.ci].t + ': ' + q.t + ')' : '') + '. La respuesta del asistente no resolvió mi duda.');
-  } else if (a === 'directa') {
-    msj('Hacer una pregunta directa', 'yo');
-    botDice('Escribe tu pregunta abajo. Si tengo una respuesta te la muestro al tiro; si no, te ofrezco enviarla por WhatsApp.');
-    setTimeout(() => $('wspIn').focus(), 600);
-  } else if (a === 'enviar') {
-    msj('Enviar por WhatsApp', 'yo');
-    enviarWsp('Hola, tengo una consulta sobre el levantamiento de funciones: ' + botPend);
+  } else if (a === 'libre') {
+    msj('Escribir mi pregunta', 'yo');
+    botModo = 'libre';
+    botDice('Escríbela abajo con tus palabras y te respondo al instante.');
+    setTimeout(() => $('wspIn').focus(), 550);
+  } else if (a === 'humano') {
+    msj('Hablar directo con una persona', 'yo');
+    botHumano();
+  } else if (a === 'abrirwsp') {
+    msj('Abrir WhatsApp', 'yo');
+    enviarWsp('');
   } else if (a.indexOf('acc:') === 0) {
     const acc = a.slice(4);
     cerrarWsp();
@@ -1605,39 +1699,51 @@ function botAccion(a) {
   }
 }
 
-function botBuscar(texto) {
-  const STOP = ['que', 'de', 'la', 'el', 'en', 'mi', 'me', 'es', 'un', 'una', 'los', 'las', 'con', 'por', 'para', 'como', 'cual', 'debo', 'hay', 'lo', 'ya', 'se', 'y', 'o', 'a', 'al', 'del', 'su', 'tu', 'hago', 'tengo', 'puedo', 'esta', 'este', 'donde', 'cuando'];
-  const tok = norm(texto).split(' ').filter(w => w && STOP.indexOf(w) < 0);
-  const utiles = tok.filter(w => w.length >= 3).length;
-  let mejor = null;
-  let max = 0;
-  BOT.forEach((c, ci) => c.q.forEach((q, qi) => {
-    const claves = Array.from(new Set((q.k + ' ' + norm(q.t)).split(' ').filter(w => w.length >= 2 && STOP.indexOf(w) < 0)));
-    let p = 0;
-    claves.forEach(w => {
-      if (tok.some(x => (w.length >= 4 ? x.indexOf(w) === 0 : x === w))) p += 1;
-    });
-    if (p > max) { max = p; mejor = [ci, qi]; }
-  }));
-  return max >= 2 || (max === 1 && utiles <= 2) ? mejor : null;
+function botTexto(t) {
+  if (botModo === 'humano') {
+    enviarWsp(t);
+    return;
+  }
+  const it = intencion(t);
+  if (it === 'humano') { botHumano(); return; }
+  if (it === 'menu') { botModo = ''; botDice('Aquí tienes los temas:', opsMenu()); return; }
+  if (it === 'gracias') { botDice('¡De nada! 😊 Si te surge otra duda, aquí estoy.', [OP_MENU]); return; }
+  if (it === 'chao') { botDice('¡Hasta luego! Recuerda guardar tu avance si no alcanzas a terminar.', [OP_MENU]); return; }
+  if (it === 'hola') { botDice('¡Hola! ¿En qué te ayudo? Elige un tema o escribe tu pregunta.', opsMenu()); return; }
+  const r = botBuscar(t);
+  const a = r[0];
+  const b = r[1];
+  if (a && ((a.p >= 3 && a.c >= 0.34 && (!b || a.p - b.p >= 1.5 || a.p >= 5.5)) || (a.p >= 2 && a.c >= 0.5 && (!b || a.p - b.p >= 0.5)))) {
+    botRespuesta(a.ci, a.qi);
+    return;
+  }
+  if (a && a.c >= 0.34) {
+    const sug = r.slice(0, 3).map(x => [BOT[x.ci].q[x.qi].t, 'q:' + x.ci + ':' + x.qi]);
+    botDice('Creo que te refieres a alguna de estas preguntas:', sug.concat([OP_MENU, OP_HUMANO]));
+    return;
+  }
+  botDice('No encontré una respuesta para eso. Prueba escribirlo con otras palabras, revisa los temas o habla directo con una persona.', [OP_MENU, OP_HUMANO]);
 }
 
 function enviarWsp(texto) {
   if (!WSP) {
-    botDice('Por ahora no hay un número de WhatsApp configurado. Consulta directamente con tu jefatura.', [['↩ Volver al menú', 'menu']]);
+    botDice('Por ahora no hay un número de contacto configurado. Consulta directamente con tu jefatura.', [OP_MENU]);
     return;
   }
   const n = limpio($('nombre').value);
   const s = $('sucursal').value;
+  const tema = botUlt ? ' (' + BOT[botUlt.ci].t + ': ' + BOT[botUlt.ci].q[botUlt.qi].t + ')' : '';
+  const base = texto ? 'Hola, tengo una consulta sobre el levantamiento de funciones: ' + texto : 'Hola, necesito ayuda con el levantamiento de funciones' + tema + '.';
   const firma = (n || s) ? '\n\n' + [n ? 'Nombre: ' + n : '', s ? 'Sucursal: ' + s : ''].filter(Boolean).join('\n') : '';
-  const a = document.createElement('a');
-  a.href = 'https://wa.me/' + WSP + '?text=' + encodeURIComponent(texto + firma);
-  a.target = '_blank';
-  a.rel = 'noopener';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  botDice('Te abrí WhatsApp con tu consulta lista para enviar. Te responderemos por ahí.', [['↩ Volver al menú', 'menu']]);
+  const l = document.createElement('a');
+  l.href = 'https://wa.me/' + WSP + '?text=' + encodeURIComponent(base + firma);
+  l.target = '_blank';
+  l.rel = 'noopener';
+  document.body.appendChild(l);
+  l.click();
+  l.remove();
+  botModo = '';
+  botDice('Listo, te abrí WhatsApp con tu mensaje preparado. Solo presiona enviar y una persona del equipo te responderá por ahí.', [OP_MENU]);
 }
 
 $('wspBtn').addEventListener('click', () => ($('wspPanel').hidden ? abrirWsp() : cerrarWsp()));
@@ -1654,20 +1760,7 @@ $('wspForm').addEventListener('submit', ev => {
   if (!t) return;
   $('wspIn').value = '';
   msj(esc(t), 'yo');
-  if (t.length < 4) {
-    botDice('Cuéntame un poco más de tu duda, o elige un tema:', opsMenu());
-    return;
-  }
-  const m = botBuscar(t);
-  if (m) {
-    botRespuesta(m[0], m[1]);
-    return;
-  }
-  botPend = t;
-  botUlt = null;
-  const ops = [['↩ Ver temas', 'menu']];
-  if (WSP) ops.unshift(['Enviar mi pregunta por WhatsApp', 'enviar', 'verde']);
-  botDice('No tengo una respuesta automática para eso.' + (WSP ? ' ¿La enviamos por WhatsApp a una persona del equipo?' : ''), ops);
+  botTexto(t);
 });
 $('bCerrar').addEventListener('click', () => { $('buscador').hidden = true; $('bErr').textContent = ''; });
 
