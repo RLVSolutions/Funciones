@@ -590,6 +590,131 @@ body>*:not(#print){display:none!important}
 .pnav .salir{border-color:transparent;color:var(--muted)}
 .pnav button:disabled{opacity:.5;cursor:default}
 @media (max-width:640px){.pnav button{padding:7px 13px;font-size:.76rem}}
+
+.pbtn{font:600 .8rem var(--disp);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--line);background:var(--card);color:var(--txt);padding:8px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.pbtn:hover{border-color:var(--acc);color:var(--acc)}
+.pbtn:focus-visible{outline:none;box-shadow:var(--focus)}
+.cfil{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:-4px 0 12px}
+.cfil button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 12px;font:600 .8rem var(--disp);color:var(--txt);cursor:pointer}
+.cfil button[aria-pressed="true"]{background:var(--acc-soft);border-color:var(--acc-soft);color:var(--acc)}
+.cfil small{color:var(--muted);font-weight:600}
+.cpas{display:inline-flex;gap:6px;align-items:center;font-size:.84rem;color:var(--muted);margin-left:auto}
+.cpas input{width:16px;height:16px;accent-color:var(--acc)}
+.tc{display:inline-block;width:10px;height:10px;border-radius:3px;flex:none}
+.tc.ent{background:#3b6fd8}.tc.reu{background:#d89a2b}.tc.hit{background:#c43d3d}.tc.otr{background:#7b8794}
+.mcal-h{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px}
+.mcal-h b{font:600 1.1rem var(--disp);min-width:220px;text-align:center}
+.cnav{border:1px solid var(--line);background:var(--card);border-radius:8px;width:36px;height:36px;cursor:pointer;color:var(--acc);font-size:1.2rem}
+.cnav:focus-visible{outline:none;box-shadow:var(--focus)}
+.mcal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mcal-g>div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:108px;padding:4px 5px 6px;background:var(--card);min-width:0;display:flex;flex-direction:column;gap:3px}
+.mcal-g .dn{min-height:0;padding:7px 4px;font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;text-align:center;background:var(--bg);display:block}
+.mcal-g .dia{cursor:pointer}
+.mcal-g .dia:hover{background:#fbf8fc}
+.mcal-g .dia:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.mcal-g .fuera{background:var(--bg)}
+.mcal-g .fuera .dnum{color:#b5adb8}
+.mcal-g .e1{box-shadow:inset 0 3px 0 #b77fc2;background:#fbf6fc}
+.mcal-g .e2{box-shadow:inset 0 3px 0 #e0a640;background:#fffaf1}
+.mcal-g .e3{box-shadow:inset 0 3px 0 #4c9a64;background:#f5fbf7}
+.mcal-g .dnum{display:inline-grid;place-items:center;width:26px;height:26px;font-size:.8rem;font-weight:700;border-radius:50%;flex:none}
+.mcal-g .hoy .dnum{background:var(--acc);color:#fff}
+.mcal-g .lim .dnum{box-shadow:0 0 0 2px var(--err)}
+.ev{display:block;width:100%;text-align:left;border:0;border-radius:6px;padding:2px 6px;font:500 .72rem/1.35 inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;flex:none}
+.ev b{font-weight:700}
+.ev.ent,.wev.ent{background:#e6edfb;color:#21458f}.ev.reu,.wev.reu{background:#fdf0dc;color:#7a4d06}.ev.hit,.wev.hit{background:#fde4e4;color:#9b2424}.ev.otr,.wev.otr{background:#eef0f2;color:#3d4650}
+.ev.cancel,.wev.cancel{text-decoration:line-through;opacity:.55}
+.ev.hecho{opacity:.7}
+.mas{font-size:.7rem;color:var(--muted);padding-left:4px}
+.wcal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.wd{border:1px solid var(--line);border-radius:10px;padding:8px;min-height:220px;display:flex;flex-direction:column;gap:6px;background:var(--card);min-width:0}
+.wd.e1{box-shadow:inset 0 3px 0 #b77fc2}.wd.e2{box-shadow:inset 0 3px 0 #e0a640}.wd.e3{box-shadow:inset 0 3px 0 #4c9a64}
+.wdh{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding-bottom:4px;border-bottom:1px solid var(--line2)}
+.wdh b{font-size:.75rem;text-transform:uppercase;color:var(--muted)}
+.wdh .dnum{font:700 1rem var(--disp)}
+.wd.hoy .wdh .dnum{color:#fff;background:var(--acc);border-radius:50%;width:28px;height:28px;display:grid;place-items:center}
+.wev{display:grid;gap:1px;text-align:left;border:0;border-radius:8px;padding:6px 8px;cursor:pointer;font:inherit;font-size:.78rem;min-width:0}
+.wev b{font-size:.74rem}
+.wev span{overflow:hidden;text-overflow:ellipsis}
+.wev small{opacity:.8;font-size:.7rem}
+.wvac{color:var(--muted);font-size:.78rem;margin:4px 0}
+.wadd{margin-top:auto;border:1px dashed var(--line);background:none;border-radius:8px;padding:5px;font:600 .75rem inherit;color:var(--acc);cursor:pointer}
+.alist{display:grid;gap:14px}
+.adia h3{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.95rem;margin:0 0 6px;text-transform:capitalize}
+.aet{font:600 .7rem var(--disp);text-transform:none;border-radius:999px;padding:2px 9px}
+.aet.e1{background:#efe1f2;color:#4a1b52}.aet.e2{background:var(--mark-soft);color:#7a4d06}.aet.e3{background:var(--ok-soft);color:var(--ok)}
+.ahoy{font:700 .68rem var(--disp);background:var(--acc);color:#fff;border-radius:999px;padding:2px 8px;text-transform:uppercase}
+.arow{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 12px;font:inherit;cursor:pointer;margin-bottom:6px;color:var(--txt)}
+.arow:hover{border-color:var(--acc)}
+.arow .ah{font:700 .95rem var(--disp);display:grid}
+.arow .ah small{font:500 .72rem inherit;color:var(--muted)}
+.arow .at{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:8px;align-items:center}
+.arow .at small{grid-column:2;color:var(--muted);font-size:.8rem}
+.pill.ev-Programada{background:#e6edfb;color:#21458f}.pill.ev-Realizada{background:var(--ok-soft);color:var(--ok)}.pill.ev-Reprogramada{background:var(--mark-soft);color:var(--mark)}.pill.ev-Cancelada{background:var(--err-soft);color:var(--err)}
+.blsel{border:1px solid var(--line);border-radius:10px;margin:4px 0 12px}
+.blcab{display:flex;justify-content:space-between;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);font-size:.86rem;flex-wrap:wrap}
+.bllist{max-height:200px;overflow:auto;padding:6px 12px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2px 12px}
+.bllist label{display:flex;gap:8px;align-items:center;font-size:.86rem;padding:3px 0}
+.bllist input{width:16px;height:16px;accent-color:var(--acc);flex:none}
+.bllist small{color:var(--muted)}
+.blprev{background:var(--bg);border-radius:10px;padding:10px 14px;font-size:.84rem;max-height:200px;overflow:auto}
+.blprev ol{margin:6px 0 0;padding-left:20px;columns:2;column-gap:24px}
+.blprev li span{color:var(--muted)}
+@media (max-width:900px){.wcal{grid-template-columns:minmax(0,1fr)}.wd{min-height:0}.blprev ol{columns:1}}
+@media (max-width:700px){.mcal-g>div{min-height:62px;padding:3px}.mcal-g .ev{font-size:0;height:7px;padding:0;border-radius:4px}.mcal-g .ev b{display:none}.mcal-h b{min-width:0;font-size:1rem}.mas{font-size:.62rem}.arow{grid-template-columns:52px minmax(0,1fr)}.arow .pill{grid-column:2;justify-self:start}}
+.sugpanel h3{margin-bottom:4px}
+.sp-fil{display:grid;gap:6px;margin:8px 0}
+.sp-fil select,.sp-fil input{font-size:.86rem;min-height:36px;padding:6px 10px}
+.sp-cargos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.sp-cargos button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 10px;font:600 .74rem var(--disp);color:var(--txt);cursor:pointer;text-align:left}
+.sp-cargos button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#fff}
+.sp-list{max-height:min(54vh,520px);overflow:auto;margin:0 -6px;padding:0 6px}
+.sp-list h4{font:700 .7rem var(--disp);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:12px 0 4px}
+.sp-cg{margin:4px 0 0;display:grid;font-size:.88rem}
+.sp-cg small{color:var(--muted);font-size:.76rem}
+.spf{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;width:100%;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:7px 9px;margin-bottom:5px;font:inherit;font-size:.83rem;line-height:1.35;cursor:pointer;color:var(--txt)}
+.spf:hover{border-color:var(--acc);background:var(--acc-soft)}
+.spf span{display:grid}
+.spf small{color:var(--muted);font-size:.72rem}
+.spf i{font-style:normal;font-weight:700;color:var(--acc);flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--acc-soft)}
+.spf.ok{border-color:#b9dcc3;background:var(--ok-soft)}
+.spf.ok i{background:var(--ok);color:#fff}
+.sp-vacio{font-size:.84rem;color:var(--muted)}
+.sp-todas{margin:8px 0 4px;min-height:36px;font-size:.84rem}
+.sugMovil{display:block;margin-bottom:14px;padding:12px 14px}
+.sugMovil summary{cursor:pointer;font-weight:700;color:var(--acc);font-family:var(--disp)}
+@media (min-width:1100px){.sugMovil{display:none}.lateral{max-height:calc(100vh - var(--toph,112px) - 32px);overflow:auto;scrollbar-width:thin}}
+.funcion.flash{animation:flash 1.2s ease}
+@keyframes flash{0%,100%{box-shadow:var(--sh)}30%{box-shadow:0 0 0 3px var(--acc)}}
+.perfilbt{margin-top:8px}
+.pprev{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 22px;max-height:66vh;overflow:auto}
+.pdoc .pseg{display:grid;grid-template-columns:1fr 1fr;gap:6pt 12pt;border:1pt solid #5b2463;background:#f6eef7;border-radius:5pt;padding:7pt 10pt;margin-bottom:8pt;break-inside:avoid}
+.pdoc .pseg span{display:block;font-size:7pt;text-transform:uppercase;letter-spacing:.07em;color:#5b6775}
+.pdoc .pseg b{font:700 12pt ui-monospace,Consolas,monospace;letter-spacing:.1em;color:#1a2230}
+.pdoc .pseg p{grid-column:1/-1;margin:0;font-size:8pt;color:#3b4654}
+.pdoc .pseg.pend{display:block}
+.pdoc .pseg.pend b{font:inherit;font-weight:700;letter-spacing:0}
+.pdoc .pgt{font-size:9pt;margin:9pt 0 4pt;color:#1a2230}
+.pdoc .pgt small{color:#5b6775;font-weight:400}
+.pdoc .pdl{margin:2pt 0 6pt;padding-left:14pt}
+.pdoc .pdl li{margin:2pt 0}
+.pdoc .pdl ul{margin:1pt 0 3pt;padding-left:12pt;color:#3b4654}
+.pdoc .firmas.f3{grid-template-columns:1fr 1fr 1fr;gap:18pt}
+.bfun{margin:8px 0 0;padding:6px 8px;background:#f7f5f8;border-radius:8px}
+.bfun b{display:block;font-size:.86rem}
+.bfun small{display:block;color:#667;font-size:.74rem}
+.bfun ul{margin:3px 0 0;padding-left:16px;font-size:.8rem}
+.descgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+@media (min-width:1000px){.descgrid{grid-template-columns:minmax(0,1fr) 250px}.descgrid>.dlist{order:2}.descgrid>.deditor{order:1}.descgrid>.ddecl{order:3;grid-column:1/-1}}
+@media (min-width:1300px){.descgrid{grid-template-columns:320px minmax(0,1fr) 250px}.descgrid>.ddecl{order:1;grid-column:auto}.descgrid>.deditor{order:2}.descgrid>.dlist{order:3}}
+.rdf{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;border-top:1px solid var(--line2);padding:8px 0}
+.rdf b{display:block;font-size:.86rem}
+.rdf small{color:var(--muted);font-size:.75rem}
+.rdf .ap-b{flex:none}
+#rDecl{max-height:70vh;overflow:auto}
+@media (min-width:1100px){.cfggrid{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}.cfggrid>#fAjustes{order:2}.cfggrid>section{order:1}}
+@media (min-width:1000px){.faqadm{grid-template-columns:minmax(0,1fr) 230px}.faqadm>aside.tarjeta{order:2}.faqadm>section{order:1}.faqadm>.acol{order:3}}
+@media (min-width:1300px){.faqadm{grid-template-columns:320px minmax(0,1fr) 230px}.faqadm>.acol{order:1;grid-column:auto}.faqadm>section{order:2}.faqadm>aside.tarjeta{order:3}}
 </style>
 </head>
 <body>
@@ -599,7 +724,7 @@ body>*:not(#print){display:none!important}
 <div class="topder"><span id="cx" class="cx" role="status"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 10a6 6 0 0 0-11.6-1.8A4.5 4.5 0 0 0 6.5 19H18a4.5 4.5 0 0 0 0-9z"/></svg><b id="cxTxt">Conectando…</b></span><button type="button" id="recargar" class="icob" aria-label="Recargar" title="Recargar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></button></div>
 </div></div>
 <nav class="navrow" id="tabs" aria-label="Secciones" hidden><div class="navin">
-<button type="button" id="tabDash" data-tab="dash" aria-selected="true">Dashboard</button><button type="button" id="tabIngreso" data-tab="ingreso" aria-selected="false">Ingreso</button>
+<button type="button" id="tabDash" data-tab="dash" aria-selected="true">Dashboard</button><button type="button" id="tabCal" data-tab="cal" aria-selected="false">Calendario</button><button type="button" id="tabIns" data-tab="ins" aria-selected="false">Instructivo</button><button type="button" id="tabIngreso" data-tab="ingreso" aria-selected="false">Ingreso</button>
 <span class="navsep" aria-hidden="true"></span>
 <button type="button" data-acc="modificar">Modificar mi registro</button><button type="button" data-acc="blanco">Formulario en blanco</button><button type="button" id="tabDatos" data-tab="datos" aria-selected="false" class="navdatos"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Datos</button>
 </div></nav>
@@ -614,7 +739,6 @@ body>*:not(#print){display:none!important}
 
 <main id="vIngreso" class="shell" hidden>
 <div class="hero"><div class="hero-t"><h1 id="tituloIngreso">Registro de funciones por cargo</h1><p class="sub" id="subIngreso">Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.</p></div><p class="hero-plazo" id="heroPlazo" hidden></p></div>
-<details class="tarjeta procMovil"><summary>Calendario del proceso</summary><div class="procCont"></div></details>
 
 <section id="buscador" class="tarjeta" hidden style="margin-bottom:18px">
 <h2>Modificar mi registro</h2>
@@ -652,7 +776,7 @@ body>*:not(#print){display:none!important}
 <div id="restoDatos" class="resto">
 <div class="campo c6"><label for="nombre">Nombre completo *</label><input id="nombre" maxlength="120" autocomplete="name" placeholder="Nombres y apellidos"><small class="err"></small></div>
 <div class="campo c3"><label for="sucursal">Sucursal *</label><select id="sucursal"></select><small class="err"></small></div>
-<div class="campo c3"><label for="unidad">Unidad funcional *</label><select id="unidad"><option value="">Seleccione…</option></select><input id="unidadOtro" maxlength="60" autocomplete="off" placeholder="Especifique la unidad" aria-label="Especifique la unidad funcional" hidden style="margin-top:6px"><small class="err"></small></div>
+<div class="campo c3"><label for="unidad">Área funcional *</label><select id="unidad"><option value="">Seleccione…</option></select><input id="unidadOtro" maxlength="60" autocomplete="off" placeholder="Especifique el área" aria-label="Especifique la área funcional" hidden style="margin-top:6px"><small class="err"></small></div>
 <div class="campo c6"><label for="jefatura">Jefatura o dependencia directa *</label><input id="jefatura" maxlength="120" autocomplete="off" placeholder="Nombre o cargo de su jefe directo"><small class="err"></small></div>
 <div class="campo c3"><label for="telefono">Teléfono</label><input id="telefono" type="tel" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="+56 9 1234 5678"><small class="err"></small></div>
 <div class="campo c3"><label for="correo">Correo electrónico</label><input id="correo" type="email" inputmode="email" maxlength="120" autocomplete="email" placeholder="nombre@correo.cl"><small class="err"></small></div>
@@ -666,9 +790,11 @@ body>*:not(#print){display:none!important}
 <h2><span class="num">2</span>Funciones que realiza</h2>
 <p class="sub" style="margin:-8px 0 14px">Registre todas las funciones que realiza habitualmente, estén o no descritas en su contrato. Una función por bloque. Al menos una debe ser <b id="nomPrincipal">Principal</b>.</p>
 <details class="leyenda leyMovil"><summary>¿Qué significa cada tipo? ¿Función o tarea?</summary><div class="leyCont"></div><div class="ftarea ftCont"></div></details>
+<details class="tarjeta sugMovil"><summary>Funciones sugeridas del levantamiento</summary><p class="mini">Elija su área y cargo, y toque una función para agregarla.</p><div class="sugCont"></div></details>
 <div id="funciones" aria-live="polite"></div>
 <button type="button" id="agregar" class="btn agregar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Agregar función</button>
 <p id="contadorF" class="contadorF"></p>
+<p style="text-align:center;margin:4px 0 0"><button type="button" class="enlace" data-acc="perfil">Ver vista previa del perfil armado</button></p>
 <p id="errFunciones" class="errBloque" role="alert" tabindex="-1" style="text-align:center"></p>
 </section>
 
@@ -681,16 +807,16 @@ body>*:not(#print){display:none!important}
 </form>
 
 <aside class="lateral">
-<div class="tarjeta proc"><h3>Calendario del proceso</h3><div class="procCont"></div></div>
 <div class="tarjeta">
 <h3>Avance del formulario</h3>
 <ul class="avance" id="avance"></ul>
 <button type="submit" form="form" class="btn pri ancho">Revisar y enviar</button>
 <button type="button" class="btn sec ancho" data-acc="borrador" style="margin-top:8px">Guardar avance</button>
+<button type="button" class="btn sec ancho perfilbt" data-acc="perfil">Vista previa del perfil</button>
 <p class="mini">Guarde su avance para continuar después con su ID y clave. Antes de enviar verá un resumen para confirmar.</p>
 </div>
-<div class="tarjeta ftarea"><h3>¿Función o tarea?</h3><div class="ftCont"></div></div>
-<details class="tarjeta leyenda" open><summary>Tipos de función</summary><div class="leyCont"></div></details>
+<div class="tarjeta sugpanel"><h3>Funciones sugeridas</h3><p class="mini" style="margin:0">Elija su área y cargo, y haga clic en una función para agregarla. Si la suya no está, escríbala con "Agregar función".</p><div class="sugCont"></div></div>
+<details class="tarjeta leyenda"><summary>Tipos de función</summary><div class="leyCont"></div></details>
 </aside>
 </div>
 <div class="barra"><div class="in"><span id="barraTxt"></span><div class="bts"><button type="button" class="btn sec" data-acc="borrador">Guardar avance</button><button type="submit" form="form" class="btn pri">Revisar y enviar</button></div></div></div>
@@ -712,19 +838,29 @@ body>*:not(#print){display:none!important}
 </section>
 
 <main id="vPanel" class="shell" hidden>
-<div class="dhead"><div><h1>Dashboard</h1><p class="sub" id="pSub"></p></div></div>
-<nav class="pnav" id="pTabs" aria-label="Secciones del Dashboard"><div class="pnav-tabs" role="tablist"><button type="button" role="tab" data-psub="ins" aria-selected="true">Instructivo</button><button type="button" role="tab" data-psub="cal" aria-selected="false">Calendario</button><button type="button" role="tab" data-psub="reg" aria-selected="false">Registros</button></div><div class="pnav-acc"><button type="button" id="pImprimir">Imprimir / PDF</button><button type="button" id="pRefrescar" hidden>Actualizar</button></div></nav>
-<section id="pIns" class="tarjeta"><div id="pInsCont"></div></section>
-<div id="pReg" hidden>
+<div class="dhead"><div><h1>Dashboard</h1><p class="sub" id="pSub"></p></div><div class="dacc"><button type="button" id="pRefrescar" class="pbtn">Actualizar</button></div></div>
+<div id="pReg">
 <div class="kpis" id="kpis"></div>
 <div class="graficos" id="graficos"></div>
 <section class="tarjeta">
 <div class="candado"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><b>Detalle protegido.</b> El detalle de cada registro solo puede verlo el administrador o el titular.</span></div>
-<div class="filtros"><input id="pTexto" type="search" placeholder="Buscar por nombre, sucursal, unidad o cargo" aria-label="Buscar"><select id="pSuc" aria-label="Filtrar por sucursal"></select><select id="pEstado" aria-label="Filtrar por estado"></select><span class="cuenta" id="pCuenta"></span></div>
-<div class="tablaw"><table class="tabla"><thead><tr><th>Nombre</th><th>Sucursal</th><th>Unidad</th><th>Cargo(s)</th><th class="n">Funciones</th><th>Actualizado</th><th>Estado</th><th><span class="sr">Acceso</span></th></tr></thead><tbody id="pBody"></tbody></table></div>
+<div class="filtros"><input id="pTexto" type="search" placeholder="Buscar por nombre, sucursal, área o cargo" aria-label="Buscar"><select id="pSuc" aria-label="Filtrar por sucursal"></select><select id="pEstado" aria-label="Filtrar por estado"></select><span class="cuenta" id="pCuenta"></span></div>
+<div class="tablaw"><table class="tabla"><thead><tr><th>Nombre</th><th>Sucursal</th><th>Área</th><th>Cargo(s)</th><th class="n">Funciones</th><th>Actualizado</th><th>Estado</th><th><span class="sr">Acceso</span></th></tr></thead><tbody id="pBody"></tbody></table></div>
 </section>
 </div>
+</main>
+
+<main id="vCal" class="shell" hidden>
+<div class="dhead"><div><h1>Calendario</h1><p class="sub" id="cSub"></p></div></div>
+<nav class="pnav" id="cTabs" aria-label="Vistas del calendario"><div class="pnav-tabs" role="tablist"><button type="button" role="tab" data-cv="mes" aria-selected="true">Mes</button><button type="button" role="tab" data-cv="sem" aria-selected="false">Semana</button><button type="button" role="tab" data-cv="lista" aria-selected="false">Agenda</button><button type="button" role="tab" data-cv="etapas" aria-selected="false">Etapas</button></div><div class="pnav-acc"><button type="button" id="cHoy">Hoy</button><button type="button" id="cNuevo" hidden>+ Agendar</button><button type="button" id="cBloque" hidden>Agendar entrevistas en bloque</button></div></nav>
+<div class="cfil" id="cFil"></div>
+<section class="tarjeta" id="cVista"></section>
 <section id="subCal" class="tarjeta" hidden><h2 style="margin-bottom:4px">Calendario del proceso</h2><p class="sub" id="dCalRes" style="margin:0 0 6px"></p><div class="calgrid"><form id="fEtapas" novalidate></form><div><div id="dCalPrev"></div></div></div></section>
+</main>
+
+<main id="vIns" class="shell" hidden>
+<div class="dhead"><div><h1>Instructivo</h1><p class="sub">Etapas del proceso y cómo completar tu registro.</p></div><div class="dacc"><button type="button" id="pImprimir" class="pbtn">Imprimir / PDF</button></div></div>
+<section id="pIns" class="tarjeta"><div id="pInsCont"></div></section>
 </main>
 
 <main id="vDash" class="shell" hidden>
@@ -749,11 +885,11 @@ body>*:not(#print){display:none!important}
 <div class="dhead">
 <div><h1>Datos</h1><p class="sub" id="dSub"></p></div>
 </div>
-<nav class="pnav" id="dTabs" aria-label="Secciones de Datos"><div class="pnav-tabs" role="tablist"><button type="button" role="tab" data-sub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-sub="faq" aria-selected="false">Entrenar asistente</button><button type="button" role="tab" data-sub="cfg" aria-selected="false">Configuración</button></div><div class="pnav-acc"><button type="button" id="dManual">Transcribir formulario en papel</button><button type="button" id="dRefrescar">Actualizar</button><button type="button" id="dCodigo">Cambiar código</button><button type="button" id="dSalir" class="salir">Cerrar sesión</button></div></nav>
+<nav class="pnav" id="dTabs" aria-label="Secciones de Datos"><div class="pnav-tabs" role="tablist"><button type="button" role="tab" data-sub="reg" aria-selected="true">Registros</button><button type="button" role="tab" data-sub="desc" aria-selected="false">Descriptores</button><button type="button" role="tab" data-sub="faq" aria-selected="false">Entrenar asistente</button><button type="button" role="tab" data-sub="cfg" aria-selected="false">Configuración</button></div><div class="pnav-acc"><button type="button" id="dManual">Transcribir formulario en papel</button><button type="button" id="dRefrescar">Actualizar</button><button type="button" id="dCodigo">Cambiar código</button><button type="button" id="dSalir" class="salir">Cerrar sesión</button></div></nav>
 <div id="subReg">
 <section class="tarjeta">
 <div class="filtros"><input id="fTexto" type="search" placeholder="Buscar por nombre, RUT, ID o cargo" aria-label="Buscar"><select id="fSuc" aria-label="Filtrar por sucursal"></select><select id="fEstado" aria-label="Filtrar por estado"></select><span class="cuenta" id="fCuenta"></span></div>
-<div class="tablaw"><table class="tabla"><thead><tr><th>Nombre</th><th>ID</th><th>Sucursal</th><th>Unidad</th><th>Cargo(s)</th><th class="n">Funciones</th><th class="n">Precisiones</th><th>Actualizado</th><th>Estado</th></tr></thead><tbody id="tBody"></tbody></table></div>
+<div class="tablaw"><table class="tabla"><thead><tr><th>Nombre</th><th>ID</th><th>Sucursal</th><th>Área</th><th>Cargo(s)</th><th class="n">Funciones</th><th class="n">Precisiones</th><th>Actualizado</th><th>Estado</th></tr></thead><tbody id="tBody"></tbody></table></div>
 </section>
 </div>
 <section id="subCfg" hidden><div class="cfggrid">
@@ -768,20 +904,28 @@ body>*:not(#print){display:none!important}
 <div class="campo c12"><label for="cTok">Token de acceso (API_TOKEN)</label><div class="cxfila"><input id="cTok" class="mono" type="password" readonly><button type="button" id="cVerTok" class="btn txt">Mostrar</button><button type="button" id="cNuevoTok" class="btn sec">Regenerar</button></div><small class="ayuda">Viaja dentro del enlace para colaboradores. Al regenerarlo, los enlaces y QR anteriores dejan de funcionar.</small></div>
 <div class="campo c12"><label for="cUrl">Dirección pública del formulario</label><input id="cUrl" maxlength="300" inputmode="url" placeholder="https://rlvsolutions.github.io/SateliteRD/"><small class="ayuda">Página de GitHub donde está publicado index.html.</small></div>
 <div class="c12 cfgqr"><div id="cQr"></div><div><b>Vista previa del QR</b><br><small id="cQrUrl"></small></div></div>
-<div class="campo c12"><label for="cUnidades">Unidades funcionales (una por línea)</label><textarea id="cUnidades" rows="7"></textarea><small class="ayuda">La opción "Otro (especificar)" se agrega sola.</small></div>
+<div class="campo c12"><label for="cUnidades">Áreas funcionales (una por línea)</label><textarea id="cUnidades" rows="7"></textarea><small class="ayuda">La opción "Otro (especificar)" se agrega sola.</small></div>
 <label class="c12 chk" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="cBusca" style="width:18px;height:18px;accent-color:var(--acc)"> Permitir buscar por nombre en el campo RUT (usa la nómina)</label>
 <label class="c12 chk" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="cNombres" style="width:18px;height:18px;accent-color:var(--acc)"> Mostrar nombres completos en el Dashboard (si se desmarca, solo iniciales)</label>
 </div>
 <button type="submit" id="cGuardar" class="btn pri" style="margin-top:14px">Guardar ajustes</button>
 </form>
-<section class="tarjeta"><h2 style="margin-bottom:4px">Nómina de colaboradores <small class="mini" id="nCuenta"></small></h2><p class="sub" style="margin:0 0 10px">Alimenta el selector del campo RUT y completa nombre, sucursal y unidad. Copie desde Excel las columnas en este orden: <b>RUT · Nombre · Sucursal · Unidad funcional · Cargo · Jefatura</b> (las dos últimas son opcionales).</p>
+<section class="tarjeta"><h2 style="margin-bottom:4px">Nómina de colaboradores <small class="mini" id="nCuenta"></small></h2><p class="sub" style="margin:0 0 10px">Alimenta el selector del campo RUT y completa nombre, sucursal y área. Copie desde Excel las columnas en este orden: <b>RUT · Nombre · Sucursal · Área funcional · Cargo · Jefatura</b> (las dos últimas son opcionales).</p>
 <textarea id="nPegar" rows="6" class="mono" placeholder="12.345.678-9&#9;Juan Pérez Soto&#9;Casa Matriz&#9;Ventas&#9;Vendedor&#9;Ana Rojas" aria-label="Filas de la nómina"></textarea>
 <div class="nimp"><label><input type="radio" name="nModo" value="agregar" checked> Agregar o actualizar</label><label><input type="radio" name="nModo" value="reemplazar"> Reemplazar toda la nómina</label><button type="button" id="nImportar" class="btn pri">Importar</button></div>
 <p class="mini" id="nRes" aria-live="polite"></p>
 <input id="nBuscar" type="search" placeholder="Buscar en la nómina" aria-label="Buscar en la nómina" style="margin-top:8px">
-<div class="ntabla"><table><thead><tr><th>RUT</th><th>Nombre</th><th>Sucursal</th><th>Unidad</th><th></th></tr></thead><tbody id="nLista"></tbody></table></div>
+<div class="ntabla"><table><thead><tr><th>RUT</th><th>Nombre</th><th>Sucursal</th><th>Área</th><th></th></tr></thead><tbody id="nLista"></tbody></table></div>
 </section>
 </div></section>
+<section id="subDesc" hidden>
+<div class="aBarra tarjeta"><div><h2 style="margin:0">Descriptor de cargo: <span id="rTit"></span></h2><p class="sub" id="rEstado" style="margin:2px 0 0"></p></div><div class="dacc" style="align-items:center"><button type="button" id="rBase" class="btn txt">Restaurar desde el levantamiento</button><button type="button" id="rPdf" class="btn sec">Generar PDF</button><button type="button" id="rGuardar" class="btn pri">Guardar</button></div></div>
+<div class="descgrid">
+<aside class="tarjeta ddecl"><h3>Funciones declaradas</h3><div id="rDecl"></div></aside>
+<section class="tarjeta deditor"><p class="mini" style="margin:0 0 10px">Formato editable. En las funciones escriba una por línea y sus tareas debajo, comenzando con "-". Se genera a partir del documento de levantamiento y se puede ajustar con lo que declararon los colaboradores.</p><form id="rForm" class="g12" novalidate></form></section>
+<aside class="tarjeta dlist"><h3>Cargos</h3><ul class="atemas" id="rLista"></ul><button type="button" id="rNuevo" class="btn sec ancho">+ Otro cargo</button></aside>
+</div>
+</section>
 <section id="subFaq" hidden>
 <div class="aBarra tarjeta"><div><h2 style="margin:0">Entrenamiento del asistente</h2><p class="sub" id="aOrigen" style="margin:2px 0 0"></p></div><div class="dacc" style="align-items:center"><span id="aEstado" class="mini" style="margin:0"></span><button type="button" id="aRestaurar" class="btn txt">Restaurar predeterminadas</button><button type="button" id="aGuardar" class="btn pri">Guardar cambios</button></div></div>
 <div class="faqadm">
@@ -862,6 +1006,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
 <script>
 let CONF = {};
 let API_URL = '';
+const CATALOGO = [{"nombre":"Gerente Comercial y de Operaciones (Supervisor)","lev":"Socio dueño, parte de la Administración, supervisor de ventas.","sugerido":"Gerente Comercial y de Operaciones. En los procedimientos se mantiene como \"Supervisor\".","area":"Dirección","reporta":"Socios","supervisa":"Jefe de Ventas y Tiendas, Coordinador de Ventas Institucionales, Encargado de E-commerce, Asistente de Operaciones Comerciales, Operador Logístico y Conductor","rol":"Supervisor en MP-PV-001, MP-RS-001 y MP-CB-001.","proposito":"Definir, dirigir y controlar la estrategia y la operación comercial de las tiendas, la web y Mercado Público, junto con las compras y la logística, para cumplir las metas de venta y margen.","funciones":[{"tipo":"Principal","t":"Definir la estrategia comercial y de canales","tareas":["Fijar metas y prioridades para tiendas, web y Mercado Público.","Definir la estrategia de desarrollo y crecimiento del canal web.","Definir la estrategia de participación en Mercado Público."]},{"tipo":"Principal","t":"Dirigir las compras y la negociación con proveedores","tareas":["Negociar precios, plazos y condiciones con proveedores.","Definir y ejecutar las compras para bodega, reposición de tiendas y web.","Entregar las facturas de compra a la Asistente de Operaciones Comerciales para el ajuste de costos y su ingreso al sistema."]},{"tipo":"Principal","t":"Gestionar las oportunidades de Mercado Público","tareas":["Monitorear la plataforma y seleccionar las licitaciones y oportunidades abordables.","Registrarlas en la plataforma interna y asignarlas al equipo de ventas institucionales.","Hacer seguimiento de cada oportunidad dentro del canal."]},{"tipo":"Principal","t":"Controlar la operación","tareas":["Indicar a la Asistente de Operaciones Comerciales las órdenes de compra, ventas y requisiciones que se deben despachar.","Resolver las dudas de requisiciones, precios y fletes que le escalan.","Revisar los resultados de venta, margen, stock y despacho."]},{"tipo":"Secundaria","t":"Aprobar las excepciones de los procedimientos","tareas":["Aprobar NC, cambios, reembolsos, RMA y guías según monto (MP-PV-001).","Aprobar reservas sobre 6 meses o $500.000 y sus excepciones (MP-RS-001).","Aprobar créditos de clase C, el nivel 5 de cobranza y los descargos (MP-CB-001)."]},{"tipo":"Apoyo","t":"Apoyar la operación diaria cuando la carga lo requiere","tareas":["Participar en tareas operativas de compra, venta y despacho."]},{"tipo":"Esporádica","t":"Aprobar las campañas y los fondos de publicidad que propone el Encargado de E-commerce","tareas":[]},{"tipo":"Esporádica","t":"Definir la incorporación de nuevas marcas, líneas o proveedores (sugerido)","tareas":[]}],"resp":["Responde por las metas de venta y margen de los tres canales.","Responde por las condiciones de compra y el costo de la mercadería.","Responde por las autorizaciones que entrega según los procedimientos.","Responde por que las jefaturas a su cargo cumplan los procedimientos."],"indicadores":["Venta y margen por canal contra meta.","Rotación de inventario y quiebres de stock.","Tasa de adjudicación en Mercado Público.","Pedidos despachados en plazo."],"req":{"formacion":"Profesional del área comercial o de administración","experiencia":"5 años en gestión comercial y compras","conocimientos":"Negociación, Mercado Público, gestión de canales"},"areas":["dir"],"alias":["gerente","supervisor","socio","gerencia"],"id":"c1"},{"nombre":"Jefe de Ventas y Tiendas","lev":"Jefe de tienda / jefe de ventas, a cargo de tres tiendas.","sugerido":"Jefe de Ventas y Tiendas. Alternativa: Jefe de Retail.","area":"Ventas en tienda","reporta":"Supervisor","supervisa":"Encargados de Tienda y Vendedores Asesores","rol":"Instancia superior del \"Jefe de Tienda\" en MP-PV-001 y MP-RS-001 (ver sección 4.1).","proposito":"Asegurar que las tiendas cumplan sus metas de venta, la calidad de servicio y los procedimientos, sin interrupciones en la operación.","funciones":[{"tipo":"Principal","t":"Gestionar el desempeño de las tiendas","tareas":["Hacer seguimiento de la venta de cada tienda contra su meta.","Velar porque cada colaborador cumpla sus funciones y tareas.","Coordinar turnos, apertura, cierre y cobertura de las tiendas (sugerido)."]},{"tipo":"Principal","t":"Asegurar la calidad de servicio y el cumplimiento de los procedimientos","tareas":["Verificar que cada tienda aplique los procedimientos de Postventa, Reservas y Caja.","Revisar los casos de postventa y reservas que requieren su aprobación.","Atender los reclamos de clientes que escalan las tiendas."]},{"tipo":"Principal","t":"Mantener la continuidad operacional","tareas":["Detectar y resolver problemas de dotación, stock, equipos o sistemas en las tiendas.","Informar al Supervisor lo que no puede resolver."]},{"tipo":"Secundaria","t":"Ejercer las funciones de Encargado de Tienda en su tienda base","tareas":["Las mismas funciones del cargo de Encargado de Tienda (sección 3.3)."]},{"tipo":"Apoyo","t":"Apoyar la preparación de propuestas comerciales para licitaciones","tareas":[]},{"tipo":"Esporádica","t":"Cubrir ausencias en cualquiera de las tiendas (sugerido)","tareas":[]},{"tipo":"Esporádica","t":"Participar en las tomas de inventario de las tiendas (sugerido)","tareas":[]}],"resp":["Responde por el resultado de venta y servicio de las tiendas a su cargo.","Responde por el cumplimiento de los procedimientos en las tiendas.","Responde por la conducción del equipo de tiendas."],"indicadores":["Venta contra meta por tienda.","Diferencias de caja por tienda.","Casos de postventa fuera de plazo.","Reservas vencidas sin gestionar."],"req":{"formacion":"Técnico o profesional en ventas o administración","experiencia":"3 años en jefatura de tiendas","conocimientos":"Gestión de equipos, indicadores de venta, caja y postventa"},"areas":["tienda"],"alias":["jefe de tienda","jefe de ventas","jefe de retail"],"id":"c2"},{"nombre":"Encargado de Tienda","lev":"Encargado responsable de local.","sugerido":"Encargado de Tienda. Alternativa: Administrador de Tienda.","area":"Ventas en tienda","reporta":"Jefe de Ventas y Tiendas","supervisa":"Vendedores de su tienda","rol":"\"Jefe de Tienda\" en MP-PV-001 y MP-RS-001; \"Cajero\" cuando opera la caja.","proposito":"Asegurar el funcionamiento integral de la tienda ---atención, abastecimiento, caja y postventa--- y la continuidad del servicio al cliente.","funciones":[{"tipo":"Principal","t":"Operar la tienda","tareas":["Abrir y cerrar la tienda, dejando la caja cerrada y los valores custodiados (RIOHS art. 30 y 33).","Mantener el orden, la limpieza y la exhibición."]},{"tipo":"Principal","t":"Atender integralmente al cliente","tareas":["Atender y vender en mesón.","Recibir pagos y emitir los documentos de venta."]},{"tipo":"Principal","t":"Administrar la caja de la tienda","tareas":["Hacer el cierre de caja diario y enviar el set de caja a la Administración (MP-RS-001).","Depositar el efectivo excedente dentro del día hábil bancario siguiente (RIOHS art. 34)."]},{"tipo":"Principal","t":"Abastecer la tienda","tareas":["Detectar quiebres de stock y preparar las requisiciones de reposición a bodega.","Recibir, revisar y ubicar la mercadería que llega desde bodega."]},{"tipo":"Secundaria","t":"Gestionar la postventa y las reservas de la tienda","tareas":["Recibir los casos de postventa y enviar el formulario a Gestión Postventa (MP-PV-001).","Aprobar las reservas dentro de su nivel y mantener el sector de reservas (MP-RS-001)."]},{"tipo":"Apoyo","t":"Apoyar la revisión de licitaciones y la preparación y presentación de propuestas, en los locales donde se le asigna","tareas":[]},{"tipo":"Esporádica","t":"Participar en las tomas de inventario (sugerido)","tareas":[]},{"tipo":"Esporádica","t":"Informar al Supervisor dentro de 24 horas cualquier vulneración de seguridad del local (RIOHS art. 31)","tareas":[]}],"resp":["Responde por el dinero de la caja y los valores de la tienda.","Responde por la mercadería de la tienda.","Responde por los documentos de venta, NC y reservas que se emiten en la tienda.","Responde por la continuidad del servicio al cliente."],"indicadores":["Venta contra meta.","Diferencias de caja.","Quiebres de stock.","Reclamos de clientes."],"req":{"formacion":"Enseñanza media completa; deseable técnico","experiencia":"2 años en venta en tienda, con manejo de caja","conocimientos":"Caja, inventario, Ley del Consumidor, productos"},"areas":["tienda"],"alias":["encargado de tienda","encargado de local","administrador de tienda"],"id":"c3"},{"nombre":"Vendedor(a) Asesor(a)","lev":"Vendedores.","sugerido":"Vendedor(a) Asesor(a). Alternativa: Asesor(a) de Ventas.","area":"Ventas en tienda","reporta":"Encargado de Tienda","supervisa":"No tiene personas a cargo","rol":"\"Vendedor\" en MP-PV-001 y MP-RS-001; \"Cajero\" cuando opera la caja.","proposito":"Vender en tienda asesorando al cliente, para que compre el producto adecuado y quede bien atendido.","funciones":[{"tipo":"Principal","t":"Vender y asesorar en mesón","tareas":["Atender al cliente y levantar su requerimiento comercial y técnico.","Ofrecer y promover productos, siguiendo las campañas y ofertas vigentes.","Hacer demostraciones de productos cuando corresponde."]},{"tipo":"Principal","t":"Formalizar la venta y entregar el producto","tareas":["Recibir y validar los pagos de sus ventas.","Entregar el producto y revisarlo junto al cliente."]},{"tipo":"Secundaria","t":"Mantener la mercadería y el stock de la tienda","tareas":["Recibir, revisar y reponer la mercadería.","Revisar y controlar el stock."]},{"tipo":"Secundaria","t":"Mantener la tienda en orden","tareas":["Aseo, mantención y orden del local, en conjunto con el equipo."]},{"tipo":"Apoyo","t":"Apoyar la postventa","tareas":["Recibir y revisar productos con falla o con requerimiento de garantía, según MP-PV-001."]},{"tipo":"Apoyo","t":"Apoyar las reservas","tareas":["Abrir reservas y registrar abonos según MP-RS-001."]},{"tipo":"Esporádica","t":"Participar en las tomas de inventario (sugerido)","tareas":[]},{"tipo":"Esporádica","t":"Cubrir otra tienda cuando se le asigna (sugerido)","tareas":[]}],"resp":["Responde por la información que entrega al cliente sobre producto, precio y garantía.","Responde por los pagos que recibe y los documentos que emite.","Responde por los productos a su cargo en exhibición y entrega."],"indicadores":["Venta individual contra meta.","Ticket promedio.","Errores de caja.","Reclamos de clientes."],"req":{"formacion":"Enseñanza media completa","experiencia":"1 año en venta; deseable conocimiento musical","conocimientos":"Productos, atención al cliente, medios de pago"},"areas":["tienda"],"alias":["vendedor","vendedora","asesor","cajero","cajera"],"id":"c4"},{"nombre":"Coordinador de Ventas Institucionales","lev":"Encargado de Mercado Público o de venta Mercado Público.","sugerido":"Coordinador de Ventas Institucionales (Mercado Público). Alternativa: Ejecutivo de Licitaciones.","area":"Ventas institucionales","reporta":"Supervisor","supervisa":"Coordina funcionalmente a los ejecutivos que preparan ofertas","rol":"\"Comercial\" en MP-CB-001 (evaluación de riesgo y validación de la OC).","proposito":"Presentar dentro de plazo ofertas técnicas y económicas competitivas para las oportunidades de Mercado Público asignadas, coordinando al equipo de ventas institucionales.","funciones":[{"tipo":"Principal","t":"Preparar y presentar ofertas","tareas":["Revisar las licitaciones y oportunidades asignadas.","Analizar los requisitos técnicos, comerciales y administrativos de las bases.","Preparar la oferta técnica y la oferta económica.","Subir y presentar la oferta en la plataforma antes del cierre."]},{"tipo":"Principal","t":"Coordinar al equipo de ventas institucionales","tareas":["Distribuir las oportunidades entre los ejecutivos según la carga de trabajo.","Controlar que cada oportunidad tenga su oferta en forma, fondo y plazo."]},{"tipo":"Principal","t":"Validar la factibilidad de cada oferta","tareas":["Validar stock y costos.","Buscar proveedores para los productos que no se tienen (proveedores particulares, Mercado Libre u otros).","Validar con la Administración el precio de los fletes."]},{"tipo":"Secundaria","t":"Hacer seguimiento de los procesos de licitación","tareas":["Monitorear y responder las preguntas y aclaraciones de cada proceso.","Controlar los plazos de cierre."]},{"tipo":"Secundaria","t":"Evaluar al cliente y validar la OC (MP-CB-001, sección 2)","tareas":["Revisar la clase de riesgo del cliente antes de ofertar.","Comparar la OC con la oferta antes de aceptarla."]},{"tipo":"Esporádica","t":"Apoyar campañas de publicidad","tareas":[]}],"resp":["Responde por la presentación en plazo de las ofertas asignadas.","Responde por la exactitud técnica y económica de las ofertas.","Responde por la coordinación del equipo de ventas institucionales."],"indicadores":["Ofertas presentadas contra oportunidades asignadas.","Tasa de adjudicación, en número y monto.","Ofertas fuera de plazo.","Casos de postventa con causa en la oferta."],"req":{"formacion":"Técnico o profesional del área comercial","experiencia":"2 años en licitaciones de Mercado Público","conocimientos":"Ley N° 19.886, plataforma Mercado Público, costeo"},"areas":["mp"],"alias":["mercado publico","licitaciones","ejecutivo de licitaciones","ventas institucionales"],"id":"c5"},{"nombre":"Encargado de E-commerce y Marketing Digital","lev":"Encargado de venta web.","sugerido":"Encargado de E-commerce y Marketing Digital. Alternativa: Encargado de Canal Digital.","area":"Canal web y marketing","reporta":"Supervisor","supervisa":"No tiene personas a cargo","rol":"Canal web en MP-PV-001 (retracto y postventa web). La web no toma reservas (MP-RS-001).","proposito":"Gestionar de punta a punta el canal web ---sitio, catálogo, venta, postventa y marketing digital--- para hacer crecer la venta online.","funciones":[{"tipo":"Principal","t":"Administrar el sitio web","tareas":["Mantener el sitio y darle soporte técnico, incluidas sus integraciones con otras plataformas.","Gestionar los desarrollos y la mejora continua del sitio.","Mantener actualizado el catálogo: mix de productos, precios, fichas y publicaciones."]},{"tipo":"Principal","t":"Gestionar la venta web de punta a punta","tareas":["Atender consultas y apoyar el cierre de ventas con requerimientos especiales.","Validar stock, estado y precio antes de formalizar; pedir traspasos desde otra tienda o compras cuando falta.","Generar links de pago y validar los pagos por pasarela o transferencia.","Formalizar la venta en el ERP: ticket, boleta o factura y asociación del pago.","Derivar el pedido a despacho, hacerle seguimiento y enviar al cliente la OT del courier."]},{"tipo":"Principal","t":"Gestionar el marketing digital y las redes sociales","tareas":["Proponer campañas y solicitar a la Administración los fondos de publicidad.","Diseñar campañas y material: fotos, videos y contenido.","Administrar las redes sociales (community manager).","Analizar los resultados de marketing y publicidad."]},{"tipo":"Secundaria","t":"Gestionar la postventa web","tareas":["Pedir al cliente la información de su caso de garantía, cambio o devolución.","Coordinar el envío del producto por el cliente y su retiro desde el courier.","Aplicar el derecho a retracto de 10 días de las compras web (MP-PV-001)."]},{"tipo":"Secundaria","t":"Revisar técnicamente los productos con falla","tareas":["Revisar el producto y determinar si es falla de fábrica o de uso.","Proponer la solución al Supervisor o a la Administración."]},{"tipo":"Apoyo","t":"Apoyar la logística","tareas":["Coordinar despachos y cargar productos cuando se requiere."]},{"tipo":"Esporádica","t":"Comprar productos para completar una venta web, cuando se le autoriza","tareas":[]}],"resp":["Responde por la disponibilidad del sitio y la exactitud de precios, stock y fichas.","Responde por que ninguna venta web salga a despacho sin documento emitido y pago validado.","Responde por el uso de los fondos de publicidad asignados.","Responde por el seguimiento de cada pedido web hasta su entrega."],"indicadores":["Venta web contra meta.","Tasa de conversión del sitio.","Tiempo de respuesta a consultas.","Pedidos web despachados en plazo.","Retorno de las campañas."],"req":{"formacion":"Técnico o profesional en marketing digital, diseño o informática","experiencia":"2 años en comercio electrónico","conocimientos":"Administración de sitios, pasarelas de pago, redes sociales, foto y video"},"areas":["web"],"alias":["web","ecommerce","e-commerce","marketing","redes sociales","canal digital"],"id":"c6"},{"nombre":"Asistente de Operaciones Comerciales","lev":"Asistente administrativa de facturación, despacho y compras.","sugerido":"Asistente de Operaciones Comerciales (Facturación, Despacho y Postventa Institucional). Alternativa: Asistente de Facturación y Postventa.","area":"Administración de ventas","reporta":"Supervisor","supervisa":"No tiene personas a cargo; coordina con bodega, ventas, supervisión y cobranza","rol":"\"Facturación\" en MP-CB-001: emisión, guía, recepción conforme y revisión en el SII.","proposito":"Convertir las ventas y requisiciones aprobadas en documentos y despachos correctos, y cerrar con el cliente institucional todo pendiente de facturación, despacho y postventa.","funciones":[{"tipo":"Principal","t":"Facturar y coordinar los despachos","tareas":["Recibir del Supervisor las OC, ventas y requisiciones que se deben despachar.","Facturar o emitir la guía, según corresponda.","Asignar y derivar cada pedido a bodega para su preparación y despacho."]},{"tipo":"Principal","t":"Gestionar la postventa de los clientes de Mercado Público","tareas":["Atender consultas y solicitudes sobre facturación, despacho, recepción conforme y productos faltantes.","Coordinar con bodega, ventas, supervisión y cobranza hasta cerrar cada caso."]},{"tipo":"Principal","t":"Respaldar la documentación de facturación y despacho","tareas":["Archivar, en papel y en el sistema, lo facturado, lo despachado y su coordinación.","Recibir de vuelta la guía firmada u OT del courier, registrarla y archivarla.","Registrar la recepción conforme y revisar la aceptación o reclamo de la factura en el SII (MP-CB-001)."]},{"tipo":"Secundaria","t":"Gestionar las requisiciones de las tiendas","tareas":["Recibir y validar las requisiciones de las tiendas a bodega central.","Decidir qué se sirve y consultar al Supervisor cuando hay dudas.","Documentar lo aprobado y pasarlo a despacho."]},{"tipo":"Secundaria","t":"Comprar productos fuera de los proveedores habituales","tareas":["Buscar y comprar productos para licitaciones adjudicadas o para completar despachos, por ejemplo en Mercado Libre.","Analizar la compra cuando se le pide, o ejecutarla cuando ya está definida."]},{"tipo":"Secundaria","t":"Registrar las compras y mantener los costos","tareas":["Revisar las facturas de compra que entrega el Supervisor.","Ajustar y validar el costo de los productos en el sistema.","Crear la ficha del producto cuando no existe.","Ingresar el documento de compra al sistema de inventario y al contable."]},{"tipo":"Esporádica","t":"Entregar a Cobranza los respaldos de despacho que pida para su gestión (sugerido)","tareas":[]}],"resp":["Responde por que cada factura y guía refleje exactamente la OC o la venta.","Responde por el expediente completo de facturación y despacho de cada pedido.","Responde por la exactitud de los costos y fichas de productos que ingresa.","Responde por el cierre de los pendientes de postventa institucional."],"indicadores":["NC emitidas por error de facturación.","Pedidos derivados a bodega el mismo día.","Casos de postventa institucional cerrados en plazo.","Expedientes completos (OC, factura, guía firmada y recepción conforme)."],"req":{"formacion":"Técnico en administración","experiencia":"2 años en facturación y logística","conocimientos":"Facturación electrónica, ERP, Mercado Público"},"areas":["adm","mp"],"alias":["facturacion","asistente","despacho y compras","asistente administrativa"],"id":"c7"},{"nombre":"Coordinador Administrativo y de Operaciones","lev":"Administrativo, sin especialidad formal.","sugerido":"Coordinador Administrativo y de Operaciones. Alternativa: Analista de Control y Operaciones.","area":"Administración y operaciones","reporta":"Administración; al Supervisor en lo operativo y en las decisiones sobre mercadería","supervisa":"No tiene personas a cargo; coordina al personal de bodega y al Conductor en los despachos","rol":"\"Cobranza\" en MP-CB-001; revisión administrativa de cierres en MP-RS-001 (etapa 6); control de productos y RMA en MP-PV-001.","proposito":"Asegurar el cobro oportuno de los créditos y el control diario de los ingresos de tiendas y web, y coordinar que la mercadería entre y salga de la bodega en forma correcta, documentada y a tiempo.","funciones":[{"tipo":"Principal","t":"Gestionar la cobranza y las cuentas corrientes de los clientes con crédito","tareas":["Obtener la información de las ventas a crédito, en especial de Mercado Público.","Registrar cargos, abonos y pagos en las cuentas corrientes.","Cobrar en forma preventiva y vencida por teléfono y correo: avisos, reiteraciones y requerimientos formales (MP-CB-001).","Aplicar los pagos, conciliar y controlar la correcta imputación.","Hacer seguimiento de la cartera e informar las deudas vencidas o de riesgo.","Derivar al responsable los problemas de facturación, despacho o recepción que impiden el pago, y hacerles seguimiento."]},{"tipo":"Principal","t":"Controlar y cuadrar los cierres de caja de tiendas y web","tareas":["Obtener los reportes del sistema y recibir los sets de caja de las tiendas.","Contrastar lo registrado por el cajero con el sistema y los respaldos: efectivo, ventas, documentos, tarjetas, depósitos, transferencias, gastos, anticipos, NC, cuentas corrientes y reservas.","Confeccionar el cierre del canal web con los respaldos que entrega el Encargado de E-commerce.","Llevar el Registro de Caja diario: saldo inicial, ingresos, egresos, saldo final y diferencias.","Identificar, documentar e informar toda diferencia para su regularización."]},{"tipo":"Principal","t":"Coordinar y controlar los despachos de Mercado Público y web","tareas":["Organizar y registrar los despachos pendientes que llegan documentados desde facturación.","Revisar físicamente cada pedido contra la documentación y detectar discrepancias.","Gestionar los productos que deben venir de otra sucursal y revisarlos al llegar.","Cubicar, medir y pesar los bultos y gestionar el courier y sus etiquetas (Envíame u otros).","Coordinar embalaje, rotulado, documentación y rutas, y verificar que cada pedido quede listo para salir."]},{"tipo":"Secundaria","t":"Controlar la recepción de mercadería","tareas":["Contrastar lo recibido con la factura o guía: producto, modelo, cantidad y estado aparente.","Detectar diferencias o daños y coordinar la revisión con bodega.","Entregar los documentos a la Administración o al Supervisor.","Consultar al Supervisor el destino de la mercadería y coordinar la separación de las ventas calzadas y la reposición del resto."]},{"tipo":"Secundaria","t":"Gestionar la postventa física y los RMA","tareas":["Controlar los productos de retractos, cambios, fallas, garantías y daños internos pendientes de resolución.","Solicitar RMA a proveedores y hacer seguimiento de los productos enviados.","Mantener la documentación y la trazabilidad de cada caso (MP-PV-001)."]},{"tipo":"Secundaria","t":"Codificar los productos sin código de barras o SKU interno","tareas":["Identificar los productos pendientes y levantar su información.","Asignar o gestionar el código e incorporarlo al producto.","Controlar el avance."]},{"tipo":"Secundaria","t":"Mejorar y formalizar procesos","tareas":["Levantar procesos e identificar deficiencias y oportunidades de mejora.","Diseñar propuestas y redactar procedimientos y controles para aprobación de la Administración.","Apoyar su implementación y revisar su funcionamiento."]},{"tipo":"Apoyo","t":"Apoyar el control operacional de bodega","tareas":["Ayudar a ubicar productos y revisar diferencias de stock.","Apoyar movimientos, cambios de ubicación y orden de sectores.","Proponer cambios de infraestructura o reorganización al Supervisor."]},{"tipo":"Esporádica","t":"Preparar antecedentes y borradores de descargos, recursos de reposición y reclamos ante Mercado Público, ChileCompra o Contraloría, para aprobación del Supervisor o la Administración","tareas":[]}],"resp":["Responde por la exactitud de las cuentas corrientes y del Registro de Caja.","Responde por la gestión oportuna de cada documento vencido.","Responde por la revisión diaria de los cierres y la documentación de toda diferencia.","Responde por que cada despacho salga completo, correcto y documentado.","Responde por la trazabilidad de los productos de postventa y de los RMA."],"indicadores":["Días promedio de cobro y cartera vencida por tramo.","Cajas revisadas a más tardar el día hábil siguiente.","Despachos que salen completos y en plazo.","RMA abiertos y su antigüedad.","Avance mensual de la codificación."],"req":{"formacion":"Técnico o profesional en administración o contabilidad","experiencia":"2 años en cobranza, control de cajas o logística","conocimientos":"Leyes N° 19.983 y N° 21.131, Mercado Público, cuadratura de cajas, despacho y courier"},"areas":["adm","bod"],"alias":["administrativo","cobranza","control de cajas","coordinador administrativo"],"id":"c8"},{"nombre":"Operador Logístico de Bodega y Despacho","lev":"Bodeguero despachador.","sugerido":"Operador Logístico de Bodega y Despacho. Alternativa: Auxiliar de Bodega y Despacho.","area":"Logística (bodega central)","reporta":"Supervisor","supervisa":"No tiene personas a cargo; trabaja en conjunto con el Conductor","rol":"\"Personal de bodega\" en MP-PV-001 (recepción en Bodega 5) y MP-RS-001 (reservas especiales en Bodega 5).","proposito":"Recibir, almacenar, preparar y despachar la mercadería de la bodega central con orden, control de stock y respaldo documental.","funciones":[{"tipo":"Principal","t":"Recibir y revisar la mercadería","tareas":["Retirar las compras en la empresa de transporte o recibirlas en bodega.","Revisar que lo documentado llegue físicamente y en buen estado.","Informar faltantes, sobrantes o productos dañados (RIOHS art. 20 punto 2 letra c))."]},{"tipo":"Principal","t":"Almacenar y ordenar la bodega","tareas":["Ubicar los productos en su lugar y mantener el orden general.","Reponer productos en sus ubicaciones."]},{"tipo":"Principal","t":"Preparar y despachar pedidos","tareas":["Recibir los pedidos que deriva la Asistente de Operaciones Comerciales.","Preparar (picking), embalar y rotular (packing) cada pedido.","Despachar con guía de despacho valorizada (RIOHS art. 20 punto 2 letra d)).","Entregar la documentación de despacho y reportar las entregas realizadas."]},{"tipo":"Secundaria","t":"Reponer las tiendas","tareas":["Preparar y enviar la reposición a las tiendas.","Trasladar productos de tienda a bodega y de bodega a tienda."]},{"tipo":"Secundaria","t":"Controlar los productos dañados o en servicio técnico","tareas":["Recibir y registrar los productos de postventa en Bodega 5 (MP-PV-001).","Mantenerlos separados y rotulados con su N° PV."]},{"tipo":"Apoyo","t":"Apoyar el control de inventario","tareas":["Participar en el control de stock y las tomas de inventario.","Apoyar la codificación de productos."]},{"tipo":"Apoyo","t":"Apoyar la planificación de despachos","tareas":["Apoyar la gestión de la ruta de despacho."]},{"tipo":"Esporádica","t":"Comprar insumos o productos para la bodega, con autorización y comprobante (RIOHS art. 32)","tareas":[]}],"resp":["Responde por la mercadería en custodia en la bodega.","Responde por que cada pedido salga completo, en buen estado y con su documentación.","Responde por la entrega de los respaldos de despacho."],"indicadores":["Pedidos despachados en plazo.","Errores de preparación.","Diferencias de inventario.","Productos dañados en bodega."],"req":{"formacion":"Enseñanza media completa","experiencia":"1 año en bodega","conocimientos":"Recepción, preparación de pedidos, inventario, manejo manual de carga"},"areas":["bod"],"alias":["bodeguero","bodega","operador logistico","auxiliar de bodega"],"id":"c9"},{"nombre":"Conductor de Reparto y Encargado de Ruta","lev":"Chofer despachador.","sugerido":"Conductor de Reparto y Encargado de Ruta. Alternativa: Conductor Despachador.","area":"Logística (despacho y reparto)","reporta":"Supervisor","supervisa":"No tiene personas a cargo; trabaja en conjunto con el Operador Logístico","rol":"Cadena de custodia en MP-PV-001; guía firmada como respaldo de entrega en MP-CB-001.","proposito":"Entregar los pedidos de las rutas asignadas en forma completa, segura y documentada, cuidando el vehículo a su cargo.","funciones":[{"tipo":"Principal","t":"Recibir y revisar la mercadería","tareas":["Retirar las compras en la empresa de transporte o recibirlas en bodega.","Revisar que lo documentado llegue físicamente y en buen estado.","Informar faltantes, sobrantes o productos dañados (RIOHS art. 20 punto 2 letra c))."]},{"tipo":"Principal","t":"Almacenar y ordenar la bodega","tareas":["Ubicar los productos en su lugar y mantener el orden general.","Reponer productos en sus ubicaciones."]},{"tipo":"Principal","t":"Preparar y despachar pedidos","tareas":["Recibir los pedidos que deriva la Asistente de Operaciones Comerciales.","Preparar (picking), embalar y rotular (packing) cada pedido.","Despachar con guía de despacho valorizada (RIOHS art. 20 punto 2 letra d)).","Entregar la documentación de despacho y reportar las entregas realizadas."]},{"tipo":"Principal","t":"Planificar y ejecutar las rutas de reparto","tareas":["Coordinar la ruta y los pedidos a despachar con el Supervisor y la Asistente de Operaciones Comerciales.","Conducir el camión y entregar en cada punto."]},{"tipo":"Principal","t":"Controlar la carga","tareas":["Controlar la preparación y el embalaje de los pedidos de su ruta.","Controlar lo que se carga al camión y lo que se entrega en cada punto.","Obtener la guía firmada por el receptor, con nombre, RUT y fecha (RIOHS art. 20 punto 2 letra f))."]},{"tipo":"Principal","t":"Custodiar y mantener el camión","tareas":["Mantener el camión limpio y con su mantención mecánica al día.","Mantener vigente la documentación del vehículo."]},{"tipo":"Secundaria","t":"Controlar los gastos de despacho","tareas":["Registrar y rendir combustible, peajes y otros gastos con comprobante (RIOHS art. 32)."]},{"tipo":"Secundaria","t":"Reponer las tiendas","tareas":["Preparar y enviar la reposición a las tiendas.","Trasladar productos de tienda a bodega y de bodega a tienda."]},{"tipo":"Secundaria","t":"Controlar los productos dañados o en servicio técnico","tareas":["Recibir y registrar los productos de postventa en Bodega 5 (MP-PV-001).","Mantenerlos separados y rotulados con su N° PV."]},{"tipo":"Apoyo","t":"Apoyar el control de inventario","tareas":["Participar en el control de stock y las tomas de inventario.","Apoyar la codificación de productos."]},{"tipo":"Apoyo","t":"Apoyar la planificación de despachos","tareas":["Apoyar la gestión de la ruta de despacho."]},{"tipo":"Esporádica","t":"Comprar insumos o productos para la bodega, con autorización y comprobante (RIOHS art. 32)","tareas":[]}],"resp":["Responde por la mercadería en custodia en la bodega.","Responde por que cada pedido salga completo, en buen estado y con su documentación.","Responde por la entrega de los respaldos de despacho.","Responde por los pedidos desde que se cargan hasta que se entregan.","Responde por el camión, su documentación y su estado.","Responde por la rendición de los gastos de despacho."],"indicadores":["Entregas en plazo.","Entregas con documentación completa.","Incidentes en ruta.","Rendimiento de combustible."],"req":{"formacion":"Enseñanza media completa","experiencia":"2 años conduciendo vehículos de carga","conocimientos":"Licencia según peso del camión, rutas, documentación de despacho"},"areas":["bod"],"alias":["chofer","conductor","reparto","ruta"],"id":"c10"}];
 const LS_API = 'lf_api';
 const LS_TOK = 'lf_tok';
 let TOKEN = '';
@@ -950,7 +1095,7 @@ document.addEventListener('click', ev => {
 });
 
 function mostrar(ids) {
-  ['carga', 'falla', 'conexion', 'vIngreso', 'vExito', 'vPanel', 'vDash'].forEach(x => { $(x).hidden = ids.indexOf(x) < 0; });
+  ['carga', 'falla', 'conexion', 'vIngreso', 'vExito', 'vPanel', 'vCal', 'vIns', 'vDash'].forEach(x => { $(x).hidden = ids.indexOf(x) < 0; });
 }
 
 function irTab(t, sinScroll) {
@@ -960,12 +1105,18 @@ function irTab(t, sinScroll) {
   else if (t === 'dash') {
     mostrar(['vPanel']);
     cargarPanel();
+  } else if (t === 'cal') {
+    mostrar(['vCal']);
+    abrirCalTab();
+  } else if (t === 'ins') {
+    mostrar(['vIns']);
+    $('pInsCont').innerHTML = instrHTML(true);
   } else {
     mostrar(['vDash']);
     vistaDash();
   }
   $('wsp').hidden = t === 'datos';
-  try { history.replaceState(null, '', location.pathname + location.search + (t === 'ingreso' ? '#ingreso' : t === 'datos' ? '#datos' : '')); } catch (e) {}
+  try { history.replaceState(null, '', location.pathname + location.search + ({ ingreso: '#ingreso', datos: '#datos', cal: '#calendario', ins: '#instructivo' }[t] || '')); } catch (e) {}
   if (!sinScroll) window.scrollTo(0, 0);
 }
 
@@ -1030,6 +1181,7 @@ function iniciar() {
   $('tabs').hidden = false;
   ajTop();
   aplicarAjustes();
+  pintarSug();
   iniciarWsp();
   renderProceso();
   cargarFaq();
@@ -1037,7 +1189,7 @@ function iniciar() {
   toggleOtro();
   renderFunciones();
   modoUI();
-  irTab(location.hash === '#ingreso' ? 'ingreso' : location.hash === '#datos' ? 'datos' : 'dash', true);
+  irTab({ '#ingreso': 'ingreso', '#datos': 'datos', '#calendario': 'cal', '#instructivo': 'ins' }[location.hash] || 'dash', true);
   if (rutValido($('rut').value)) verificarRut();
 }
 
@@ -1079,6 +1231,7 @@ function renderFunciones() {
 </article>`).join('');
   contadorF();
   avance();
+  renderSugLista();
 }
 
 function contadorF() {
@@ -1254,8 +1407,8 @@ function validar() {
   if (v('nombre').length < 5) mal($('nombre'), 'Ingrese nombres y apellidos.');
   if (!rutValido(v('rut'))) mal($('rut'), 'RUT inválido. Revise el dígito verificador.');
   if (!v('sucursal')) mal($('sucursal'), 'Seleccione una sucursal.');
-  if (!$('unidad').value) mal($('unidad'), 'Seleccione su unidad funcional.');
-  else if (getUnidad().length < 2) mal($('unidadOtro'), 'Especifique su unidad funcional.');
+  if (!$('unidad').value) mal($('unidad'), 'Seleccione su área funcional.');
+  else if (getUnidad().length < 2) mal($('unidadOtro'), 'Especifique su área funcional.');
   if (v('jefatura').length < 2) mal($('jefatura'), 'Indique su jefatura o dependencia directa.');
   const tel = v('telefono');
   const mail = v('correo');
@@ -1311,7 +1464,7 @@ function resumenHtml(d) {
   const fila = (k, val) => val ? '<div class="rfila"><dt>' + esc(k) + '</dt><dd>' + esc(val) + '</dd></div>' : '';
   return '<dl class="rlista">' +
     (MANUAL ? fila('Transcrito por', d.transcritoPor) + fila('Folio', d.folio) : '') +
-    fila('Nombre', d.nombre) + fila('RUT', d.rut) + fila('Sucursal', d.sucursal) + fila('Unidad funcional', d.unidad) + fila('Cargo(s)', d.cargos.join(', ')) +
+    fila('Nombre', d.nombre) + fila('RUT', d.rut) + fila('Sucursal', d.sucursal) + fila('Área funcional', d.unidad) + fila('Cargo(s)', d.cargos.join(', ')) +
     fila('Jefatura', d.jefatura) + fila('Teléfono', d.telefono) + fila('Correo', d.correo) + '</dl>' +
     '<h3>Funciones (' + d.funciones.length + ')</h3><ol class="rfun">' +
     d.funciones.map(f => '<li><b>' + esc(f.funcion) + '</b><div class="chipsI"><span class="chip">' + esc(f.tipo) + '</span></div><p>' + esc(f.descripcion) + '</p></li>').join('') +
@@ -1379,8 +1532,10 @@ $('confirmar').addEventListener('click', async () => {
   }
   borrarBorrador();
   cerrarModal('modal');
-  ULTIMO = Object.assign({}, d, { id: j.id, version: j.version, fecha: j.fecha || hoy(), origen: MANUAL ? 'Manual' : 'Web', transcrito: d.transcritoPor, mostrar: true });
+  ULTIMO = Object.assign({}, d, { id: j.id, clave: j.clave || (EDIT && EDIT.clave) || '', version: j.version, fecha: j.fecha || hoy(), origen: MANUAL ? 'Manual' : 'Web', transcrito: d.transcritoPor, mostrar: true });
+  const autoPdf = !MANUAL;
   pantallaExito(j);
+  if (autoPdf) setTimeout(() => { if (ULTIMO) imprimirComprobante(ULTIMO); }, 700);
 });
 
 function pantallaExito(j) {
@@ -1771,8 +1926,9 @@ document.addEventListener('click', ev => {
   else if (a === 'blanco') imprimirBlanco();
   else if (a === 'wsp') abrirWsp();
   else if (a === 'borrador') guardarAvance();
-  else if (a === 'calendario') abrirCalendario();
-  else if (a === 'instructivo') abrirInstructivo();
+  else if (a === 'calendario') irTab('cal');
+  else if (a === 'instructivo') irTab('ins');
+  else if (a === 'perfil') verPerfil();
 });
 
 const DIAS_CAL = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
@@ -1899,7 +2055,7 @@ document.addEventListener('click', ev => {
   let m = +c.dataset.m + Number(b.dataset.cal);
   if (m < 0) { m = 11; y -= 1; }
   if (m > 11) { m = 0; y += 1; }
-  const et = c.closest('#subCal') ? etapasForm() : etapas();
+  const et = c.closest('#subCal') && SESION && $('eN0') ? etapasForm() : etapas();
   c.outerHTML = calHTML(y, m, et);
 });
 
@@ -1956,7 +2112,7 @@ const FAQ_DEF = [
   ] },
   { t: 'Dudas con el formulario', q: [
     { t: '¿Cómo completo el formulario paso a paso?', k: 'instructivo completar completo guia infografia empezar empiezo comenzar comienzo instrucciones', acc: 'instructivo', r: 'Son seis pasos:\n\n{pasos}' },
-    { t: '¿Qué unidad funcional elijo?', k: 'unidad funcional area departamento seccion ventas caja bodega', acc: '', r: 'Elige el área donde trabajas día a día (por ejemplo Ventas, Caja o Bodega). Si no aparece, marca **Otro** y escríbela.' },
+    { t: '¿Qué área funcional elijo?', k: 'area funcional unidad departamento seccion tienda mercado web bodega administracion', acc: '', r: 'Elige el área donde trabajas día a día (por ejemplo Tienda, Mercado Público o Bodega y Despacho). Si no aparece, marca **Otro** y escríbela.' },
     { t: '¿Cómo guardo mi avance?', k: 'guardar borrador continuar despues tarde terminar', acc: 'borrador', r: 'Presiona **Guardar avance**, bajo "Revisar y enviar". Solo necesitas haber verificado tu RUT y escrito tu nombre.\n\nLa primera vez recibirás un **ID** y una **clave**: anótalos, descárgalos o guárdalos en el navegador.' },
     { t: '¿Cómo retomo un registro que dejé a medias?', k: 'continuar borrador medias incompleto inconcluso pendiente', acc: '', r: 'Escribe tu **RUT** al comienzo del formulario. Si tienes un avance guardado, aparecerá el aviso "Tiene un registro sin finalizar": ingresa tu clave y presiona **Retomar registro**.' },
     { t: '¿Cómo modifico lo que ya envié?', k: 'modificar enviado', acc: 'modificar', r: 'Escribe tu **RUT** al comienzo del formulario y luego tu clave, o usa **Modificar mi registro** con tu ID y tu clave. Corrige lo necesario y guarda: tu ID y tu clave se mantienen.' },
@@ -2148,7 +2304,7 @@ const OP_MENU = ['↩ Menú inicial', 'menu'];
 const OP_HUMANO = ['Hablar directo con una persona', 'humano', 'verde'];
 
 function opsMenu() {
-  return BOT.map((c, i) => [(i + 1) + '. ' + c.t, 'cat:' + i]).concat([[(BOT.length + 1) + '. Escribir mi pregunta', 'libre'], [(BOT.length + 2) + '. Hablar directo con una persona', 'humano', 'verde']]);
+  return [['🧭 Funciones de mi cargo según mi área', 'area']].concat(BOT.map((c, i) => [(i + 1) + '. ' + c.t, 'cat:' + i]).concat([[(BOT.length + 1) + '. Escribir mi pregunta', 'libre'], [(BOT.length + 2) + '. Hablar directo con una persona', 'humano', 'verde']]));
 }
 
 function opsTema(ci) {
@@ -2160,7 +2316,7 @@ function botInicio() {
   botUlt = null;
   botModo = '';
   botTema = -1;
-  botDice('¡Hola! 👋 Soy el asistente del levantamiento de funciones. Elige un tema o escribe tu pregunta abajo con tus palabras.', opsMenu());
+  botDice('¡Hola! 👋 Soy el asistente del levantamiento de funciones. Puedo mostrarte las funciones de tu cargo según tu área, o resolver tus dudas. Elige una opción o escribe tu pregunta abajo.', opsMenu());
 }
 
 function botRespuesta(ci, qi) {
@@ -2184,6 +2340,7 @@ function botHumano() {
 }
 
 function botAccion(a) {
+  if (botAccionCat(a)) return;
   if (a.indexOf('cat:') === 0) {
     const ci = Number(a.slice(4));
     msj(esc(BOT[ci].t), 'yo');
@@ -2225,8 +2382,8 @@ function botAccion(a) {
     if (acc === 'modificar') { if ($('buscador').hidden) abrirBuscador(); else $('buscador').scrollIntoView({ behavior: 'smooth' }); }
     else if (acc === 'blanco') imprimirBlanco();
     else if (acc === 'borrador') guardarAvance();
-    else if (acc === 'calendario') abrirCalendario();
-    else if (acc === 'instructivo') abrirInstructivo();
+    else if (acc === 'calendario') irTab('cal');
+    else if (acc === 'instructivo') irTab('ins');
   }
 }
 
@@ -2241,6 +2398,9 @@ function botTexto(t) {
   if (it === 'gracias') { botDice('¡De nada! 😊 Si te surge otra duda, aquí estoy.', [OP_MENU]); return; }
   if (it === 'chao') { botDice('¡Hasta luego! Recuerda guardar tu avance si no alcanzas a terminar.', [OP_MENU]); return; }
   if (it === 'hola') { botDice('¡Hola! ¿En qué te ayudo? Elige un tema o escribe tu pregunta.', opsMenu()); return; }
+  if (botModo === 'buscafun' && botTextoCat(t, true)) return;
+  const cgd = catCargoTexto(t);
+  if (cgd && /funcion|tarea|que hace|responsab|perfil/.test(norm(t))) { botMostrarCargo(cgd.id); return; }
   const r = botBuscar(t);
   const a = r[0];
   const b = r[1];
@@ -2248,11 +2408,13 @@ function botTexto(t) {
     botRespuesta(a.ci, a.qi);
     return;
   }
+  if (botTextoCat(t, true)) return;
   if (a && a.c >= 0.34) {
     const sug = r.slice(0, 3).map(x => [BOT[x.ci].q[x.qi].t, 'q:' + x.ci + ':' + x.qi]);
     botDice('Creo que te refieres a alguna de estas preguntas:', sug.concat([OP_MENU, OP_HUMANO]));
     return;
   }
+  if (botTextoCat(t, false)) return;
   api('consulta', { texto: t });
   botDice('No encontré una respuesta para eso. Prueba escribirlo con otras palabras, revisa los temas o habla directo con una persona.', [OP_MENU, OP_HUMANO]);
 }
@@ -2372,7 +2534,7 @@ function pEnc(titulo, sub, meta) {
 
 function pDatos(r) {
   const c = (k, v, full) => '<div' + (full ? ' class="full"' : '') + '><span>' + esc(k) + '</span>' + esc(v || '—') + '</div>';
-  return '<div class="pgrid">' + c('Nombre completo', r.nombre) + c('RUT', r.rut) + c('Sucursal', r.sucursal) + c('Unidad funcional', r.unidad) + c('Jefatura o dependencia', r.jefatura) + c('Teléfono', r.telefono) + c('Correo', r.correo) + c('Cargo(s) contractual(es)', (r.cargos || []).join(' · '), true) + (r.origen === 'Manual' ? c('Origen', 'Transcrito de formulario en papel' + (r.folio ? ' · Folio ' + r.folio : '') + (r.transcrito ? ' · ' + r.transcrito : ''), true) : '') + '</div>';
+  return '<div class="pgrid">' + c('Nombre completo', r.nombre) + c('RUT', r.rut) + c('Sucursal', r.sucursal) + c('Área funcional', r.unidad) + c('Jefatura o dependencia', r.jefatura) + c('Teléfono', r.telefono) + c('Correo', r.correo) + c('Cargo(s) contractual(es)', (r.cargos || []).join(' · '), true) + (r.origen === 'Manual' ? c('Origen', 'Transcrito de formulario en papel' + (r.folio ? ' · Folio ' + r.folio : '') + (r.transcrito ? ' · ' + r.transcrito : ''), true) : '') + '</div>';
 }
 
 function pResumen(fs) {
@@ -2382,16 +2544,7 @@ function pResumen(fs) {
 }
 
 function imprimirComprobante(r) {
-  const meta = '<div class="pmeta">ID de registro<b>' + esc(r.id) + '</b><em>Versión ' + esc(r.version) + ' · ' + esc(r.fecha) + '</em></div>';
-  const filas = r.funciones.map((f, i) => '<tr><td class="nn">' + (i + 1) + '</td><td><b>' + esc(f.funcion) + '</b><div class="fd">' + esc(f.descripcion) + '</div></td><td>' + esc(f.tipo) + '</td></tr>').join('');
-  const html = '<div class="pdoc">' + pEnc('Levantamiento de Funciones por Cargo', 'Comprobante de información declarada', meta) +
-    '<h2>1. Datos personales</h2>' + pDatos(r) +
-    '<h2>2. Funciones declaradas</h2>' + pResumen(r.funciones) +
-    '<table><thead><tr><th>N°</th><th>Función y descripción</th><th style="width:90pt">Tipo</th></tr></thead><tbody>' + filas + '</tbody></table>' +
-    '<h2>3. Comentarios generales</h2><div class="box">' + esc(r.comentarios || 'Sin comentarios.') + '</div>' +
-    '<div class="firmas"><div>Firma trabajador(a)<br>' + esc(r.nombre) + '</div><div>Firma jefatura directa<br>' + esc(r.jefatura) + '</div></div>' +
-    '<div class="pfoot">Declaración aceptada: la información entregada es fidedigna y se autoriza su uso exclusivo para fines de gestión interna. Documento generado el ' + esc(hoy()) + '.</div></div>';
-  imprimir(html, 'Levantamiento ' + r.id + ' v' + r.version);
+  imprimir(perfilHTML(r, { id: r.id, clave: r.clave, estado: 'Versión ' + r.version + ' · ' + r.fecha, sub: 'Comprobante de información declarada', pie: 'Declaración aceptada: la información entregada es fidedigna y se autoriza su uso exclusivo para fines de gestión interna. Documento generado el ' + hoy() + '.' }), 'Perfil ' + r.id + ' v' + r.version);
 }
 
 function imprimirBlanco() {
@@ -2411,7 +2564,7 @@ function imprimirBlanco() {
     '<div class="s4"><span>Nombre completo</span></div><div class="s2"><span>RUT</span></div>' +
     '<div class="s3"><span>Sucursal</span></div><div class="s3"><span>Jefatura o dependencia directa</span></div>' +
     '<div class="s3"><span>Teléfono</span></div><div class="s3"><span>Correo electrónico</span></div>' +
-    '<div class="s6 alto"><span>Unidad funcional (marque una)</span><div class="ops">' + unis + '</div></div>' +
+    '<div class="s6 alto"><span>Área funcional (marque una)</span><div class="ops">' + unis + '</div></div>' +
     '<div class="s6 alto"><span>Cargo contractual (puede marcar más de uno)</span><div class="ops">' + cargos + '</div></div></div>' +
     '<h2>2. Tipos de función</h2><div class="ley2">' + CFG.tipos.map(t => '<div><b>' + esc(t.nombre) + ':</b> ' + esc(t.def) + '</div>').join('') + '<div><b>Función:</b> responsabilidad permanente del cargo, orientada a un resultado. Ej.: Gestionar la cobranza a clientes.</div><div><b>Tarea:</b> acción concreta con la que se cumple una función. Ej.: Llamar a clientes con facturas vencidas.</div></div>' +
     '<h2>3. Funciones que realiza (máximo 10)</h2><table class="tb tb10"><thead><tr><th>N°</th><th style="width:80pt">Tipo</th><th style="width:150pt">Función</th><th>Descripción / Especificación (tareas)</th></tr></thead><tbody>' + filas + '</tbody></table>' +
@@ -2554,8 +2707,6 @@ async function cargarPanel() {
   $('pSub').textContent = 'Avance del levantamiento · ' + vig.length + (vig.length === 1 ? ' registro enviado' : ' registros enviados') + ' · ' + (j.enCurso || []).length + ' en curso · actualizado ' + hoy();
   renderKpis(vig, (j.enCurso || []).length);
   renderPub();
-  if (!$('subCal').hidden) renderEtapasAdmin();
-  if (!$('pIns').hidden && !$('pInsCont').innerHTML) $('pInsCont').innerHTML = instrHTML(true);
 }
 
 function filtradaPub() {
@@ -2569,7 +2720,7 @@ function renderPub() {
   const l = filtradaPub();
   const lk = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-label="Protegido"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
   $('pCuenta').textContent = l.length + ' de ' + PUB.length;
-  $('pBody').innerHTML = l.length ? l.map(p => '<tr tabindex="0" data-i="' + p.i + '"><td data-l="Nombre" class="nom">' + esc(p.nombre) + '</td><td data-l="Sucursal">' + esc(p.sucursal) + '</td><td data-l="Unidad">' + esc(p.unidad || '') + '</td><td data-l="Cargo(s)">' + esc(p.cargos.join(', ')) + '</td><td data-l="Funciones" class="n">' + p.nFunciones + '</td><td data-l="Actualizado">' + esc(p.fecha) + (p.version > 1 ? ' <span class="chip">v' + p.version + '</span>' : '') + '</td><td data-l="Estado"><span class="pill ' + esc(p.estado.replace(/\s+/g, '-')) + '">' + esc(p.estado) + '</span></td><td class="lk">' + lk + '</td></tr>').join('') : '<tr><td colspan="8" class="vacio" style="cursor:default">' + (PUB.length ? 'No hay resultados con estos filtros.' : 'Aún no hay registros enviados.') + '</td></tr>';
+  $('pBody').innerHTML = l.length ? l.map(p => '<tr tabindex="0" data-i="' + p.i + '"><td data-l="Nombre" class="nom">' + esc(p.nombre) + '</td><td data-l="Sucursal">' + esc(p.sucursal) + '</td><td data-l="Área">' + esc(p.unidad || '') + '</td><td data-l="Cargo(s)">' + esc(p.cargos.join(', ')) + '</td><td data-l="Funciones" class="n">' + p.nFunciones + '</td><td data-l="Actualizado">' + esc(p.fecha) + (p.version > 1 ? ' <span class="chip">v' + p.version + '</span>' : '') + '</td><td data-l="Estado"><span class="pill ' + esc(p.estado.replace(/\s+/g, '-')) + '">' + esc(p.estado) + '</span></td><td class="lk">' + lk + '</td></tr>').join('') : '<tr><td colspan="8" class="vacio" style="cursor:default">' + (PUB.length ? 'No hay resultados con estos filtros.' : 'Aún no hay registros enviados.') + '</td></tr>';
 }
 
 function detallePub(i) {
@@ -2649,21 +2800,6 @@ async function detalleAdmin(p) {
 $('pBody').addEventListener('click', ev => { const tr = ev.target.closest('tr[data-i]'); if (tr) detallePub(Number(tr.dataset.i)); });
 $('pBody').addEventListener('keydown', ev => { if (ev.key === 'Enter') { const tr = ev.target.closest('tr[data-i]'); if (tr) detallePub(Number(tr.dataset.i)); } });
 $('pRefrescar').addEventListener('click', cargarPanel);
-document.querySelectorAll('#pTabs [data-psub]').forEach(b => b.addEventListener('click', () => {
-  document.querySelectorAll('#pTabs [data-psub]').forEach(x => x.setAttribute('aria-selected', String(x === b)));
-  irPsub(b.dataset.psub);
-}));
-
-function irPsub(s) {
-  document.querySelectorAll('#pTabs [data-psub]').forEach(x => x.setAttribute('aria-selected', String(x.dataset.psub === s)));
-  $('pIns').hidden = s !== 'ins';
-  $('subCal').hidden = s !== 'cal';
-  $('pReg').hidden = s !== 'reg';
-  $('pImprimir').hidden = s !== 'ins';
-  $('pRefrescar').hidden = s !== 'reg';
-  if (s === 'ins') $('pInsCont').innerHTML = instrHTML(true);
-  if (s === 'cal') renderEtapasAdmin();
-}
 
 $('pImprimir').addEventListener('click', imprimirInstructivo);
 
@@ -2709,7 +2845,7 @@ function renderKpis(L, borr) {
     p.cargos.forEach(c => { car[c] = (car[c] || 0) + 1; });
     Object.keys(p.tipos || {}).forEach(t => { tip[t] = (tip[t] || 0) + p.tipos[t]; });
   });
-  $('graficos').innerHTML = barras('Personas por sucursal', suc) + barras('Personas por unidad funcional', uni) + barras('Personas por cargo', car) + barras('Funciones por tipo', tip, CFG.tipos.map(t => t.nombre));
+  $('graficos').innerHTML = barras('Personas por sucursal', suc) + barras('Personas por área funcional', uni) + barras('Personas por cargo', car) + barras('Funciones por tipo', tip, CFG.tipos.map(t => t.nombre));
 }
 
 function filtrada() {
@@ -2722,7 +2858,7 @@ function filtrada() {
 function renderTabla() {
   const l = filtrada();
   $('fCuenta').textContent = l.length + ' de ' + LISTA.length;
-  $('tBody').innerHTML = l.length ? l.map(p => '<tr tabindex="0" data-id="' + esc(p.id) + '"><td data-l="Nombre" class="nom">' + esc(p.nombre) + '</td><td data-l="ID" class="mono">' + esc(p.id) + '</td><td data-l="Sucursal">' + esc(p.sucursal) + '</td><td data-l="Unidad">' + esc(p.unidad || '') + '</td><td data-l="Cargo(s)">' + esc(p.cargos.join(', ')) + '</td><td data-l="Funciones" class="n">' + p.nFunciones + '</td><td data-l="Precisiones" class="n">' + p.nPrecisiones + '</td><td data-l="Actualizado">' + esc(p.fecha) + (p.version > 1 ? ' <span class="chip">v' + p.version + '</span>' : '') + '</td><td data-l="Estado"><span class="pill ' + esc(p.estado) + '">' + esc(p.estado) + '</span></td></tr>').join('') : '<tr><td colspan="9" class="vacio" style="cursor:default">' + (LISTA.length ? 'No hay resultados con estos filtros.' : 'Aún no hay registros. Cuando los trabajadores envíen el formulario aparecerán aquí.') + '</td></tr>';
+  $('tBody').innerHTML = l.length ? l.map(p => '<tr tabindex="0" data-id="' + esc(p.id) + '"><td data-l="Nombre" class="nom">' + esc(p.nombre) + '</td><td data-l="ID" class="mono">' + esc(p.id) + '</td><td data-l="Sucursal">' + esc(p.sucursal) + '</td><td data-l="Área">' + esc(p.unidad || '') + '</td><td data-l="Cargo(s)">' + esc(p.cargos.join(', ')) + '</td><td data-l="Funciones" class="n">' + p.nFunciones + '</td><td data-l="Precisiones" class="n">' + p.nPrecisiones + '</td><td data-l="Actualizado">' + esc(p.fecha) + (p.version > 1 ? ' <span class="chip">v' + p.version + '</span>' : '') + '</td><td data-l="Estado"><span class="pill ' + esc(p.estado) + '">' + esc(p.estado) + '</span></td></tr>').join('') : '<tr><td colspan="9" class="vacio" style="cursor:default">' + (LISTA.length ? 'No hay resultados con estos filtros.' : 'Aún no hay registros. Cuando los trabajadores envíen el formulario aparecerán aquí.') + '</td></tr>';
 }
 
 ['fTexto', 'fSuc', 'fEstado'].forEach(id => $(id).addEventListener('input', renderTabla));
@@ -2750,7 +2886,7 @@ function renderDetalle() {
   $('detNombre').textContent = r.nombre;
   $('detSub').textContent = 'ID ' + r.id + ' · ' + r.rut + ' · versión ' + r.version + ' del ' + r.fecha;
   const c = (k, v) => '<div><dt>' + esc(k) + '</dt><dd>' + esc(v || '—') + '</dd></div>';
-  $('detDatos').innerHTML = c('Sucursal', r.sucursal) + c('Unidad funcional', r.unidad) + c('Cargo(s) contractual(es)', r.cargos.join(', ')) + c('Jefatura o dependencia', r.jefatura) + c('Teléfono', r.telefono) + c('Correo', r.correo) + c('Origen', r.origen === 'Manual' ? 'Formulario en papel' + (r.folio ? ' · folio ' + r.folio : '') + (r.transcrito ? ' · transcrito por ' + r.transcrito : '') : 'Formulario web');
+  $('detDatos').innerHTML = c('Sucursal', r.sucursal) + c('Área funcional', r.unidad) + c('Cargo(s) contractual(es)', r.cargos.join(', ')) + c('Jefatura o dependencia', r.jefatura) + c('Teléfono', r.telefono) + c('Correo', r.correo) + c('Origen', r.origen === 'Manual' ? 'Formulario en papel' + (r.folio ? ' · folio ' + r.folio : '') + (r.transcrito ? ' · transcrito por ' + r.transcrito : '') : 'Formulario web');
   selValor($('detEstado'), r.estado);
   $('detFRev').textContent = r.fRev ? 'Última revisión guardada: ' + r.fRev : 'Aún no se guarda una revisión para esta versión.';
   $('detClaveInfo').textContent = r.clave ? 'El trabajador tiene clave asignada para modificar su registro.' : 'El trabajador no tiene clave. Genere una para que pueda modificar su registro.';
@@ -2882,6 +3018,8 @@ function irSub(sub) {
   $('subReg').hidden = sub !== 'reg';
   $('subFaq').hidden = sub !== 'faq';
   $('subCfg').hidden = sub !== 'cfg';
+  $('subDesc').hidden = sub !== 'desc';
+  if (sub === 'desc') abrirDescriptores();
   if (sub === 'cfg') irCfg();
   if (sub === 'faq') abrirFaqAdmin();
 }
@@ -3297,7 +3435,8 @@ function aplicarAjustes() {
 
 function unidades() {
   const u = ajustes().unidades;
-  return Array.isArray(u) && u.length ? u : ['Ventas', 'Caja', 'Servicio Técnico', 'Bodega', 'Contabilidad', 'Finanzas', 'Administración'];
+  const viejas = ['Ventas', 'Caja', 'Servicio Técnico', 'Bodega', 'Contabilidad', 'Finanzas', 'Administración'];
+  return Array.isArray(u) && u.length && u.join('|') !== viejas.join('|') ? u : AREAS.map(a => a.n);
 }
 
 function getUnidad() {
@@ -3311,6 +3450,7 @@ function setUnidad(v) {
   else if (unidades().indexOf(v) >= 0) { $('unidad').value = v; $('unidadOtro').value = ''; }
   else { $('unidad').value = 'Otro'; $('unidadOtro').value = v; }
   toggleUnidad();
+  syncArea();
 }
 
 function toggleUnidad() {
@@ -3365,7 +3505,7 @@ function prellenar(n) {
   if (!n) return;
   if (!limpio($('nombre').value) && n.nombre) $('nombre').value = n.nombre;
   if (!$('sucursal').value && n.sucursal && CFG.sucursales.indexOf(n.sucursal) >= 0) $('sucursal').value = n.sucursal;
-  if (!getUnidad() && n.unidad) setUnidad(n.unidad);
+  if (!getUnidad() && n.unidad) setUnidad(mapArea(n.unidad));
   if (!limpio($('jefatura').value) && n.jefatura) $('jefatura').value = n.jefatura;
   if (n.cargo && !getCargos().length) {
     const c = CFG.cargos.find(x => norm(x) === norm(n.cargo));
@@ -3441,11 +3581,11 @@ function qrSvg(texto) {
 
 const PASOS = [
   ['Identifícate', 'Escribe tu RUT o busca tu nombre. Si ya tienes un registro o un avance, te pedirá tu clave.', '<path d="M4 6h16v12H4z"/><circle cx="9" cy="11" r="2.2"/><path d="M6.5 15.5c.6-1.4 1.5-2 2.5-2s1.9.6 2.5 2M14 10h4M14 13h3"/>'],
-  ['Revisa tus datos', 'Confirma tu sucursal, unidad funcional, cargo contractual y jefatura.', '<circle cx="10" cy="8" r="3.2"/><path d="M4 19c.8-3.2 3.2-5 6-5 1.2 0 2.3.3 3.2.9"/><path d="m14.5 17 2 2 4-4"/>'],
-  ['Registra tus funciones', 'Una por bloque: tipo, nombre de la función y las tareas con que la cumples.', '<path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/>'],
+  ['Revisa tus datos', 'Confirma tu sucursal, área funcional, cargo contractual y jefatura.', '<circle cx="10" cy="8" r="3.2"/><path d="M4 19c.8-3.2 3.2-5 6-5 1.2 0 2.3.3 3.2.9"/><path d="m14.5 17 2 2 4-4"/>'],
+  ['Registra tus funciones', 'Toma las que te calcen del panel Funciones sugeridas y escribe las que falten: tipo, nombre y tareas.', '<path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/>'],
   ['Guarda tu avance', 'Si no terminas de una vez, guarda: recibirás un ID y una clave para continuar después.', '<path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/>'],
-  ['Revisa y envía', 'Acepta la declaración, revisa el resumen y confirma el envío.', '<path d="M21 3 10 14"/><path d="M21 3l-7 18-4-7-7-4z"/>'],
-  ['Guarda tu comprobante', 'Descarga el PDF y conserva tu ID y tu clave para futuras modificaciones.', '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="m10 15 2 2 4-4"/>']
+  ['Revisa y envía', 'Revisa la vista previa de tu perfil, acepta la declaración y confirma el envío.', '<path d="M21 3 10 14"/><path d="M21 3l-7 18-4-7-7-4z"/>'],
+  ['Guarda tu comprobante', 'Se descarga tu perfil en PDF con tu ID y tu clave: consérvalos para futuras modificaciones.', '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="m10 15 2 2 4-4"/>']
 ];
 
 function icono(p, cls) {
@@ -3587,6 +3727,893 @@ function aplicarInfoRut() {
 }
 
 
+const AREAS = [
+  { k: 'tienda', n: 'Tienda', kw: ['tienda', 'venta', 'local', 'caja', 'sala', 'vendedor', 'meson'] },
+  { k: 'mp', n: 'Mercado Público', kw: ['mercado', 'licitac', 'institucional', 'publico', 'chilecompra'] },
+  { k: 'web', n: 'Web y Marketing', kw: ['web', 'ecommerce', 'e commerce', 'marketing', 'digital', 'redes', 'online'] },
+  { k: 'adm', n: 'Administración', kw: ['admin', 'contab', 'finanz', 'cobranza', 'factur', 'oficina'] },
+  { k: 'bod', n: 'Bodega y Despacho', kw: ['bodega', 'logist', 'despacho', 'reparto', 'almacen', 'servicio tecnico', 'chofer', 'conductor'] },
+  { k: 'dir', n: 'Dirección', kw: ['direcc', 'gerenc', 'gerente', 'socio'] }
+];
+const FOCO = { c1: 'Dirijo la estrategia, las compras y la operación', c2: 'Superviso varias tiendas y sus equipos', c3: 'Estoy a cargo de un local', c4: 'Atiendo y vendo en mesón', c5: 'Preparo ofertas para Mercado Público', c6: 'Gestiono la web, la venta online y las redes', c7: 'Facturo, coordino despachos y compro', c8: 'Cobranza, cajas y control de despachos', c9: 'Recibo, almaceno y preparo pedidos', c10: 'Conduzco y reparto en ruta' };
+const PREG_AREA = { tienda: 'En la tienda, ¿qué describe mejor tu trabajo?', adm: 'En administración, ¿en qué se centra tu trabajo?', bod: 'En bodega y despacho, ¿cuál es tu labor principal?' };
+const TIPO_ORD = ['Principal', 'Secundaria', 'Apoyo', 'Esporádica'];
+const TIPO_PL = { 'Principal': 'Funciones principales', 'Secundaria': 'Funciones secundarias', 'Apoyo': 'Funciones de apoyo', 'Esporádica': 'Funciones esporádicas' };
+let SP = { area: '', cargo: '', q: '' };
+let botCargo = '';
+
+function catCargo(id) {
+  return CATALOGO.find(c => c.id === id) || null;
+}
+
+function areaInfo(k) {
+  return AREAS.find(a => a.k === k) || null;
+}
+
+function areaDe(txt) {
+  const t = ' ' + norm(txt) + ' ';
+  if (!t.trim()) return '';
+  const a = AREAS.find(x => x.kw.some(k => t.indexOf(k) >= 0));
+  return a ? a.k : '';
+}
+
+function cargosArea(k) {
+  return CATALOGO.filter(c => c.areas[0] === k);
+}
+
+function cargosAreaSec(k) {
+  return CATALOGO.filter(c => c.areas[0] !== k && c.areas.indexOf(k) >= 0);
+}
+
+function nomCargo(c) {
+  return c.nombre.replace(/\s+\([^()]*\)\s*$/, '');
+}
+
+function tituloF(f) {
+  return String(f.t).replace(/\.$/, '');
+}
+
+function tipoApp(t) {
+  const n = CFG.tipos.map(x => x.nombre);
+  if (n.indexOf(t) >= 0) return t;
+  const m = n.find(x => norm(x) === norm(t));
+  return m || '';
+}
+
+function tipoResp() {
+  return tipoApp('Responsabilidad');
+}
+
+function relacionadas(k) {
+  const a = areaInfo(k);
+  if (!a) return [];
+  const out = [];
+  CATALOGO.filter(c => c.areas[0] !== k).forEach(c => c.funciones.forEach((f, i) => {
+    if (f.tipo === 'Principal') return;
+    const txt = ' ' + norm(f.t + ' ' + f.tareas.join(' ')) + ' ';
+    if (a.kw.some(w => txt.indexOf(w) >= 0)) out.push({ c: c, f: f, i: i });
+  }));
+  return out.slice(0, 12);
+}
+
+function yaAgregada(t) {
+  const k = norm(t);
+  return funciones.findIndex(f => norm(f.funcion) === k);
+}
+
+function tomarFuncion(cid, idx) {
+  const c = catCargo(cid);
+  if (!c) return;
+  let tipo;
+  let titulo;
+  let desc;
+  if (String(idx).charAt(0) === 'r') {
+    titulo = c.resp[+String(idx).slice(1)];
+    tipo = tipoResp();
+    desc = titulo;
+  } else {
+    const f = c.funciones[+idx];
+    titulo = tituloF(f);
+    tipo = tipoApp(f.tipo);
+    desc = f.tareas.length ? f.tareas.map(x => '• ' + x).join('\n') : f.t;
+  }
+  if (!libre()) { pedirRut(); toast('Primero escriba su RUT o busque su nombre para habilitar el formulario.', true); return; }
+  const ya = yaAgregada(titulo);
+  if (ya >= 0) { irAFuncion(funciones[ya].uid); toast('Esa función ya está en su registro.'); return; }
+  if (funciones.length >= maxF()) { toast('Alcanzó el máximo de ' + maxF() + ' funciones.', true); return; }
+  const nf = Object.assign(nueva(tipo), { funcion: titulo.slice(0, 200), descripcion: desc.slice(0, 1500), ref: cid });
+  if (funciones.length === 1 && !limpio(funciones[0].funcion) && !limpio(funciones[0].descripcion)) funciones[0] = nf;
+  else funciones.push(nf);
+  if (!SP.cargo) SP.cargo = cid;
+  renderFunciones();
+  programarGuardado();
+  renderSugLista();
+  toast('Agregada: ' + titulo.slice(0, 70) + (titulo.length > 70 ? '…' : '') + (tipo ? '' : ' · elija su tipo'));
+}
+
+function irAFuncion(uid) {
+  const art = $('funciones').querySelector('[data-uid="' + uid + '"]');
+  if (!art) return;
+  art.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  art.classList.remove('flash');
+  void art.offsetWidth;
+  art.classList.add('flash');
+}
+
+function opAreas(sel) {
+  return '<option value="">Elija su área…</option>' + AREAS.map(a => '<option value="' + a.k + '"' + (a.k === sel ? ' selected' : '') + '>' + esc(a.n) + '</option>').join('');
+}
+
+function pintarSug() {
+  if (!SP.area) SP.area = areaDe(getUnidad());
+  const prim = cargosArea(SP.area).concat(cargosAreaSec(SP.area));
+  if (SP.cargo && !prim.some(c => c.id === SP.cargo)) SP.cargo = '';
+  if (!SP.cargo && prim.length) SP.cargo = prim[0].id;
+  const html = '<div class="sp-fil"><select class="sp-area" aria-label="Área funcional">' + opAreas(SP.area) + '</select><input class="sp-q" type="search" placeholder="Buscar en todas las funciones" aria-label="Buscar función" value="' + esc(SP.q) + '"></div>' +
+    '<div class="sp-cargos">' + prim.map(c => '<button type="button" data-spc="' + c.id + '" aria-pressed="' + (c.id === SP.cargo) + '">' + esc(nomCargo(c)) + '</button>').join('') + '</div>' +
+    '<div class="sp-list"></div>';
+  document.querySelectorAll('.sugCont').forEach(x => { x.innerHTML = html; });
+  renderSugLista();
+}
+
+function itemSug(c, i, f, otro) {
+  const t = String(i).charAt(0) === 'r' ? c.resp[+String(i).slice(1)] : tituloF(f);
+  const ok = yaAgregada(t) >= 0;
+  return '<button type="button" class="spf' + (ok ? ' ok' : '') + '" data-spf="' + c.id + ':' + i + '" title="' + esc(f && f.tareas.length ? f.tareas.join('\n') : t) + '"><span>' + esc(t) + (otro ? '<small>' + esc(nomCargo(c)) + '</small>' : '') + '</span><i aria-hidden="true">' + (ok ? '✓' : '+') + '</i></button>';
+}
+
+function renderSugLista() {
+  const conts = document.querySelectorAll('.sugCont .sp-list');
+  if (!conts.length) return;
+  let html = '';
+  const q = norm(SP.q);
+  if (q.length >= 3) {
+    const res = [];
+    CATALOGO.forEach(c => {
+      c.funciones.forEach((f, i) => { if (norm(f.t + ' ' + f.tareas.join(' ')).indexOf(q) >= 0) res.push(itemSug(c, i, f, true)); });
+      c.resp.forEach((r, i) => { if (norm(r).indexOf(q) >= 0) res.push(itemSug(c, 'r' + i, null, true)); });
+    });
+    html = res.length ? '<h4>Resultados (' + res.length + ')</h4>' + res.slice(0, 40).join('') : '<p class="sp-vacio">No hay funciones con ese texto. Escríbala directamente con "Agregar función".</p>';
+  } else if (!SP.area) {
+    html = '<p class="sp-vacio">Elija su área funcional para ver las funciones del levantamiento.</p>';
+  } else {
+    const c = catCargo(SP.cargo);
+    if (c) {
+      html += '<p class="sp-cg"><b>' + esc(nomCargo(c)) + '</b><small>Reporta a: ' + esc(c.reporta) + '</small></p>';
+      TIPO_ORD.forEach(t => {
+        const l = c.funciones.map((f, i) => ({ f: f, i: i })).filter(x => x.f.tipo === t);
+        if (l.length) html += '<h4>' + esc(TIPO_PL[t]) + '</h4>' + l.map(x => itemSug(c, x.i, x.f)).join('');
+      });
+      if (c.resp.length && tipoResp()) html += '<h4>Responsabilidades</h4>' + c.resp.map((r, i) => itemSug(c, 'r' + i, null)).join('');
+      if (c.funciones.some(f => f.tipo === 'Principal')) html += '<button type="button" class="btn sec ancho sp-todas" data-sptodas="' + c.id + '">Agregar todas las principales</button>';
+    }
+    const rel = relacionadas(SP.area);
+    if (rel.length) html += '<h4>De otros cargos (apoyo y esporádicas)</h4>' + rel.map(x => itemSug(x.c, x.i, x.f, true)).join('');
+  }
+  conts.forEach(x => { x.innerHTML = html; });
+}
+
+document.addEventListener('change', ev => {
+  if (ev.target.classList && ev.target.classList.contains('sp-area')) { SP.area = ev.target.value; SP.cargo = ''; SP.q = ''; pintarSug(); }
+});
+document.addEventListener('input', ev => {
+  if (ev.target.classList && ev.target.classList.contains('sp-q')) {
+    SP.q = ev.target.value;
+    document.querySelectorAll('.sp-q').forEach(x => { if (x !== ev.target) x.value = SP.q; });
+    renderSugLista();
+  }
+});
+document.addEventListener('click', ev => {
+  const c = ev.target.closest('[data-spc]');
+  if (c) { SP.cargo = c.dataset.spc; pintarSug(); return; }
+  const f = ev.target.closest('[data-spf]');
+  if (f) { const p = f.dataset.spf.split(':'); tomarFuncion(p[0], p[1]); return; }
+  const t = ev.target.closest('[data-sptodas]');
+  if (t) {
+    const cg = catCargo(t.dataset.sptodas);
+    cg.funciones.forEach((x, i) => { if (x.tipo === 'Principal' && yaAgregada(tituloF(x)) < 0 && libre()) tomarFuncion(cg.id, i); });
+    if (!libre()) { pedirRut(); toast('Primero escriba su RUT o busque su nombre para habilitar el formulario.', true); }
+  }
+});
+function mapArea(v) {
+  if (unidades().indexOf(v) >= 0) return v;
+  const a = areaDe(v);
+  return (a && unidades().find(u => areaDe(u) === a)) || v;
+}
+
+function syncArea() {
+  if (!CFG || !document.querySelector('.sugCont')) return;
+  const a = areaDe(getUnidad());
+  if (a && a !== SP.area) { SP.area = a; SP.cargo = ''; pintarSug(); }
+}
+
+$('unidad').addEventListener('change', syncArea);
+$('unidadOtro').addEventListener('change', syncArea);
+
+function cargoRef(d) {
+  const cnt = {};
+  funciones.forEach(f => { if (f.ref) cnt[f.ref] = (cnt[f.ref] || 0) + 1; });
+  const k = Object.keys(cnt).sort((a, b) => cnt[b] - cnt[a])[0];
+  if (k) return catCargo(k);
+  const cs = (d.cargos || []).map(norm).join(' | ');
+  const m = CATALOGO.find(c => c.alias.some(a => cs.indexOf(norm(a)) >= 0) || cs.indexOf(norm(nomCargo(c))) >= 0);
+  return m || catCargo(SP.cargo);
+}
+
+function perfilHTML(d, meta) {
+  const ref = cargoRef(d);
+  const tn = CFG.tipos.map(t => t.nombre);
+  const grupos = tn.concat(Array.from(new Set(d.funciones.map(f => f.tipo).filter(t => tn.indexOf(t) < 0))));
+  const c = (k, v, full) => '<div' + (full ? ' class="full"' : '') + '><span>' + esc(k) + '</span>' + esc(v || '—') + '</div>';
+  let n = 0;
+  const lbl = t => TIPO_PL[t] || (norm(t) === 'responsabilidad' ? 'Responsabilidades' : 'Funciones: ' + t);
+  const fun = grupos.map(t => {
+    const l = d.funciones.filter(f => f.tipo === t && (f.funcion || f.descripcion));
+    if (!l.length) return '';
+    return '<h3 class="pgt">' + esc(lbl(t)) + ' <small>(' + l.length + ')</small></h3><table><tbody>' + l.map(f => '<tr><td class="nn">' + (++n) + '</td><td><b>' + esc(f.funcion) + '</b>' + (f.descripcion && f.descripcion !== f.funcion ? '<div class="fd">' + esc(f.descripcion) + '</div>' : '') + '</td></tr>').join('') + '</tbody></table>';
+  }).join('');
+  const sinTipo = d.funciones.filter(f => !f.tipo && (f.funcion || f.descripcion));
+  const seg = meta.id ? '<div class="pseg"><div><span>ID de registro</span><b>' + esc(meta.id) + '</b></div><div><span>Clave de seguimiento</span><b>' + esc(meta.clave || '········') + '</b></div><p>' + (meta.clave ? 'Conserve su ID y su clave: con ellos revisa, modifica o actualiza este perfil.' : 'La clave se entregó al guardar por primera vez; no se muestra por seguridad.') + '</p></div>' : '<div class="pseg pend"><p><b>Código de seguimiento:</b> se asignará un ID y una clave al guardar el avance o enviar el registro.</p></div>';
+  return '<div class="pdoc pperfil">' + pEnc('Perfil de funciones del colaborador', meta.sub || 'Levantamiento de Funciones por Cargo', meta.id ? '<div class="pmeta">ID de registro<b>' + esc(meta.id) + '</b><em>' + esc(meta.estado || '') + '</em></div>' : '') +
+    seg +
+    '<h2>1. Identificación del colaborador</h2><div class="pgrid">' + c('Nombre completo', d.nombre) + c('RUT', d.rut) + c('Sucursal', d.sucursal) + c('Área funcional', d.unidad) + c('Cargo(s) contractual(es)', (d.cargos || []).join(' · ')) + c('Dependencia (jefatura directa)', d.jefatura) + c('Teléfono', d.telefono) + c('Correo', d.correo) + '</div>' +
+    (ref ? '<h2>2. Cargo de referencia del levantamiento</h2><div class="pgrid">' + c('Nombre sugerido', nomCargo(ref)) + c('Área', ref.area) + c('Reporta a', ref.reporta) + c('Supervisa a', ref.supervisa) + '<div class="full"><span>Propósito del cargo</span>' + esc(ref.proposito) + '</div></div>' : '') +
+    '<h2>' + (ref ? '3' : '2') + '. Funciones y responsabilidades declaradas</h2>' + pResumen(d.funciones.filter(f => f.funcion || f.descripcion)) + fun +
+    (sinTipo.length ? '<h3 class="pgt">Sin tipo asignado</h3><table><tbody>' + sinTipo.map(f => '<tr><td class="nn">' + (++n) + '</td><td><b>' + esc(f.funcion) + '</b><div class="fd">' + esc(f.descripcion) + '</div></td></tr>').join('') + '</tbody></table>' : '') +
+    '<h2>' + (ref ? '4' : '3') + '. Comentarios generales</h2><div class="box">' + esc(d.comentarios || 'Sin comentarios.') + '</div>' +
+    '<div class="firmas"><div>Firma trabajador(a)<br>' + esc(d.nombre || '') + '</div><div>Firma jefatura directa<br>' + esc(d.jefatura || '') + '</div></div>' +
+    '<div class="pfoot">' + esc(meta.pie || 'Vista previa generada el ' + hoy() + '. Documento de trabajo del levantamiento de funciones; no reemplaza el contrato de trabajo.') + '</div></div>';
+}
+
+function verPerfil() {
+  const d = datos();
+  const meta = EDIT ? { id: EDIT.id, clave: EDIT.clave, estado: EDIT.borrador ? 'Borrador' : 'Versión ' + EDIT.version } : (CRED && CRED.id === regIdDe(d.rut) ? { id: CRED.id, clave: CRED.clave, estado: 'Borrador' } : {});
+  meta.sub = 'Vista previa · ' + hoy();
+  dialogo('Vista previa del perfil', '<div class="pprev">' + perfilHTML(d, meta) + '</div>', [{ txt: 'Cerrar' }, { txt: 'Descargar PDF', cls: 'sec', fn: () => { cerrarModal('dlg'); imprimir(perfilHTML(d, meta), 'Perfil ' + (d.nombre || 'colaborador')); } }, { txt: 'Revisar y enviar', cls: 'pri', fn: () => { cerrarModal('dlg'); $('form').requestSubmit(); } }]);
+  $('dlg').querySelector('.caja').classList.add('grande');
+}
+
+function regIdDe(rut) {
+  return String(rut || '').split('-')[0].replace(/\D/g, '');
+}
+
+function botFunAreaOps() {
+  const a = areaDe(getUnidad());
+  return (a ? [['Mi área: ' + areaInfo(a).n, 'ar:' + a]] : []).concat(AREAS.map(x => [x.n, 'ar:' + x.k])).concat([OP_MENU]);
+}
+
+function botPreguntaArea() {
+  botModo = '';
+  botDice('¿Cuál es tu <b>área funcional</b>? Así te muestro las funciones del levantamiento que más se parecen a tu trabajo.', botFunAreaOps());
+}
+
+function botArea(k) {
+  const a = areaInfo(k);
+  if (!a) { botPreguntaArea(); return; }
+  const cs = cargosArea(k);
+  const sec = cargosAreaSec(k);
+  if (cs.length === 1 && !sec.length) { botMostrarCargo(cs[0].id); return; }
+  botDice((PREG_AREA[k] || 'En ' + esc(a.n) + ', ¿cuál se parece más a tu cargo?'), cs.concat(sec).map(c => [FOCO[c.id] || nomCargo(c), 'cg:' + c.id]).concat([['Ninguno se parece', 'cgx'], OP_MENU]));
+}
+
+function botMostrarCargo(id) {
+  const c = catCargo(id);
+  if (!c) return;
+  botCargo = id;
+  SP.area = SP.area || c.areas[0];
+  const cnt = t => c.funciones.filter(f => f.tipo === t).length;
+  const ops = TIPO_ORD.filter(t => cnt(t)).map(t => [TIPO_PL[t] + ' (' + cnt(t) + ')', 'cf:' + id + ':' + t]);
+  ops.push(['Responsabilidades e indicadores', 'cr:' + id]);
+  if (relacionadas(c.areas[0]).length) ops.push(['Apoyo de otros cargos en mi área', 'crel:' + c.areas[0]]);
+  ops.push(['➕ Agregar estas funciones a mi registro', 'cadd:' + id, 'verde'], ['Cambiar de área', 'area'], OP_MENU);
+  botDice('<b>' + esc(nomCargo(c)) + '</b><br><small>En el levantamiento: ' + esc(c.lev.replace(/\.$/, '')) + ' · Reporta a: ' + esc(c.reporta) + '</small><br><br>' + esc(c.proposito) + '<br><br>¿Qué quieres revisar?', ops);
+}
+
+function botFunciones(id, t) {
+  const c = catCargo(id);
+  if (!c) return;
+  const l = c.funciones.filter(f => f.tipo === t);
+  const html = '<b>' + esc(TIPO_PL[t]) + ' · ' + esc(nomCargo(c)) + '</b>' + l.map(f => '<div class="bfun"><b>' + esc(tituloF(f)) + '</b>' + (f.tareas.length ? '<ul>' + f.tareas.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '') + '</div>').join('') + '<small>La función dice qué haces y para qué; las tareas, cómo lo haces.</small>';
+  botDice(html, TIPO_ORD.filter(x => x !== t && c.funciones.some(f => f.tipo === x)).map(x => [TIPO_PL[x], 'cf:' + id + ':' + x]).concat([['➕ Agregar a mi registro', 'cadd:' + id, 'verde'], ['Volver al cargo', 'cg:' + id], OP_MENU]));
+}
+
+function botResp(id) {
+  const c = catCargo(id);
+  if (!c) return;
+  botDice('<b>Responsabilidades · ' + esc(nomCargo(c)) + '</b><ul>' + c.resp.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul><b>Indicadores sugeridos</b><ul>' + c.indicadores.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>', [['Volver al cargo', 'cg:' + id], ['➕ Agregar a mi registro', 'cadd:' + id, 'verde'], OP_MENU]);
+}
+
+function botRel(k) {
+  const l = relacionadas(k);
+  botDice('<b>Funciones de apoyo o esporádicas de otros cargos que tocan ' + esc(areaInfo(k).n) + '</b>' + l.map(x => '<div class="bfun"><b>' + esc(tituloF(x.f)) + '</b><small>' + esc(nomCargo(x.c)) + ' · ' + esc(x.f.tipo) + '</small></div>').join(''), [['Agregar desde el panel', 'cpanel:' + k, 'verde'], ['Volver', botCargo ? 'cg:' + botCargo : 'area'], OP_MENU]);
+}
+
+function botAgregar(id) {
+  const c = catCargo(id);
+  if (c) { SP.area = c.areas[0]; SP.cargo = id; }
+  cerrarWsp();
+  irTab('ingreso');
+  pintarSug();
+  const p = window.matchMedia('(min-width:1100px)').matches ? document.querySelector('.lateral .sugpanel') : document.querySelector('.sugMovil');
+  if (p) { if (p.tagName === 'DETAILS') p.open = true; p.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  toast(libre() ? 'Haga clic en cada función para agregarla a su registro.' : 'Primero escriba su RUT; luego haga clic en las funciones para agregarlas.');
+}
+
+function botAccionCat(a) {
+  if (a === 'area') { msj('Funciones por área', 'yo'); botPreguntaArea(); return true; }
+  if (a.indexOf('ar:') === 0) { const k = a.slice(3); msj(esc(areaInfo(k).n), 'yo'); SP.area = k; botArea(k); return true; }
+  if (a.indexOf('cg:') === 0) { const c = catCargo(a.slice(3)); msj(esc(FOCO[c.id] || nomCargo(c)), 'yo'); botMostrarCargo(c.id); return true; }
+  if (a === 'cgx') { msj('Ninguno se parece', 'yo'); botModo = 'buscafun'; botDice('Cuéntame con tus palabras qué haces en tu trabajo (por ejemplo: "cobro facturas y reviso cajas") y busco las funciones del levantamiento que más se parecen.', [['Ver otras áreas', 'area'], OP_MENU]); setTimeout(() => $('wspIn').focus(), 550); return true; }
+  if (a.indexOf('cf:') === 0) { const p = a.split(':'); msj(esc(TIPO_PL[p[2]]), 'yo'); botFunciones(p[1], p[2]); return true; }
+  if (a.indexOf('cr:') === 0) { msj('Responsabilidades e indicadores', 'yo'); botResp(a.slice(3)); return true; }
+  if (a.indexOf('crel:') === 0) { msj('Apoyo de otros cargos', 'yo'); botRel(a.slice(5)); return true; }
+  if (a.indexOf('cadd:') === 0) { botAgregar(a.slice(5)); return true; }
+  if (a.indexOf('cpanel:') === 0) { SP.area = a.slice(7); SP.cargo = ''; botAgregar(''); return true; }
+  return false;
+}
+
+const CAT_IDX = [];
+
+function catIndexar() {
+  if (CAT_IDX.length) return;
+  CATALOGO.forEach(c => c.funciones.forEach((f, i) => {
+    CAT_IDX.push({ c: c, f: f, i: i, t: new Set(tokens(f.t)), k: new Set(tokens(f.tareas.join(' '))) });
+  }));
+}
+
+function catBuscar(texto) {
+  catIndexar();
+  const tq = Array.from(new Set(tokens(texto))).filter(w => w.length > 2);
+  if (!tq.length) return [];
+  return CAT_IDX.map(e => {
+    let p = 0;
+    let hit = 0;
+    tq.forEach(w => {
+      const enT = e.t.has(w) || Array.from(e.t).some(x => x.length > 4 && w.length > 4 && (x.indexOf(w) === 0 || w.indexOf(x) === 0));
+      const enK = e.k.has(w) || Array.from(e.k).some(x => x.length > 4 && w.length > 4 && (x.indexOf(w) === 0 || w.indexOf(x) === 0));
+      if (enT) p += 2;
+      else if (enK) p += 1;
+      if (enT || enK) hit++;
+    });
+    return { e: e, p: p, c: hit / tq.length };
+  }).filter(x => x.p > 0).sort((a, b) => b.p - a.p || b.c - a.c);
+}
+
+function catCargoTexto(texto) {
+  const t = ' ' + norm(texto) + ' ';
+  let mejor = null;
+  CATALOGO.forEach(c => c.alias.concat([norm(nomCargo(c))]).forEach(a => {
+    const k = norm(a);
+    if (t.indexOf(' ' + k + ' ') >= 0 || t.indexOf(' ' + k + 's ') >= 0 || t.indexOf(' ' + k + 'es ') >= 0) {
+      if (!mejor || k.length > mejor.k.length) mejor = { c: c, k: k };
+    }
+  }));
+  return mejor ? mejor.c : null;
+}
+
+function botTextoCat(t, fuerte) {
+  const pideFun = /funcion|tarea|que hace|hace un|responsab|perfil|cargo|labor|trabaj|rol /.test(' ' + norm(t) + ' ');
+  if (fuerte) {
+    const cg = catCargoTexto(t);
+    if (cg && (pideFun || tokens(t).length <= 3)) { botMostrarCargo(cg.id); return true; }
+    if (!pideFun && botModo !== 'buscafun') return false;
+    if (/area|trabajo en|soy de/.test(norm(t))) {
+      const a = areaDe(t);
+      if (a) { SP.area = a; botArea(a); return true; }
+    }
+  }
+  const r = catBuscar(t);
+  const top = r[0];
+  if (!top) return false;
+  const ok = fuerte ? (top.p >= 3 && top.c >= 0.5) || botModo === 'buscafun' && top.p >= 2 : top.p >= 2 && top.c >= 0.5;
+  if (!ok) return false;
+  const l = r.slice(0, 4);
+  botModo = '';
+  botDice('En el levantamiento encontré estas funciones parecidas:' + l.map(x => '<div class="bfun"><b>' + esc(tituloF(x.e.f)) + '</b><small>' + esc(nomCargo(x.e.c)) + ' · ' + esc(x.e.f.tipo) + '</small>' + (x.e.f.tareas.length ? '<ul>' + x.e.f.tareas.slice(0, 3).map(y => '<li>' + esc(y) + '</li>').join('') + '</ul>' : '') + '</div>').join(''), Array.from(new Set(l.map(x => x.e.c.id))).slice(0, 3).map(id => ['Ver cargo: ' + nomCargo(catCargo(id)), 'cg:' + id]).concat([OP_MENU]));
+  return true;
+}
+
+function descBase(c) {
+  const fx = t => c.funciones.filter(f => f.tipo === t).map(f => tituloF(f) + (f.tareas.length ? '\n' + f.tareas.map(x => '  - ' + x).join('\n') : '')).join('\n');
+  return { nombre: nomCargo(c), lev: c.lev, area: c.area, reporta: c.reporta, supervisa: c.supervisa, rol: c.rol, proposito: c.proposito, principales: fx('Principal'), secundarias: fx('Secundaria'), apoyo: fx('Apoyo'), esporadicas: fx('Esporádica'), resp: c.resp.join('\n'), indicadores: c.indicadores.join('\n'), formacion: (c.req || {}).formacion || '', experiencia: (c.req || {}).experiencia || '', conocimientos: (c.req || {}).conocimientos || '', condiciones: '' };
+}
+
+let DESC = {};
+let DESC_SEL = '';
+let DESC_SUCIO = false;
+const DESC_CAMPOS = [['nombre', 'Nombre del cargo', 1], ['lev', 'Cargo según levantamiento', 1], ['area', 'Área', 1], ['reporta', 'Reporta a', 1], ['supervisa', 'Supervisa a', 1], ['rol', 'Rol en procedimientos', 1], ['proposito', 'Propósito del cargo', 3], ['principales', 'Funciones principales', 7], ['secundarias', 'Funciones secundarias', 4], ['apoyo', 'Funciones de apoyo', 4], ['esporadicas', 'Funciones esporádicas', 3], ['resp', 'Responsabilidades', 4], ['indicadores', 'Indicadores', 3], ['formacion', 'Formación', 1], ['experiencia', 'Experiencia', 1], ['conocimientos', 'Conocimientos clave', 1], ['condiciones', 'Condiciones (jornada, lugar, licencias, exigencias físicas)', 2]];
+const DESC_DEST = { 'Principal': 'principales', 'Secundaria': 'secundarias', 'Apoyo': 'apoyo', 'Esporádica': 'esporadicas', 'Responsabilidad': 'resp' };
+
+async function abrirDescriptores() {
+  $('rLista').innerHTML = '<li class="mini">Cargando…</li>';
+  const j = await api('descriptores', { sesion: SESION });
+  DESC = (j.ok && j.descriptores) || {};
+  if (!DESC_SEL) DESC_SEL = CATALOGO[0].id;
+  renderDescLista();
+  renderDescEditor();
+}
+
+function descDatos(id) {
+  const c = catCargo(id);
+  return Object.assign(c ? descBase(c) : { nombre: id.replace(/^x:/, '') }, DESC[id] || {});
+}
+
+function renderDescLista() {
+  const extra = Object.keys(DESC).filter(k => !catCargo(k));
+  $('rLista').innerHTML = CATALOGO.map(c => [c.id, nomCargo(c)]).concat(extra.map(k => [k, (DESC[k] && DESC[k].nombre) || k.replace(/^x:/, '')])).map(x => '<li><button type="button" class="atema' + (x[0] === DESC_SEL ? ' sel' : '') + '" data-desc="' + esc(x[0]) + '"><span>' + esc(x[1]) + '</span><small>' + (DESC[x[0]] ? 'Editado' : 'Base') + '</small></button></li>').join('');
+}
+
+function renderDescEditor() {
+  const d = descDatos(DESC_SEL);
+  $('rTit').textContent = d.nombre || 'Descriptor';
+  $('rEstado').textContent = DESC[DESC_SEL] ? 'Guardado en la hoja "Descriptores".' : 'Generado desde el levantamiento (documento RH-LF-001). Edite y guarde para conservar sus cambios.';
+  $('rForm').innerHTML = DESC_CAMPOS.map(x => '<div class="campo ' + (x[2] === 1 ? 'c6' : 'c12') + '"><label for="r_' + x[0] + '">' + esc(x[1]) + '</label>' + (x[2] === 1 ? '<input id="r_' + x[0] + '" data-r="' + x[0] + '" maxlength="300" value="' + esc(d[x[0]] || '') + '">' : '<textarea id="r_' + x[0] + '" data-r="' + x[0] + '" rows="' + x[2] + '">' + esc(d[x[0]] || '') + '</textarea>') + '</div>').join('');
+  DESC_SUCIO = false;
+  $('rDecl').innerHTML = '<p class="mini">Cargando funciones declaradas…</p>';
+  cargarDeclaradas();
+}
+
+async function cargarDeclaradas() {
+  const c = catCargo(DESC_SEL);
+  const alias = c ? c.alias.concat([nomCargo(c)]) : [descDatos(DESC_SEL).nombre];
+  const sel = DESC_SEL;
+  const j = await api('funcionesCargo', { sesion: SESION, alias: alias.concat(CFG.cargos.filter(x => alias.some(a => norm(x).indexOf(norm(a).slice(0, 6)) >= 0))) });
+  if (sel !== DESC_SEL) return;
+  if (!j.ok) { $('rDecl').innerHTML = '<p class="mini">' + esc(j.mensaje || '') + '</p>'; return; }
+  $('rDecl').innerHTML = '<p class="mini">' + j.personas + (j.personas === 1 ? ' persona declaró' : ' personas declararon') + ' este cargo. Agregue al descriptor las funciones que correspondan.</p>' + (j.funciones.length ? j.funciones.map((f, i) => '<div class="rdf"><div><b>' + esc(f.funcion) + '</b><small>' + esc(f.tipo) + ' · ' + f.n + (f.n === 1 ? ' persona' : ' personas') + '</small></div><button type="button" class="ap-b" data-radd="' + i + '">+ Agregar</button></div>').join('') : '<p class="vacio">Aún no hay funciones declaradas para este cargo.</p>');
+  $('rDecl').dataset.f = JSON.stringify(j.funciones);
+}
+
+function leerDescForm() {
+  const o = {};
+  $('rForm').querySelectorAll('[data-r]').forEach(x => { o[x.dataset.r] = x.value; });
+  return o;
+}
+
+function lineasDesc(txt) {
+  const out = [];
+  String(txt || '').split('\n').forEach(l => {
+    if (!l.trim()) return;
+    if (/^\s*[-•]\s+/.test(l) && out.length) out[out.length - 1].t.push(l.replace(/^\s*[-•]\s+/, ''));
+    else out.push({ f: l.trim(), t: [] });
+  });
+  return out;
+}
+
+function descriptorHTML(d) {
+  const fila = (k, v) => '<div><span>' + esc(k) + '</span>' + esc(v || '—') + '</div>';
+  const fun = (tit, txt) => { const l = lineasDesc(txt); return l.length ? '<h3 class="pgt">' + esc(tit) + '</h3><ul class="pdl">' + l.map(x => '<li><b>' + esc(x.f) + '</b>' + (x.t.length ? '<ul>' + x.t.map(y => '<li>' + esc(y) + '</li>').join('') + '</ul>' : '') + '</li>').join('') + '</ul>' : ''; };
+  const lista = (tit, txt) => { const l = String(txt || '').split('\n').map(x => x.trim()).filter(Boolean); return l.length ? '<h2>' + esc(tit) + '</h2><ul class="pdl">' + l.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : ''; };
+  return '<div class="pdoc">' + pEnc('Descriptor de cargo', d.nombre || '', '<div class="pmeta">Cargo<b style="font-size:10pt">' + esc(d.nombre || '') + '</b><em>' + esc(hoy()) + '</em></div>') +
+    '<h2>1. Identificación</h2><div class="pgrid">' + fila('Nombre del cargo', d.nombre) + fila('Cargo según levantamiento', d.lev) + fila('Área', d.area) + fila('Reporta a', d.reporta) + '<div class="full"><span>Supervisa a</span>' + esc(d.supervisa || '—') + '</div></div>' +
+    '<h2>2. Propósito</h2><div class="box">' + esc(d.proposito || '—') + '</div>' +
+    '<h2>3. Funciones</h2>' + fun('Funciones principales', d.principales) + fun('Funciones secundarias', d.secundarias) + fun('Funciones de apoyo', d.apoyo) + fun('Funciones esporádicas', d.esporadicas) +
+    lista('4. Responsabilidades', d.resp) + lista('5. Indicadores', d.indicadores) +
+    '<h2>6. Requisitos</h2><div class="pgrid">' + fila('Formación', d.formacion) + fila('Experiencia', d.experiencia) + '<div class="full"><span>Conocimientos clave</span>' + esc(d.conocimientos || '—') + '</div></div>' +
+    (d.condiciones ? '<h2>7. Condiciones</h2><div class="box">' + esc(d.condiciones) + '</div>' : '') +
+    (d.rol ? '<h2>' + (d.condiciones ? '8' : '7') + '. Rol en procedimientos</h2><div class="box">' + esc(d.rol) + '</div>' : '') +
+    '<div class="firmas f3"><div>Elaborado por</div><div>Revisado por</div><div>Aprobado por</div></div><div class="pfoot">Generado desde el Levantamiento de Funciones por Cargo el ' + esc(hoy()) + '.</div></div>';
+}
+
+$('rLista').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-desc]');
+  if (!b) return;
+  if (DESC_SUCIO && !confirm('Hay cambios sin guardar en este descriptor. ¿Cambiar de cargo de todos modos?')) return;
+  DESC_SEL = b.dataset.desc;
+  renderDescLista();
+  renderDescEditor();
+});
+$('rForm').addEventListener('input', () => { DESC_SUCIO = true; $('rEstado').textContent = 'Cambios sin guardar'; });
+$('rDecl').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-radd]');
+  if (!b) return;
+  const f = JSON.parse($('rDecl').dataset.f || '[]')[+b.dataset.radd];
+  if (!f) return;
+  const k = DESC_DEST[f.tipo] || 'principales';
+  const ta = $('r_' + k);
+  const linea = f.funcion + (f.descripcion ? '\n' + String(f.descripcion).split('\n').map(x => x.replace(/^\s*[-•]\s*/, '').trim()).filter(Boolean).map(x => '  - ' + x).join('\n') : '');
+  ta.value = (ta.value.trim() ? ta.value.replace(/\s+$/, '') + '\n' : '') + linea;
+  DESC_SUCIO = true;
+  $('rEstado').textContent = 'Cambios sin guardar';
+  b.textContent = 'Agregada';
+  b.disabled = true;
+  ta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+$('rGuardar').addEventListener('click', async () => {
+  const b = $('rGuardar');
+  b.disabled = true;
+  const d = leerDescForm();
+  const j = await api('descriptorGuardar', { sesion: SESION, cargo: DESC_SEL, datos: d });
+  b.disabled = false;
+  if (!j.ok) { if (j.sesion !== false) toast(j.mensaje, true); return; }
+  DESC[DESC_SEL] = d;
+  DESC_SUCIO = false;
+  renderDescLista();
+  $('rEstado').textContent = 'Guardado en la hoja "Descriptores".';
+  toast('Descriptor guardado.');
+});
+$('rBase').addEventListener('click', () => {
+  const c = catCargo(DESC_SEL);
+  if (!c) { toast('Este cargo no tiene versión base en el levantamiento.', true); return; }
+  if (!confirm('Se reemplazará el contenido del formulario por la versión del documento de levantamiento. No se guarda hasta presionar "Guardar".')) return;
+  const b = descBase(c);
+  $('rForm').querySelectorAll('[data-r]').forEach(x => { x.value = b[x.dataset.r] || ''; });
+  DESC_SUCIO = true;
+  $('rEstado').textContent = 'Cambios sin guardar';
+});
+$('rPdf').addEventListener('click', () => { const d = leerDescForm(); imprimir(descriptorHTML(d), 'Descriptor ' + (d.nombre || 'cargo')); });
+$('rNuevo').addEventListener('click', () => {
+  const n = limpio(prompt('Nombre del nuevo cargo:') || '');
+  if (!n) return;
+  DESC_SEL = 'x:' + n.slice(0, 70);
+  DESC[DESC_SEL] = DESC[DESC_SEL] || { nombre: n };
+  renderDescLista();
+  renderDescEditor();
+  DESC_SUCIO = true;
+  $('rEstado').textContent = 'Nuevo cargo: complete y guarde.';
+});
+
+const TIPOS_EV = ['Entrevista', 'Reunión', 'Hito', 'Otro'];
+const ESTADOS_EV = ['Programada', 'Realizada', 'Reprogramada', 'Cancelada'];
+const TCOD = { 'Entrevista': 'ent', 'Reunión': 'reu', 'Hito': 'hit', 'Otro': 'otr' };
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const DSEM = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+let EVENTOS = [];
+let CALV = { vista: 'mes', y: 0, m: 0, sem: null, tipo: '', pasados: false };
+
+function iso(d) {
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+
+function lunes(d) {
+  const x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  x.setDate(x.getDate() - ((x.getDay() + 6) % 7));
+  return x;
+}
+
+function fechaLarga(s) {
+  const d = fLocal(s);
+  if (!d) return s;
+  return DSEM[(d.getDay() + 6) % 7] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()];
+}
+
+function horaFin(h, dur) {
+  if (!h) return '';
+  const p = h.split(':');
+  const t = (+p[0]) * 60 + (+p[1]) + (Number(dur) || 30);
+  return String(Math.floor(t / 60) % 24).padStart(2, '0') + ':' + String(t % 60).padStart(2, '0');
+}
+
+function etapaDeFecha(s) {
+  const f = fLocal(s);
+  if (!f) return -1;
+  return etapas().findIndex(e => {
+    const a = fLocal(e.inicio) || fLocal(e.fin);
+    const b = fLocal(e.fin) || fLocal(e.inicio);
+    return a && b && f >= a && f <= b;
+  });
+}
+
+function evFiltrados() {
+  return EVENTOS.filter(e => !CALV.tipo || e.tipo === CALV.tipo);
+}
+
+function evDia(s) {
+  return evFiltrados().filter(e => e.fecha === s).sort((a, b) => (a.hora || '99').localeCompare(b.hora || '99'));
+}
+
+async function cargarAgenda() {
+  let j = SESION ? await api('agendaAdmin', { sesion: SESION }) : null;
+  if (!j || !j.ok) j = await api('agenda', {});
+  EVENTOS = (j && j.ok && j.eventos) || [];
+  renderCalVista();
+}
+
+function abrirCalTab() {
+  const b = mesBase(etapas());
+  if (!CALV.y) { CALV.y = b[0]; CALV.m = b[1]; CALV.sem = lunes(hoy0()); }
+  $('cNuevo').hidden = !SESION;
+  $('cBloque').hidden = !SESION;
+  const et = etapas();
+  const act = et.findIndex(e => estadoEtapa(e) === 'actual');
+  $('cSub').textContent = (act >= 0 ? 'Etapa en curso: ' + et[act].nombre + '. ' : '') + (SESION ? 'Puede agendar entrevistas, reuniones e hitos, y editar las etapas.' : 'Etapas del proceso, entrevistas y reuniones programadas.');
+  irCalVista(CALV.vista);
+  cargarAgenda();
+}
+
+function irCalVista(v) {
+  CALV.vista = v;
+  document.querySelectorAll('#cTabs [data-cv]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.cv === v)));
+  $('cVista').hidden = v === 'etapas';
+  $('cFil').hidden = v === 'etapas';
+  $('subCal').hidden = v !== 'etapas';
+  $('cHoy').hidden = v === 'etapas' || v === 'lista';
+  if (v === 'etapas') renderEtapasAdmin();
+  else renderCalVista();
+}
+
+function renderFiltros() {
+  const n = t => EVENTOS.filter(e => !t || e.tipo === t).length;
+  $('cFil').innerHTML = [['', 'Todos']].concat(TIPOS_EV.map(t => [t, t === 'Reunión' ? 'Reuniones' : t === 'Otro' ? 'Otros' : t + 's'])).map(x => '<button type="button" data-ctipo="' + esc(x[0]) + '" aria-pressed="' + (CALV.tipo === x[0]) + '">' + (x[0] ? '<i class="tc ' + TCOD[x[0]] + '"></i>' : '') + esc(x[1]) + ' <small>' + n(x[0]) + '</small></button>').join('') + (CALV.vista === 'lista' ? '<label class="cpas"><input type="checkbox" id="cPasados"' + (CALV.pasados ? ' checked' : '') + '> Incluir eventos pasados</label>' : '');
+}
+
+function chipEv(e) {
+  return '<button type="button" class="ev ' + TCOD[e.tipo] + (e.estado === 'Cancelada' ? ' cancel' : e.estado === 'Realizada' ? ' hecho' : '') + '" data-ev="' + esc(e.id) + '" title="' + esc((e.hora ? e.hora + ' · ' : '') + e.titulo + (e.persona && e.titulo.indexOf(e.persona) < 0 ? ' · ' + e.persona : '')) + '">' + (e.hora ? '<b>' + esc(e.hora) + '</b> ' : '') + esc(e.titulo) + '</button>';
+}
+
+function leyendaCal() {
+  const et = etapas();
+  const lim = et[0] && et[0].fin;
+  return '<div class="cal-ley">' + et.map((e, i) => '<span><i class="e' + (i + 1) + '"></i>' + esc(e.nombre) + '</span>').join('') + (lim ? '<span><i class="lim"></i>Plazo de entrega</span>' : '') + TIPOS_EV.map(t => '<span><i class="tc ' + TCOD[t] + '"></i>' + esc(t) + '</span>').join('') + '</div>';
+}
+
+function renderCalVista() {
+  if (CALV.vista === 'etapas') return;
+  renderFiltros();
+  if (CALV.vista === 'mes') $('cVista').innerHTML = mesHTML();
+  else if (CALV.vista === 'sem') $('cVista').innerHTML = semHTML();
+  else $('cVista').innerHTML = listaHTML();
+}
+
+function claseDia(f) {
+  const et = etapas();
+  let cls = '';
+  et.forEach((e, i) => {
+    const a = fLocal(e.inicio) || fLocal(e.fin);
+    const b = fLocal(e.fin) || fLocal(e.inicio);
+    if (!cls && a && b && f >= a && f <= b) cls = 'e' + (i + 1);
+  });
+  if (f.getTime() === hoy0().getTime()) cls += ' hoy';
+  if (et[0] && et[0].fin && f.getTime() === fLocal(et[0].fin).getTime()) cls += ' lim';
+  return cls.trim();
+}
+
+function mesHTML() {
+  const y = CALV.y;
+  const m = CALV.m;
+  const first = new Date(y, m, 1);
+  const ini = (first.getDay() + 6) % 7;
+  const start = new Date(y, m, 1 - ini);
+  let c = DSEM.map(d => '<div class="dn">' + d.slice(0, 3) + '</div>').join('');
+  const semanas = Math.ceil((ini + new Date(y, m + 1, 0).getDate()) / 7);
+  for (let i = 0; i < semanas * 7; i++) {
+    const f = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
+    const s = iso(f);
+    const evs = evDia(s);
+    const fuera = f.getMonth() !== m;
+    c += '<div class="dia ' + claseDia(f) + (fuera ? ' fuera' : '') + '" data-dia="' + s + '" tabindex="0" aria-label="' + esc(fechaLarga(s)) + (evs.length ? ', ' + evs.length + ' eventos' : '') + '"><span class="dnum">' + f.getDate() + '</span>' + evs.slice(0, 3).map(chipEv).join('') + (evs.length > 3 ? '<span class="mas">+' + (evs.length - 3) + ' más</span>' : '') + '</div>';
+  }
+  return '<div class="mcal-h"><button type="button" class="cnav" data-cnav="-1" aria-label="Mes anterior">‹</button><b>' + esc(MESES[m].charAt(0).toUpperCase() + MESES[m].slice(1) + ' ' + y) + '</b><button type="button" class="cnav" data-cnav="1" aria-label="Mes siguiente">›</button></div><div class="mcal-g">' + c + '</div>' + leyendaCal();
+}
+
+function semHTML() {
+  const ini = CALV.sem || lunes(hoy0());
+  const fin = new Date(ini.getFullYear(), ini.getMonth(), ini.getDate() + 6);
+  let c = '';
+  for (let i = 0; i < 7; i++) {
+    const f = new Date(ini.getFullYear(), ini.getMonth(), ini.getDate() + i);
+    const s = iso(f);
+    const evs = evDia(s);
+    c += '<div class="wd ' + claseDia(f) + '"><div class="wdh" data-dia="' + s + '" tabindex="0"><b>' + DSEM[i].slice(0, 3) + '</b><span class="dnum">' + f.getDate() + '</span></div>' + (evs.length ? evs.map(e => '<button type="button" class="wev ' + TCOD[e.tipo] + (e.estado === 'Cancelada' ? ' cancel' : '') + '" data-ev="' + esc(e.id) + '"><b>' + esc(e.hora ? e.hora + '–' + horaFin(e.hora, e.dur) : 'Todo el día') + '</b><span>' + esc(e.titulo) + '</span>' + (e.lugar ? '<small>' + esc(e.lugar) + '</small>' : '') + '</button>').join('') : '<p class="wvac">Sin eventos</p>') + (SESION ? '<button type="button" class="wadd" data-nuevo="' + s + '">+ Agendar</button>' : '') + '</div>';
+  }
+  const t = ini.getDate() + ' de ' + MESES[ini.getMonth()] + ' al ' + fin.getDate() + ' de ' + MESES[fin.getMonth()] + ' ' + fin.getFullYear();
+  return '<div class="mcal-h"><button type="button" class="cnav" data-cnav="-1" aria-label="Semana anterior">‹</button><b>' + esc(t) + '</b><button type="button" class="cnav" data-cnav="1" aria-label="Semana siguiente">›</button></div><div class="wcal">' + c + '</div>' + leyendaCal();
+}
+
+function listaHTML() {
+  const h = iso(hoy0());
+  const l = evFiltrados().filter(e => CALV.pasados || e.fecha >= h).sort((a, b) => (a.fecha + (a.hora || '99')).localeCompare(b.fecha + (b.hora || '99')));
+  if (!l.length) return '<p class="vacio">' + (EVENTOS.length ? 'No hay eventos ' + (CALV.pasados ? '' : 'próximos ') + 'con este filtro.' : 'Aún no hay eventos agendados.') + (SESION ? ' Use "+ Agendar" o "Agendar entrevistas en bloque".' : '') + '</p>';
+  const g = {};
+  l.forEach(e => { (g[e.fecha] = g[e.fecha] || []).push(e); });
+  const et = etapas();
+  return '<div class="alist">' + Object.keys(g).map(f => {
+    const ei = etapaDeFecha(f);
+    return '<section class="adia"><h3>' + esc(fechaLarga(f)) + (ei >= 0 ? '<span class="aet e' + (ei + 1) + '">' + esc(et[ei].nombre) + '</span>' : '') + (f === h ? '<span class="ahoy">Hoy</span>' : '') + '</h3>' + g[f].map(e => '<button type="button" class="arow" data-ev="' + esc(e.id) + '"><span class="ah">' + esc(e.hora ? e.hora : '—') + (e.hora ? '<small>' + esc(horaFin(e.hora, e.dur)) + '</small>' : '') + '</span><span class="at"><i class="tc ' + TCOD[e.tipo] + '"></i><b>' + esc(e.titulo) + '</b>' + (e.persona && e.titulo.indexOf(e.persona) < 0 ? '<small>' + esc(e.persona) + '</small>' : '') + (e.lugar ? '<small>' + esc(e.lugar) + '</small>' : '') + '</span><span class="pill ev-' + esc(e.estado) + '">' + esc(e.estado) + '</span></button>').join('') + '</section>';
+  }).join('') + '</div>';
+}
+
+function verDia(s) {
+  const evs = evDia(s);
+  const ei = etapaDeFecha(s);
+  const html = (ei >= 0 ? '<p class="sub" style="margin:0 0 10px">Etapa: <b>' + esc(etapas()[ei].nombre) + '</b></p>' : '') + (evs.length ? '<div class="alist">' + evs.map(e => '<button type="button" class="arow" data-ev="' + esc(e.id) + '"><span class="ah">' + esc(e.hora || '—') + '</span><span class="at"><i class="tc ' + TCOD[e.tipo] + '"></i><b>' + esc(e.titulo) + '</b>' + (e.lugar ? '<small>' + esc(e.lugar) + '</small>' : '') + '</span><span class="pill ev-' + esc(e.estado) + '">' + esc(e.estado) + '</span></button>').join('') + '</div>' : '<p class="vacio">No hay eventos este día.</p>');
+  const bts = [{ txt: 'Cerrar' }];
+  if (SESION) bts.push({ txt: '+ Agendar este día', cls: 'pri', fn: () => formEvento({ fecha: s }) });
+  dialogo(fechaLarga(s).charAt(0).toUpperCase() + fechaLarga(s).slice(1), html, bts);
+}
+
+function verEvento(id) {
+  const e = EVENTOS.find(x => x.id === id);
+  if (!e) return;
+  if (SESION) { formEvento(e); return; }
+  const fila = (k, v) => v ? '<div class="rfila"><dt>' + esc(k) + '</dt><dd>' + esc(v) + '</dd></div>' : '';
+  dialogo(e.titulo, '<dl class="rlista">' + fila('Tipo', e.tipo) + fila('Fecha', fechaLarga(e.fecha)) + fila('Hora', e.hora ? e.hora + ' a ' + horaFin(e.hora, e.dur) : 'Todo el día') + fila('Persona', e.persona) + fila('Lugar / modalidad', e.lugar) + fila('Estado', e.estado) + '</dl>', [{ txt: 'Agregar a mi calendario (.ics)', cls: 'sec', fn: () => bajarIcs([e]) }, { txt: 'Cerrar', cls: 'pri' }]);
+}
+
+async function personasAgenda() {
+  if (SESION && !LISTA.length) {
+    const j = await api('lista', { sesion: SESION });
+    if (j.ok) LISTA = j.personas || [];
+  }
+  return LISTA.map(p => ({ nombre: p.nombre, id: p.id }));
+}
+
+async function formEvento(e) {
+  e = Object.assign({ id: '', fecha: iso(hoy0()), hora: '10:00', dur: 30, tipo: 'Entrevista', titulo: '', persona: '', reg: '', lugar: '', estado: 'Programada', notas: '' }, e || {});
+  const per = await personasAgenda();
+  const op = (l, v) => l.map(x => '<option' + (x === v ? ' selected' : '') + '>' + esc(x) + '</option>').join('');
+  const durs = [15, 20, 30, 45, 60, 90, 120, 180, 240];
+  if (durs.indexOf(Number(e.dur)) < 0) durs.push(Number(e.dur));
+  const html = '<form id="fEv" class="g12" novalidate>' +
+    '<div class="campo c4"><label for="evTipo">Tipo</label><select id="evTipo">' + op(TIPOS_EV, e.tipo) + '</select></div>' +
+    '<div class="campo c8"><label for="evPer">Persona</label><input id="evPer" list="dlPer" maxlength="120" autocomplete="off" value="' + esc(e.persona) + '" placeholder="Colaborador(a) a entrevistar"><datalist id="dlPer">' + per.map(p => '<option value="' + esc(p.nombre) + '">').join('') + '</datalist></div>' +
+    '<div class="campo c12"><label for="evTit">Título</label><input id="evTit" maxlength="120" value="' + esc(e.titulo) + '" placeholder="Si lo deja vacío: Entrevista con …"></div>' +
+    '<div class="campo c4"><label for="evFecha">Fecha</label><input id="evFecha" type="date" value="' + esc(e.fecha) + '"><small class="err"></small></div>' +
+    '<div class="campo c4"><label for="evHora">Hora</label><input id="evHora" type="time" value="' + esc(e.hora) + '"></div>' +
+    '<div class="campo c4"><label for="evDur">Duración</label><select id="evDur">' + durs.sort((a, b) => a - b).map(d => '<option value="' + d + '"' + (d === Number(e.dur) ? ' selected' : '') + '>' + (d < 60 ? d + ' min' : (d / 60) + (d === 60 ? ' hora' : ' horas')) + '</option>').join('') + '</select></div>' +
+    '<div class="campo c8"><label for="evLug">Lugar / modalidad</label><input id="evLug" maxlength="120" value="' + esc(e.lugar) + '" placeholder="Ej.: Oficina administración · Meet · Tienda Centro"></div>' +
+    '<div class="campo c4"><label for="evEst">Estado</label><select id="evEst">' + op(ESTADOS_EV, e.estado) + '</select></div>' +
+    '<div class="campo c12"><label for="evNot">Notas internas</label><textarea id="evNot" rows="3" maxlength="1000" placeholder="Solo visibles para el administrador">' + esc(e.notas) + '</textarea></div>' +
+    '<p class="mini c12" id="evEtapa" style="margin:0"></p><p class="errBloque c12" id="evErr"></p></form>';
+  const bts = [{ txt: 'Cancelar' }];
+  if (e.id) {
+    bts.unshift({ txt: 'Eliminar', cls: 'txt', fn: async b => {
+      if (!confirm('¿Eliminar este evento?')) return;
+      b.disabled = true;
+      const j = await api('agendaBorrar', { sesion: SESION, id: e.id });
+      b.disabled = false;
+      if (!j.ok) { $('evErr').textContent = j.mensaje || ''; return; }
+      cerrarModal('dlg');
+      toast('Evento eliminado.');
+      cargarAgenda();
+    } });
+    bts.splice(1, 0, { txt: '.ics', cls: 'sec', fn: () => bajarIcs([e]) }, { txt: 'Copiar invitación', cls: 'sec', fn: b => copiar(invitacion(e), b) });
+  }
+  bts.push({ txt: e.id ? 'Guardar cambios' : 'Agendar', cls: 'pri', fn: async b => {
+    const per2 = limpio($('evPer').value);
+    const m = per.find(p => norm(p.nombre) === norm(per2));
+    const ev = { id: e.id, tipo: $('evTipo').value, persona: per2, reg: m ? m.id : (norm(per2) === norm(e.persona) ? e.reg : ''), titulo: limpio($('evTit').value), fecha: $('evFecha').value, hora: $('evHora').value, dur: $('evDur').value, lugar: limpio($('evLug').value), estado: $('evEst').value, notas: $('evNot').value };
+    $('evErr').textContent = '';
+    if (!ev.fecha) { $('evErr').textContent = 'Indique la fecha.'; return; }
+    b.disabled = true;
+    const j = await api('agendaGuardar', { sesion: SESION, evento: ev });
+    b.disabled = false;
+    if (!j.ok) { $('evErr').textContent = j.mensaje || 'No fue posible guardar.'; return; }
+    cerrarModal('dlg');
+    toast(e.id ? 'Evento actualizado.' : 'Evento agendado.');
+    const f = fLocal(ev.fecha);
+    CALV.y = f.getFullYear();
+    CALV.m = f.getMonth();
+    CALV.sem = lunes(f);
+    cargarAgenda();
+  } });
+  dialogo(e.id ? 'Editar evento' : 'Agendar evento', html, bts);
+  const etq = () => { const i = etapaDeFecha($('evFecha').value); $('evEtapa').textContent = i >= 0 ? 'Corresponde a la etapa: ' + etapas()[i].nombre + '.' : ''; };
+  $('evFecha').addEventListener('input', etq);
+  etq();
+  setTimeout(() => $('evPer').focus(), 60);
+}
+
+function invitacion(e) {
+  return 'Hola' + (e.persona ? ' ' + e.persona.split(' ')[0] : '') + ', te cito a ' + (e.tipo === 'Entrevista' ? 'una entrevista para revisar tus funciones' : e.titulo) + ' el ' + fechaLarga(e.fecha) + (e.hora ? ' a las ' + e.hora : '') + (e.lugar ? ', en ' + e.lugar : '') + '. Duración aproximada: ' + e.dur + ' minutos. Lleva tu registro de funciones a mano. ¡Gracias!';
+}
+
+function bajarIcs(evs) {
+  const z = n => String(n).padStart(2, '0');
+  const ahora = new Date();
+  const st = ahora.getUTCFullYear() + z(ahora.getUTCMonth() + 1) + z(ahora.getUTCDate()) + 'T' + z(ahora.getUTCHours()) + z(ahora.getUTCMinutes()) + '00Z';
+  const esc2 = s => String(s || '').replace(/[\\;,]/g, m => '\\' + m).replace(/\n/g, '\\n');
+  const v = evs.map(e => {
+    const d = e.fecha.replace(/-/g, '');
+    const ini = e.hora ? 'DTSTART;TZID=America/Santiago:' + d + 'T' + e.hora.replace(':', '') + '00' : 'DTSTART;VALUE=DATE:' + d;
+    const fin = e.hora ? 'DTEND;TZID=America/Santiago:' + d + 'T' + horaFin(e.hora, e.dur).replace(':', '') + '00' : '';
+    return ['BEGIN:VEVENT', 'UID:' + e.id + '@levantamiento', 'DTSTAMP:' + st, ini, fin, 'SUMMARY:' + esc2(e.titulo), e.lugar ? 'LOCATION:' + esc2(e.lugar) : '', 'DESCRIPTION:' + esc2('Levantamiento de funciones' + (CFG.empresa ? ' · ' + CFG.empresa : '') + (e.persona ? '\nPersona: ' + e.persona : '')), 'END:VEVENT'].filter(Boolean).join('\r\n');
+  });
+  const txt = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Levantamiento de Funciones//ES', 'CALSCALE:GREGORIAN'].concat(v).concat(['END:VCALENDAR']).join('\r\n');
+  const url = URL.createObjectURL(new Blob([txt], { type: 'text/calendar;charset=utf-8' }));
+  const l = document.createElement('a');
+  l.href = url;
+  l.download = (evs.length === 1 ? evs[0].titulo : 'Agenda levantamiento').replace(/[\\/:*?"<>|]/g, '') + '.ics';
+  document.body.appendChild(l);
+  l.click();
+  setTimeout(() => { URL.revokeObjectURL(url); l.remove(); }, 800);
+}
+
+async function agendarBloque() {
+  const per = await personasAgenda();
+  const conEnt = new Set(EVENTOS.filter(e => e.tipo === 'Entrevista' && e.estado !== 'Cancelada' && e.reg).map(e => e.reg));
+  const pend = per.filter(p => !conEnt.has(p.id));
+  const et = etapas();
+  const h = iso(hoy0());
+  let ini = et[1] && et[1].inicio && et[1].inicio > h ? et[1].inicio : h;
+  if (!per.length) { dialogo('Agendar entrevistas en bloque', '<p>Aún no hay registros enviados para agendar entrevistas.</p>', [{ txt: 'Cerrar', cls: 'pri' }]); return; }
+  const html = '<form id="fBl" novalidate><p class="sub" style="margin:0 0 12px">Se reparten entrevistas consecutivas entre las personas marcadas, desde la fecha y en el horario que indique. Las que ya tienen entrevista no aparecen marcadas.</p>' +
+    '<div class="g12"><div class="campo c4"><label for="blIni">Desde</label><input id="blIni" type="date" value="' + ini + '"></div><div class="campo c4"><label for="blH1">Hora inicio</label><input id="blH1" type="time" value="09:30"></div><div class="campo c4"><label for="blH2">Hora término</label><input id="blH2" type="time" value="13:00"></div>' +
+    '<div class="campo c4"><label for="blDur">Duración</label><select id="blDur"><option value="20">20 min</option><option value="30" selected>30 min</option><option value="45">45 min</option><option value="60">1 hora</option></select></div><div class="campo c4"><label for="blPau">Pausa entre entrevistas</label><select id="blPau"><option value="0">Sin pausa</option><option value="10" selected>10 min</option><option value="15">15 min</option><option value="30">30 min</option></select></div><div class="campo c4"><label for="blLug">Lugar / modalidad</label><input id="blLug" maxlength="120" placeholder="Oficina administración"></div>' +
+    '<label class="c12 chk" style="display:flex;gap:8px;align-items:center;margin-bottom:10px"><input type="checkbox" id="blHab" checked style="width:18px;height:18px;accent-color:var(--acc)"> Solo días hábiles (lunes a viernes)</label></div>' +
+    '<div class="blsel"><div class="blcab"><b>Personas (' + per.length + ')</b><span><button type="button" class="enlace" id="blTodos">Marcar todas</button> · <button type="button" class="enlace" id="blNing">Ninguna</button></span></div><div class="bllist">' + per.map(p => '<label><input type="checkbox" value="' + esc(p.id) + '" data-n="' + esc(p.nombre) + '"' + (conEnt.has(p.id) ? '' : ' checked') + '> ' + esc(p.nombre) + (conEnt.has(p.id) ? ' <small>ya agendada</small>' : '') + '</label>').join('') + '</div></div>' +
+    '<div id="blPrev" class="blprev"></div><p class="errBloque" id="blErr"></p></form>';
+  dialogo('Agendar entrevistas en bloque', html, [{ txt: 'Cancelar' }, { txt: 'Agendar', cls: 'pri', fn: async b => {
+    const s = slotsBloque();
+    $('blErr').textContent = '';
+    if (!s.length) { $('blErr').textContent = 'Marque al menos una persona y revise el horario.'; return; }
+    b.disabled = true;
+    const j = await api('agendaBloque', { sesion: SESION, eventos: s });
+    b.disabled = false;
+    if (!j.ok) { $('blErr').textContent = j.mensaje || ''; return; }
+    cerrarModal('dlg');
+    toast(j.creados + ' entrevistas agendadas.');
+    const f = fLocal(s[0].fecha);
+    CALV.y = f.getFullYear();
+    CALV.m = f.getMonth();
+    CALV.sem = lunes(f);
+    cargarAgenda();
+  } }]);
+  $('dlg').querySelector('.caja').classList.add('grande');
+  const prev = () => {
+    const s = slotsBloque();
+    $('blPrev').innerHTML = s.length ? '<b>Vista previa (' + s.length + ')</b><ol>' + s.map(x => '<li><span>' + esc(fechaLarga(x.fecha)) + ' · ' + esc(x.hora) + '</span> ' + esc(x.persona) + '</li>').join('') + '</ol>' : '<p class="mini">Marque personas para ver la propuesta de horarios.</p>';
+  };
+  $('fBl').addEventListener('input', prev);
+  $('fBl').addEventListener('change', prev);
+  $('blTodos').onclick = () => { $('fBl').querySelectorAll('.bllist input').forEach(x => { x.checked = true; }); prev(); };
+  $('blNing').onclick = () => { $('fBl').querySelectorAll('.bllist input').forEach(x => { x.checked = false; }); prev(); };
+  prev();
+}
+
+function slotsBloque() {
+  const sel = Array.from($('fBl').querySelectorAll('.bllist input:checked')).map(x => ({ id: x.value, nombre: x.dataset.n }));
+  const d0 = fLocal($('blIni').value);
+  const m = s => { const p = String(s || '').split(':'); return p.length === 2 ? (+p[0]) * 60 + (+p[1]) : NaN; };
+  const h1 = m($('blH1').value);
+  const h2 = m($('blH2').value);
+  const dur = +$('blDur').value;
+  const pau = +$('blPau').value;
+  if (!sel.length || !d0 || isNaN(h1) || isNaN(h2) || h2 - h1 < dur) return [];
+  const ocup = new Set(EVENTOS.filter(e => e.estado !== 'Cancelada').map(e => e.fecha + ' ' + e.hora));
+  const out = [];
+  const z = n => String(n).padStart(2, '0');
+  let d = new Date(d0);
+  let guard = 0;
+  while (out.length < sel.length && guard++ < 120) {
+    const dw = d.getDay();
+    if (!$('blHab').checked || (dw > 0 && dw < 6)) {
+      for (let t = h1; t + dur <= h2 && out.length < sel.length; t += dur + pau) {
+        const hh = z(Math.floor(t / 60)) + ':' + z(t % 60);
+        if (ocup.has(iso(d) + ' ' + hh)) continue;
+        const p = sel[out.length];
+        out.push({ fecha: iso(d), hora: hh, dur: dur, tipo: 'Entrevista', persona: p.nombre, reg: p.id, titulo: 'Entrevista con ' + p.nombre, lugar: limpio($('blLug').value), estado: 'Programada' });
+      }
+    }
+    d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
+  }
+  return out;
+}
+
+document.querySelectorAll('#cTabs [data-cv]').forEach(b => b.addEventListener('click', () => irCalVista(b.dataset.cv)));
+$('cHoy').addEventListener('click', () => { const h = hoy0(); CALV.y = h.getFullYear(); CALV.m = h.getMonth(); CALV.sem = lunes(h); renderCalVista(); });
+$('cNuevo').addEventListener('click', () => formEvento({ fecha: CALV.vista === 'mes' && (CALV.y !== hoy0().getFullYear() || CALV.m !== hoy0().getMonth()) ? iso(new Date(CALV.y, CALV.m, 1)) : iso(hoy0()) }));
+$('cBloque').addEventListener('click', agendarBloque);
+$('cFil').addEventListener('click', ev => { const b = ev.target.closest('[data-ctipo]'); if (!b) return; CALV.tipo = b.dataset.ctipo; renderCalVista(); });
+$('cFil').addEventListener('change', ev => { if (ev.target.id === 'cPasados') { CALV.pasados = ev.target.checked; renderCalVista(); } });
+document.addEventListener('click', ev => {
+  const n = ev.target.closest('[data-cnav]');
+  if (n && $('vCal').contains(n)) {
+    const k = Number(n.dataset.cnav);
+    if (CALV.vista === 'mes') { CALV.m += k; if (CALV.m < 0) { CALV.m = 11; CALV.y--; } if (CALV.m > 11) { CALV.m = 0; CALV.y++; } }
+    else CALV.sem = new Date(CALV.sem.getFullYear(), CALV.sem.getMonth(), CALV.sem.getDate() + 7 * k);
+    renderCalVista();
+    return;
+  }
+  const e = ev.target.closest('[data-ev]');
+  if (e && ($('vCal').contains(e) || $('dlg').contains(e))) { verEvento(e.dataset.ev); return; }
+  const nv = ev.target.closest('[data-nuevo]');
+  if (nv && $('vCal').contains(nv)) { formEvento({ fecha: nv.dataset.nuevo }); return; }
+  const d = ev.target.closest('[data-dia]');
+  if (d && $('vCal').contains(d)) verDia(d.dataset.dia);
+});
+$('cVista').addEventListener('keydown', ev => { if (ev.key === 'Enter' && ev.target.dataset && ev.target.dataset.dia) verDia(ev.target.dataset.dia); });
+
 (function conectar() {
   const m = location.hash.match(/[#&]api=([^&]+)/);
   if (m) {
@@ -3597,7 +4624,7 @@ function aplicarInfoRut() {
     try { t = mt ? decodeURIComponent(mt[1]) : ''; } catch (e) { t = ''; }
     const u = apiDeCodigo(v);
     if (u) guardarApi(u, t);
-    try { history.replaceState(null, '', location.pathname + location.search + (/ir=ingreso|#ingreso/.test(location.hash) ? '#ingreso' : /datos/.test(location.hash) ? '#datos' : '')); } catch (e) {}
+    try { history.replaceState(null, '', location.pathname + location.search + (/ir=ingreso|#ingreso/.test(location.hash) ? '#ingreso' : /datos/.test(location.hash) ? '#datos' : /calendario/.test(location.hash) ? '#calendario' : /instructivo/.test(location.hash) ? '#instructivo' : '')); } catch (e) {}
   }
   API_URL = leerApi();
   TOKEN = leerTok();
