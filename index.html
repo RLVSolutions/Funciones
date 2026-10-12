@@ -640,7 +640,7 @@ body>*:not(#print){display:none!important}
 .wvac{color:var(--muted);font-size:.78rem;margin:4px 0}
 .wadd{margin-top:auto;border:1px dashed var(--line);background:none;border-radius:8px;padding:5px;font:600 .75rem inherit;color:var(--acc);cursor:pointer}
 .alist{display:grid;gap:14px}
-.adia h3{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.95rem;margin:0 0 6px;text-transform:capitalize}
+.adia h3{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.95rem;margin:0 0 6px}
 .aet{font:600 .7rem var(--disp);text-transform:none;border-radius:999px;padding:2px 9px}
 .aet.e1{background:#efe1f2;color:#4a1b52}.aet.e2{background:var(--mark-soft);color:#7a4d06}.aet.e3{background:var(--ok-soft);color:var(--ok)}
 .ahoy{font:700 .68rem var(--disp);background:var(--acc);color:#fff;border-radius:999px;padding:2px 8px;text-transform:uppercase}
@@ -715,6 +715,24 @@ body>*:not(#print){display:none!important}
 @media (min-width:1100px){.cfggrid{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}.cfggrid>#fAjustes{order:2}.cfggrid>section{order:1}}
 @media (min-width:1000px){.faqadm{grid-template-columns:minmax(0,1fr) 230px}.faqadm>aside.tarjeta{order:2}.faqadm>section{order:1}.faqadm>.acol{order:3}}
 @media (min-width:1300px){.faqadm{grid-template-columns:320px minmax(0,1fr) 230px}.faqadm>.acol{order:1;grid-column:auto}.faqadm>section{order:2}.faqadm>aside.tarjeta{order:3}}
+
+.ins-et.clic,.ins-pasos li.clic{cursor:pointer;transition:box-shadow .15s,transform .15s}
+.ins-et.clic:hover,.ins-pasos li.clic:hover{box-shadow:0 6px 18px rgba(43,18,50,.14);transform:translateY(-1px)}
+.ins-et.clic:focus-visible,.ins-pasos li.clic:focus-visible{outline:none;box-shadow:var(--focus)}
+.ins-ver{display:inline-block;margin-top:6px;font:600 .78rem var(--disp);color:var(--acc)}
+.insdet ul{margin:0 0 12px;padding-left:20px}
+.insdet li{margin:4px 0}
+.insimg{display:block;width:100%;border:1px solid var(--line);border-radius:10px;margin:10px 0 0;box-shadow:var(--sh)}
+.insfe{display:inline-block;font:600 .82rem var(--disp);border-radius:999px;padding:3px 12px;margin:0 0 8px}
+.insfe.e1{background:#efe1f2;color:#4a1b52}.insfe.e2{background:var(--mark-soft);color:#7a4d06}.insfe.e3{background:var(--ok-soft);color:var(--ok)}
+.pclist{max-height:52vh;overflow:auto;padding-right:4px}
+.pclist h4{font:700 .72rem var(--disp);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:12px 0 6px}
+.pcf{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:6px;cursor:pointer}
+.pcf:hover{border-color:var(--acc)}
+.pcf input{width:18px;height:18px;margin-top:2px;accent-color:var(--acc);flex:none}
+.pcf b{display:block;font-size:.9rem;font-weight:600}
+.pcf small{display:block;color:var(--muted);font-size:.78rem}
+.pcf.ya{background:var(--ok-soft);border-color:#b9dcc3;cursor:default}
 </style>
 </head>
 <body>
@@ -852,7 +870,7 @@ body>*:not(#print){display:none!important}
 
 <main id="vCal" class="shell" hidden>
 <div class="dhead"><div><h1>Calendario</h1><p class="sub" id="cSub"></p></div></div>
-<nav class="pnav" id="cTabs" aria-label="Vistas del calendario"><div class="pnav-tabs" role="tablist"><button type="button" role="tab" data-cv="mes" aria-selected="true">Mes</button><button type="button" role="tab" data-cv="sem" aria-selected="false">Semana</button><button type="button" role="tab" data-cv="lista" aria-selected="false">Agenda</button><button type="button" role="tab" data-cv="etapas" aria-selected="false">Etapas</button></div><div class="pnav-acc"><button type="button" id="cHoy">Hoy</button><button type="button" id="cNuevo" hidden>+ Agendar</button><button type="button" id="cBloque" hidden>Agendar entrevistas en bloque</button></div></nav>
+<nav class="pnav" id="cTabs" aria-label="Vistas del calendario"><div class="pnav-tabs" role="tablist"><button type="button" role="tab" data-cv="etapas" aria-selected="true">Etapas</button><button type="button" role="tab" data-cv="mes" aria-selected="false">Mes</button><button type="button" role="tab" data-cv="sem" aria-selected="false">Semana</button><button type="button" role="tab" data-cv="lista" aria-selected="false">Agenda</button></div><div class="pnav-acc"><button type="button" id="cHoy">Hoy</button><button type="button" id="cNuevo" hidden>+ Agendar</button><button type="button" id="cBloque" hidden>Agendar entrevistas en bloque</button></div></nav>
 <div class="cfil" id="cFil"></div>
 <section class="tarjeta" id="cVista"></section>
 <section id="subCal" class="tarjeta" hidden><h2 style="margin-bottom:4px">Calendario del proceso</h2><p class="sub" id="dCalRes" style="margin:0 0 6px"></p><div class="calgrid"><form id="fEtapas" novalidate></form><div><div id="dCalPrev"></div></div></div></section>
@@ -897,7 +915,7 @@ body>*:not(#print){display:none!important}
 <div class="g12">
 <div class="campo c8"><label for="cEmpresa">Nombre de la empresa</label><input id="cEmpresa" maxlength="80"></div>
 <div class="campo c4"><label for="cIniciales">Iniciales del asistente</label><input id="cIniciales" maxlength="3" placeholder="RD" style="text-transform:uppercase"></div>
-<div class="campo c6"><label for="cWsp">WhatsApp para "Hablar con una persona"</label><input id="cWsp" maxlength="20" inputmode="tel" placeholder="56912345678"><small class="ayuda">Con código de país, solo números.</small></div>
+<div class="campo c6"><label for="cWsp">WhatsApp para "Hablar con una persona"</label><div class="cxfila"><input id="cWsp" maxlength="20" inputmode="tel" placeholder="56912345678"><button type="button" id="cProbarWsp" class="btn sec">Probar</button></div><small class="ayuda">Con código de país, solo números (ej.: 56912345678). Lo usa el asistente al elegir "Hablar directo con una persona". Guarde los ajustes para aplicarlo.</small></div>
 <div class="campo c6"><label for="cLogo">Logo (archivo o URL)</label><input id="cLogo" maxlength="300" placeholder="logo.png"></div>
 <div class="campo c12"><label for="cEnlace">Enlace para colaboradores</label><div class="cxfila"><input id="cEnlace" class="mono" readonly><button type="button" id="cCopiar" class="btn sec">Copiar</button></div><small class="ayuda">Compártalo por WhatsApp o correo. Incluye la URL del servidor y el token, por eso el repositorio no necesita config.js. El QR del formulario en papel y del instructivo usa este enlace.</small></div>
 <div class="campo c12"><label for="cApi">Servidor conectado (Apps Script)</label><div class="cxfila"><input id="cApi" class="mono" readonly><button type="button" id="cCambiarApi" class="btn sec">Cambiar</button></div></div>
@@ -2304,7 +2322,7 @@ const OP_MENU = ['↩ Menú inicial', 'menu'];
 const OP_HUMANO = ['Hablar directo con una persona', 'humano', 'verde'];
 
 function opsMenu() {
-  return [['🧭 Funciones de mi cargo según mi área', 'area']].concat(BOT.map((c, i) => [(i + 1) + '. ' + c.t, 'cat:' + i]).concat([[(BOT.length + 1) + '. Escribir mi pregunta', 'libre'], [(BOT.length + 2) + '. Hablar directo con una persona', 'humano', 'verde']]));
+  return [['1. Funciones de mi cargo según mi área', 'area']].concat(BOT.map((c, i) => [(i + 2) + '. ' + c.t, 'cat:' + i]).concat([[(BOT.length + 2) + '. Escribir mi pregunta', 'libre'], [(BOT.length + 3) + '. Hablar directo con una persona', 'humano', 'verde']]));
 }
 
 function opsTema(ci) {
@@ -2329,10 +2347,14 @@ function botRespuesta(ci, qi) {
   botDice(r, acc.concat([['👍 Sí, me sirvió', 'si'], ['No me sirvió', 'no'], ['Otra pregunta de este tema', 'otra'], OP_MENU]));
 }
 
+function botSinWsp() {
+  botDice('Aún no hay un número de WhatsApp configurado para hablar con una persona. Mientras tanto, consulta directamente con tu jefatura.' + (SESION ? '<br><br><small>Como administrador, puedes configurarlo en <b>Datos › Configuración</b>, campo WhatsApp.</small>' : ''), (SESION ? [['Configurar WhatsApp ahora', 'cfgwsp', 'verde']] : []).concat([OP_MENU]));
+}
+
 function botHumano() {
   botModo = 'humano';
   if (!WSP) {
-    botDice('Por ahora no hay un número de contacto configurado. Consulta directamente con tu jefatura.', [OP_MENU]);
+    botSinWsp();
     return;
   }
   botDice('Te comunicaré por WhatsApp con una persona del equipo. Si quieres, escribe tu consulta abajo y la incluyo en el mensaje; o abre WhatsApp directamente.', [['Abrir WhatsApp ahora', 'abrirwsp', 'verde'], OP_MENU]);
@@ -2421,7 +2443,7 @@ function botTexto(t) {
 
 function enviarWsp(texto) {
   if (!WSP) {
-    botDice('Por ahora no hay un número de contacto configurado. Consulta directamente con tu jefatura.', [OP_MENU]);
+    botSinWsp();
     return;
   }
   const n = limpio($('nombre').value);
@@ -3598,10 +3620,10 @@ function instrHTML(imagenes) {
   const e0 = et[0];
   return '<div class="instr">' +
     '<p class="instr-lead">El levantamiento de funciones se realiza en <b>tres etapas</b>. En la primera, cada colaborador registra lo que realmente hace en su cargo.</p>' +
-    '<div class="ins-etapas">' + et.map((e, i) => { const st = estadoEtapa(e); return '<div class="ins-et e' + (i + 1) + ' st-' + st + '"><span class="ins-n">' + (i + 1) + '</span><b>' + esc(e.nombre) + '</b><small>' + esc(rangoTxt(e)) + '</small>' + (lbl[st] ? '<em>' + lbl[st] + '</em>' : '') + (e.desc ? '<p>' + esc(e.desc) + '</p>' : '') + '</div>'; }).join('<span class="ins-fl" aria-hidden="true">→</span>') + '</div>' +
+    '<div class="ins-etapas">' + et.map((e, i) => { const st = estadoEtapa(e); return '<div class="ins-et e' + (i + 1) + ' st-' + st + (imagenes ? ' clic" data-inset="' + i + '" tabindex="0" role="button" aria-label="Ver detalle de la etapa ' + (i + 1) : '') + '"><span class="ins-n">' + (i + 1) + '</span><b>' + esc(e.nombre) + '</b><small>' + esc(rangoTxt(e)) + '</small>' + (lbl[st] ? '<em>' + lbl[st] + '</em>' : '') + (e.desc ? '<p>' + esc(e.desc) + '</p>' : '') + (imagenes ? '<span class="ins-ver">Ver detalle ›</span>' : '') + '</div>'; }).join('<span class="ins-fl" aria-hidden="true">→</span>') + '</div>' +
     (e0 && e0.fin ? '<div class="ins-plazo">Plazo para entregar tu información: <b>' + esc(fTxt(e0.fin, true)) + '</b>' + (textoPlazo() ? ' · ' + esc(textoPlazo()) : '') + '</div>' : '') +
     '<h3>Cómo completar tu registro</h3>' +
-    '<ol class="ins-pasos">' + PASOS.map((p, i) => '<li>' + icono(p[2]) + '<span class="ins-pn">' + (i + 1) + '</span><b>' + p[0] + '</b><p>' + p[1] + '</p>' + (imagenes ? '<img src="instructivo/paso-' + (i + 1) + '.png" alt="Paso ' + (i + 1) + ': ' + p[0] + '" loading="lazy" onerror="this.remove()">' : '') + '</li>').join('') + '</ol>' +
+    '<ol class="ins-pasos">' + PASOS.map((p, i) => '<li' + (imagenes ? ' class="clic" data-inspaso="' + i + '" tabindex="0" role="button" aria-label="Ver detalle del paso ' + (i + 1) + '"' : '') + '>' + icono(p[2]) + '<span class="ins-pn">' + (i + 1) + '</span><b>' + p[0] + '</b><p>' + p[1] + '</p>' + (imagenes ? '<img src="instructivo/paso-' + (i + 1) + '.png" alt="Paso ' + (i + 1) + ': ' + p[0] + '" loading="lazy" onerror="this.remove()"><span class="ins-ver">Ver paso a paso ›</span>' : '') + '</li>').join('') + '</ol>' +
     '<div class="ins-tips"><div><b>Recuerda</b><ul><li>Una función por bloque; detalla sus tareas en la descripción.</li><li>Al menos una función debe ser de tipo ' + esc(tipoPrincipal()) + '.</li><li>Guarda tu ID y tu clave: con ellos retomas o modificas tu registro.</li><li>¿Dudas? Usa el asistente o habla directo con una persona.</li></ul></div><div class="ins-qr">' + qrSvg(enlace()) + '<small>' + esc(urlForm().replace(/^https?:\/\//, '')) + '</small></div></div>' +
     '</div>';
 }
@@ -3801,7 +3823,7 @@ function yaAgregada(t) {
   return funciones.findIndex(f => norm(f.funcion) === k);
 }
 
-function tomarFuncion(cid, idx) {
+function tomarFuncion(cid, idx, quiet) {
   const c = catCargo(cid);
   if (!c) return;
   let tipo;
@@ -3819,7 +3841,7 @@ function tomarFuncion(cid, idx) {
   }
   if (!libre()) { pedirRut(); toast('Primero escriba su RUT o busque su nombre para habilitar el formulario.', true); return; }
   const ya = yaAgregada(titulo);
-  if (ya >= 0) { irAFuncion(funciones[ya].uid); toast('Esa función ya está en su registro.'); return; }
+  if (ya >= 0) { if (!quiet) { irAFuncion(funciones[ya].uid); toast('Esa función ya está en su registro.'); } return; }
   if (funciones.length >= maxF()) { toast('Alcanzó el máximo de ' + maxF() + ' funciones.', true); return; }
   const nf = Object.assign(nueva(tipo), { funcion: titulo.slice(0, 200), descripcion: desc.slice(0, 1500), ref: cid });
   if (funciones.length === 1 && !limpio(funciones[0].funcion) && !limpio(funciones[0].descripcion)) funciones[0] = nf;
@@ -3828,7 +3850,7 @@ function tomarFuncion(cid, idx) {
   renderFunciones();
   programarGuardado();
   renderSugLista();
-  toast('Agregada: ' + titulo.slice(0, 70) + (titulo.length > 70 ? '…' : '') + (tipo ? '' : ' · elija su tipo'));
+  if (!quiet) toast('Agregada: ' + titulo.slice(0, 70) + (titulo.length > 70 ? '…' : '') + (tipo ? '' : ' · elija su tipo'));
 }
 
 function irAFuncion(uid) {
@@ -4040,6 +4062,7 @@ function botAgregar(id) {
 }
 
 function botAccionCat(a) {
+  if (a === 'cfgwsp') { cerrarWsp(); irTab('datos'); setTimeout(() => { if (SESION) { irSub('cfg'); setTimeout(() => { $('cWsp').scrollIntoView({ behavior: 'smooth', block: 'center' }); $('cWsp').focus(); }, 400); } }, 100); return true; }
   if (a === 'area') { msj('Funciones por área', 'yo'); botPreguntaArea(); return true; }
   if (a.indexOf('ar:') === 0) { const k = a.slice(3); msj(esc(areaInfo(k).n), 'yo'); SP.area = k; botArea(k); return true; }
   if (a.indexOf('cg:') === 0) { const c = catCargo(a.slice(3)); msj(esc(FOCO[c.id] || nomCargo(c)), 'yo'); botMostrarCargo(c.id); return true; }
@@ -4259,7 +4282,7 @@ const TCOD = { 'Entrevista': 'ent', 'Reunión': 'reu', 'Hito': 'hit', 'Otro': 'o
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 const DSEM = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
 let EVENTOS = [];
-let CALV = { vista: 'mes', y: 0, m: 0, sem: null, tipo: '', pasados: false };
+let CALV = { vista: 'etapas', y: 0, m: 0, sem: null, tipo: '', pasados: false };
 
 function iso(d) {
   return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
@@ -4409,7 +4432,7 @@ function listaHTML() {
   const et = etapas();
   return '<div class="alist">' + Object.keys(g).map(f => {
     const ei = etapaDeFecha(f);
-    return '<section class="adia"><h3>' + esc(fechaLarga(f)) + (ei >= 0 ? '<span class="aet e' + (ei + 1) + '">' + esc(et[ei].nombre) + '</span>' : '') + (f === h ? '<span class="ahoy">Hoy</span>' : '') + '</h3>' + g[f].map(e => '<button type="button" class="arow" data-ev="' + esc(e.id) + '"><span class="ah">' + esc(e.hora ? e.hora : '—') + (e.hora ? '<small>' + esc(horaFin(e.hora, e.dur)) + '</small>' : '') + '</span><span class="at"><i class="tc ' + TCOD[e.tipo] + '"></i><b>' + esc(e.titulo) + '</b>' + (e.persona && e.titulo.indexOf(e.persona) < 0 ? '<small>' + esc(e.persona) + '</small>' : '') + (e.lugar ? '<small>' + esc(e.lugar) + '</small>' : '') + '</span><span class="pill ev-' + esc(e.estado) + '">' + esc(e.estado) + '</span></button>').join('') + '</section>';
+    return '<section class="adia"><h3>' + esc(fechaLarga(f).charAt(0).toUpperCase() + fechaLarga(f).slice(1)) + (ei >= 0 ? '<span class="aet e' + (ei + 1) + '">' + esc(et[ei].nombre) + '</span>' : '') + (f === h ? '<span class="ahoy">Hoy</span>' : '') + '</h3>' + g[f].map(e => '<button type="button" class="arow" data-ev="' + esc(e.id) + '"><span class="ah">' + esc(e.hora ? e.hora : '—') + (e.hora ? '<small>' + esc(horaFin(e.hora, e.dur)) + '</small>' : '') + '</span><span class="at"><i class="tc ' + TCOD[e.tipo] + '"></i><b>' + esc(e.titulo) + '</b>' + (e.persona && e.titulo.indexOf(e.persona) < 0 ? '<small>' + esc(e.persona) + '</small>' : '') + (e.lugar ? '<small>' + esc(e.lugar) + '</small>' : '') + '</span><span class="pill ev-' + esc(e.estado) + '">' + esc(e.estado) + '</span></button>').join('') + '</section>';
   }).join('') + '</div>';
 }
 
@@ -4613,6 +4636,154 @@ document.addEventListener('click', ev => {
   if (d && $('vCal').contains(d)) verDia(d.dataset.dia);
 });
 $('cVista').addEventListener('keydown', ev => { if (ev.key === 'Enter' && ev.target.dataset && ev.target.dataset.dia) verDia(ev.target.dataset.dia); });
+
+const PASO_DET = [
+  ['Abre la pestaña Ingreso.', 'Escribe tu RUT o tu nombre: aparecerás en la lista de la nómina. Elígete con un clic o con Enter.', 'El RUT se verifica solo al presionar Enter o pasar al campo siguiente.', 'Si ya tienes un registro o un avance guardado, te pedirá tu clave para retomarlo.'],
+  ['Tus datos llegan completos desde la nómina: revisa nombre, sucursal y área funcional.', 'Marca tu cargo contractual (puedes marcar más de uno).', 'Indica tu jefatura directa y al menos un teléfono o un correo.'],
+  ['Al marcar tu cargo contractual, el sistema te pregunta si quieres ver las funciones sugeridas: elige tu canal o tu labor y marca las que realizas.', 'También puedes usar el panel Funciones sugeridas (a la derecha; en el celular, sobre tus funciones): elige área y cargo, y haz clic en cada función para agregarla.', 'Cada función se agrega con su tipo y sus tareas. Revísalas y ajústalas a lo que realmente haces.', 'Si una función tuya no aparece, presiona Agregar función y escríbela: el nombre con un verbo y las tareas en la descripción.', 'Al menos una función debe ser de tipo Principal.'],
+  ['Presiona Guardar avance cuando quieras.', 'La primera vez recibes un ID y una clave: anótalos, descárgalos o guárdalos en el navegador.', 'Con ellos continúas después desde cualquier dispositivo.'],
+  ['Usa Vista previa del perfil para ver cómo queda tu ficha armada.', 'Acepta la declaración y presiona Revisar y enviar.', 'Revisa el resumen y confirma el envío.'],
+  ['Al enviar se abre la descarga de tu perfil en PDF, con tu ID y tu clave de seguimiento.', 'Guárdalo: con tu ID y tu clave revisas, modificas o actualizas tu registro.']
+];
+const PASO_IMG = { 2: ['paso-3.png', 'paso-3b.png'] };
+const ETAPA_DET = [
+  ['Cada colaborador ingresa sus datos y registra las funciones que realiza, apoyándose en las funciones sugeridas del levantamiento.', 'Puede guardar avances y enviar cuando termine.', 'Al enviar recibe su perfil en PDF con su ID y su clave.'],
+  ['La jefatura revisa cada registro y agenda una entrevista personal para conversar y precisar las funciones.', 'Las entrevistas y reuniones quedan publicadas en la pestaña Calendario.', 'No es una evaluación de desempeño: el objetivo es describir bien el cargo.'],
+  ['Cada colaborador recibe las precisiones de la revisión.', 'Puede actualizar su registro con su ID y su clave desde Modificar mi registro.', 'Con la información validada se elaboran los descriptores de cargo.']
+];
+const CARGO_VISTO = new Set();
+
+function imgsPaso(i) {
+  return (PASO_IMG[i] || ['paso-' + (i + 1) + '.png']).map(f => '<img class="insimg" src="instructivo/' + f + '" alt="" onerror="this.remove()">').join('');
+}
+
+function verPaso(i) {
+  const p = PASOS[i];
+  if (!p) return;
+  const bts = [];
+  if (i > 0) bts.push({ txt: '‹ Anterior', cls: 'sec', fn: () => verPaso(i - 1) });
+  bts.push({ txt: 'Cerrar' });
+  if (i < PASOS.length - 1) bts.push({ txt: 'Siguiente ›', cls: 'pri', fn: () => verPaso(i + 1) });
+  else bts.push({ txt: 'Ir a Ingreso', cls: 'pri', fn: () => { cerrarModal('dlg'); irTab('ingreso'); } });
+  dialogo('Paso ' + (i + 1) + ' de ' + PASOS.length + ': ' + p[0], '<div class="insdet"><ul>' + PASO_DET[i].map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' + imgsPaso(i) + '</div>', bts);
+  $('dlg').querySelector('.caja').classList.add('grande');
+}
+
+function verEtapa(i) {
+  const e = etapas()[i];
+  if (!e) return;
+  const bts = [];
+  if (i > 0) bts.push({ txt: '‹ Anterior', cls: 'sec', fn: () => verEtapa(i - 1) });
+  bts.push({ txt: 'Ver en el calendario', cls: 'sec', fn: () => { cerrarModal('dlg'); irTab('cal'); } });
+  bts.push(i < 2 ? { txt: 'Siguiente ›', cls: 'pri', fn: () => verEtapa(i + 1) } : { txt: 'Cerrar', cls: 'pri' });
+  dialogo('Etapa ' + (i + 1) + ': ' + e.nombre, '<div class="insdet"><p class="insfe e' + (i + 1) + '">' + esc(rangoTxt(e)) + '</p>' + (e.desc ? '<p>' + esc(e.desc) + '</p>' : '') + '<ul>' + ETAPA_DET[i].map(x => '<li>' + esc(x) + '</li>').join('') + '</ul><img class="insimg" src="instructivo/etapa-' + (i + 1) + '.png" alt="" onerror="this.remove()"></div>', bts);
+  $('dlg').querySelector('.caja').classList.add('grande');
+}
+
+document.addEventListener('click', ev => {
+  const p = ev.target.closest('[data-inspaso]');
+  if (p) { verPaso(+p.dataset.inspaso); return; }
+  const e = ev.target.closest('[data-inset]');
+  if (e) verEtapa(+e.dataset.inset);
+});
+document.addEventListener('keydown', ev => {
+  if (ev.key !== 'Enter' && ev.key !== ' ') return;
+  const t = ev.target;
+  if (t.dataset && (t.dataset.inspaso || t.dataset.inset)) { ev.preventDefault(); t.click(); }
+});
+
+function areaCargoContractual(c) {
+  const t = ' ' + norm(c) + ' ';
+  if (/web|ecommerce|marketing|digital|redes/.test(t)) return 'web';
+  if (/licit|mercado|institucional/.test(t)) return 'mp';
+  if (/gerent|direcc|director/.test(t)) return 'dir';
+  if (/bodeg|chofer|conduct|despach|logist|reparto|peoneta/.test(t)) return 'bod';
+  if (/admin|factur|cobranz|contab|finanz|tesorer/.test(t)) return 'adm';
+  if (/jefe|jefa|sucursal|tienda|local|encargad/.test(t)) return 'tienda';
+  if (/vend|cajer|venta|ejecutiv|asesor/.test(t)) return 'canal';
+  return '';
+}
+
+function pcCards(ops) {
+  return '<div class="quien">' + ops.map(o => '<button type="button" data-pc="' + esc(o[0]) + '"><i>' + (o[3] || '›') + '</i><span><b>' + esc(o[1]) + '</b>' + (o[2] ? '<small>' + esc(o[2]) + '</small>' : '') + '</span></button>').join('') + '</div>';
+}
+
+function pcActivar(fn) {
+  $('dlgCuerpo').querySelectorAll('[data-pc]').forEach(b => { b.onclick = () => fn(b.dataset.pc); });
+}
+
+function popCargo(cargo) {
+  dialogo('Funciones sugeridas', '<p style="margin-top:0">Marcó el cargo <b>' + esc(cargo) + '</b>. ¿Quiere ver las funciones sugeridas del levantamiento para este cargo y agregarlas con un clic?</p><p class="mini">Después podrá ajustarlas o escribir las que falten.</p>', [{ txt: 'No, gracias' }, { txt: 'Sí, ver funciones', cls: 'pri', fn: () => pcInicio(cargo) }]);
+}
+
+function pcInicio(cargo) {
+  const a = areaCargoContractual(cargo);
+  if (a === 'canal') pcCanal(cargo);
+  else if (a) pcArea(a, cargo);
+  else pcElegirArea(cargo);
+}
+
+function pcCanal(cargo) {
+  dialogo('¿En qué canal vende?', '<p style="margin-top:0" class="sub">Las funciones de venta cambian según el canal.</p>' + pcCards([['tienda', 'Tienda', 'Venta y atención en mesón, caja y reservas', '🏬'], ['web', 'Web y redes', 'Sitio web, venta online, marketing digital', '🌐'], ['mp', 'Mercado Público', 'Licitaciones y ventas institucionales', '🏛'], ['otra', 'Otra área', 'Ver todas las áreas', '…']]), [{ txt: 'Cancelar' }]);
+  pcActivar(k => (k === 'otra' ? pcElegirArea(cargo) : pcArea(k, cargo)));
+}
+
+function pcElegirArea(cargo) {
+  dialogo('¿Cuál es su área funcional?', pcCards(AREAS.map(a => [a.k, a.n, cargosArea(a.k).map(nomCargo).join(' · ')])), [{ txt: 'Cancelar' }]);
+  pcActivar(k => pcArea(k, cargo));
+}
+
+function pcArea(k, cargo) {
+  const cs = cargosArea(k).concat(cargosAreaSec(k));
+  if (cs.length === 1) { pcFunciones(cs[0].id, k); return; }
+  dialogo(PREG_AREA[k] || '¿Cuál se parece más a su trabajo?', pcCards(cs.map(c => [c.id, FOCO[c.id] || nomCargo(c), nomCargo(c)])), [{ txt: '‹ Volver', cls: 'sec', fn: () => pcInicio(cargo) }, { txt: 'Cancelar' }]);
+  pcActivar(id => pcFunciones(id, k));
+}
+
+function pcFunciones(id, k) {
+  const c = catCargo(id);
+  if (!c) return;
+  const it = (val, t, sub, chk) => {
+    const ya = yaAgregada(t) >= 0;
+    return '<label class="pcf' + (ya ? ' ya' : '') + '"><input type="checkbox" value="' + val + '"' + (ya ? ' checked disabled' : chk ? ' checked' : '') + '><span><b>' + esc(t) + '</b>' + (ya ? '<small>Ya está en su registro</small>' : sub ? '<small>' + esc(sub) + '</small>' : '') + '</span></label>';
+  };
+  let html = '<p class="sub" style="margin:0 0 4px"><b>' + esc(nomCargo(c)) + '</b> · reporta a ' + esc(c.reporta) + '</p><p class="mini" style="margin:0 0 10px">' + esc(c.proposito) + '</p><div class="pclist">';
+  TIPO_ORD.forEach(t => {
+    const l = c.funciones.map((f, i) => ({ f: f, i: i })).filter(x => x.f.tipo === t);
+    if (l.length) html += '<h4>' + esc(TIPO_PL[t]) + '</h4>' + l.map(x => it(x.i, tituloF(x.f), x.f.tareas.slice(0, 2).join(' · '), t === 'Principal')).join('');
+  });
+  if (tipoResp() && c.resp.length) html += '<h4>Responsabilidades</h4>' + c.resp.map((r, i) => it('r' + i, r, '', false)).join('');
+  html += '</div>';
+  dialogo('Funciones sugeridas: ' + nomCargo(c), html, [{ txt: '‹ Volver', cls: 'sec', fn: () => pcArea(k || c.areas[0], '') }, { txt: 'Cancelar' }, { txt: 'Agregar seleccionadas', cls: 'pri', fn: () => {
+    const sel = Array.from($('dlgCuerpo').querySelectorAll('.pclist input:checked:not(:disabled)')).map(x => x.value);
+    if (!sel.length) { toast('Marque al menos una función.', true); return; }
+    const llenas = () => funciones.filter(f => limpio(f.funcion)).length;
+    const antes = llenas();
+    sel.forEach(v => tomarFuncion(id, v, true));
+    SP.area = k || c.areas[0];
+    SP.cargo = id;
+    if (!getUnidad()) { const n = unidades().find(u => areaDe(u) === SP.area); if (n) setUnidad(n); }
+    pintarSug();
+    cerrarModal('dlg');
+    const n = llenas() - antes;
+    toast(n === 1 ? 'Se agregó 1 función. Revísela y ajústela a lo que realmente hace.' : 'Se agregaron ' + n + ' funciones. Revíselas y ajústelas a lo que realmente hace.');
+    setTimeout(() => $('secFunciones').scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+  } }]);
+  $('dlg').querySelector('.caja').classList.add('grande');
+}
+
+$('cargos').addEventListener('change', ev => {
+  const x = ev.target;
+  if (!x || !x.checked || x.value === OTRO || CARGO_VISTO.has(x.value) || !libre() || MANUAL) return;
+  CARGO_VISTO.add(x.value);
+  setTimeout(() => popCargo(x.value), 150);
+});
+
+$('cProbarWsp').addEventListener('click', () => {
+  const n = String($('cWsp').value || '').replace(/\D/g, '');
+  if (n.length < 10) { toast('Ingrese el número con código de país, por ejemplo 56912345678.', true); return; }
+  window.open('https://wa.me/' + n, '_blank', 'noopener');
+});
 
 (function conectar() {
   const m = location.hash.match(/[#&]api=([^&]+)/);
