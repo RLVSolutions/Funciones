@@ -742,6 +742,7 @@ body>*:not(#print){display:none!important}
 .spt li{margin:2px 0}
 .pcf ul{margin:4px 0 0;padding-left:16px;font-size:.78rem;color:var(--muted)}
 .pcf li{margin:1px 0}
+.pmarca{border:2px dashed #b45309;color:#b45309;background:#fffbeb;padding:7px 10px;margin:0 0 12px;font-weight:700;font-size:12px;text-align:center;letter-spacing:.04em;text-transform:uppercase;border-radius:6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 </style>
 </head>
 <body>
@@ -2760,7 +2761,7 @@ function renderPub() {
 function detallePub(i) {
   const p = PUB[i];
   if (!p) return;
-  dialogo('Detalle protegido', '<div class="lockbox"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><p><b>' + esc(p.nombre) + '</b><br>Este registro solo puede verlo el <b>titular</b> o el <b>administrador</b>. Indique quién es para continuar.</p></div><div class="quien"><button type="button" id="qTit"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></i><span><b>Soy el titular</b><small>Ingreso con la clave que recibí al guardar mi registro</small></span></button><button type="button" id="qAdm"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></i><span><b>Soy el administrador</b><small>Ingreso con el código de acceso</small></span></button></div>', [{ txt: 'Cancelar' }]);
+  dialogo('Detalle protegido', '<div class="lockbox"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><p><b>' + esc(p.nombre) + '</b><br>Este registro solo puede verlo el <b>titular</b> o el <b>administrador</b>. Indique quién es para continuar.</p></div><div class="quien"><button type="button" id="qTit"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></i><span><b>Soy el titular</b><small>Ingreso con la clave que recibí al guardar mi registro</small></span></button><button type="button" id="qAdm"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></i><span><b>Soy el administrador</b><small>Ingreso con el código de acceso</small></span></button></div>', [{ txt: 'Cancelar' }].concat(p.estado === 'En curso' ? [{ txt: 'Ver e imprimir avance', cls: 'pri', fn: () => (SESION ? verAvance(p) : pedirCodigoAdmin(p)) }] : []));
   $('qTit').onclick = () => pedirClaveTitular(p);
   $('qAdm').onclick = () => (SESION ? detalleAdmin(p) : pedirCodigoAdmin(p));
 }
@@ -2821,13 +2822,21 @@ function pedirCodigoAdmin(p) {
 
 async function detalleAdmin(p) {
   cerrarModal('dlg');
-  if (p.estado === 'En curso') {
-    irTab('datos');
-    toast('Este registro está en curso: el titular aún no lo envía.', true);
-    return;
-  }
+  if (p.estado === 'En curso') { verAvance(p); return; }
   irTab('datos');
   abrirDetalle(null, p.ref);
+}
+
+async function verAvance(p) {
+  dialogo('Avance sin enviar', '<p class="vacio">Cargando avance…</p>', [{ txt: 'Cerrar' }]);
+  const j = await api('avance', { sesion: SESION, ref: p.ref });
+  if (!j.ok) { if (j.sesion === false) { pedirCodigoAdmin(p); return; } cerrarModal('dlg'); toast(j.mensaje, true); return; }
+  const d = Object.assign({ cargos: [], funciones: [] }, j.registro);
+  d.funciones = (d.funciones || []).map(f => Object.assign({ tipo: '', funcion: '', descripcion: '' }, f));
+  const meta = { id: d.id, estado: 'Avance sin enviar', marca: 'Avance sin enviar · el titular aún no envía este registro' + (d.fechaBorrador ? ' · guardado el ' + d.fechaBorrador : ''), sub: 'Avance sin enviar · ' + hoy(), pie: 'Avance sin enviar impreso por el administrador el ' + hoy() + '. Contenido guardado por el titular' + (d.fechaBorrador ? ' el ' + d.fechaBorrador : '') + '; puede cambiar antes del envío. Documento de trabajo; no reemplaza el contrato de trabajo.' };
+  const html = perfilHTML(d, meta);
+  dialogo('Avance sin enviar', '<p class="sub" style="margin:0 0 12px">Solo lectura. ' + esc(d.nombre || p.nombre || '') + (d.fechaBorrador ? ' · guardado el ' + esc(d.fechaBorrador) : '') + '.</p><div class="pprev">' + html + '</div>', [{ txt: 'Cerrar' }, { txt: 'Descargar PDF', cls: 'pri', fn: () => { cerrarModal('dlg'); imprimir(html, 'Avance ' + (d.nombre || p.nombre || 'colaborador')); } }]);
+  $('dlg').querySelector('.caja').classList.add('grande');
 }
 
 ['pTexto', 'pSuc', 'pEstado'].forEach(id => $(id).addEventListener('input', renderPub));
@@ -4023,6 +4032,7 @@ function perfilHTML(d, meta) {
   const sinTipo = d.funciones.filter(f => !f.tipo && (f.funcion || f.descripcion));
   const seg = meta.id ? '<div class="pseg"><div><span>ID de registro</span><b>' + esc(meta.id) + '</b></div><div><span>Clave de seguimiento</span><b>' + esc(meta.clave || '········') + '</b></div><p>' + (meta.clave ? 'Conserve su ID y su clave: con ellos revisa, modifica o actualiza este perfil.' : 'La clave se entregó al guardar por primera vez; no se muestra por seguridad.') + '</p></div>' : '<div class="pseg pend"><p><b>Código de seguimiento:</b> se asignará un ID y una clave al guardar el avance o enviar el registro.</p></div>';
   return '<div class="pdoc pperfil">' + pEnc('Perfil de funciones del colaborador', meta.sub || 'Levantamiento de Funciones por Cargo', meta.id ? '<div class="pmeta">ID de registro<b>' + esc(meta.id) + '</b><em>' + esc(meta.estado || '') + '</em></div>' : '') +
+    (meta.marca ? '<div class="pmarca">' + esc(meta.marca) + '</div>' : '') +
     seg +
     '<h2>1. Identificación del colaborador</h2><div class="pgrid">' + c('Nombre completo', d.nombre) + c('RUT', d.rut) + c('Sucursal', d.sucursal) + c('Área funcional', d.unidad) + c('Cargo(s) contractual(es)', (d.cargos || []).join(' · ')) + c('Dependencia (jefatura directa)', d.jefatura) + c('Teléfono', d.telefono) + c('Correo', d.correo) + '</div>' +
     (ref ? '<h2>2. Cargo de referencia del levantamiento</h2><div class="pgrid">' + c('Nombre sugerido', nomCargo(ref)) + c('Área', ref.area) + c('Reporta a', ref.reporta) + c('Supervisa a', ref.supervisa) + '<div class="full"><span>Propósito del cargo</span>' + esc(ref.proposito) + '</div></div>' : '') +
