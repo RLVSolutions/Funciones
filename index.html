@@ -761,9 +761,8 @@ body>*:not(#print){display:none!important}
 
 <section id="falla" class="centro" hidden><div class="tarjeta" style="max-width:440px"><div class="icono mal" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg></div><h1>No disponible</h1><p id="fallaMsg" class="sub"></p><div class="acciones-fila"><button type="button" id="reintentar" class="btn pri">Reintentar</button><button type="button" id="fallaCx" class="btn sec" hidden>Cambiar conexión</button></div></div></section>
 
-<section id="conexion" class="centro" hidden><div class="tarjeta" style="max-width:540px"><h1>Formulario sin conectar</h1><p class="sub" id="cxSub">Abre el enlace o escanea el código QR que te compartió tu jefatura: el formulario se conecta solo.</p>
-<div class="acciones-fila" style="margin-top:14px"><button type="button" id="cxAdmin" class="btn sec">Soy administrador</button></div>
-<form id="fCx" novalidate style="margin-top:16px" hidden><div class="campo"><label for="cxUrl">Administrador: URL de la aplicación web de Apps Script</label><input id="cxUrl" class="mono" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://script.google.com/macros/s/…/exec"><small class="err"></small></div><div class="campo"><label for="cxTok">Token de acceso (API_TOKEN)</label><input id="cxTok" class="mono" autocomplete="off" spellcheck="false" placeholder="24 caracteres"><small class="ayuda">Ambos datos están en la hoja, menú Levantamiento › Ver conexión y enlace. Los colaboradores no los necesitan: se conectan con el enlace para colaboradores (Datos › Configuración).</small><small class="err"></small></div><button type="submit" id="cxBtn" class="btn pri">Conectar</button></form></div></section>
+<section id="conexion" class="centro" hidden><div class="tarjeta" style="max-width:540px"><h1>Conectar el formulario</h1><p class="sub">Si eres colaborador, abre el enlace o escanea el código QR que te compartieron: el formulario se conecta solo.</p>
+<form id="fCx" novalidate style="margin-top:16px"><div class="campo"><label for="cxUrl">Administrador: URL de la aplicación web de Apps Script</label><input id="cxUrl" class="mono" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://script.google.com/macros/s/…/exec"><small class="err"></small></div><div class="campo"><label for="cxTok">Token de acceso (API_TOKEN)</label><input id="cxTok" class="mono" autocomplete="off" spellcheck="false" placeholder="24 caracteres"><small class="ayuda">Ambos datos están en la hoja, menú Levantamiento › Ver conexión y enlace. Quedan guardados solo en este navegador hasta que se cambien en Datos › Configuración.</small><small class="err"></small></div><button type="submit" id="cxBtn" class="btn pri">Conectar</button></form></div></section>
 
 <main id="vIngreso" class="shell" hidden>
 <div class="hero"><div class="hero-t"><h1 id="tituloIngreso">Registro de funciones por cargo</h1><p class="sub" id="subIngreso">Complete sus datos y las funciones que realiza. Los campos con * son obligatorios.</p></div><p class="hero-plazo" id="heroPlazo" hidden></p></div>
@@ -927,11 +926,11 @@ body>*:not(#print){display:none!important}
 <div class="campo c4"><label for="cIniciales">Iniciales del asistente</label><input id="cIniciales" maxlength="3" placeholder="RD" style="text-transform:uppercase"></div>
 <div class="campo c6"><label for="cWsp">WhatsApp para "Hablar con una persona"</label><div class="cxfila"><input id="cWsp" maxlength="20" inputmode="tel" placeholder="56912345678"><button type="button" id="cProbarWsp" class="btn sec">Probar</button></div><small class="ayuda">Con código de país, solo números (ej.: 56912345678). Lo usa el asistente al elegir "Hablar directo con una persona". Guarde los ajustes para aplicarlo.</small></div>
 <div class="campo c6"><label for="cLogo">Logo (archivo o URL)</label><input id="cLogo" maxlength="300" placeholder="logo.png"></div>
-<div class="campo c12"><label for="cEnlace">Enlace para colaboradores</label><div class="cxfila"><input id="cEnlace" class="mono" readonly><button type="button" id="cCopiar" class="btn sec">Copiar</button></div><small class="ayuda">Compártalo por WhatsApp o correo: quien lo abre queda conectado sin escribir nada. Incluye el token, envíelo solo a personal de la empresa. El QR del formulario en papel y del instructivo usa este enlace.</small></div>
+<div class="campo c12"><label for="cEnlace">Enlace para colaboradores</label><div class="cxfila"><input id="cEnlace" class="mono" readonly><button type="button" id="cCopiar" class="btn sec">Copiar</button></div><small class="ayuda">Compártalo por WhatsApp o correo. Incluye la URL del servidor y el token, por eso el repositorio no necesita config.js. El QR del formulario en papel y del instructivo usa este enlace.</small></div>
 <div class="campo c12"><label for="cApi">Servidor conectado (Apps Script)</label><div class="cxfila"><input id="cApi" class="mono" readonly><button type="button" id="cCambiarApi" class="btn sec">Cambiar</button></div></div>
 <div class="c12 cxnota" id="cFija"></div>
 <div class="campo c12"><label for="cTok">Token de acceso (API_TOKEN)</label><div class="cxfila"><input id="cTok" class="mono" type="password" readonly><button type="button" id="cVerTok" class="btn txt">Mostrar</button><button type="button" id="cNuevoTok" class="btn sec">Regenerar</button></div><small class="ayuda">Viaja dentro del enlace para colaboradores. Al regenerarlo, los enlaces y QR anteriores dejan de funcionar.</small></div>
-<div class="campo c12"><label for="cUrl">Dirección pública del formulario</label><input id="cUrl" class="mono" readonly><small class="ayuda">Se toma automáticamente de la página donde está publicado este formulario.</small></div>
+<div class="campo c12"><label for="cUrl">Dirección pública del formulario</label><input id="cUrl" maxlength="300" inputmode="url" placeholder="https://rlvsolutions.github.io/Funciones/"><small class="ayuda">Se toma automáticamente de la página publicada. Los códigos QR del instructivo y del formato imprimible llevan a los colaboradores directo al registro, ya conectados.</small></div>
 <div class="c12 cfgqr"><div id="cQr"></div><div><b>Vista previa del QR</b><br><small id="cQrUrl"></small></div></div>
 <div class="campo c12"><label for="cUnidades">Áreas funcionales (una por línea)</label><textarea id="cUnidades" rows="7"></textarea><small class="ayuda">La opción "Otro (especificar)" se agrega sola.</small></div>
 <label class="c12 chk" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="cBusca" style="width:18px;height:18px;accent-color:var(--acc)"> Permitir buscar por nombre en el campo RUT (usa la nómina)</label>
@@ -1039,8 +1038,6 @@ const CATALOGO = [{"nombre":"Gerente Comercial y de Operaciones (Supervisor)","l
 const LS_API = 'lf_api';
 const LS_TOK = 'lf_tok';
 let FIJA = false;
-let CONF_URL = '';
-let CONF_TOK = '';
 let ENLACE = false;
 let TOKEN = '';
 let WSP = '';
@@ -1170,6 +1167,7 @@ async function cargar() {
   if (!API_URL) {
     estadoCx('');
     mostrar(['conexion']);
+    setTimeout(() => $('cxUrl').focus(), 50);
     return;
   }
   try {
@@ -2594,7 +2592,7 @@ function imprimirBlanco() {
   let filas = '';
   for (let i = 1; i <= 10; i++) filas += '<tr><td class="nn">' + i + '</td><td class="op">' + ops(CFG.tipos) + '</td><td></td><td></td></tr>';
   const html = '<div class="pdoc pblanco">' + pEnc('Levantamiento de Funciones por Cargo', 'Formulario para completar a mano', '<div class="folio">Folio N°</div>') +
-    '<div class="pdigital"><div><b>¿Prefieres hacerlo en línea?</b><span>Escanea el código con la cámara de tu celular. También puedes abrir el enlace que te enviaron o ingresar a:</span><span class="purl">' + esc(url) + '</span><span>Es más rápido: guardas tu avance y recibes tu comprobante al instante.</span></div><div class="pqr2">' + qrSvg(lnk) + '</div></div>' +
+    '<div class="pdigital"><div><b>¿Prefieres hacerlo en línea?</b><span>Escanea el código con la cámara de tu celular: entras directo a tu registro, sin configurar nada. También puedes abrir el enlace que te enviaron o ingresar a:</span><span class="purl">' + esc(url) + '</span><span>Es más rápido: guardas tu avance y recibes tu comprobante al instante.</span></div><div class="pqr2">' + qrSvg(lnk) + '</div></div>' +
     '<p class="inst">Complete con letra clara. Registre hasta 10 funciones que realiza habitualmente, estén o no descritas en su contrato. Use una fila por función, marque con una X su tipo y detalle en la descripción las tareas con que la cumple. Al menos una función debe ser de tipo ' + esc(tipoPrincipal()) + '.' + (e0 && e0.fin ? ' Plazo de entrega: <b>' + esc(fTxt(e0.fin, true)) + '</b>.' : '') + '</p>' +
     '<h2>1. Datos personales</h2><div class="bf">' +
     '<div class="s4"><span>Nombre completo</span></div><div class="s2"><span>RUT</span></div>' +
@@ -3351,8 +3349,8 @@ function ajustes() {
 }
 
 function urlForm() {
-  const aqui = /^https?:$/.test(location.protocol) ? location.origin + location.pathname.replace(/index\.html$/, '') : '';
-  return aqui || limpio(ajustes().urlForm || CONF.URL_FORMULARIO);
+  if (/^https?:$/.test(location.protocol)) return location.origin + location.pathname.replace(/index\.html$/i, '');
+  return limpio(ajustes().urlForm || CONF.URL_FORMULARIO) || 'https://rlvsolutions.github.io/Funciones/';
 }
 
 function codigoApi(u) {
@@ -3367,8 +3365,7 @@ function apiDeCodigo(v) {
 }
 
 function enlace(base) {
-  const b = (base || urlForm()).replace(/#.*$/, '');
-  return b + (API_URL ? '#api=' + codigoApi(API_URL) + (TOKEN ? '&t=' + encodeURIComponent(TOKEN) : '') + '&ir=ingreso' : '#ingreso');
+  return (base || urlForm()).replace(/#.*$/, '') + (API_URL ? '#api=' + codigoApi(API_URL) + (TOKEN ? '&t=' + encodeURIComponent(TOKEN) : '') + '&ir=ingreso' : '#ingreso');
 }
 
 function estadoCx(e) {
@@ -3386,16 +3383,9 @@ async function leerConfigApi(u, t) {
 function sinToken(msg) {
   $('cxUrl').value = API_URL;
   $('cxTok').value = '';
-  $('cxSub').textContent = ENLACE ? 'El enlace que usaste está incompleto o ya no es válido. Pide a tu jefatura el enlace o el código QR actualizado.' : 'Abre el enlace o escanea el código QR que te compartió tu jefatura: el formulario se conecta solo.';
   mostrar(['conexion']);
   marcar($('cxTok'), msg || 'Token de acceso inválido o faltante.');
 }
-
-$('cxAdmin').addEventListener('click', () => {
-  $('fCx').hidden = false;
-  $('cxAdmin').hidden = true;
-  setTimeout(() => (API_URL ? $('cxTok') : $('cxUrl')).focus(), 50);
-});
 
 function guardarApi(u, t) {
   try {
@@ -3413,7 +3403,7 @@ function leerTok() {
 }
 
 function bajarConfig() {
-  const txt = "window.LF_CONFIG = {\n  API_URL: '" + API_URL + "'\n};\n";
+  const txt = "window.LF_CONFIG = {\n  API_URL: '" + API_URL + "',\n  API_TOKEN: '" + TOKEN + "'\n};\n";
   const url = URL.createObjectURL(new Blob([txt], { type: 'application/javascript;charset=utf-8' }));
   const l = document.createElement('a');
   l.href = url;
@@ -3670,7 +3660,7 @@ function abrirInstructivo() {
 }
 
 function imprimirInstructivo() {
-  const html = '<div class="pdoc pinstr">' + pEnc('Instructivo: Levantamiento de Funciones', 'Etapas del proceso y pasos para completar tu registro', '<div class="pqr">' + qrSvg(enlace()) + '<span>Completa en línea</span></div>') + instrHTML(false) + '</div>';
+  const html = '<div class="pdoc pinstr">' + pEnc('Instructivo: Levantamiento de Funciones', 'Etapas del proceso y pasos para completar tu registro', '<div class="pqr">' + qrSvg(enlace()) + '<span>Escanea y completa en línea</span></div>') + instrHTML(false) + '</div>';
   imprimir(html, 'Instructivo Levantamiento de Funciones');
 }
 
@@ -3679,7 +3669,9 @@ function irCfg() {
   $('cEmpresa').value = a.empresa || CFG.empresa || '';
   $('cIniciales').value = a.iniciales || '';
   $('cWsp').value = a.whatsapp || '';
-  $('cUrl').value = urlForm();
+  const web = /^https?:$/.test(location.protocol);
+  $('cUrl').value = web ? urlForm() : (a.urlForm || '');
+  $('cUrl').readOnly = web;
   $('cLogo').value = a.logo || '';
   $('cUnidades').value = unidades().join('\n');
   $('cBusca').checked = a.busquedaNombre !== false;
@@ -3689,7 +3681,7 @@ function irCfg() {
   $('cEnlace').value = enlace();
   $('cApi').value = API_URL;
   $('cTok').value = TOKEN;
-  $('cFija').innerHTML = (CONF_TOK ? '<b>config.js contiene el token.</b> Es un archivo público: descargue la versión nueva (solo con la URL) y reemplácelo en el repositorio. Los colaboradores se conectan con el enlace.' : CONF_URL ? '<b>Conexión lista.</b> config.js tiene la URL del servidor; los colaboradores se conectan con el enlace, que incluye el token.' : '<b>Falta config.js.</b> Descárguelo (solo contiene la URL) y súbalo a la raíz del repositorio, junto a index.html.') + ' <button type="button" class="btn sec" id="cBajarCfg" style="margin-left:6px">Descargar config.js</button>';
+  $('cFija').innerHTML = (FIJA ? '<b>Conexión fija activa.</b> El archivo config.js del repositorio conecta cualquier dispositivo sin pedir datos.' : '<b>Conexión solo en este navegador.</b> Para que cualquier dispositivo se conecte sin pedir la URL ni el token, descargue el archivo y súbalo una sola vez a la raíz del repositorio de GitHub (junto a index.html).') + ' <button type="button" class="btn sec" id="cBajarCfg" style="margin-left:6px">Descargar config.js</button>';
   $('cBajarCfg').onclick = bajarConfig;
   $('cTok').type = 'password';
   $('cVerTok').textContent = 'Mostrar';
@@ -3744,7 +3736,8 @@ $('cNuevoTok').addEventListener('click', async () => {
   TOKEN = j.token;
   guardarApi(API_URL, TOKEN);
   irCfg();
-  toast('Token regenerado. Comparta el nuevo enlace para colaboradores.');
+  toast(FIJA ? 'Token regenerado. Descargue el nuevo config.js y súbalo al repositorio.' : 'Token regenerado. Comparta el nuevo enlace para colaboradores.');
+  if (FIJA) bajarConfig();
 });
 
 function parsearNomina(t) {
@@ -4861,10 +4854,8 @@ $('cProbarWsp').addEventListener('click', () => {
     try { pref = localStorage.getItem('lf_pref') === '1'; } catch (e) { pref = false; }
     const cu = apiDeCodigo(String(c.API_URL || '').trim());
     const ct = String(c.API_TOKEN || '').trim();
-    CONF_URL = cu;
-    CONF_TOK = ct;
-    FIJA = !!(cu && ct);
-    if (cu && !ENLACE && !(pref && leerApi())) { API_URL = cu; TOKEN = ct || (leerApi() === cu ? leerTok() : ''); }
+    FIJA = !!cu;
+    if (cu && !ENLACE && !(pref && leerApi())) { API_URL = cu; TOKEN = ct; }
     else { API_URL = leerApi() || cu; TOKEN = API_URL === leerApi() ? leerTok() : ct; }
     cargar();
   };
