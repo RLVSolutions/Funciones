@@ -1959,7 +1959,7 @@ document.addEventListener('click', ev => {
   if (!b || !CFG) return;
   const a = b.dataset.acc;
   if (a === 'modificar') { if (tab !== 'ingreso') irTab('ingreso'); if ($('buscador').hidden) abrirBuscador(); else $('buscador').scrollIntoView({ behavior: 'smooth' }); }
-  else if (a === 'blanco') imprimirBlanco();
+  else if (a === 'blanco') formularioBlanco();
   else if (a === 'wsp') abrirWsp();
   else if (a === 'borrador') guardarAvance();
   else if (a === 'calendario') irTab('cal');
@@ -2156,7 +2156,7 @@ const FAQ_DEF = [
     { t: '¿Qué es mi ID de registro?', k: 'id identificador usuario numero', acc: '', r: 'Tu ID es tu **RUT sin puntos, sin guion y sin dígito verificador**.\n\nEjemplo: para el RUT 12.345.678-9, tu ID es **12345678**.' },
     { t: 'Olvidé mi clave', k: 'olvide clave recuperar', acc: '', r: 'Por seguridad la clave no se puede recuperar. Pídele a tu jefatura una **nueva clave**; la anterior dejará de funcionar.\n\nSi la guardaste en este navegador, el formulario te ofrecerá "Usar la clave recordada".' },
     { t: '¿Dónde guardo mi clave?', k: 'guardar clave anotar descargar recordar navegador', acc: '', r: 'Al recibirla tienes tres opciones: **Descargar credenciales** (un archivo de texto), **Recordar en este navegador** o **Guardar en contraseñas del navegador**. Usa las dos últimas solo en un dispositivo personal.' },
-    { t: 'Prefiero completarlo en papel', k: 'papel imprimir manual blanco', acc: 'blanco', r: 'Descarga el **Formulario en blanco (PDF)**, complétalo con letra clara, fírmalo junto a tu jefatura y entrégalo. Luego se transcribe al sistema y recibirás tu ID y tu clave.' },
+    { t: 'Prefiero completarlo en papel', k: 'papel imprimir manual blanco', acc: 'blanco', r: 'Descarga el **Formulario en blanco (PDF o Word)**, complétalo con letra clara, fírmalo junto a tu jefatura y entrégalo. Luego se transcribe al sistema y recibirás tu ID y tu clave.' },
     { t: '¿Puedo usarlo en el celular?', k: 'celular tablet computador dispositivo', acc: '', r: 'Sí. Funciona en celular, tablet y computador. Puedes empezar en uno y terminar en otro con tu RUT y tu clave.' },
     { t: 'Me aparece un error al enviar', k: 'error enviar rojo', acc: '', r: 'Revisa los campos marcados en rojo: cada uno indica qué falta.\n\nSi el error es de conexión, tus datos quedan guardados en este dispositivo; intenta de nuevo en unos minutos.' }
   ] },
@@ -2420,7 +2420,7 @@ function botAccion(a) {
     const acc = a.slice(4);
     cerrarWsp();
     if (acc === 'modificar') { if ($('buscador').hidden) abrirBuscador(); else $('buscador').scrollIntoView({ behavior: 'smooth' }); }
-    else if (acc === 'blanco') imprimirBlanco();
+    else if (acc === 'blanco') formularioBlanco();
     else if (acc === 'borrador') guardarAvance();
     else if (acc === 'calendario') irTab('cal');
     else if (acc === 'instructivo') irTab('ins');
@@ -2613,6 +2613,140 @@ function imprimirBlanco() {
     '<div class="firmas"><div>Firma trabajador(a)</div><div>Firma jefatura directa</div></div>' +
     '<div class="usoint"><div>Uso interno</div><div>Transcrito por</div><div>Fecha de transcripción</div><div>ID de registro</div></div></div>';
   imprimir(html, 'Formulario Levantamiento de Funciones');
+}
+
+function formularioBlanco() {
+  dialogo('Formulario en blanco', '<p class="sub" style="margin:0 0 6px">Elija el formato. El PDF queda listo para imprimir; el Word se puede editar antes de imprimir.</p>', [{ txt: 'Cancelar' }, { txt: 'Descargar Word', cls: 'sec', fn: () => { cerrarModal('dlg'); descargarBlancoDocx(); } }, { txt: 'Descargar PDF', cls: 'pri', fn: () => { cerrarModal('dlg'); imprimirBlanco(); } }]);
+}
+
+function qrPng(texto) {
+  try {
+    const q = qrcode(0, 'M');
+    q.addData(texto);
+    q.make();
+    const n = q.getModuleCount();
+    const s = 8;
+    const m = 2;
+    const cv = document.createElement('canvas');
+    cv.width = cv.height = (n + m * 2) * s;
+    const cx = cv.getContext('2d');
+    cx.fillStyle = '#ffffff';
+    cx.fillRect(0, 0, cv.width, cv.height);
+    cx.fillStyle = '#000000';
+    for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (q.isDark(r, c)) cx.fillRect((c + m) * s, (r + m) * s, s, s);
+    const b = atob(cv.toDataURL('image/png').split(',')[1]);
+    const u = new Uint8Array(b.length);
+    for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i);
+    return u;
+  } catch (e) {
+    return null;
+  }
+}
+
+function zipStore(files) {
+  const T = zipStore.t || (zipStore.t = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })());
+  const crc = d => { let c = 0xFFFFFFFF; for (let i = 0; i < d.length; i++) c = T[(c ^ d[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; };
+  const enc = new TextEncoder();
+  const partes = [];
+  const central = [];
+  let off = 0;
+  files.forEach(f => {
+    const nm = enc.encode(f.name);
+    const d = typeof f.data === 'string' ? enc.encode(f.data) : f.data;
+    const c = crc(d);
+    const h = new DataView(new ArrayBuffer(30));
+    h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint16(6, 0x0800, true); h.setUint16(8, 0, true);
+    h.setUint16(10, 0, true); h.setUint16(12, 0x21, true); h.setUint32(14, c, true); h.setUint32(18, d.length, true);
+    h.setUint32(22, d.length, true); h.setUint16(26, nm.length, true); h.setUint16(28, 0, true);
+    partes.push(new Uint8Array(h.buffer), nm, d);
+    const ch = new DataView(new ArrayBuffer(46));
+    ch.setUint32(0, 0x02014b50, true); ch.setUint16(4, 20, true); ch.setUint16(6, 20, true); ch.setUint16(8, 0x0800, true);
+    ch.setUint16(10, 0, true); ch.setUint16(12, 0, true); ch.setUint16(14, 0x21, true); ch.setUint32(16, c, true);
+    ch.setUint32(20, d.length, true); ch.setUint32(24, d.length, true); ch.setUint16(28, nm.length, true);
+    ch.setUint32(42, off, true);
+    central.push(new Uint8Array(ch.buffer), nm);
+    off += 30 + nm.length + d.length;
+  });
+  const tam = central.reduce((s, x) => s + x.length, 0);
+  const fin = new DataView(new ArrayBuffer(22));
+  fin.setUint32(0, 0x06054b50, true); fin.setUint16(8, files.length, true); fin.setUint16(10, files.length, true);
+  fin.setUint32(12, tam, true); fin.setUint32(16, off, true);
+  return new Blob(partes.concat(central, [new Uint8Array(fin.buffer)]), { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+}
+
+function descargarBlancoDocx() {
+  const X = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const ACC = '5B2463';
+  const W = 10204;
+  const run = (t, o) => { o = o || {}; return '<w:r><w:rPr>' + (o.b ? '<w:b/>' : '') + (o.mono ? '<w:rFonts w:ascii="Consolas" w:hAnsi="Consolas"/>' : '') + (o.c ? '<w:color w:val="' + o.c + '"/>' : '') + (o.caps ? '<w:caps/>' : '') + '<w:sz w:val="' + (o.sz || 19) + '"/></w:rPr><w:t xml:space="preserve">' + X(t) + '</w:t></w:r>'; };
+  const par = (runs, o) => { o = o || {}; return '<w:p><w:pPr>' + (o.keep ? '<w:keepNext/>' : '') + (o.bb ? '<w:pBdr><w:bottom w:val="single" w:sz="6" w:space="2" w:color="C6D0DC"/></w:pBdr>' : '') + '<w:spacing w:before="' + (o.a || 0) + '" w:after="' + (o.d == null ? 60 : o.d) + '"/>' + (o.al ? '<w:jc w:val="' + o.al + '"/>' : '') + '</w:pPr>' + (Array.isArray(runs) ? runs.join('') : runs) + '</w:p>'; };
+  const h2 = t => par(run(t, { b: true, c: ACC, caps: true, sz: 19 }), { a: 220, d: 100, bb: true, keep: true });
+  const bordes = (v, col) => '<w:tblBorders>' + ['top', 'left', 'bottom', 'right', 'insideH', 'insideV'].map(k => '<w:' + k + ' w:val="' + v + '" w:sz="6" w:space="0" w:color="' + (col || '9AA5B1') + '"/>').join('') + '</w:tblBorders>';
+  const celda = (contenido, w, o) => { o = o || {}; return '<w:tc><w:tcPr><w:tcW w:w="' + w + '" w:type="dxa"/>' + (o.span ? '<w:gridSpan w:val="' + o.span + '"/>' : '') + (o.fill ? '<w:shd w:val="clear" w:color="auto" w:fill="' + o.fill + '"/>' : '') + (o.top ? '<w:tcBorders><w:top w:val="single" w:sz="8" w:space="0" w:color="333333"/></w:tcBorders>' : '') + (o.va ? '<w:vAlign w:val="' + o.va + '"/>' : '') + '</w:tcPr>' + (contenido || par('', { d: 0 })) + '</w:tc>'; };
+  const fila = (celdas, alto, o) => { o = o || {}; return '<w:tr><w:trPr><w:cantSplit/>' + (alto ? '<w:trHeight w:val="' + alto + '" w:hRule="atLeast"/>' : '') + (o.head ? '<w:tblHeader/>' : '') + '</w:trPr>' + celdas.join('') + '</w:tr>'; };
+  const tabla = (anchos, filas, o) => { o = o || {}; return '<w:tbl><w:tblPr><w:tblW w:w="' + anchos.reduce((a, b) => a + b, 0) + '" w:type="dxa"/>' + bordes(o.sin ? 'nil' : 'single', o.col) + '<w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="50" w:type="dxa"/><w:left w:w="100" w:type="dxa"/><w:bottom w:w="50" w:type="dxa"/><w:right w:w="100" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>' + anchos.map(a => '<w:gridCol w:w="' + a + '"/>').join('') + '</w:tblGrid>' + filas.join('') + '</w:tbl>' + par('', { d: 0 }); };
+  const etq = t => par(run(t, { c: '5F6B7A', sz: 15, caps: true }), { d: 20 });
+  const cj = '☐ ';
+  const opciones = l => par(l.map(x => run(cj + x + '     ', { sz: 18 })).join('') + run(cj + 'Otro: ____________________', { sz: 18 }), { d: 0 });
+  const url = urlForm();
+  const lnk = enlace();
+  const e0 = etapas()[0];
+  const png = qrPng(lnk);
+  const E = 1188000;
+  const img = png ? '<w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="' + E + '" cy="' + E + '"/><wp:docPr id="1" name="QR"/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="1" name="qr.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rIdQr"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="' + E + '" cy="' + E + '"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r>' : '';
+  const emp = limpio(CFG.empresa);
+  let b = '';
+  b += tabla([7404, 2800], [fila([
+    celda((emp ? par(run(emp, { b: true, c: ACC, sz: 17, caps: true }), { d: 40 }) : '') + par(run('Levantamiento de Funciones por Cargo', { b: true, sz: 32 }), { d: 20 }) + par(run('Formulario para completar a mano', { c: '5F6B7A', sz: 19 }), { d: 0 }), 7404, { va: 'bottom' }),
+    celda(par(run('Folio N° ____________', { b: true, sz: 19 }), { al: 'right', d: 0 }), 2800, { va: 'bottom' })
+  ])], { sin: true });
+  b += tabla([8104, 2100], [fila([
+    celda(par(run('¿Prefieres hacerlo en línea?', { b: true, c: ACC, sz: 21 }), { d: 40 }) + par(run('Escanea el código con la cámara de tu celular: entras directo a tu registro, sin configurar nada. También puedes abrir el enlace que te enviaron o ingresar a:', { sz: 17 }), { d: 40 }) + par(run(url, { b: true, mono: true, sz: 18 }), { d: 40 }) + par(run('Es más rápido: guardas tu avance y recibes tu comprobante al instante.', { sz: 17 }), { d: 0 }), 8104, { fill: 'F6EEF7', va: 'center' }),
+    celda(par(img, { al: 'center', d: 0 }), 2100, { fill: 'F6EEF7', va: 'center' })
+  ])], { col: ACC });
+  b += par(run('Complete con letra clara. Registre hasta 10 funciones que realiza habitualmente, estén o no descritas en su contrato. Use una fila por función, marque con una X su tipo y detalle en la descripción las tareas con que la cumple. Al menos una función debe ser de tipo ' + tipoPrincipal() + '.' + (e0 && e0.fin ? ' Plazo de entrega: ' + fTxt(e0.fin, true) + '.' : ''), { sz: 18 }), { a: 120, d: 60 });
+  b += h2('1. Datos personales');
+  const dato = t => etq(t) + par('', { d: 0 });
+  b += tabla([6802, 3402], [
+    fila([celda(dato('Nombre completo'), 6802), celda(dato('RUT'), 3402)], 640),
+    fila([celda(dato('Sucursal'), 6802), celda(dato('Teléfono'), 3402)], 640),
+    fila([celda(dato('Jefatura o dependencia directa'), 6802), celda(dato('Correo electrónico'), 3402)], 640),
+    fila([celda(etq('Área funcional (marque una)') + opciones(unidades()), W, { span: 2 })], 560),
+    fila([celda(etq('Cargo contractual (puede marcar más de uno)') + opciones(CFG.cargos), W, { span: 2 })], 560)
+  ]);
+  b += h2('2. Tipos de función');
+  CFG.tipos.forEach(t => { b += par([run(t.nombre + ': ', { b: true, sz: 17 }), run(t.def, { sz: 17 })], { d: 30 }); });
+  b += par([run('Función: ', { b: true, sz: 17 }), run('responsabilidad permanente del cargo, orientada a un resultado. Ej.: Gestionar la cobranza a clientes.', { sz: 17 })], { d: 30 });
+  b += par([run('Tarea: ', { b: true, sz: 17 }), run('acción concreta con la que se cumple una función. Ej.: Llamar a clientes con facturas vencidas.', { sz: 17 })], { d: 30 });
+  b += h2('3. Funciones que realiza (máximo 10)');
+  const an = [500, 1900, 3000, 4804];
+  const th = t => par(run(t, { b: true, c: 'FFFFFF', sz: 17 }), { d: 0 });
+  const filasF = [fila(an.map((w, i) => celda(th(['N°', 'Tipo', 'Función', 'Descripción / Especificación (tareas)'][i]), w, { fill: ACC })), 0, { head: true })];
+  for (let i = 1; i <= 10; i++) filasF.push(fila([celda(par(run(String(i), { b: true, sz: 18 }), { al: 'center', d: 0 }), an[0], { va: 'center' }), celda(CFG.tipos.map(t => par(run(cj + t.nombre, { sz: 16 }), { d: 0 })).join(''), an[1]), celda('', an[2]), celda('', an[3])], 1120));
+  b += tabla(an, filasF);
+  b += h2('4. Comentarios generales');
+  b += tabla([W], [fila([celda('', W)], 1300)]);
+  b += h2('5. Declaración y firmas');
+  b += par(run('Declaro que la información entregada es fidedigna y autorizo su uso exclusivo para fines de gestión interna de la empresa: levantamiento de funciones y elaboración de descriptores de cargo.', { sz: 18 }), { d: 120, keep: true });
+  b += tabla([4702, 800, 4702], [fila([celda(par('', { d: 0, keep: true }), 4702), celda(par('', { d: 0, keep: true }), 800), celda(par('', { d: 0, keep: true }), 4702)], 700), fila([celda(par(run('Firma trabajador(a)', { sz: 17 }), { al: 'center', d: 0 }), 4702, { top: true }), celda('', 800), celda(par(run('Firma jefatura directa', { sz: 17 }), { al: 'center', d: 0 }), 4702, { top: true })])], { sin: true });
+  b += tabla([2551, 2551, 2551, 2551], [fila(['Uso interno', 'Transcrito por', 'Fecha de transcripción', 'ID de registro'].map(t => celda(etq(t), 2551, { fill: t === 'Uso interno' ? 'EFE9F1' : '' })), 560)]);
+  const doc = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"><w:body>' + b + '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="851" w:right="851" w:bottom="851" w:left="851" w:header="425" w:footer="425" w:gutter="0"/></w:sectPr></w:body></w:document>';
+  const estilos = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:eastAsia="Calibri" w:cs="Calibri"/><w:color w:val="1A2230"/><w:sz w:val="19"/><w:lang w:val="es-CL"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="60" w:line="252" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style></w:styles>';
+  const files = [
+    { name: '[Content_Types].xml', data: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>' },
+    { name: '_rels/.rels', data: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>' },
+    { name: 'word/_rels/document.xml.rels', data: '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdSt" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>' + (png ? '<Relationship Id="rIdQr" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/qr.png"/>' : '') + '</Relationships>' },
+    { name: 'word/document.xml', data: doc },
+    { name: 'word/styles.xml', data: estilos }
+  ].concat(png ? [{ name: 'word/media/qr.png', data: png }] : []);
+  const url2 = URL.createObjectURL(zipStore(files));
+  const a = document.createElement('a');
+  a.href = url2;
+  a.download = 'Formulario Levantamiento de Funciones.docx';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(url2); a.remove(); }, 1000);
+  toast('Formulario en Word descargado.');
 }
 
 function imprimirRevision() {
