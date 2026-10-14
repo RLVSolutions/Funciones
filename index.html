@@ -2835,7 +2835,7 @@ async function verAvance(p) {
   d.funciones = (d.funciones || []).map(f => Object.assign({ tipo: '', funcion: '', descripcion: '' }, f));
   const meta = { id: d.id, estado: 'Avance sin enviar', marca: 'Avance sin enviar · el titular aún no envía este registro' + (d.fechaBorrador ? ' · guardado el ' + d.fechaBorrador : ''), sub: 'Avance sin enviar · ' + hoy(), pie: 'Avance sin enviar impreso por el administrador el ' + hoy() + '. Contenido guardado por el titular' + (d.fechaBorrador ? ' el ' + d.fechaBorrador : '') + '; puede cambiar antes del envío. Documento de trabajo; no reemplaza el contrato de trabajo.' };
   const html = perfilHTML(d, meta);
-  dialogo('Avance sin enviar', '<p class="sub" style="margin:0 0 12px">Solo lectura. ' + esc(d.nombre || p.nombre || '') + (d.fechaBorrador ? ' · guardado el ' + esc(d.fechaBorrador) : '') + '.</p><div class="pprev">' + html + '</div>', [{ txt: 'Cerrar' }, { txt: 'Descargar PDF', cls: 'pri', fn: () => { cerrarModal('dlg'); imprimir(html, 'Avance ' + (d.nombre || p.nombre || 'colaborador')); } }]);
+  dialogo('Avance sin enviar', '<p class="sub" style="margin:0 0 12px">Solo lectura. ' + esc(d.nombre || p.nombre || '') + (d.fechaBorrador ? ' · guardado el ' + esc(d.fechaBorrador) : '') + '.</p><div class="pprev">' + html + '</div>', [{ txt: 'Cerrar' }, { txt: 'Nueva clave', cls: 'sec', fn: () => nuevaClaveAdmin(d.nombre || p.nombre || '', { ref: p.ref }, () => { p.clave = true; }) }, { txt: 'Descargar PDF', cls: 'pri', fn: () => { cerrarModal('dlg'); imprimir(html, 'Avance ' + (d.nombre || p.nombre || 'colaborador')); } }]);
   $('dlg').querySelector('.caja').classList.add('grande');
 }
 
@@ -2974,19 +2974,25 @@ $('detGuardar').addEventListener('click', async () => {
 
 $('detPdf').addEventListener('click', imprimirRevision);
 
-$('detClave').addEventListener('click', () => {
-  dialogo('Generar nueva clave', '<p>Se generará una clave nueva para <b>' + esc(DET.nombre) + '</b>. Si tenía una clave anterior, dejará de funcionar.</p>', [
+function nuevaClaveAdmin(nombre, datos, listo) {
+  dialogo('Generar nueva clave', '<p>Se generará una clave nueva para <b>' + esc(nombre) + '</b>. Si tenía una clave anterior, dejará de funcionar.</p>', [
     { txt: 'Cancelar' },
     { txt: 'Generar clave', cls: 'pri', fn: async b => {
       b.disabled = true;
-      const j = await api('clave', { sesion: SESION, id: DET.id });
+      const j = await api('clave', Object.assign({ sesion: SESION }, datos));
       b.disabled = false;
       if (!j.ok) { if (j.sesion !== false) toast(j.mensaje, true); cerrarModal('dlg'); return; }
-      DET.clave = true;
-      $('detClaveInfo').textContent = 'El trabajador tiene clave asignada para modificar su registro.';
+      if (listo) listo(j);
       dialogo('Nueva clave generada', '<div class="cred" style="margin:4px 0 12px"><div class="credbox"><span>ID de registro</span><b id="ncId">' + esc(j.id) + '</b><button type="button" class="copiar" data-copia="ncId">Copiar</button></div><div class="credbox"><span>Clave</span><b id="ncClave">' + esc(j.clave) + '</b><button type="button" class="copiar" data-copia="ncClave">Copiar</button></div></div><p class="sub">Entregue estos datos al trabajador. Por seguridad la clave no se vuelve a mostrar.</p>', [{ txt: 'Listo', cls: 'pri' }]);
     } }
   ]);
+}
+
+$('detClave').addEventListener('click', () => {
+  nuevaClaveAdmin(DET.nombre, { id: DET.id }, () => {
+    DET.clave = true;
+    $('detClaveInfo').textContent = 'El trabajador tiene clave asignada para modificar su registro.';
+  });
 });
 
 $('dCodigo').addEventListener('click', () => {
