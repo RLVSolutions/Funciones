@@ -1761,6 +1761,11 @@ async function verificarRut() {
     est.innerHTML = '<p class="errBloque" style="margin:0 0 12px">' + esc(j.mensaje) + '</p>';
     return;
   }
+  if (j.ejemplo && j.estado !== 'nuevo') {
+    const b = await api('buscar', { id: j.id, clave: '' });
+    if (b.ok && j.estado === 'borrador') { cargarRegistro(b.registro, ''); toast('Caso de ejemplo en preparación: complételo y envíelo. Una vez enviado queda de solo lectura.'); return; }
+    if (b.ok) { reiniciarPuerta(); modoUI(); verEjemplo(b.registro); return; }
+  }
   if (j.estado === 'nuevo') {
     RUTOK = rut;
     $('rut').value = rut;
@@ -2761,9 +2766,25 @@ function renderPub() {
 function detallePub(i) {
   const p = PUB[i];
   if (!p) return;
+  if (p.ejemplo) { abrirEjemplo(p); return; }
   dialogo('Detalle protegido', '<div class="lockbox"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><p><b>' + esc(p.nombre) + '</b><br>Este registro solo puede verlo el <b>titular</b> o el <b>administrador</b>. Indique quién es para continuar.</p></div><div class="quien"><button type="button" id="qTit"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></i><span><b>Soy el titular</b><small>Ingreso con la clave que recibí al guardar mi registro</small></span></button><button type="button" id="qAdm"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></i><span><b>Soy el administrador</b><small>Ingreso con el código de acceso</small></span></button></div>', [{ txt: 'Cancelar' }].concat(p.estado === 'En curso' ? [{ txt: 'Ver e imprimir avance', cls: 'pri', fn: () => (SESION ? verAvance(p) : pedirCodigoAdmin(p)) }] : []));
   $('qTit').onclick = () => pedirClaveTitular(p);
   $('qAdm').onclick = () => (SESION ? detalleAdmin(p) : pedirCodigoAdmin(p));
+}
+
+async function abrirEjemplo(p) {
+  const j = await api('abrir', { ref: p.ref, clave: '' });
+  if (!j.ok) { toast(j.mensaje, true); return; }
+  verEjemplo(j.registro);
+}
+
+function verEjemplo(r) {
+  const d = Object.assign({ cargos: [], funciones: [] }, r);
+  d.funciones = (d.funciones || []).map(f => Object.assign({ tipo: '', funcion: '', descripcion: '' }, f));
+  const meta = { id: d.id, sinSeg: true, estado: 'Caso de ejemplo', marca: 'Caso de ejemplo · solo lectura · úselo como guía para completar su propio registro', sub: 'Caso de ejemplo del levantamiento', pie: 'Caso de ejemplo de referencia. No corresponde a un colaborador real; no reemplaza el contrato de trabajo.' };
+  const html = perfilHTML(d, meta);
+  dialogo('Caso de ejemplo', '<p class="sub" style="margin:0 0 12px">Registro de referencia, solo lectura. Revise cómo están redactadas las funciones y sus descripciones.</p><div class="pprev">' + html + '</div>', [{ txt: 'Cerrar' }, { txt: 'Descargar PDF', cls: 'pri', fn: () => { cerrarModal('dlg'); imprimir(html, 'Caso de ejemplo'); } }]);
+  $('dlg').querySelector('.caja').classList.add('grande');
 }
 
 function formClave(id, label, tipo, ayuda) {
@@ -4036,7 +4057,7 @@ function perfilHTML(d, meta) {
     return '<h3 class="pgt">' + esc(lbl(t)) + ' <small>(' + l.length + ')</small></h3><table><tbody>' + l.map(f => '<tr><td class="nn">' + (++n) + '</td><td><b>' + esc(f.funcion) + '</b>' + (f.descripcion && f.descripcion !== f.funcion ? '<div class="fd">' + esc(f.descripcion) + '</div>' : '') + '</td></tr>').join('') + '</tbody></table>';
   }).join('');
   const sinTipo = d.funciones.filter(f => !f.tipo && (f.funcion || f.descripcion));
-  const seg = meta.id ? '<div class="pseg"><div><span>ID de registro</span><b>' + esc(meta.id) + '</b></div><div><span>Clave de seguimiento</span><b>' + esc(meta.clave || '········') + '</b></div><p>' + (meta.clave ? 'Conserve su ID y su clave: con ellos revisa, modifica o actualiza este perfil.' : 'La clave se entregó al guardar por primera vez; no se muestra por seguridad.') + '</p></div>' : '<div class="pseg pend"><p><b>Código de seguimiento:</b> se asignará un ID y una clave al guardar el avance o enviar el registro.</p></div>';
+  const seg = meta.sinSeg ? '' : meta.id ? '<div class="pseg"><div><span>ID de registro</span><b>' + esc(meta.id) + '</b></div><div><span>Clave de seguimiento</span><b>' + esc(meta.clave || '········') + '</b></div><p>' + (meta.clave ? 'Conserve su ID y su clave: con ellos revisa, modifica o actualiza este perfil.' : 'La clave se entregó al guardar por primera vez; no se muestra por seguridad.') + '</p></div>' : '<div class="pseg pend"><p><b>Código de seguimiento:</b> se asignará un ID y una clave al guardar el avance o enviar el registro.</p></div>';
   return '<div class="pdoc pperfil">' + pEnc('Perfil de funciones del colaborador', meta.sub || 'Levantamiento de Funciones por Cargo', meta.id ? '<div class="pmeta">ID de registro<b>' + esc(meta.id) + '</b><em>' + esc(meta.estado || '') + '</em></div>' : '') +
     (meta.marca ? '<div class="pmarca">' + esc(meta.marca) + '</div>' : '') +
     seg +
